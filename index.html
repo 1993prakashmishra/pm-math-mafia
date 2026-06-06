@@ -324,6 +324,47 @@
     .detail-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
     .detail-value { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
 
+    /* ── QUIZZES ── */
+    #quizzes { background: var(--white); }
+    .quiz-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .quiz-block {
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; background: var(--off-white);
+    }
+    .quiz-header {
+      background: linear-gradient(135deg, var(--green-800), var(--green-500));
+      padding: 1rem 1.5rem; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .quiz-header-left { display: flex; align-items: center; gap: 12px; }
+    .quiz-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(255,255,255,0.15); display: flex;
+      align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .quiz-title { color: #fff; font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+    .quiz-meta { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+    .quiz-open-btn {
+      background: var(--gold); color: var(--green-900);
+      font-size: 0.8rem; font-weight: 700; padding: 6px 14px;
+      border-radius: 6px; text-decoration: none; white-space: nowrap;
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .quiz-open-btn:hover { background: var(--gold-light); }
+    .quiz-frame-wrap {
+      position: relative; width: 100%; background: #fff;
+      /* Key fix: min-width forces the iframe content to render at full width */
+    }
+    .quiz-frame-wrap iframe {
+      display: block;
+      width: 100%;
+      min-width: 100%;
+      height: 640px;
+      border: none;
+      /* scale trick: if Google Forms still renders narrow, this centres it */
+      transform-origin: top left;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--green-900); color: rgba(255,255,255,0.7);
@@ -370,6 +411,7 @@
     <a href="#subjects" class="active">Subjects</a>
     <a href="#notes">Notes</a>
     <a href="#videos">Videos</a>
+    <a href="#quizzes">Quizzes</a>
     <a href="#assignments">Assignments</a>
     <a href="#resources">Resources</a>
     <a href="#gallery">Gallery</a>
@@ -570,38 +612,66 @@
   <div class="container">
     <div class="section-label">Test Yourself</div>
     <h2 class="section-title">Online Quizzes</h2>
-    <p class="section-desc">Take chapter-wise quizzes and get instant results with correct answers.</p>
+    <p class="section-desc">Take chapter-wise quizzes and get your score instantly with correct answers shown.</p>
 
-    <div style="margin-top:2rem; border:1px solid rgba(26,102,57,0.15);
-      border-radius:16px; overflow:hidden; background:#fff;">
-      <div style="background:linear-gradient(135deg,#103d22,#1f7a44);
-        padding:1rem 1.5rem; display:flex; align-items:center; gap:10px;">
-        <span style="font-size:1.2rem;">📝</span>
-        <div>
-          <div style="color:#fff;font-weight:600;font-size:0.95rem;">
-            Chapter 2 – Polynomials Quiz
+    <div class="quiz-list">
+
+      <!-- QUIZ 1 -->
+      <div class="quiz-block">
+        <div class="quiz-header">
+          <div class="quiz-header-left">
+            <div class="quiz-icon">📝</div>
+            <div>
+              <div class="quiz-title">Chapter 2 – Polynomials Quiz</div>
+              <div class="quiz-meta">Mathematics · Grade 9 · MCQ · Instant results</div>
+            </div>
           </div>
-          <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;">
-            Mathematics · Grade 9 · 10 questions
-          </div>
+          <a class="quiz-open-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdTg1VsXiEeenNl426PzxIPn1AuMA_MBEhu1CfnzHZHnToHgA/viewform" target="_blank">Open in new tab ↗</a>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdTg1VsXiEeenNl426PzxIPn1AuMA_MBEhu1CfnzHZHnToHgA/viewform?embedded=true"
+            width="100%"
+            height="640"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="yes"
+            allowfullscreen>
+            Loading quiz...
+          </iframe>
         </div>
       </div>
 
-      <!-- PASTE YOUR GOOGLE FORM IFRAME HERE -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdTg1VsXiEeenNl426PzxIPn1AuMA_MBEhu1CfnzHZHnToHgA/viewform?embedded=true" 
-        width="100" 
-        height="600" 
-        frameborder="0" 
-        marginheight="0" 
-        marginwidth="0"
-        style="display:block;">
-        Loading…
-      </iframe>
-    </div>
+      <!-- QUIZ 2 — duplicate this block to add more quizzes -->
+      <div class="quiz-block">
+        <div class="quiz-header">
+          <div class="quiz-header-left">
+            <div class="quiz-icon">🔬</div>
+            <div>
+              <div class="quiz-title">Chapter 3 – Atoms & Molecules Quiz</div>
+              <div class="quiz-meta">Science · Grade 9 · MCQ · Instant results</div>
+            </div>
+          </div>
+          <a class="quiz-open-btn" href="PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank">Open in new tab ↗</a>
+        </div>
+        <div class="quiz-frame-wrap">
+          <iframe
+            src="PASTE_YOUR_GOOGLE_FORM_EMBED_LINK_HERE"
+            width="100%"
+            height="640"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            scrolling="yes"
+            allowfullscreen>
+            Loading quiz...
+          </iframe>
+        </div>
+      </div>
 
+    </div>
   </div>
 </section>
-  
+
 <!-- ASSIGNMENTS -->
 <section id="assignments">
   <div class="container">
@@ -756,6 +826,7 @@
     <a href="#subjects">Subjects</a>
     <a href="#notes">Notes</a>
     <a href="#videos">Videos</a>
+    <a href="#quizzes">Quizzes</a>
     <a href="#assignments">Assignments</a>
     <a href="#resources">Resources</a>
     <a href="#gallery">Gallery</a>
