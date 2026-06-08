@@ -245,7 +245,7 @@
   <div class="scroll-hint">SCROLL</div>
 </section>
 <div class="announcement-bar">
-  <p>📢 <strong>Announcement:</strong> My Dear KVIANS and Students, something Change For You. .</p>
+  <p>📢 <strong>Announcement:</strong> New CBSE notes added for Class 10! Check Assignments for this week's worksheet.</p>
 </div>
 <section id="subjects">
   <div class="container">
@@ -526,10 +526,10 @@
     </div>
     <div class="campus-grid">
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(26,102,57,0.15);box-shadow:0 4px 16px rgba(10,46,26,0.1);">
-  <img src="classroom.jpg.jpeg" alt="Our Classroom" style="width:100%;height:100%;object-fit:cover;display:block;">
+  <img src="classroom.jpg" alt="Our Classroom" style="width:100%;height:100%;object-fit:cover;display:block;">
 </div>
       <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;border:1px solid rgba(26,102,57,0.15);box-shadow:0 4px 16px rgba(10,46,26,0.1);">
-  <img src="classroom1.jpg.jpeg" alt="Campus Tour" style="width:100%;height:100%;object-fit:cover;display:block;">
+  <img src="classroom1.jpg" alt="Campus Tour" style="width:100%;height:100%;object-fit:cover;display:block;">
 </div>
       <div class="campus-placeholder"><div class="cs-icon">🔬</div><div class="cs-title">Science Lab</div><div class="cs-sub">Coming Soon</div></div>
       <div class="campus-placeholder"><div class="cs-icon">📐</div><div class="cs-title">Maths Board</div><div class="cs-sub">Coming Soon</div></div>
@@ -556,27 +556,307 @@
   <div class="container">
     <div class="section-label">Test Yourself</div>
     <h2 class="section-title">Online Quizzes</h2>
-    <p class="section-desc">Take chapter-wise quizzes and get your score instantly with correct answers shown.</p>
-    <div class="quiz-list">
-      <div class="quiz-block">
-        <div class="quiz-header">
-          <div class="quiz-header-left"><div class="quiz-icon">📝</div><div><div class="quiz-title-text">Chapter 2 – Polynomials Quiz</div><div class="quiz-meta">Mathematics · Class 9 · MCQ · Instant results</div></div></div>
-          <a class="quiz-open-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdTg1VsXiEeenNl426PzxIPn1AuMA_MBEhu1CfnzHZHnToHgA/viewform" target="_blank">Open in new tab ↗</a>
+    <p class="section-desc">Select a quiz, answer all questions and submit — see your result instantly! No login needed.</p>
+
+    <style>
+      .quiz-selector { display:flex; gap:0.75rem; flex-wrap:wrap; margin:2rem 0 1.5rem; }
+      .quiz-sel-btn { padding:0.5rem 1.25rem; border-radius:20px; font-size:0.85rem; font-weight:600; cursor:pointer; border:1.5px solid var(--border); background:var(--white); color:var(--text-muted); transition:all 0.2s; font-family:'DM Sans',sans-serif; }
+      .quiz-sel-btn.active { background:var(--green-600); color:#fff; border-color:var(--green-600); }
+      .quiz-panel { display:none; }
+      .quiz-panel.active { display:block; }
+      .quiz-box { background:var(--white); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+      .quiz-top { background:linear-gradient(135deg,var(--green-800),var(--green-500)); padding:1.25rem 1.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+      .quiz-top-title { color:#fff; font-weight:700; font-size:1rem; }
+      .quiz-top-meta { color:rgba(255,255,255,0.7); font-size:0.82rem; margin-top:3px; }
+      .quiz-badge { background:var(--gold); color:var(--green-900); font-size:0.78rem; font-weight:700; padding:5px 14px; border-radius:20px; }
+      .quiz-body { padding:1.75rem; }
+      .q-item { margin-bottom:1.75rem; padding-bottom:1.75rem; border-bottom:1px solid var(--border); }
+      .q-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+      .q-num { font-size:0.72rem; font-weight:700; color:var(--green-500); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; }
+      .q-text { font-size:0.95rem; font-weight:600; color:var(--text-dark); margin-bottom:1rem; line-height:1.5; }
+      .q-options { display:flex; flex-direction:column; gap:0.6rem; }
+      .q-opt { display:flex; align-items:center; gap:0.75rem; padding:0.65rem 1rem; border:1.5px solid var(--border); border-radius:10px; cursor:pointer; transition:all 0.15s; font-size:0.88rem; color:var(--text-dark); }
+      .q-opt:hover { border-color:var(--green-400); background:var(--green-50); }
+      .q-opt input[type=radio] { accent-color:var(--green-600); width:16px; height:16px; flex-shrink:0; }
+      .q-opt.correct { background:#e8f7ed; border-color:var(--green-400); color:var(--green-800); font-weight:600; }
+      .q-opt.wrong { background:#fdecea; border-color:#e53935; color:#b71c1c; }
+      .quiz-submit { width:100%; padding:0.9rem; background:var(--green-600); color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:'DM Sans',sans-serif; margin-top:1.5rem; }
+      .quiz-submit:hover { background:var(--green-500); transform:translateY(-1px); }
+      .quiz-result { display:none; margin-top:1.5rem; border-radius:14px; padding:1.5rem; text-align:center; }
+      .quiz-result.show { display:block; }
+      .result-score { font-family:'Playfair Display',serif; font-size:3rem; font-weight:700; }
+      .result-msg { font-size:1rem; margin-top:0.5rem; font-weight:500; }
+      .result-detail { font-size:0.85rem; margin-top:0.5rem; color:var(--text-muted); }
+      .quiz-retry { background:var(--white); color:var(--green-700); border:1.5px solid var(--green-400); padding:0.65rem 2rem; border-radius:8px; font-size:0.88rem; font-weight:600; cursor:pointer; margin-top:1rem; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+      .quiz-retry:hover { background:var(--green-50); }
+    </style>
+
+    <div class="quiz-selector">
+      <button class="quiz-sel-btn active" onclick="showQuiz('q1',this)">📝 Polynomials – Class 10</button>
+      <button class="quiz-sel-btn" onclick="showQuiz('q2',this)">🔬 Atoms & Molecules – Class 9</button>
+    </div>
+
+    <!-- QUIZ 1: Polynomials Class 10 -->
+    <div class="quiz-panel active" id="panel-q1">
+      <div class="quiz-box">
+        <div class="quiz-top">
+          <div><div class="quiz-top-title">Polynomials — Class 10 Maths</div><div class="quiz-top-meta">Chapter 2 · 10 Questions · Instant Result</div></div>
+          <span class="quiz-badge">MCQ Quiz</span>
         </div>
-        <div class="quiz-frame-wrap">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdTg1VsXiEeenNl426PzxIPn1AuMA_MBEhu1CfnzHZHnToHgA/viewform?embedded=true" width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes">Loading quiz...</iframe>
-        </div>
-      </div>
-      <div class="quiz-block">
-        <div class="quiz-header">
-          <div class="quiz-header-left"><div class="quiz-icon">🔬</div><div><div class="quiz-title-text">Chapter 3 – Atoms & Molecules Quiz</div><div class="quiz-meta">Science · Class 9 · MCQ · Instant results</div></div></div>
-          <a class="quiz-open-btn" href="PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank">Open in new tab ↗</a>
-        </div>
-        <div class="quiz-frame-wrap">
-          <iframe src="PASTE_YOUR_GOOGLE_FORM_EMBED_LINK_HERE" width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes">Loading quiz...</iframe>
+        <div class="quiz-body">
+          <div id="q1-questions">
+
+            <div class="q-item">
+              <div class="q-num">Question 1 of 10</div>
+              <div class="q-text">Which of the following is a polynomial?</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_1" value="0"> x² + 2x + 1/x</label>
+                <label class="q-opt"><input type="radio" name="q1_1" value="1"> x² + 3x + 2</label>
+                <label class="q-opt"><input type="radio" name="q1_1" value="0"> √x + 1</label>
+                <label class="q-opt"><input type="radio" name="q1_1" value="0"> x⁻¹ + 5</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 2 of 10</div>
+              <div class="q-text">The degree of the polynomial 4x³ − 3x² + 2x − 7 is:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_2" value="0"> 2</label>
+                <label class="q-opt"><input type="radio" name="q1_2" value="0"> 1</label>
+                <label class="q-opt"><input type="radio" name="q1_2" value="1"> 3</label>
+                <label class="q-opt"><input type="radio" name="q1_2" value="0"> 4</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 3 of 10</div>
+              <div class="q-text">The zeroes of the polynomial p(x) = x² − 5x + 6 are:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_3" value="0"> 2 and 4</label>
+                <label class="q-opt"><input type="radio" name="q1_3" value="1"> 2 and 3</label>
+                <label class="q-opt"><input type="radio" name="q1_3" value="0"> 1 and 6</label>
+                <label class="q-opt"><input type="radio" name="q1_3" value="0"> 3 and 4</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 4 of 10</div>
+              <div class="q-text">If α and β are zeroes of x² − 4x + 3, then α + β = ?</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_4" value="0"> 3</label>
+                <label class="q-opt"><input type="radio" name="q1_4" value="1"> 4</label>
+                <label class="q-opt"><input type="radio" name="q1_4" value="0"> −4</label>
+                <label class="q-opt"><input type="radio" name="q1_4" value="0"> −3</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 5 of 10</div>
+              <div class="q-text">If α and β are zeroes of x² − 4x + 3, then α × β = ?</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_5" value="0"> 4</label>
+                <label class="q-opt"><input type="radio" name="q1_5" value="0"> −4</label>
+                <label class="q-opt"><input type="radio" name="q1_5" value="1"> 3</label>
+                <label class="q-opt"><input type="radio" name="q1_5" value="0"> −3</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 6 of 10</div>
+              <div class="q-text">A quadratic polynomial with zeroes 3 and −2 is:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_6" value="0"> x² + x − 6</label>
+                <label class="q-opt"><input type="radio" name="q1_6" value="1"> x² − x − 6</label>
+                <label class="q-opt"><input type="radio" name="q1_6" value="0"> x² + x + 6</label>
+                <label class="q-opt"><input type="radio" name="q1_6" value="0"> x² − x + 6</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 7 of 10</div>
+              <div class="q-text">The number of zeroes a cubic polynomial can have is at most:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_7" value="0"> 1</label>
+                <label class="q-opt"><input type="radio" name="q1_7" value="0"> 2</label>
+                <label class="q-opt"><input type="radio" name="q1_7" value="1"> 3</label>
+                <label class="q-opt"><input type="radio" name="q1_7" value="0"> 4</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 8 of 10</div>
+              <div class="q-text">On dividing x³ − 3x² + 3x − 5 by (x − 1), the remainder is:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_8" value="0"> 0</label>
+                <label class="q-opt"><input type="radio" name="q1_8" value="0"> 1</label>
+                <label class="q-opt"><input type="radio" name="q1_8" value="1"> −4</label>
+                <label class="q-opt"><input type="radio" name="q1_8" value="0"> 4</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 9 of 10</div>
+              <div class="q-text">If one zero of 2x² + kx − 4 is 2, then the value of k is:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_9" value="0"> 2</label>
+                <label class="q-opt"><input type="radio" name="q1_9" value="1"> −2</label>
+                <label class="q-opt"><input type="radio" name="q1_9" value="0"> 4</label>
+                <label class="q-opt"><input type="radio" name="q1_9" value="0"> −4</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 10 of 10</div>
+              <div class="q-text">A polynomial of degree 2 is called a:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1_10" value="0"> Linear polynomial</label>
+                <label class="q-opt"><input type="radio" name="q1_10" value="1"> Quadratic polynomial</label>
+                <label class="q-opt"><input type="radio" name="q1_10" value="0"> Cubic polynomial</label>
+                <label class="q-opt"><input type="radio" name="q1_10" value="0"> Constant polynomial</label>
+              </div>
+            </div>
+
+          </div>
+          <button class="quiz-submit" onclick="submitQuiz('q1',10)">Submit Quiz ✓</button>
+          <div class="quiz-result" id="result-q1"></div>
+          <button class="quiz-retry" id="retry-q1" onclick="retryQuiz('q1')" style="display:none;">🔄 Try Again</button>
         </div>
       </div>
     </div>
+
+    <!-- QUIZ 2: Atoms & Molecules Class 9 -->
+    <div class="quiz-panel" id="panel-q2">
+      <div class="quiz-box">
+        <div class="quiz-top" style="background:linear-gradient(135deg,#0a2e40,#0f6b6b);">
+          <div><div class="quiz-top-title">Atoms & Molecules — Class 9 Science</div><div class="quiz-top-meta">Chapter 3 · 5 Questions · Instant Result</div></div>
+          <span class="quiz-badge">MCQ Quiz</span>
+        </div>
+        <div class="quiz-body">
+          <div id="q2-questions">
+
+            <div class="q-item">
+              <div class="q-num">Question 1 of 5</div>
+              <div class="q-text">The smallest particle of an element that retains its chemical properties is called a:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q2_1" value="0"> Molecule</label>
+                <label class="q-opt"><input type="radio" name="q2_1" value="1"> Atom</label>
+                <label class="q-opt"><input type="radio" name="q2_1" value="0"> Ion</label>
+                <label class="q-opt"><input type="radio" name="q2_1" value="0"> Electron</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 2 of 5</div>
+              <div class="q-text">The chemical formula of water is:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q2_2" value="0"> HO</label>
+                <label class="q-opt"><input type="radio" name="q2_2" value="1"> H₂O</label>
+                <label class="q-opt"><input type="radio" name="q2_2" value="0"> H₂O₂</label>
+                <label class="q-opt"><input type="radio" name="q2_2" value="0"> OH₂</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 3 of 5</div>
+              <div class="q-text">Atomic mass of oxygen is:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q2_3" value="0"> 12 u</label>
+                <label class="q-opt"><input type="radio" name="q2_3" value="0"> 14 u</label>
+                <label class="q-opt"><input type="radio" name="q2_3" value="1"> 16 u</label>
+                <label class="q-opt"><input type="radio" name="q2_3" value="0"> 32 u</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 4 of 5</div>
+              <div class="q-text">One mole of any substance contains how many particles?</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q2_4" value="0"> 6.022 × 10²¹</label>
+                <label class="q-opt"><input type="radio" name="q2_4" value="1"> 6.022 × 10²³</label>
+                <label class="q-opt"><input type="radio" name="q2_4" value="0"> 6.022 × 10²⁴</label>
+                <label class="q-opt"><input type="radio" name="q2_4" value="0"> 6.022 × 10²²</label>
+              </div>
+            </div>
+
+            <div class="q-item">
+              <div class="q-num">Question 5 of 5</div>
+              <div class="q-text">The law of conservation of mass states that:</div>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q2_5" value="1"> Mass is neither created nor destroyed in a chemical reaction</label>
+                <label class="q-opt"><input type="radio" name="q2_5" value="0"> Mass increases during a reaction</label>
+                <label class="q-opt"><input type="radio" name="q2_5" value="0"> Mass decreases during a reaction</label>
+                <label class="q-opt"><input type="radio" name="q2_5" value="0"> Mass changes with temperature</label>
+              </div>
+            </div>
+
+          </div>
+          <button class="quiz-submit" onclick="submitQuiz('q2',5)">Submit Quiz ✓</button>
+          <div class="quiz-result" id="result-q2"></div>
+          <button class="quiz-retry" id="retry-q2" onclick="retryQuiz('q2')" style="display:none;">🔄 Try Again</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showQuiz(id, btn) {
+        document.querySelectorAll('.quiz-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.quiz-sel-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('panel-' + id).classList.add('active');
+        btn.classList.add('active');
+      }
+      function submitQuiz(qid, total) {
+        const panel = document.getElementById('panel-' + qid);
+        let score = 0, unanswered = 0;
+        for (let i = 1; i <= total; i++) {
+          const opts = panel.querySelectorAll('input[name="' + qid + '_' + i + '"]');
+          let answered = false;
+          opts.forEach(opt => {
+            const label = opt.closest('.q-opt');
+            if (opt.checked) {
+              answered = true;
+              if (opt.value === '1') { score++; label.classList.add('correct'); }
+              else { label.classList.add('wrong'); }
+            }
+            if (opt.value === '1' && opt.checked === false) {
+              // show correct answer only after submit
+              label.classList.add('correct');
+            }
+            opt.disabled = true;
+          });
+          if (!answered) unanswered++;
+        }
+        if (unanswered > 0) {
+          alert('Please answer all ' + unanswered + ' unanswered question(s) before submitting!');
+          // re-enable
+          panel.querySelectorAll('input[type=radio]').forEach(r => r.disabled = false);
+          panel.querySelectorAll('.q-opt').forEach(l => { l.classList.remove('correct','wrong'); });
+          return;
+        }
+        const pct = Math.round((score / total) * 100);
+        let bg, emoji, msg;
+        if (pct >= 80) { bg = '#e8f7ed'; emoji = '🎉'; msg = 'Excellent! Keep it up!'; }
+        else if (pct >= 60) { bg = '#fff8e6'; emoji = '👍'; msg = 'Good effort! Review the wrong ones.'; }
+        else { bg = '#fdecea'; emoji = '📖'; msg = 'Keep practising! You can do it.'; }
+        const res = document.getElementById('result-' + qid);
+        res.style.background = bg;
+        res.innerHTML = '<div style="font-size:2.5rem;">' + emoji + '</div>' +
+          '<div class="result-score" style="color:var(--green-700);">' + score + '/' + total + '</div>' +
+          '<div class="result-msg">' + msg + '</div>' +
+          '<div class="result-detail">You scored ' + pct + '% · Correct: ' + score + ' · Wrong: ' + (total - score) + '</div>';
+        res.classList.add('show');
+        document.getElementById('retry-' + qid).style.display = 'inline-block';
+        panel.querySelector('.quiz-submit').style.display = 'none';
+      }
+      function retryQuiz(qid) {
+        const panel = document.getElementById('panel-' + qid);
+        panel.querySelectorAll('input[type=radio]').forEach(r => { r.disabled = false; r.checked = false; });
+        panel.querySelectorAll('.q-opt').forEach(l => { l.classList.remove('correct','wrong'); });
+        document.getElementById('result-' + qid).classList.remove('show');
+        document.getElementById('retry-' + qid).style.display = 'none';
+        panel.querySelector('.quiz-submit').style.display = 'block';
+      }
+    </script>
+
   </div>
 </section>
 
@@ -584,42 +864,274 @@
   <div class="container">
     <div class="section-label">Practice & Homework</div>
     <h2 class="section-title">Assignments</h2>
-    <p class="section-desc">Worksheets, practice tests and MCQ quizzes — class-wise and chapter-wise.</p>
-    <div class="assign-tabs">
-      <div class="assign-tab active" onclick="switchAssign('worksheet',this)">📄 Worksheets</div>
-      <div class="assign-tab" onclick="switchAssign('practice',this)">📝 Practice Tests</div>
-      <div class="assign-tab" onclick="switchAssign('mcq',this)">✅ MCQ Quizzes</div>
+    <p class="section-desc">Select your class, then your subject, then choose from Worksheets, Practice Tests or MCQ Quizzes.</p>
+
+    <style>
+      .assign-class-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:2rem; margin-bottom:1rem; }
+      .assign-class-tab { padding:0.45rem 1rem; border-radius:20px; font-size:0.82rem; font-weight:600; cursor:pointer; border:1.5px solid var(--border); background:var(--white); color:var(--text-muted); transition:all 0.2s; }
+      .assign-class-tab.active { background:var(--green-600); color:#fff; border-color:var(--green-600); }
+      .assign-subj-tabs { display:flex; gap:0.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+      .assign-subj-tab { padding:0.4rem 1.2rem; border-radius:8px; font-size:0.85rem; font-weight:600; cursor:pointer; border:1.5px solid var(--border); background:var(--white); color:var(--text-muted); transition:all 0.2s; }
+      .assign-subj-tab.active { background:var(--green-700); color:#fff; border-color:var(--green-700); }
+      .assign-type-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+      .assign-type-tab { padding:0.4rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:600; cursor:pointer; border:1.5px solid var(--border); background:var(--white); color:var(--text-muted); transition:all 0.2s; }
+      .assign-type-tab.active { background:var(--gold); color:var(--green-900); border-color:var(--gold); }
+      .assign-panel { display:none; }
+      .assign-panel.active { display:flex; flex-direction:column; gap:1rem; }
+      .assignment-row { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.4rem; display:flex; align-items:center; gap:1.25rem; transition:all 0.2s; }
+      .assignment-row:hover { border-color:var(--green-300); box-shadow:0 4px 16px rgba(10,46,26,0.06); }
+      .assign-num { width:34px; height:34px; border-radius:8px; background:var(--green-50); border:1px solid var(--green-100); display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; color:var(--green-600); flex-shrink:0; }
+      .assign-info { flex:1; }
+      .assign-title { font-size:0.92rem; font-weight:600; color:var(--text-dark); }
+      .assign-sub { font-size:0.78rem; color:var(--text-muted); margin-top:2px; }
+      .assign-due { font-size:0.75rem; font-weight:600; padding:4px 11px; border-radius:20px; white-space:nowrap; }
+      .due-soon { background:#fff3e0; color:#b35a00; }
+      .due-upcoming { background:var(--green-50); color:var(--green-700); }
+      .due-open { background:#e3f2fd; color:#1a5276; }
+    </style>
+
+    <!-- CLASS TABS -->
+    <div class="assign-class-tabs">
+      <div class="assign-class-tab active" onclick="switchAssignClass('6',this)">Class 6</div>
+      <div class="assign-class-tab" onclick="switchAssignClass('7',this)">Class 7</div>
+      <div class="assign-class-tab" onclick="switchAssignClass('8',this)">Class 8</div>
+      <div class="assign-class-tab" onclick="switchAssignClass('9',this)">Class 9</div>
+      <div class="assign-class-tab" onclick="switchAssignClass('10',this)">Class 10</div>
+      <div class="assign-class-tab" onclick="switchAssignClass('11',this)">Class 11</div>
+      <div class="assign-class-tab" onclick="switchAssignClass('12',this)">Class 12</div>
     </div>
-    <div class="assign-list active" id="assign-worksheet">
-      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Knowing Our Numbers</div><div class="assign-sub">Maths · Class 6 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Integers</div><div class="assign-sub">Maths · Class 6 · Chapter 6</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">W3</div><div class="assign-info"><div class="assign-title">Worksheet – Simple Equations</div><div class="assign-sub">Maths · Class 7 · Chapter 4</div></div><span class="assign-due due-upcoming">This Week</span></div>
-      <div class="assignment-row"><div class="assign-num">W4</div><div class="assign-info"><div class="assign-title">Worksheet – Squares and Square Roots</div><div class="assign-sub">Maths · Class 8 · Chapter 6</div></div><span class="assign-due due-upcoming">This Week</span></div>
-      <div class="assignment-row"><div class="assign-num">W5</div><div class="assign-info"><div class="assign-title">Worksheet – Polynomials</div><div class="assign-sub">Maths · Class 9 · Chapter 2</div></div><span class="assign-due due-soon">Due Soon</span></div>
-      <div class="assignment-row"><div class="assign-num">W6</div><div class="assign-info"><div class="assign-title">Worksheet – Quadratic Equations</div><div class="assign-sub">Maths · Class 10 · Chapter 4</div></div><span class="assign-due due-soon">Due Soon</span></div>
-      <div class="assignment-row"><div class="assign-num">W7</div><div class="assign-info"><div class="assign-title">Worksheet – Matter in Our Surroundings</div><div class="assign-sub">Science · Class 9 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">W8</div><div class="assign-info"><div class="assign-title">Worksheet – Chemical Reactions & Equations</div><div class="assign-sub">Science · Class 10 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+
+    <!-- SUBJECT TABS -->
+    <div class="assign-subj-tabs">
+      <div class="assign-subj-tab active" id="as-math" onclick="switchAssignSubj('math',this)">📐 Mathematics</div>
+      <div class="assign-subj-tab" id="as-sci" onclick="switchAssignSubj('sci',this)">🔬 Science</div>
     </div>
-    <div class="assign-list" id="assign-practice">
-      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Number Systems</div><div class="assign-sub">Maths · Class 6 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Fractions and Decimals</div><div class="assign-sub">Maths · Class 7 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">P3</div><div class="assign-info"><div class="assign-title">Practice Test – Mensuration</div><div class="assign-sub">Maths · Class 8 · 25 marks</div></div><span class="assign-due due-upcoming">This Week</span></div>
-      <div class="assignment-row"><div class="assign-num">P4</div><div class="assign-info"><div class="assign-title">Practice Test – Coordinate Geometry</div><div class="assign-sub">Maths · Class 9 · 25 marks</div></div><span class="assign-due due-upcoming">This Week</span></div>
-      <div class="assignment-row"><div class="assign-num">P5</div><div class="assign-info"><div class="assign-title">Practice Test – Statistics & Probability</div><div class="assign-sub">Maths · Class 10 · 30 marks</div></div><span class="assign-due due-soon">Due Soon</span></div>
-      <div class="assignment-row"><div class="assign-num">P6</div><div class="assign-info"><div class="assign-title">Practice Test – Atoms & Molecules</div><div class="assign-sub">Science · Class 9 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">P7</div><div class="assign-info"><div class="assign-title">Practice Test – Light: Reflection & Refraction</div><div class="assign-sub">Science · Class 10 · 25 marks</div></div><span class="assign-due due-soon">Due Soon</span></div>
-      <div class="assignment-row"><div class="assign-num">P8</div><div class="assign-info"><div class="assign-title">Practice Test – Permutations & Combinations</div><div class="assign-sub">Maths · Class 11 · 30 marks</div></div><span class="assign-due due-open">Open</span></div>
+
+    <!-- TYPE TABS -->
+    <div class="assign-type-tabs">
+      <div class="assign-type-tab active" id="at-ws" onclick="switchAssignType('ws',this)">📄 Worksheets</div>
+      <div class="assign-type-tab" id="at-pt" onclick="switchAssignType('pt',this)">📝 Practice Tests</div>
+      <div class="assign-type-tab" id="at-mcq" onclick="switchAssignType('mcq',this)">✅ MCQ Quizzes</div>
     </div>
-    <div class="assign-list" id="assign-mcq">
-      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Whole Numbers & Fractions</div><div class="assign-sub">Maths · Class 6 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">Q2</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Lines, Angles & Triangles</div><div class="assign-sub">Maths · Class 7 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">Q3</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Microorganisms</div><div class="assign-sub">Science · Class 8 · 10 questions</div></div><span class="assign-due due-upcoming">This Week</span></div>
-      <div class="assignment-row"><div class="assign-num">Q4</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Number Systems</div><div class="assign-sub">Maths · Class 9 · 15 questions</div></div><span class="assign-due due-upcoming">This Week</span></div>
-      <div class="assignment-row"><div class="assign-num">Q5</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Structure of the Atom</div><div class="assign-sub">Science · Class 9 · 15 questions</div></div><span class="assign-due due-soon">Due Soon</span></div>
-      <div class="assignment-row"><div class="assign-num">Q6</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Real Numbers</div><div class="assign-sub">Maths · Class 10 · 15 questions</div></div><span class="assign-due due-open">Open</span></div>
-      <div class="assignment-row"><div class="assign-num">Q7</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Electricity & Magnetism</div><div class="assign-sub">Science · Class 10 · 15 questions</div></div><span class="assign-due due-soon">Due Soon</span></div>
-      <div class="assignment-row"><div class="assign-num">Q8</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Matrices & Determinants</div><div class="assign-sub">Maths · Class 12 · 20 questions</div></div><span class="assign-due due-open">Open</span></div>
+
+    <!-- ── CLASS 6 MATH ── -->
+    <div class="assign-panel active" id="ap-6-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Pattern in Mathematics</div><div class="assign-sub">Maths · Class 6 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Lines and Angles</div><div class="assign-sub">Maths · Class 6 · Chapter 2</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W3</div><div class="assign-info"><div class="assign-title">Worksheet – Fractions</div><div class="assign-sub">Maths · Class 6 · Chapter 7</div></div><span class="assign-due due-upcoming">This Week</span></div>
+      <div class="assignment-row"><div class="assign-num">W4</div><div class="assign-info"><div class="assign-title">Worksheet – Perimeter and Area</div><div class="assign-sub">Maths · Class 6 · Chapter 6</div></div><span class="assign-due due-open">Open</span></div>
     </div>
+    <div class="assign-panel" id="ap-6-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Number Play</div><div class="assign-sub">Maths · Class 6 · Chapter 3 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Symmetry</div><div class="assign-sub">Maths · Class 6 · Chapter 9 · 15 marks</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-6-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Prime Time</div><div class="assign-sub">Maths · Class 6 · Chapter 5 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">Q2</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Data Handling and Presentation</div><div class="assign-sub">Maths · Class 6 · Chapter 4 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 6 SCIENCE ── -->
+    <div class="assign-panel" id="ap-6-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Diversity in the Living World</div><div class="assign-sub">Science · Class 6 · Chapter 2</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Materials Around Us</div><div class="assign-sub">Science · Class 6 · Chapter 6</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-6-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – A Journey Through States of Water</div><div class="assign-sub">Science · Class 6 · Chapter 8 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-6-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Exploring Magnets</div><div class="assign-sub">Science · Class 6 · Chapter 4 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 7 MATH ── -->
+    <div class="assign-panel" id="ap-7-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Large Numbers Around Us</div><div class="assign-sub">Maths · Class 7 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Arithmetic Expressions</div><div class="assign-sub">Maths · Class 7 · Chapter 2</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W3</div><div class="assign-info"><div class="assign-title">Worksheet – Working with Fractions</div><div class="assign-sub">Maths · Class 7 · Chapter 8</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-7-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Parallel and Intersecting Lines</div><div class="assign-sub">Maths · Class 7 · Chapter 5 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Operations with Integers</div><div class="assign-sub">Maths · Class 7 · Chapter 10 · 20 marks</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-7-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Finding the Unknown</div><div class="assign-sub">Maths · Class 7 · Chapter 15 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 7 SCIENCE ── -->
+    <div class="assign-panel" id="ap-7-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Changes Around Us: Physical & Chemical</div><div class="assign-sub">Science · Class 7 · Chapter 5</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Heat Transfer in Nature</div><div class="assign-sub">Science · Class 7 · Chapter 7</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-7-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Life Processes in Animals</div><div class="assign-sub">Science · Class 7 · Chapter 9 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-7-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – The World of Metals and Non-Metals</div><div class="assign-sub">Science · Class 7 · Chapter 4 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 8 MATH ── -->
+    <div class="assign-panel" id="ap-8-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – A Square and A Cube</div><div class="assign-sub">Maths · Class 8 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Quadrilaterals</div><div class="assign-sub">Maths · Class 8 · Chapter 4</div></div><span class="assign-due due-upcoming">This Week</span></div>
+      <div class="assignment-row"><div class="assign-num">W3</div><div class="assign-info"><div class="assign-title">Worksheet – The Baudhayana-Pythagoras Theorem</div><div class="assign-sub">Maths · Class 8 · Chapter 9</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-8-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Proportional Reasoning</div><div class="assign-sub">Maths · Class 8 · Ch 7 & 10 · 25 marks</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Area</div><div class="assign-sub">Maths · Class 8 · Chapter 14 · 20 marks</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-8-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Power Play (Exponents)</div><div class="assign-sub">Maths · Class 8 · Chapter 2 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">Q2</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Algebra Play</div><div class="assign-sub">Maths · Class 8 · Chapter 13 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 8 SCIENCE ── -->
+    <div class="assign-panel" id="ap-8-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Exploring Forces</div><div class="assign-sub">Science · Class 8 · Chapter 5</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Particulate Nature of Matter</div><div class="assign-sub">Science · Class 8 · Chapter 7</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-8-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Light: Mirrors and Lenses</div><div class="assign-sub">Science · Class 8 · Chapter 10 · 25 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-8-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – The Invisible Living World</div><div class="assign-sub">Science · Class 8 · Chapter 2 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 9 MATH ── -->
+    <div class="assign-panel" id="ap-9-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Orienting Yourself: Use of Coordinates</div><div class="assign-sub">Maths · Class 9 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Exploring Algebraic Identities</div><div class="assign-sub">Maths · Class 9 · Chapter 4</div></div><span class="assign-due due-upcoming">This Week</span></div>
+      <div class="assignment-row"><div class="assign-num">W3</div><div class="assign-info"><div class="assign-title">Worksheet – Circles</div><div class="assign-sub">Maths · Class 9 · Chapter 9</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-9-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Surface Areas and Volumes</div><div class="assign-sub">Maths · Class 9 · Chapter 11 · 25 marks</div></div><span class="assign-due due-soon">Due Soon</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Statistics</div><div class="assign-sub">Maths · Class 9 · Chapter 12 · 20 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-9-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – The Mathematics of Maybe (Probability)</div><div class="assign-sub">Maths · Class 9 · Chapter 7 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 9 SCIENCE ── -->
+    <div class="assign-panel" id="ap-9-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Describing Motion Around Us</div><div class="assign-sub">Science · Class 9 · Chapter 4</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Journey Inside the Atom</div><div class="assign-sub">Science · Class 9 · Chapter 8</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-9-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – How Forces Affect Motion</div><div class="assign-sub">Science · Class 9 · Chapter 6 · 25 marks</div></div><span class="assign-due due-soon">Due Soon</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Work, Energy, and Simple Machines</div><div class="assign-sub">Science · Class 9 · Chapter 7 · 25 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-9-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Atomic Foundations of Matter</div><div class="assign-sub">Science · Class 9 · Chapter 9 · 15 questions</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">Q2</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Patterns in Life: Diversity & Classification</div><div class="assign-sub">Science · Class 9 · Chapter 12 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 10 MATH ── -->
+    <div class="assign-panel" id="ap-10-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Real Numbers</div><div class="assign-sub">Maths · Class 10 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Polynomials</div><div class="assign-sub">Maths · Class 10 · Chapter 2</div></div><span class="assign-due due-soon">Due Soon</span></div>
+      <div class="assignment-row"><div class="assign-num">W3</div><div class="assign-info"><div class="assign-title">Worksheet – Quadratic Equations</div><div class="assign-sub">Maths · Class 10 · Chapter 4</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-10-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Trigonometry (Ch 8 & 9)</div><div class="assign-sub">Maths · Class 10 · 30 marks</div></div><span class="assign-due due-soon">Due Soon</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Statistics & Probability</div><div class="assign-sub">Maths · Class 10 · Ch 13 & 14 · 30 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-10-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Polynomials (10 questions)</div><div class="assign-sub">Maths · Class 10 · Chapter 2 · Available in Quizzes section</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">Q2</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Circles</div><div class="assign-sub">Maths · Class 10 · Chapter 10 · 15 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 10 SCIENCE ── -->
+    <div class="assign-panel" id="ap-10-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Chemical Reactions and Equations</div><div class="assign-sub">Science · Class 10 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Acids, Bases and Salts</div><div class="assign-sub">Science · Class 10 · Chapter 2</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-10-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Light: Reflection & Refraction</div><div class="assign-sub">Science · Class 10 · Chapter 9 · 25 marks</div></div><span class="assign-due due-soon">Due Soon</span></div>
+      <div class="assignment-row"><div class="assign-num">P2</div><div class="assign-info"><div class="assign-title">Practice Test – Electricity & Magnetism</div><div class="assign-sub">Science · Class 10 · Ch 11 & 12 · 30 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-10-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Life Processes</div><div class="assign-sub">Science · Class 10 · Chapter 5 · 15 questions</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">Q2</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Heredity</div><div class="assign-sub">Science · Class 10 · Chapter 8 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 11 MATH ── -->
+    <div class="assign-panel" id="ap-11-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Sets</div><div class="assign-sub">Maths · Class 11 · Chapter 1</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Permutations and Combinations</div><div class="assign-sub">Maths · Class 11 · Chapter 6</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-11-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Limits and Derivatives</div><div class="assign-sub">Maths · Class 11 · Chapter 12 · 30 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-11-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Trigonometric Functions</div><div class="assign-sub">Maths · Class 11 · Chapter 3 · 15 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 11 SCIENCE ── -->
+    <div class="assign-panel" id="ap-11-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Laws of Motion</div><div class="assign-sub">Physics · Class 11 · Chapter 4</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-11-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Structure of Atom</div><div class="assign-sub">Chemistry · Class 11 · Chapter 2 · 25 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-11-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Biological Classification</div><div class="assign-sub">Biology · Class 11 · Chapter 2 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 12 MATH ── -->
+    <div class="assign-panel" id="ap-12-math-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Matrices</div><div class="assign-sub">Maths · Class 12 · Chapter 3</div></div><span class="assign-due due-open">Open</span></div>
+      <div class="assignment-row"><div class="assign-num">W2</div><div class="assign-info"><div class="assign-title">Worksheet – Application of Derivatives</div><div class="assign-sub">Maths · Class 12 · Chapter 6</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-12-math-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Integrals</div><div class="assign-sub">Maths · Class 12 · Chapter 7 · 30 marks</div></div><span class="assign-due due-upcoming">This Week</span></div>
+    </div>
+    <div class="assign-panel" id="ap-12-math-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Matrices & Determinants</div><div class="assign-sub">Maths · Class 12 · Ch 3 & 4 · 20 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <!-- ── CLASS 12 SCIENCE ── -->
+    <div class="assign-panel" id="ap-12-sci-ws">
+      <div class="assignment-row"><div class="assign-num">W1</div><div class="assign-info"><div class="assign-title">Worksheet – Current Electricity</div><div class="assign-sub">Physics · Class 12 · Chapter 3</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-12-sci-pt">
+      <div class="assignment-row"><div class="assign-num">P1</div><div class="assign-info"><div class="assign-title">Practice Test – Electrochemistry</div><div class="assign-sub">Chemistry · Class 12 · Chapter 3 · 25 marks</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+    <div class="assign-panel" id="ap-12-sci-mcq">
+      <div class="assignment-row"><div class="assign-num">Q1</div><div class="assign-info"><div class="assign-title">MCQ Quiz – Human Reproduction</div><div class="assign-sub">Biology · Class 12 · Chapter 3 · 10 questions</div></div><span class="assign-due due-open">Open</span></div>
+    </div>
+
+    <script>
+      let acls='6', asubj='math', atype='ws';
+      function switchAssignClass(cls,el){
+        acls=cls;
+        document.querySelectorAll('.assign-class-tab').forEach(t=>t.classList.remove('active'));
+        el.classList.add('active');
+        updateAssignPanel();
+      }
+      function switchAssignSubj(subj,el){
+        asubj=subj;
+        document.querySelectorAll('.assign-subj-tab').forEach(t=>t.classList.remove('active'));
+        el.classList.add('active');
+        updateAssignPanel();
+      }
+      function switchAssignType(type,el){
+        atype=type;
+        document.querySelectorAll('.assign-type-tab').forEach(t=>t.classList.remove('active'));
+        el.classList.add('active');
+        updateAssignPanel();
+      }
+      function updateAssignPanel(){
+        document.querySelectorAll('.assign-panel').forEach(p=>p.classList.remove('active'));
+        const id='ap-'+acls+'-'+asubj+'-'+atype;
+        const el=document.getElementById(id);
+        if(el){ el.classList.add('active'); }
+        else {
+          // show empty state
+          document.querySelectorAll('.assign-panel').forEach(p=>p.classList.remove('active'));
+          const first = document.querySelector('.assign-panel');
+          if(first){ first.innerHTML='<div style="text-align:center;padding:2rem;color:var(--text-muted);font-size:0.9rem;">📭 No assignments yet for this selection. Check back soon!</div>'; first.classList.add('active'); }
+        }
+      }
+    </script>
+
   </div>
 </section>
 
@@ -733,27 +1245,121 @@
       <div class="contact-card"><div class="contact-icon">💬</div><div class="contact-type">WhatsApp</div><div class="contact-value"><a href="https://wa.me/919507020419" target="_blank">Chat on WhatsApp</a></div><div class="contact-hours">Quick replies on WhatsApp</div></div>
       <div class="contact-card"><div class="contact-icon">🕐</div><div class="contact-type">Office Hours</div><div class="contact-value">Mon – Sat</div><div class="contact-hours">9:00 AM to 7:00 PM IST</div></div>
     </div>
-    <div class="contact-map"><h3>📍 Location</h3><p>Patna, Bihar, India<br>Classes available both online and in-person. Contact for details.</p></div>
+    <div class="contact-map"><h3>📍 Location</h3><p>Ara, Bihar, India<br>Classes available both online and in-person. Contact for details.</p></div>
   </div>
 </section>
 
 <section id="about">
   <div class="container">
-    <div class="about-inner">
-      <div style="display:flex;justify-content:center;"><div class="about-avatar">SM</div></div>
+    <div class="section-label">Meet Your Teacher</div>
+    <h2 class="section-title">About Saurav Mishra</h2>
+    <p class="section-desc">Passionate educator dedicated to making Mathematics and Science simple, fun and accessible for every student.</p>
+
+    <!-- TOP: Photo + Quick Info -->
+    <div class="about-inner" style="margin-top:3rem;">
+      <div style="display:flex;justify-content:center;">
+        <div style="width:200px;height:200px;border-radius:50%;overflow:hidden;border:4px solid var(--green-100);box-shadow:0 12px 40px rgba(26,102,57,0.25);">
+          <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+        </div>
+      </div>
       <div class="about-text">
         <div class="section-label">Your Teacher</div>
-        <h2 class="section-title">Saurav Mishra</h2>
-        <p>Welcome to PM Math — your dedicated study portal for Mathematics and Science (Grade 6–12). I created this website to make quality CBSE study material accessible to every student, anytime and anywhere.</p>
-        <p>Here you'll find well-organized notes, video lessons, assignments and curated resources — all in one place. Feel free to reach out anytime!</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;margin-bottom:0.5rem;color:var(--text-dark);">Saurav Mishra</h3>
+        <p style="color:var(--green-600);font-weight:600;font-size:0.95rem;margin-bottom:1rem;">M.Sc · B.Ed · Mathematics & Science Educator</p>
+        <p>A dedicated and passionate teacher with 5–10 years of experience in teaching Mathematics and Science to students from Grade 6 to Grade 12. My goal is to make every concept simple, clear and enjoyable — so that students not only pass exams but truly understand and love what they learn.</p>
         <div class="about-details">
+          <div class="about-detail"><span class="detail-label">Qualification</span><span class="detail-value">M.Sc + B.Ed</span></div>
+          <div class="about-detail"><span class="detail-label">Experience</span><span class="detail-value">5–10 Years</span></div>
           <div class="about-detail"><span class="detail-label">Subjects</span><span class="detail-value">Maths & Science</span></div>
-          <div class="about-detail"><span class="detail-label">Grade</span><span class="detail-value">6 – 12</span></div>
+          <div class="about-detail"><span class="detail-label">Grade</span><span class="detail-value">6 – 12 (CBSE)</span></div>
+          <div class="about-detail"><span class="detail-label">Location</span><span class="detail-value">Ara, Bihar</span></div>
           <div class="about-detail"><span class="detail-label">Phone</span><span class="detail-value">+91 95070 20419</span></div>
-          <div class="about-detail"><span class="detail-label">Email</span><span class="detail-value">saurav97834@gmail.com</span></div>
         </div>
       </div>
     </div>
+
+    <!-- INFO CARDS GRID -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3rem;">
+
+      <!-- Teaching Philosophy -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;border-top:4px solid var(--green-400);">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">💡</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-dark);">My Teaching Philosophy</div>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.75;">"Every concept in Mathematics and Science has a simple, beautiful explanation. My job is to find that explanation and present it in a way that makes students say — <em>oh, now I get it!</em> Learning should never feel like a burden; it should feel like discovery."</p>
+      </div>
+
+      <!-- Qualification & Experience -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;border-top:4px solid var(--gold);">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🎓</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-dark);">Qualification & Experience</div>
+        <ul style="list-style:none;padding:0;font-size:0.88rem;color:var(--text-muted);line-height:1.8;">
+          <li>✦ M.Sc in Mathematics / Science</li>
+          <li>✦ B.Ed — Bachelor of Education</li>
+          <li>✦ 5–10 years of active teaching experience</li>
+          <li>✦ Specialisation in CBSE curriculum (Class 6–12)</li>
+          <li>✦ Experience in both classroom and online teaching</li>
+          <li>✦ Trained in NEP 2020 teaching methodologies</li>
+        </ul>
+      </div>
+
+      <!-- Purpose of Website -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;border-top:4px solid var(--green-300);">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🌐</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-dark);">Purpose of This Website</div>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.75;">PM Math was created with one simple goal — <strong>to give every student free access to quality study material, anytime, anywhere.</strong> Whether you are preparing for exams, revising a topic, or simply curious — this portal is always open for you. No fees. No login. Just learning.</p>
+      </div>
+
+      <!-- My Approach -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;border-top:4px solid #e88c30;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">📚</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-dark);">My Teaching Approach</div>
+        <ul style="list-style:none;padding:0;font-size:0.88rem;color:var(--text-muted);line-height:1.8;">
+          <li>✦ Step-by-step explanation of every concept</li>
+          <li>✦ Real-life examples to make topics relatable</li>
+          <li>✦ Regular practice through worksheets and quizzes</li>
+          <li>✦ Focus on understanding, not just memorising</li>
+          <li>✦ Encouraging questions and curiosity in class</li>
+          <li>✦ Tracking each student's progress individually</li>
+        </ul>
+      </div>
+
+      <!-- Opinion on Learning -->
+      <div style="background:linear-gradient(135deg,var(--green-800),var(--green-600));border-radius:16px;padding:1.75rem;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">💬</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#fff;">My Opinion on Learning</div>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.85);line-height:1.75;">"A student who asks questions is a student who is thinking. I believe the classroom should be a safe space where every doubt is welcome, every mistake is a lesson, and every small success is celebrated. The best students are not the ones who memorise the most — they are the ones who are most curious."</p>
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.55);margin-top:0.75rem;">— Saurav Mishra</p>
+      </div>
+
+      <!-- What Students Get -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;border-top:4px solid #6a5acd;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🎯</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:var(--text-dark);">What Students Get Here</div>
+        <ul style="list-style:none;padding:0;font-size:0.88rem;color:var(--text-muted);line-height:1.8;">
+          <li>✦ CBSE chapter-wise notes (Class 6–12)</li>
+          <li>✦ Video lessons on every major topic</li>
+          <li>✦ Online quizzes with instant results</li>
+          <li>✦ Worksheets, practice tests & MCQ sets</li>
+          <li>✦ Curated resource links (NCERT, Khan Academy etc.)</li>
+          <li>✦ Direct contact with the teacher anytime</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Achievement Strip -->
+    <div style="background:var(--green-50);border:1px solid var(--green-100);border-radius:14px;padding:1.5rem 2rem;margin-top:2rem;display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;align-items:center;">
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--green-700);">5–10</div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Years Teaching</div></div>
+      <div style="width:1px;height:40px;background:var(--green-200);"></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--green-700);">2</div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Subjects</div></div>
+      <div style="width:1px;height:40px;background:var(--green-200);"></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--green-700);">7</div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grade Levels</div></div>
+      <div style="width:1px;height:40px;background:var(--green-200);"></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--green-700);">100%</div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Free Access</div></div>
+      <div style="width:1px;height:40px;background:var(--green-200);"></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--green-700);">CBSE</div><div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Curriculum</div></div>
+    </div>
+
   </div>
 </section>
 
