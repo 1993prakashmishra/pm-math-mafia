@@ -1192,20 +1192,54 @@
     <h2 class="section-title">Feedback</h2>
     <p class="section-desc">Help us improve! Share your thoughts about the classes, notes and overall experience.</p>
     <div class="feedback-inner">
-      <div class="feedback-form">
+      
+      <form id="feedback-form" class="feedback-form">
+        <input type="hidden" name="access_key" value="99a5cd0b-9379-467c-9e07-639fe44bddca">
+        <input type="hidden" name="subject" value="New Student Feedback - pmmath.in">
+        
         <h3>✍️ Leave Your Feedback</h3>
-        <div class="form-group"><label>Your Name</label><input type="text" id="fb-name" placeholder="e.g. Rahul Sharma"/></div>
-        <div class="form-group"><label>Class</label><select id="fb-class"><option value="">Select your class</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option></select></div>
-        <div class="form-group"><label>Rating</label><div class="stars" id="star-rating"><span class="star" onclick="setRating(1)">★</span><span class="star" onclick="setRating(2)">★</span><span class="star" onclick="setRating(3)">★</span><span class="star" onclick="setRating(4)">★</span><span class="star" onclick="setRating(5)">★</span></div></div>
-        <div class="form-group"><label>Your Feedback</label><textarea id="fb-text" placeholder="What did you find helpful? What can be improved?"></textarea></div>
-        <button class="submit-btn" onclick="submitFeedback()">Submit Feedback ✓</button>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="Student Name" id="fb-name" placeholder="e.g. Rahul Sharma" required />
+        </div>
+        <div class="form-group">
+          <label>Class</label>
+          <select name="Class Group" id="fb-class" required>
+            <option value="">Select your class</option>
+            <option>Class 6</option>
+            <option>Class 7</option>
+            <option>Class 8</option>
+            <option>Class 9</option>
+            <option>Class 10</option>
+            <option>Class 11</option>
+            <option>Class 12</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="stars" id="star-rating">
+            <span class="star" onclick="setRating(1)">★</span>
+            <span class="star" onclick="setRating(2)">★</span>
+            <span class="star" onclick="setRating(3)">★</span>
+            <span class="star" onclick="setRating(4)">★</span>
+            <span class="star" onclick="setRating(5)">★</span>
+          </div>
+          <input type="hidden" name="Star Rating" id="hidden-rating-value" value="5">
+        </div>
+        <div class="form-group">
+          <label>Your Feedback</label>
+          <textarea name="Message Text" id="fb-text" placeholder="What did you find helpful? What can be improved?" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="fb-submit-btn">Submit Feedback ✓</button>
         <div class="success-msg" id="fb-success">🎉 Thank you for your feedback! It means a lot.</div>
-      </div>
+      </form>
+
       <div class="feedback-reviews">
         <h3>💬 What Students Say</h3>
-        <div class="review-card"><div class="review-top"><div class="review-avatar">RK</div><div><div class="review-name">Rohit Kumar</div><div class="review-grade">Class 10</div></div><div class="review-stars">★★★★★</div></div><div class="review-text">The notes are very clear and easy to understand. Chapter-wise organization makes revision much easier before exams!</div></div>
-        <div class="review-card"><div class="review-top"><div class="review-avatar">PS</div><div><div class="review-name">Priya Singh</div><div class="review-grade">Class 9</div></div><div class="review-stars">★★★★★</div></div><div class="review-text">The online quiz feature is amazing! I can practice anytime and get instant results. Really helps with self-study.</div></div>
-        <div class="review-card"><div class="review-top"><div class="review-avatar">AM</div><div><div class="review-name">Arjun Mishra</div><div class="review-grade">Class 8</div></div><div class="review-stars">★★★★☆</div></div><div class="review-text">Great resources and links. The NCERT and Khan Academy links are very useful. Would love more video lessons!</div></div>
+        <div class="review-card"><div class="review-top"><div class="review-avatar">RK</div><div><div class="review-name">Himanshu kumar</div><div class="review-grade">Class 10</div></div><div class="review-stars">★★★★★</div></div><div class="review-text">The notes are very clear and easy to understand. Chapter-wise organization makes revision much easier before exams!</div></div>
+        <div class="review-card"><div class="review-top"><div class="review-avatar">PS</div><div><div class="review-name">Aditi Mishra</div><div class="review-grade">Class 9</div></div><div class="review-stars">★★★★★</div></div><div class="review-text">The online quiz feature is amazing! I can practice anytime and get instant results. Really helps with self-study.</div></div>
+        <div class="review-card"><div class="review-top"><div class="review-avatar">AM</div><div><div class="review-name">Satyam Bihari Nirala</div><div class="review-grade">Class 8</div></div><div class="review-stars">★★★★☆</div></div><div class="review-text">Great resources and links. The NCERT links are very useful. Would love more video lessons!</div></div>
       </div>
     </div>
   </div>
@@ -1406,24 +1440,59 @@
     document.getElementById('nep-' + lang).classList.add('active');
   }
   // Star rating
-  let selectedRating = 0;
-  function setRating(n) {
+let selectedRating = 5; 
+function setRating(n) {
     selectedRating = n;
     document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('selected', i < n));
-  }
-  // Feedback submit
-  function submitFeedback() {
-    const name = document.getElementById('fb-name').value.trim();
-    const cls = document.getElementById('fb-class').value;
-    const text = document.getElementById('fb-text').value.trim();
-    if (!name || !cls || !text || selectedRating === 0) { alert('Please fill all fields and select a rating!'); return; }
-    document.getElementById('fb-success').style.display = 'block';
-    document.getElementById('fb-name').value = '';
-    document.getElementById('fb-class').value = '';
-    document.getElementById('fb-text').value = '';
-    document.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
-    selectedRating = 0;
-  }
+    document.getElementById('hidden-rating-value').value = n;
+}
+
+// Intercept form submission and fire it to your email via Web3Forms API
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('feedback-form');
+    if(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents page reload
+            
+            const submitBtn = document.getElementById('fb-submit-btn');
+            const successMsg = document.getElementById('fb-success');
+            
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status == 200) {
+                    successMsg.style.display = 'block'; // Shows success message
+                    form.reset();
+                    setRating(5); // Resets stars to default 5
+                } else {
+                    alert("Something went wrong: " + res.message);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert("Form submission failed. Please try again.");
+            })
+            .then(() => {
+                submitBtn.textContent = "Submit Feedback ✓";
+                submitBtn.disabled = false;
+            });
+        });
+    }
+});
 </script>
 
  <div style="max-width: 400px; margin: 40px auto; padding: 0 20px; font-family: 'DM Sans', sans-serif;">
