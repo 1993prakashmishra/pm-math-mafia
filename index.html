@@ -1792,6 +1792,59 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+let currentVideoClass = '6';
+let currentVideoSubject = 'math';
+
+function switchVideoClass(className) {
+    currentVideoClass = className;
+    
+    // Update active state on class selectors
+    const tabs = document.querySelectorAll('#videos .notes-tab');
+    tabs.forEach(tab => {
+        if(tab.textContent.trim() === `Class ${className}`) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+    
+    const scienceTab = document.getElementById('subj-vid-sci');
+    
+    // Auto management for Senior Secondary batches (No Science option)
+    if (className === '11' || className === '12') {
+        scienceTab.style.display = 'none';
+        switchVideoSubject('math');
+    } else {
+        scienceTab.style.display = 'inline-block';
+        updateVideoVisibility();
+    }
+}
+
+function switchVideoSubject(subjectName) {
+    currentVideoSubject = subjectName;
+    
+    document.getElementById('subj-vid-math').classList.toggle('active', subjectName === 'math');
+    document.getElementById('subj-vid-sci').classList.toggle('active', subjectName === 'sci');
+    
+    updateVideoVisibility();
+}
+
+function updateVideoVisibility() {
+    // Structural sweeps - clear visual frames
+    const allGroups = document.querySelectorAll('.video-group');
+    allGroups.forEach(group => {
+        group.style.display = 'none';
+        group.classList.remove('active');
+    });
+    
+    // Connect target ID array matrix
+    const targetId = `videos-${currentVideoClass}-${currentVideoSubject}`;
+    const activeGrid = document.getElementById(targetId);
+    if(activeGrid) {
+        activeGrid.style.display = 'grid';
+        activeGrid.classList.add('active');
+    }
+}
 </script>
 
   <footer style="text-align: center; padding: 20px; margin-top: 40px; font-family: Arial, sans-serif; border-top: 1px solid #1e3d2f; color: #a3b899;">
