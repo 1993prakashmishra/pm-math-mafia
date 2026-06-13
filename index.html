@@ -2163,309 +2163,215 @@
   </div>
 </section>
 
-<section id="quizzes">
-  <div class="container">
-    <div class="section-label">Test Yourself</div>
-    <h2 class="section-title">Online Quizzes</h2>
-    <p class="section-desc">Select a quiz, answer all questions and submit — see your result instantly! No login needed.</p>
-
-    <style>
-      .quiz-selector { display:flex; gap:0.75rem; flex-wrap:wrap; margin:2rem 0 1.5rem; }
-      .quiz-sel-btn { padding:0.5rem 1.25rem; border-radius:20px; font-size:0.85rem; font-weight:600; cursor:pointer; border:1.5px solid var(--border); background:var(--white); color:var(--text-muted); transition:all 0.2s; font-family:'DM Sans',sans-serif; }
-      .quiz-sel-btn.active { background:var(--green-600); color:#fff; border-color:var(--green-600); }
-      .quiz-panel { display:none; }
-      .quiz-panel.active { display:block; }
-      .quiz-box { background:var(--white); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
-      .quiz-top { background:linear-gradient(135deg,var(--green-800),var(--green-500)); padding:1.25rem 1.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-      .quiz-top-title { color:#fff; font-weight:700; font-size:1rem; }
-      .quiz-top-meta { color:rgba(255,255,255,0.7); font-size:0.82rem; margin-top:3px; }
-      .quiz-badge { background:var(--gold); color:var(--green-900); font-size:0.78rem; font-weight:700; padding:5px 14px; border-radius:20px; }
-      .quiz-body { padding:1.75rem; }
-      .q-item { margin-bottom:1.75rem; padding-bottom:1.75rem; border-bottom:1px solid var(--border); }
-      .q-item:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
-      .q-num { font-size:0.72rem; font-weight:700; color:var(--green-500); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; }
-      .q-text { font-size:0.95rem; font-weight:600; color:var(--text-dark); margin-bottom:1rem; line-height:1.5; }
-      .q-options { display:flex; flex-direction:column; gap:0.6rem; }
-      .q-opt { display:flex; align-items:center; gap:0.75rem; padding:0.65rem 1rem; border:1.5px solid var(--border); border-radius:10px; cursor:pointer; transition:all 0.15s; font-size:0.88rem; color:var(--text-dark); }
-      .q-opt:hover { border-color:var(--green-400); background:var(--green-50); }
-      .q-opt input[type=radio] { accent-color:var(--green-600); width:16px; height:16px; flex-shrink:0; }
-      .q-opt.correct { background:#e8f7ed; border-color:var(--green-400); color:var(--green-800); font-weight:600; }
-      .q-opt.wrong { background:#fdecea; border-color:#e53935; color:#b71c1c; }
-      .quiz-submit { width:100%; padding:0.9rem; background:var(--green-600); color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:'DM Sans',sans-serif; margin-top:1.5rem; }
-      .quiz-submit:hover { background:var(--green-500); transform:translateY(-1px); }
-      .quiz-result { display:none; margin-top:1.5rem; border-radius:14px; padding:1.5rem; text-align:center; }
-      .quiz-result.show { display:block; }
-      .result-score { font-family:'Playfair Display',serif; font-size:3rem; font-weight:700; }
-      .result-msg { font-size:1rem; margin-top:0.5rem; font-weight:500; }
-      .result-detail { font-size:0.85rem; margin-top:0.5rem; color:var(--text-muted); }
-      .quiz-retry { background:var(--white); color:var(--green-700); border:1.5px solid var(--green-400); padding:0.65rem 2rem; border-radius:8px; font-size:0.88rem; font-weight:600; cursor:pointer; margin-top:1rem; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
-      .quiz-retry:hover { background:var(--green-50); }
-    </style>
-
-    <div class="quiz-selector">
-      <button class="quiz-sel-btn active" onclick="showQuiz('q1',this)">📝 Polynomials – Class 10</button>
-      <button class="quiz-sel-btn" onclick="showQuiz('q2',this)">🔬 Atoms & Molecules – Class 9</button>
+<section id="quizzes" style="background: #f8f9fa; padding: 60px 0; font-family: 'Poppins', sans-serif;">
+  <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+    
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span style="background: #e1f5fe; color: #0288d1; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">Test Yourself</span>
+      <h2 style="font-size: 2.5rem; color: #1a1a1a; margin: 10px 0; font-weight: 700;">Interactive Online Quizzes</h2>
+      <p style="color: #666; font-size: 1rem; max-width: 500px; margin: 0 auto;">Select your target class and subject to instantly challenge your concepts. No login required!</p>
     </div>
 
-    <!-- QUIZ 1: Polynomials Class 10 -->
-    <div class="quiz-panel active" id="panel-q1">
-      <div class="quiz-box">
-        <div class="quiz-top">
-          <div><div class="quiz-top-title">Polynomials — Class 10 Maths</div><div class="quiz-top-meta">Chapter 2 · 10 Questions · Instant Result</div></div>
-          <span class="quiz-badge">MCQ Quiz</span>
+    <div style="background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom: 30px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+        <div>
+          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 0.95rem;">Target Class</label>
+          <select id="quizClass" onchange="updateChapters()" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; outline: none; transition: 0.3s; background: #fff;">
+            <option value="">-- Choose Class --</option>
+            <option value="6">Class 6</option>
+            <option value="7">Class 7</option>
+            <option value="8">Class 8</option>
+            <option value="9">Class 9</option>
+            <option value="10">Class 10</option>
+          </select>
         </div>
-        <div class="quiz-body">
-          <div id="q1-questions">
-
-            <div class="q-item">
-              <div class="q-num">Question 1 of 10</div>
-              <div class="q-text">Which of the following is a polynomial?</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_1" value="0"> x² + 2x + 1/x</label>
-                <label class="q-opt"><input type="radio" name="q1_1" value="1"> x² + 3x + 2</label>
-                <label class="q-opt"><input type="radio" name="q1_1" value="0"> √x + 1</label>
-                <label class="q-opt"><input type="radio" name="q1_1" value="0"> x⁻¹ + 5</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 2 of 10</div>
-              <div class="q-text">The degree of the polynomial 4x³ − 3x² + 2x − 7 is:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_2" value="0"> 2</label>
-                <label class="q-opt"><input type="radio" name="q1_2" value="0"> 1</label>
-                <label class="q-opt"><input type="radio" name="q1_2" value="1"> 3</label>
-                <label class="q-opt"><input type="radio" name="q1_2" value="0"> 4</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 3 of 10</div>
-              <div class="q-text">The zeroes of the polynomial p(x) = x² − 5x + 6 are:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_3" value="0"> 2 and 4</label>
-                <label class="q-opt"><input type="radio" name="q1_3" value="1"> 2 and 3</label>
-                <label class="q-opt"><input type="radio" name="q1_3" value="0"> 1 and 6</label>
-                <label class="q-opt"><input type="radio" name="q1_3" value="0"> 3 and 4</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 4 of 10</div>
-              <div class="q-text">If α and β are zeroes of x² − 4x + 3, then α + β = ?</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_4" value="0"> 3</label>
-                <label class="q-opt"><input type="radio" name="q1_4" value="1"> 4</label>
-                <label class="q-opt"><input type="radio" name="q1_4" value="0"> −4</label>
-                <label class="q-opt"><input type="radio" name="q1_4" value="0"> −3</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 5 of 10</div>
-              <div class="q-text">If α and β are zeroes of x² − 4x + 3, then α × β = ?</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_5" value="0"> 4</label>
-                <label class="q-opt"><input type="radio" name="q1_5" value="0"> −4</label>
-                <label class="q-opt"><input type="radio" name="q1_5" value="1"> 3</label>
-                <label class="q-opt"><input type="radio" name="q1_5" value="0"> −3</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 6 of 10</div>
-              <div class="q-text">A quadratic polynomial with zeroes 3 and −2 is:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_6" value="0"> x² + x − 6</label>
-                <label class="q-opt"><input type="radio" name="q1_6" value="1"> x² − x − 6</label>
-                <label class="q-opt"><input type="radio" name="q1_6" value="0"> x² + x + 6</label>
-                <label class="q-opt"><input type="radio" name="q1_6" value="0"> x² − x + 6</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 7 of 10</div>
-              <div class="q-text">The number of zeroes a cubic polynomial can have is at most:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_7" value="0"> 1</label>
-                <label class="q-opt"><input type="radio" name="q1_7" value="0"> 2</label>
-                <label class="q-opt"><input type="radio" name="q1_7" value="1"> 3</label>
-                <label class="q-opt"><input type="radio" name="q1_7" value="0"> 4</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 8 of 10</div>
-              <div class="q-text">On dividing x³ − 3x² + 3x − 5 by (x − 1), the remainder is:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_8" value="0"> 0</label>
-                <label class="q-opt"><input type="radio" name="q1_8" value="0"> 1</label>
-                <label class="q-opt"><input type="radio" name="q1_8" value="1"> −4</label>
-                <label class="q-opt"><input type="radio" name="q1_8" value="0"> 4</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 9 of 10</div>
-              <div class="q-text">If one zero of 2x² + kx − 4 is 2, then the value of k is:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_9" value="0"> 2</label>
-                <label class="q-opt"><input type="radio" name="q1_9" value="1"> −2</label>
-                <label class="q-opt"><input type="radio" name="q1_9" value="0"> 4</label>
-                <label class="q-opt"><input type="radio" name="q1_9" value="0"> −4</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 10 of 10</div>
-              <div class="q-text">A polynomial of degree 2 is called a:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q1_10" value="0"> Linear polynomial</label>
-                <label class="q-opt"><input type="radio" name="q1_10" value="1"> Quadratic polynomial</label>
-                <label class="q-opt"><input type="radio" name="q1_10" value="0"> Cubic polynomial</label>
-                <label class="q-opt"><input type="radio" name="q1_10" value="0"> Constant polynomial</label>
-              </div>
-            </div>
-
-          </div>
-          <button class="quiz-submit" onclick="submitQuiz('q1',10)">Submit Quiz ✓</button>
-          <div class="quiz-result" id="result-q1"></div>
-          <button class="quiz-retry" id="retry-q1" onclick="retryQuiz('q1')" style="display:none;">🔄 Try Again</button>
+        <div>
+          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 0.95rem;">Subject / Chapter</label>
+          <select id="quizChapter" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; outline: none; transition: 0.3s; background: #fff;">
+            <option value="">-- Select Chapter --</option>
+          </select>
         </div>
       </div>
+
+      <button onclick="startQuizEngine()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #0056b3, #007bff); color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,86,179,0.3); transition: 0.3s;">
+        🚀 Launch Practice Test
+      </button>
     </div>
 
-    <!-- QUIZ 2: Atoms & Molecules Class 9 -->
-    <div class="quiz-panel" id="panel-q2">
-      <div class="quiz-box">
-        <div class="quiz-top" style="background:linear-gradient(135deg,#0a2e40,#0f6b6b);">
-          <div><div class="quiz-top-title">Atoms & Molecules — Class 9 Science</div><div class="quiz-top-meta">Chapter 3 · 5 Questions · Instant Result</div></div>
-          <span class="quiz-badge">MCQ Quiz</span>
-        </div>
-        <div class="quiz-body">
-          <div id="q2-questions">
-
-            <div class="q-item">
-              <div class="q-num">Question 1 of 5</div>
-              <div class="q-text">The smallest particle of an element that retains its chemical properties is called a:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q2_1" value="0"> Molecule</label>
-                <label class="q-opt"><input type="radio" name="q2_1" value="1"> Atom</label>
-                <label class="q-opt"><input type="radio" name="q2_1" value="0"> Ion</label>
-                <label class="q-opt"><input type="radio" name="q2_1" value="0"> Electron</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 2 of 5</div>
-              <div class="q-text">The chemical formula of water is:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q2_2" value="0"> HO</label>
-                <label class="q-opt"><input type="radio" name="q2_2" value="1"> H₂O</label>
-                <label class="q-opt"><input type="radio" name="q2_2" value="0"> H₂O₂</label>
-                <label class="q-opt"><input type="radio" name="q2_2" value="0"> OH₂</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 3 of 5</div>
-              <div class="q-text">Atomic mass of oxygen is:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q2_3" value="0"> 12 u</label>
-                <label class="q-opt"><input type="radio" name="q2_3" value="0"> 14 u</label>
-                <label class="q-opt"><input type="radio" name="q2_3" value="1"> 16 u</label>
-                <label class="q-opt"><input type="radio" name="q2_3" value="0"> 32 u</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 4 of 5</div>
-              <div class="q-text">One mole of any substance contains how many particles?</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q2_4" value="0"> 6.022 × 10²¹</label>
-                <label class="q-opt"><input type="radio" name="q2_4" value="1"> 6.022 × 10²³</label>
-                <label class="q-opt"><input type="radio" name="q2_4" value="0"> 6.022 × 10²⁴</label>
-                <label class="q-opt"><input type="radio" name="q2_4" value="0"> 6.022 × 10²²</label>
-              </div>
-            </div>
-
-            <div class="q-item">
-              <div class="q-num">Question 5 of 5</div>
-              <div class="q-text">The law of conservation of mass states that:</div>
-              <div class="q-options">
-                <label class="q-opt"><input type="radio" name="q2_5" value="1"> Mass is neither created nor destroyed in a chemical reaction</label>
-                <label class="q-opt"><input type="radio" name="q2_5" value="0"> Mass increases during a reaction</label>
-                <label class="q-opt"><input type="radio" name="q2_5" value="0"> Mass decreases during a reaction</label>
-                <label class="q-opt"><input type="radio" name="q2_5" value="0"> Mass changes with temperature</label>
-              </div>
-            </div>
-
-          </div>
-          <button class="quiz-submit" onclick="submitQuiz('q2',5)">Submit Quiz ✓</button>
-          <div class="quiz-result" id="result-q2"></div>
-          <button class="quiz-retry" id="retry-q2" onclick="retryQuiz('q2')" style="display:none;">🔄 Try Again</button>
-        </div>
+    <div id="quizPlayground" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea;">
+      <div style="width: 100%; background: #eee; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden;">
+        <div id="quizProgress" style="width: 0%; background: #28a745; height: 100%; transition: width 0.3s ease;"></div>
       </div>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <h4 id="playgroundTitle" style="margin: 0; color: #0056b3; font-size: 1.1rem;"></h4>
+        <span id="questionCounter" style="font-size: 0.9rem; font-weight: 600; color: #666; background: #f0f0f0; padding: 4px 10px; border-radius: 12px;"></span>
+      </div>
+
+      <div id="questionWrapper" style="font-size: 1.2rem; font-weight: 600; color: #2c3e50; margin-bottom: 20px; line-height: 1.5;"></div>
+      <div id="optionsWrapper" style="display: flex; flex-direction: column; gap: 12px;"></div>
+      
+      <div id="explainBox" style="display: none; margin-top: 20px; padding: 15px; background: #e8f5e9; border-left: 4px solid #28a745; border-radius: 4px; color: #1b5e20; font-size: 0.95rem;"></div>
+
+      <button id="nextQuestionBtn" onclick="goToNextQuestion()" style="display: none; margin-top: 25px; width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">
+        Next Question ➡️
+      </button>
+      
+      <div id="quizFeedback" style="display: none; text-align: center; padding: 20px 0;"></div>
     </div>
 
+  </div>
+</section>
     <script>
-      function showQuiz(id, btn) {
-        document.querySelectorAll('.quiz-panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.quiz-sel-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('panel-' + id).classList.add('active');
-        btn.classList.add('active');
+      // DATABASE OF QUESTIONS
+const quizDatabase = {
+  "10-poly": {
+    title: "Class 10 Maths - Polynomials",
+    questions: [
+      {
+        q: "Which of the following is a polynomial?",
+        options: ["x² + 2x + 1/x", "x² + 3x + 2", "√x + 1", "x⁻¹ + 5"],
+        correct: 1,
+        explain: "A polynomial cannot have negative or fractional exponents. '1/x' translates to x⁻¹ and '√x' means x^(1/2), leaving option B as the only valid polynomial expression."
+      },
+      {
+        q: "The degree of the polynomial 4x³ - 3x² + 2x - 7 is:",
+        options: ["2", "1", "3", "4"],
+        correct: 2,
+        explain: "The degree is defined as the highest power of the variable present within the expression. Here, that exponent is 3."
       }
-      function submitQuiz(qid, total) {
-        const panel = document.getElementById('panel-' + qid);
-        let score = 0, unanswered = 0;
-        for (let i = 1; i <= total; i++) {
-          const opts = panel.querySelectorAll('input[name="' + qid + '_' + i + '"]');
-          let answered = false;
-          opts.forEach(opt => {
-            const label = opt.closest('.q-opt');
-            if (opt.checked) {
-              answered = true;
-              if (opt.value === '1') { score++; label.classList.add('correct'); }
-              else { label.classList.add('wrong'); }
-            }
-            if (opt.value === '1' && opt.checked === false) {
-              // show correct answer only after submit
-              label.classList.add('correct');
-            }
-            opt.disabled = true;
-          });
-          if (!answered) unanswered++;
-        }
-        if (unanswered > 0) {
-          alert('Please answer all ' + unanswered + ' unanswered question(s) before submitting!');
-          // re-enable
-          panel.querySelectorAll('input[type=radio]').forEach(r => r.disabled = false);
-          panel.querySelectorAll('.q-opt').forEach(l => { l.classList.remove('correct','wrong'); });
-          return;
-        }
-        const pct = Math.round((score / total) * 100);
-        let bg, emoji, msg;
-        if (pct >= 80) { bg = '#e8f7ed'; emoji = '🎉'; msg = 'Excellent! Keep it up!'; }
-        else if (pct >= 60) { bg = '#fff8e6'; emoji = '👍'; msg = 'Good effort! Review the wrong ones.'; }
-        else { bg = '#fdecea'; emoji = '📖'; msg = 'Keep practising! You can do it.'; }
-        const res = document.getElementById('result-' + qid);
-        res.style.background = bg;
-        res.innerHTML = '<div style="font-size:2.5rem;">' + emoji + '</div>' +
-          '<div class="result-score" style="color:var(--green-700);">' + score + '/' + total + '</div>' +
-          '<div class="result-msg">' + msg + '</div>' +
-          '<div class="result-detail">You scored ' + pct + '% · Correct: ' + score + ' · Wrong: ' + (total - score) + '</div>';
-        res.classList.add('show');
-        document.getElementById('retry-' + qid).style.display = 'inline-block';
-        panel.querySelector('.quiz-submit').style.display = 'none';
+    ]
+  },
+  "9-atoms": {
+    title: "Class 9 Science - Atoms & Molecules",
+    questions: [
+      {
+        q: "The law of conservation of mass states that:",
+        options: ["Mass can be created but not destroyed", "Mass increases during a reaction", "Mass is neither created nor destroyed", "Mass changes with temperature"],
+        correct: 2,
+        explain: "According to the Law of Conservation of Mass, matter can neither be created nor destroyed over the course of a standard chemical reaction."
       }
-      function retryQuiz(qid) {
-        const panel = document.getElementById('panel-' + qid);
-        panel.querySelectorAll('input[type=radio]').forEach(r => { r.disabled = false; r.checked = false; });
-        panel.querySelectorAll('.q-opt').forEach(l => { l.classList.remove('correct','wrong'); });
-        document.getElementById('result-' + qid).classList.remove('show');
-        document.getElementById('retry-' + qid).style.display = 'none';
-        panel.querySelector('.quiz-submit').style.display = 'block';
-      }
+    ]
+  }
+};
+
+let activeQuiz = null;
+let currentQuestionIdx = 0;
+let userScore = 0;
+let hasAnswered = false;
+
+function updateChapters() {
+  const classSelect = document.getElementById('quizClass').value;
+  const chapterSelect = document.getElementById('quizChapter');
+  chapterSelect.innerHTML = '<option value="">-- Select Chapter --</option>';
+  
+  if (classSelect === "10") {
+    chapterSelect.innerHTML += '<option value="10-poly">Maths: Ch 2 - Polynomials</option>';
+  } else if (classSelect === "9") {
+    chapterSelect.innerHTML += '<option value="9-atoms">Science: Atoms & Molecules</option>';
+  } else if (classSelect !== "") {
+    chapterSelect.innerHTML += '<option value="">Quizzes coming soon for this class!</option>';
+  }
+}
+
+function startQuizEngine() {
+  const selectedKey = document.getElementById('quizChapter').value;
+  if (!selectedKey || selectedKey.startsWith("")) return alert("Please select a specific chapter first!");
+
+  activeQuiz = quizDatabase[selectedKey];
+  if (!activeQuiz) return;
+
+  currentQuestionIdx = 0;
+  userScore = 0;
+  
+  document.getElementById('quizPlayground').style.display = 'block';
+  document.getElementById('quizFeedback').style.display = 'none';
+  document.getElementById('playgroundTitle').innerText = activeQuiz.title;
+  
+  renderQuestion();
+  document.getElementById('quizPlayground').scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderQuestion() {
+  hasAnswered = false;
+  document.getElementById('explainBox').style.display = 'none';
+  document.getElementById('nextQuestionBtn').style.display = 'none';
+  
+  const currentQ = activeQuiz.questions[currentQuestionIdx];
+  const totalQ = activeQuiz.questions.length;
+  
+  document.getElementById('questionCounter').innerText = `Question ${currentQuestionIdx + 1}/${totalQ}`;
+  document.getElementById('quizProgress').style.width = `${((currentQuestionIdx) / totalQ) * 100}%`;
+  document.getElementById('questionWrapper').innerText = currentQ.q;
+  
+  const optionsDiv = document.getElementById('optionsWrapper');
+  optionsDiv.innerHTML = '';
+  
+  currentQ.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.innerText = opt;
+    btn.style = "width:100%; text-align:left; padding:14px 20px; background:#f8f9fa; border:2px solid #e2e8f0; border-radius:8px; font-size:1rem; cursor:pointer; font-weight:500; transition:0.2s; outline:none;";
+    btn.onclick = () => checkAnswer(idx, btn);
+    optionsDiv.appendChild(btn);
+  });
+}
+
+function checkAnswer(selectedIdx, clickedBtn) {
+  if (hasAnswered) return;
+  hasAnswered = true;
+
+  const currentQ = activeQuiz.questions[currentQuestionIdx];
+  const optionsButtons = document.getElementById('optionsWrapper').children;
+
+  if (selectedIdx === currentQ.correct) {
+    clickedBtn.style.background = "#d4edda";
+    clickedBtn.style.borderColor = "#28a745";
+    clickedBtn.style.color = "#155724";
+    userScore++;
+  } else {
+    clickedBtn.style.background = "#f8d7da";
+    clickedBtn.style.borderColor = "#dc3545";
+    clickedBtn.style.color = "#721c24";
+    optionsButtons[currentQ.correct].style.background = "#d4edda";
+    optionsButtons[currentQ.correct].style.borderColor = "#28a745";
+    optionsButtons[currentQ.correct].style.color = "#155724";
+  }
+
+  const explainBox = document.getElementById('explainBox');
+  explainBox.innerHTML = `<strong>Explanation:</strong> ${currentQ.explain}`;
+  explainBox.style.display = 'block';
+  
+  document.getElementById('nextQuestionBtn').style.display = 'block';
+}
+
+function goToNextQuestion() {
+  currentQuestionIdx++;
+  if (currentQuestionIdx < activeQuiz.questions.length) {
+    renderQuestion();
+  } else {
+    showFinalResults();
+  }
+}
+
+function showFinalResults() {
+  document.getElementById('quizProgress').style.width = "100%";
+  document.getElementById('questionWrapper').innerText = "";
+  document.getElementById('optionsWrapper').innerHTML = "";
+  document.getElementById('explainBox').style.display = 'none';
+  document.getElementById('nextQuestionBtn').style.display = 'none';
+  document.getElementById('questionCounter').innerText = "Completed 🎉";
+
+  const feedback = document.getElementById('quizFeedback');
+  const total = activeQuiz.questions.length;
+  const percentage = Math.round((userScore / total) * 100);
+
+  feedback.innerHTML = `
+    <h3 style="font-size:2rem; margin-bottom:10px; color:#2c3e50;">Your Score: ${userScore} / ${total}</h3>
+    <p style="font-size:1.2rem; color:#666; margin-bottom:20px;">You scored ${percentage}% accuracy!</p>
+    <button onclick="startQuizEngine()" style="padding:10px 25px; background:#0056b3; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">🔄 Restart Quiz</button>
+  `;
+  feedback.style.display = 'block';
+}
     </script>
 
   </div>
