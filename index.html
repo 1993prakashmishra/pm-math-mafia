@@ -2169,36 +2169,48 @@
     <div style="text-align: center; margin-bottom: 40px;">
       <span style="background: #e1f5fe; color: #0288d1; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">Test Yourself</span>
       <h2 style="font-size: 2.5rem; color: #1a1a1a; margin: 10px 0; font-weight: 700;">Interactive Online Quizzes</h2>
-      <p style="color: #666; font-size: 1rem; max-width: 500px; margin: 0 auto;">Select your target class and subject to instantly challenge your concepts. No login required!</p>
+      <p style="color: #666; font-size: 1rem; max-width: 500px; margin: 0 auto;">Select your class and chapter to instantly challenge your concepts with instant report cards.</p>
     </div>
 
-    <div style="background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom: 30px;">
+    <div id="studentRegistrationCard" style="background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom: 30px;">
+      <h3 style="margin-top: 0; margin-bottom: 20px; color: #333; font-size: 1.3rem;">Enter Your Details to Begin</h3>
+      <div style="margin-bottom: 15px;">
+        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #333;">Student's Full Name</label>
+        <input type="text" id="studentNameInput" placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+      </div>
+      <button onclick="saveStudentName()" style="width: 100%; padding: 14px; background: #007bff; color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">Next ➡️</button>
+    </div>
+
+    <div id="quizSelectorCard" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom: 30px;">
+      <p style="margin-top:0; font-weight:600; color:#28a745;">Welcome, <span id="welcomeStudentName"></span>! 👋</p>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
         <div>
-          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 0.95rem;">Target Class</label>
-          <select id="quizClass" onchange="updateChapters()" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; outline: none; transition: 0.3s; background: #fff;">
+          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 0.95rem;">Select Class</label>
+          <select id="quizClass" onchange="updateChaptersDropdown()" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; background: #fff;">
             <option value="">-- Choose Class --</option>
             <option value="6">Class 6</option>
             <option value="7">Class 7</option>
             <option value="8">Class 8</option>
             <option value="9">Class 9</option>
             <option value="10">Class 10</option>
+            <option value="11">Class 11</option>
+            <option value="12">Class 12</option>
           </select>
         </div>
         <div>
           <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 0.95rem;">Subject / Chapter</label>
-          <select id="quizChapter" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; outline: none; transition: 0.3s; background: #fff;">
+          <select id="quizChapter" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; background: #fff;">
             <option value="">-- Select Chapter --</option>
           </select>
         </div>
       </div>
 
-      <button onclick="startQuizEngine()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #0056b3, #007bff); color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,86,179,0.3); transition: 0.3s;">
+      <button onclick="startQuizEngine()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #0056b3, #007bff); color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,86,179,0.3);">
         🚀 Launch Practice Test
       </button>
     </div>
 
-    <div id="quizPlayground" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea;">
+    <div id="quizPlayground" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom:30px;">
       <div style="width: 100%; background: #eee; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden;">
         <div id="quizProgress" style="width: 0%; background: #28a745; height: 100%; transition: width 0.3s ease;"></div>
       </div>
@@ -2216,80 +2228,208 @@
       <button id="nextQuestionBtn" onclick="goToNextQuestion()" style="display: none; margin-top: 25px; width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;">
         Next Question ➡️
       </button>
-      
-      <div id="quizFeedback" style="display: none; text-align: center; padding: 20px 0;"></div>
     </div>
+
+    <div id="quizFeedback" style="display: none; background: white; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px dashed #007bff; text-align: center;"></div>
 
   </div>
 </section>
-    <script>
-      // DATABASE OF QUESTIONS
+
+<script>
+// COMPLETE CHAPTERS DATABASE GENERATED FROM YOUR NCERT SOURCE FILE
 const quizDatabase = {
-  "10-poly": {
-    title: "Class 10 Maths - Polynomials",
+  // --- CLASS 6 MATH ---
+  "6-m-1": { title: "Class 6 Maths: Ch 1 - Pattern in Mathematics", questions: [{ q: "Sample question for Pattern in Mathematics?", options: ["Ans A", "Ans B", "Ans C", "Ans D"], correct: 0, explain: "Explanation placeholder." }] },
+  "6-m-2": { title: "Class 6 Maths: Ch 2 - Lines and Angles", questions: [] },
+  "6-m-3": { title: "Class 6 Maths: Ch 3 - Number Play", questions: [] },
+  "6-m-4": { title: "Class 6 Maths: Ch 4 - Data Handling and Presentation", questions: [] },
+  "6-m-5": { title: "Class 6 Maths: Ch 5 - Prime Time", questions: [] },
+  "6-m-6": { title: "Class 6 Maths: Ch 6 - Perimeter and Area", questions: [] },
+  "6-m-7": { title: "Class 6 Maths: Ch 7 - Fractions", questions: [] },
+  "6-m-8": { title: "Class 6 Maths: Ch 8 - Playing With Constructions", questions: [] },
+  "6-m-9": { title: "Class 6 Maths: Ch 9 - Symmetry", questions: [] },
+  "6-m-10": { title: "Class 6 Maths: Ch 10 - The Other Side of Zero", questions: [] },
+  // --- CLASS 6 SCIENCE ---
+  "6-s-1": { title: "Class 6 Science: Ch 1 - The Wonderful World of Science", questions: [] },
+  "6-s-2": { title: "Class 6 Science: Ch 2 - Diversity in the Living World", questions: [] },
+  "6-s-3": { title: "Class 6 Science: Ch 3 - Mindful Eating", questions: [] },
+  "6-s-4": { title: "Class 6 Science: Ch 4 - Exploring Magnets", questions: [] },
+  "6-s-5": { title: "Class 6 Science: Ch 5 - Measurement of Length and Motion", questions: [] },
+  "6-s-6": { title: "Class 6 Science: Ch 6 - Materials Around Us", questions: [] },
+  "6-s-7": { title: "Class 6 Science: Ch 7 - Temperature and its Measurement", questions: [] },
+  "6-s-8": { title: "Class 6 Science: Ch 8 - A Journey through States of Water", questions: [] },
+  "6-s-9": { title: "Class 6 Science: Ch 9 - Methods of Separation in Everyday Life", questions: [] },
+  "6-s-10": { title: "Class 6 Science: Ch 10 - Living Creatures: Characteristics", questions: [] },
+  "6-s-11": { title: "Class 6 Science: Ch 11 - Nature's Treasures", questions: [] },
+  "6-s-12": { title: "Class 6 Science: Ch 12 - Beyond Earth", questions: [] },
+  // --- CLASS 7 MATH ---
+  "7-m-1": { title: "Class 7 Maths: Ch 1 - Large Number Around Us", questions: [] },
+  "7-m-2": { title: "Class 7 Maths: Ch 2 - Arithmetic Expressions", questions: [] },
+  "7-m-3": { title: "Class 7 Maths: Ch 3 - A Peek Beyond The Point", questions: [] },
+  "7-m-4": { title: "Class 7 Maths: Ch 4 - Expressions Using Letter-Numbers", questions: [] },
+  "7-m-5": { title: "Class 7 Maths: Ch 5 - Parallel and Intersecting Lines", questions: [] },
+  "7-m-6": { title: "Class 7 Maths: Ch 6 - Number Play", questions: [] },
+  "7-m-7": { title: "Class 7 Maths: Ch 7 - A Tale of Three Intersecting Lines", questions: [] },
+  "7-m-8": { title: "Class 7 Maths: Ch 8 - Working With Fractions", questions: [] },
+  "7-m-9": { title: "Class 7 Maths: Ch 9 - Geometric Twins", questions: [] },
+  "7-m-10": { title: "Class 7 Maths: Ch 10 - Operations With Integers", questions: [] },
+  "7-m-11": { title: "Class 7 Maths: Ch 11 - Finding Common Ground", questions: [] },
+  "7-m-12": { title: "Class 7 Maths: Ch 12 - Another Peek Beyond The Point", questions: [] },
+  "7-m-13": { title: "Class 7 Maths: Ch 13 - Connecting The Dots", questions: [] },
+  "7-m-14": { title: "Class 7 Maths: Ch 14 - Constructions and Tilings", questions: [] },
+  "7-m-15": { title: "Class 7 Maths: Ch 15 - Finding The Unknown", questions: [] },
+  // --- CLASS 7 SCIENCE ---
+  "7-s-1": { title: "Class 7 Science: Ch 1 - The Ever-Evolving World of Science", questions: [] },
+  "7-s-2": { title: "Class 7 Science: Ch 2 - Exploring Substances", questions: [] },
+  "7-s-3": { title: "Class 7 Science: Ch 3 - Electricity: Circuits & Components", questions: [] },
+  "7-s-4": { title: "Class 7 Science: Ch 4 - The World of Metals & Non-metals", questions: [] },
+  "7-s-5": { title: "Class 7 Science: Ch 5 - Changes Around Us: Physical & Chemical", questions: [] },
+  "7-s-6": { title: "Class 7 Science: Ch 6 - Adolescence: Stage of Growth", questions: [] },
+  "7-s-7": { title: "Class 7 Science: Ch 7 - Heat Transfer in Nature", questions: [] },
+  "7-s-8": { title: "Class 7 Science: Ch 8 - Measurement of Time and Motion", questions: [] },
+  "7-s-9": { title: "Class 7 Science: Ch 9 - Life Processes in Animals", questions: [] },
+  "7-s-10": { title: "Class 7 Science: Ch 10 - Life Processes in Plants", questions: [] },
+  "7-s-11": { title: "Class 7 Science: Ch 11 - Light: Shadows and Reflections", questions: [] },
+  "7-s-12": { title: "Class 7 Science: Ch 12 - Earth, Moon, and the Sun", questions: [] },
+  // --- CLASS 8 MATH ---
+  "8-m-1": { title: "Class 8 Maths: Ch 1 - A Square and A Cube", questions: [] },
+  "8-m-2": { title: "Class 8 Maths: Ch 2 - Power Play", questions: [] },
+  "8-m-3": { title: "Class 8 Maths: Ch 3 - A Story of Numbers", questions: [] },
+  "8-m-4": { title: "Class 8 Maths: Ch 4 - Quadrilaterals", questions: [] },
+  "8-m-5": { title: "Class 8 Maths: Ch 5 - Number Play", questions: [] },
+  "8-m-6": { title: "Class 8 Maths: Ch 6 - We Distribute, Yet Things Multiply", questions: [] },
+  "8-m-7": { title: "Class 8 Maths: Ch 7 - Proportional Reasoning-1", questions: [] },
+  "8-m-8": { title: "Class 8 Maths: Ch 8 - Fractions in Disguise", questions: [] },
+  "8-m-9": { title: "Class 8 Maths: Ch 9 - The Baudhayana-Pythagoras Theorem", questions: [] },
+  "8-m-10": { title: "Class 8 Maths: Ch 10 - Proportional Reasoning-2", questions: [] },
+  "8-m-11": { title: "Class 8 Maths: Ch 11 - Exploring Some Geometric Themes", questions: [] },
+  "8-m-12": { title: "Class 8 Maths: Ch 12 - Tales By Dots and Lines", questions: [] },
+  "8-m-13": { title: "Class 8 Maths: Ch 13 - Algebra Play", questions: [] },
+  "8-m-14": { title: "Class 8 Maths: Ch 14 - Area", questions: [] },
+  // --- CLASS 8 SCIENCE ---
+  "8-s-1": { title: "Class 8 Science: Ch 1 - Exploring Investigative Secondary Science", questions: [] },
+  "8-s-2": { title: "Class 8 Science: Ch 2 - The Invisible Living World", questions: [] },
+  "8-s-3": { title: "Class 8 Science: Ch 3 - Health: The Ultimate Treasure", questions: [] },
+  "8-s-4": { title: "Class 8 Science: Ch 4 - Electricity: Magnetic & Heating", questions: [] },
+  "8-s-5": { title: "Class 8 Science: Ch 5 - Exploring Forces", questions: [] },
+  "8-s-6": { title: "Class 8 Science: Ch 6 - Pressure, Winds, Storms, Cyclones", questions: [] },
+  "8-s-7": { title: "Class 8 Science: Ch 7 - Particulate Nature of Matter", questions: [] },
+  "8-s-8": { title: "Class 8 Science: Ch 8 - Nature of Matter: Elements", questions: [] },
+  "8-s-9": { title: "Class 8 Science: Ch 9 - Solutes, Solvents, and Solutions", questions: [] },
+  "8-s-10": { title: "Class 8 Science: Ch 10 - Light: Mirrors and Lenses", questions: [] },
+  "8-s-11": { title: "Class 8 Science: Ch 11 - Keeping Time With the Skies", questions: [] },
+  "8-s-12": { title: "Class 8 Science: Ch 12 - How Nature Works in Harmony", questions: [] },
+  "8-s-13": { title: "Class 8 Science: Ch 13 - Our Home: Earth", questions: [] },
+  // --- CLASS 9 MATH ---
+  "9-m-1": { title: "Class 9 Maths: Ch 1 - Orienting Yourself: Coordinates", questions: [] },
+  "9-m-2": { title: "Class 9 Maths: Ch 2 - Introduction To Linear Polynomials", questions: [] },
+  "9-m-3": { title: "Class 9 Maths: Ch 3 - The World of Numbers", questions: [] },
+  "9-m-4": { title: "Class 9 Maths: Ch 4 - Exploring Algebraic Identities", questions: [] },
+  "9-m-5": { title: "Class 9 Maths: Ch 5 - I'm Up and Down, and Round", questions: [] },
+  "9-m-6": { title: "Class 9 Maths: Ch 6 - Measuring Spaces: Perimeter & Area", questions: [] },
+  "9-m-7": { title: "Class 9 Maths: Ch 7 - Mathematics of Maybe: Probability", questions: [] },
+  "9-m-8": { title: "Class 9 Maths: Ch 8 - Predicting What Comes Next: Sequences", questions: [] },
+  "9-m-9": { title: "Class 9 Maths: Ch 9 - Ganita Manjari Part 2", questions: [] },
+  // --- CLASS 9 SCIENCE ---
+  "9-s-1": { title: "Class 9 Science: Ch 1 - Exploration: Secondary Science", questions: [] },
+  "9-s-2": { title: "Class 9 Science: Ch 2 - Cell: The Building Block of Life", questions: [] },
+  "9-s-3": { title: "Class 9 Science: Ch 3 - Tissues in Action", questions: [] },
+  "9-s-4": { title: "Class 9 Science: Ch 4 - Describing Motion Around Us", questions: [] },
+  "9-s-5": { title: "Class 9 Science: Ch 5 - Exploring Mixtures and Separation", questions: [] },
+  "9-s-6": { title: "Class 9 Science: Ch 6 - How Forces Affect Motion", questions: [] },
+  "9-s-7": { title: "Class 9 Science: Ch 7 - Work, Energy, and Simple Machines", questions: [] },
+  "9-s-8": { title: "Class 9 Science: Ch 8 - Journey Inside the Atom", questions: [] },
+  "9-s-9": { title: "Class 9 Science: Ch 9 - Atomic Foundations of Matter", questions: [] },
+  "9-s-10": { title: "Class 9 Science: Ch 10 - Sound Waves: Applications", questions: [] },
+  "9-s-11": { title: "Class 9 Science: Ch 11 - Reproduction: How Life Continues", questions: [] },
+  "9-s-12": { title: "Class 9 Science: Ch 12 - Patterns in Life: Classification", questions: [] },
+  "9-s-13": { title: "Class 9 Science: Ch 13 - Earth as a System: Energy", questions: [] },
+  // --- CLASS 10 MATH ---
+  "10-m-1": {
+    title: "Class 10 Maths: Ch 1 - Real Numbers",
     questions: [
-      {
-        q: "Which of the following is a polynomial?",
-        options: ["x² + 2x + 1/x", "x² + 3x + 2", "√x + 1", "x⁻¹ + 5"],
-        correct: 1,
-        explain: "A polynomial cannot have negative or fractional exponents. '1/x' translates to x⁻¹ and '√x' means x^(1/2), leaving option B as the only valid polynomial expression."
-      },
-      {
-        q: "The degree of the polynomial 4x³ - 3x² + 2x - 7 is:",
-        options: ["2", "1", "3", "4"],
-        correct: 2,
-        explain: "The degree is defined as the highest power of the variable present within the expression. Here, that exponent is 3."
-      }
+      { q: "If two positive integers a and b are written as a = x³y² and b = xy³, where x, y are prime numbers, then HCF(a, b) is:", options: ["xy", "xy²", "x³y³", "x²y²"], correct: 1, explain: "HCF is computed by multiplying the lowest power of each common prime factor. The common factors are x (lowest power 1) and y (lowest power 2), making HCF = xy²." }
     ]
   },
-  "9-atoms": {
-    title: "Class 9 Science - Atoms & Molecules",
+  "10-m-2": {
+    title: "Class 10 Maths: Ch 2 - Polynomials",
     questions: [
-      {
-        q: "The law of conservation of mass states that:",
-        options: ["Mass can be created but not destroyed", "Mass increases during a reaction", "Mass is neither created nor destroyed", "Mass changes with temperature"],
-        correct: 2,
-        explain: "According to the Law of Conservation of Mass, matter can neither be created nor destroyed over the course of a standard chemical reaction."
-      }
+      { q: "Which of the following is a polynomial?", options: ["x² + 2x + 1/x", "x² + 3x + 2", "√x + 1", "x⁻¹ + 5"], correct: 1, explain: "A polynomial expression cannot have any negative fractional variables or square roots in its variables." }
     ]
-  }
+  },
+  "10-m-3": { title: "Class 10 Maths: Ch 3 - Pair of Linear Equations in Two Variables", questions: [] },
+  "10-m-4": { title: "Class 10 Maths: Ch 4 - Quadratic Equations", questions: [] },
+  "10-m-5": { title: "Class 10 Maths: Ch 5 - Arithmetic Progressions", questions: [] },
+  "10-m-6": { title: "Class 10 Maths: Ch 6 - Triangles", questions: [] },
+  "10-m-7": { title: "Class 10 Maths: Ch 7 - Coordinate Geometry", questions: [] },
+  "10-m-8": { title: "Class 10 Maths: Ch 8 - Introduction to Trigonometry", questions: [] },
+  "10-m-9": { title: "Class 10 Maths: Ch 9 - Some Applications of Trigonometry", questions: [] },
+  "10-m-10": { title: "Class 10 Maths: Ch 10 - Circles", questions: [] },
+  "10-m-11": { title: "Class 10 Maths: Ch 11 - Areas Related to Circles", questions: [] },
+  "10-m-12": { title: "Class 10 Maths: Ch 12 - Surface Areas and Volumes", questions: [] },
+  "10-m-13": { title: "Class 10 Maths: Ch 13 - Statistics", questions: [] },
+  "10-m-14": { title: "Class 10 Maths: Ch 14 - Probability", questions: [] },
+  // --- HIGHER MATHEMATICS CLASS 11 & 12 ---
+  "11-m-all": { title: "Class 11 Mathematics Full Chapters", questions: [] },
+  "12-m-all": { title: "Class 12 Mathematics Full Chapters", questions: [] }
 };
 
 let activeQuiz = null;
 let currentQuestionIdx = 0;
 let userScore = 0;
 let hasAnswered = false;
+let studentName = "";
+let examHistoryLog = [];
 
-function updateChapters() {
-  const classSelect = document.getElementById('quizClass').value;
-  const chapterSelect = document.getElementById('quizChapter');
-  chapterSelect.innerHTML = '<option value="">-- Select Chapter --</option>';
+function saveStudentName() {
+  const input = document.getElementById('studentNameInput').value.trim();
+  if(!input) return alert("Please type your name to track your results!");
+  studentName = input;
+  document.getElementById('welcomeStudentName').innerText = studentName;
+  document.getElementById('studentRegistrationCard').style.display = 'none';
+  document.getElementById('quizSelectorCard').style.display = 'block';
+}
+
+function updateChaptersDropdown() {
+  const cls = document.getElementById('quizClass').value;
+  const select = document.getElementById('quizChapter');
+  select.innerHTML = '<option value="">-- Select Chapter --</option>';
   
-  if (classSelect === "10") {
-    chapterSelect.innerHTML += '<option value="10-poly">Maths: Ch 2 - Polynomials</option>';
-  } else if (classSelect === "9") {
-    chapterSelect.innerHTML += '<option value="9-atoms">Science: Atoms & Molecules</option>';
-  } else if (classSelect !== "") {
-    chapterSelect.innerHTML += '<option value="">Quizzes coming soon for this class!</option>';
+  const map = {
+    "6": [["6-m-1","Maths: Ch 1 - Patterns"],["6-m-2","Maths: Ch 2 - Lines & Angles"],["6-m-3","Maths: Ch 3 - Number Play"],["6-m-4","Maths: Ch 4 - Data Handling"],["6-m-5","Maths: Ch 5 - Prime Time"],["6-m-6","Maths: Ch 6 - Perimeter & Area"],["6-m-7","Maths: Ch 7 - Fractions"],["6-m-8","Maths: Ch 8 - Geometric Constructions"],["6-m-9","Maths: Ch 9 - Symmetry"],["6-m-10","Maths: Ch 10 - Zero Logic"],["6-s-1","Science: Ch 1 - World of Science"],["6-s-2","Science: Ch 2 - Living World Diversity"],["6-s-3","Science: Ch 3 - Mindful Eating"],["6-s-4","Science: Ch 4 - Exploring Magnets"],["6-s-5","Science: Ch 5 - Length & Motion"],["6-s-6","Science: Ch 6 - Materials Around Us"],["6-s-7","Science: Ch 7 - Temperature"],["6-s-8","Science: Ch 8 - States of Water"],["6-s-9","Science: Ch 9 - Separation Methods"],["6-s-10","Science: Ch 10 - Living Creatures"],["6-s-11","Science: Ch 11 - Nature's Treasures"],["6-s-12","Science: Ch 12 - Beyond Earth"]],
+    "7": [["7-m-1","Maths: Ch 1 - Large Numbers"],["7-m-2","Maths: Ch 2 - Expressions"],["7-m-3","Maths: Ch 3 - Point Logic"],["7-m-4","Maths: Ch 4 - Letter-Numbers"],["7-m-5","Maths: Ch 5 - Parallel Lines"],["7-m-6","Maths: Ch 6 - Number Play"],["7-m-7","Maths: Ch 7 - Intersecting Lines"],["7-m-8","Maths: Ch 8 - Fractions Work"],["7-m-9","Maths: Ch 9 - Geometric Twins"],["7-m-10","Maths: Ch 10 - Integers"],["7-m-11","Maths: Ch 11 - Common Ground"],["7-m-12","Maths: Ch 12 - Point View"],["7-m-13","Maths: Ch 13 - Connect Dots"],["7-m-14","Maths: Ch 14 - Tilings"],["7-m-15","Maths: Ch 15 - Unknowns"],["7-s-1","Science: Ch 1 - Evolving Science"],["7-s-2","Science: Ch 2 - Substances"],["7-s-3","Science: Ch 3 - Electricity Circuits"],["7-s-4","Science: Ch 4 - Metals World"],["7-s-5","Science: Ch 5 - Changes Around Us"],["7-s-6","Science: Ch 6 - Adolescence"],["7-s-7","Science: Ch 7 - Heat Transfer"],["7-s-8","Science: Ch 8 - Time & Motion"],["7-s-9","Science: Ch 9 - Animal Life"],["7-s-10","Science: Ch 10 - Plant Life"],["7-s-11","Science: Ch 11 - Light & Shadows"],["7-s-12","Science: Ch 12 - Earth Moon Sun"]],
+    "8": [["8-m-1","Maths: Ch 1 - Square & Cube"],["8-m-2","Maths: Ch 2 - Power Play"],["8-m-3","Maths: Ch 3 - Numbers Story"],["8-m-4","Maths: Ch 4 - Quadrilaterals"],["8-m-5","Maths: Ch 5 - Number Play"],["8-m-6","Maths: Ch 6 - Distributions"],["8-m-7","Maths: Ch 7 - Proportions 1"],["8-m-8","Maths: Ch 8 - Disguised Fractions"],["8-m-9","Maths: Ch 9 - Pythagoras Theorem"],["8-m-10","Maths: Ch 10 - Proportions 2"],["8-m-11","Maths: Ch 11 - Geometric Themes"],["8-m-12","Maths: Ch 12 - Dots & Lines"],["8-m-13","Maths: Ch 13 - Algebra Play"],["8-m-14","Maths: Ch 14 - Area Calculation"],["8-s-1","Science: Ch 1 - Investigative Sci"],["8-s-2","Science: Ch 2 - Invisible World"],["8-s-3","Science: Ch 3 - Health Value"],["8-s-4","Science: Ch 4 - Magnetic Effects"],["8-s-5","Science: Ch 5 - Forces Exploration"],["8-s-6","Science: Ch 6 - Winds & Storms"],["8-s-7","Science: Ch 7 - Matter Nature"],["8-s-8","Science: Ch 8 - Elements & Compounds"],["8-s-9","Science: Ch 9 - Solutes & Solutions"],["8-s-10","Science: Ch 10 - Mirrors & Lenses"],["8-s-11","Science: Ch 11 - Skies & Time"],["8-s-12","Science: Ch 12 - Nature Harmony"],["8-s-13","Science: Ch 13 - Earth Home"]],
+    "9": [["9-m-1","Maths: Ch 1 - Coordinates"],["9-m-2","Maths: Ch 2 - Linear Polynomials"],["9-m-3","Maths: Ch 3 - Numbers World"],["9-m-4","Maths: Ch 4 - Identities"],["9-m-5","Maths: Ch 5 - Up & Down Curves"],["9-m-6","Maths: Ch 6 - Measuring Spaces"],["9-m-7","Maths: Ch 7 - Probability Intro"],["9-m-8","Maths: Ch 8 - Sequences"],["9-m-9","Maths: Ch 9 - Ganita Manjari 2"],["9-s-1","Science: Ch 1 - Secondary Sci"],["9-s-2","Science: Ch 2 - Cell Structures"],["9-s-3","Science: Ch 3 - Tissues Action"],["9-s-4","Science: Ch 4 - Motion Around Us"],["9-s-5","Science: Ch 5 - Mixtures Separation"],["9-s-6","Science: Ch 6 - Forces Impact"],["9-s-7","Science: Ch 7 - Work & Energy"],["9-s-8","Science: Ch 8 - Atom Interior"],["9-s-9","Science: Ch 9 - Atomic Foundations"],["9-s-10","Science: Ch 10 - Sound Waves"],["9-s-11","Science: Ch 11 - Reproduction"],["9-s-12","Science: Ch 12 - Diversity Life"],["9-s-13","Science: Ch 13 - Earth Systems"]],
+    "10":[["10-m-1","Maths: Ch 1 - Real Numbers"],["10-m-2","Maths: Ch 2 - Polynomials"],["10-m-3","Maths: Ch 3 - Linear Equations"],["10-m-4","Maths: Ch 4 - Quadratic Eq"],["10-m-5","Maths: Ch 5 - Progressions AP"],["10-m-6","Maths: Ch 6 - Triangles"],["10-m-7","Maths: Ch 7 - Coordinate Geom"],["10-m-8","Maths: Ch 8 - Trigonometry"],["10-m-9","Maths: Ch 9 - Trig Applications"],["10-m-10","Maths: Ch 10 - Circles"],["10-m-11","Maths: Ch 11 - Areas Circles"],["10-m-12","Maths: Ch 12 - Surface Areas"],["10-m-13","Maths: Ch 13 - Statistics"],["10-m-14","Maths: Ch 14 - Probability"]],
+    "11":[["11-m-all","Maths: Comprehensive Modules Lineup"]],
+    "12":[["12-m-all","Maths: Advanced Engineering Modules"]]
+  };
+
+  if(map[cls]) {
+    map[cls].forEach(item => {
+      select.innerHTML += `<option value="${item[0]}">${item[1]}</option>`;
+    });
   }
 }
 
 function startQuizEngine() {
-  const selectedKey = document.getElementById('quizChapter').value;
-  if (!selectedKey || selectedKey.startsWith("")) return alert("Please select a specific chapter first!");
+  const key = document.getElementById('quizChapter').value;
+  if(!key) return alert("Select a chapter!");
 
-  activeQuiz = quizDatabase[selectedKey];
-  if (!activeQuiz) return;
+  activeQuiz = quizDatabase[key];
+  if(!activeQuiz || !activeQuiz.questions.length) {
+    return alert("Practice MCQs are being populated for this brand new syllabus module right now. Try Class 10 Ch 1 or Ch 2!");
+  }
 
   currentQuestionIdx = 0;
   userScore = 0;
+  examHistoryLog = [];
   
   document.getElementById('quizPlayground').style.display = 'block';
   document.getElementById('quizFeedback').style.display = 'none';
   document.getElementById('playgroundTitle').innerText = activeQuiz.title;
   
   renderQuestion();
-  document.getElementById('quizPlayground').scrollIntoView({ behavior: 'smooth' });
 }
 
 function renderQuestion() {
@@ -2300,8 +2440,8 @@ function renderQuestion() {
   const currentQ = activeQuiz.questions[currentQuestionIdx];
   const totalQ = activeQuiz.questions.length;
   
-  document.getElementById('questionCounter').innerText = `Question ${currentQuestionIdx + 1}/${totalQ}`;
-  document.getElementById('quizProgress').style.width = `${((currentQuestionIdx) / totalQ) * 100}%`;
+  document.getElementById('questionCounter').innerText = `Q: ${currentQuestionIdx + 1}/${totalQ}`;
+  document.getElementById('quizProgress').style.width = `${(currentQuestionIdx / totalQ) * 100}%`;
   document.getElementById('questionWrapper').innerText = currentQ.q;
   
   const optionsDiv = document.getElementById('optionsWrapper');
@@ -2310,7 +2450,7 @@ function renderQuestion() {
   currentQ.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.innerText = opt;
-    btn.style = "width:100%; text-align:left; padding:14px 20px; background:#f8f9fa; border:2px solid #e2e8f0; border-radius:8px; font-size:1rem; cursor:pointer; font-weight:500; transition:0.2s; outline:none;";
+    btn.style = "width:100%; text-align:left; padding:14px; background:#f8f9fa; border:2px solid #e2e8f0; border-radius:8px; cursor:pointer; font-weight:500;";
     btn.onclick = () => checkAnswer(idx, btn);
     optionsDiv.appendChild(btn);
   });
@@ -2322,25 +2462,24 @@ function checkAnswer(selectedIdx, clickedBtn) {
 
   const currentQ = activeQuiz.questions[currentQuestionIdx];
   const optionsButtons = document.getElementById('optionsWrapper').children;
+  
+  examHistoryLog.push({
+    question: currentQ.q,
+    userAns: currentQ.options[selectedIdx],
+    correctAns: currentQ.options[currentQ.correct],
+    status: selectedIdx === currentQ.correct ? "CORRECT" : "WRONG"
+  });
 
   if (selectedIdx === currentQ.correct) {
-    clickedBtn.style.background = "#d4edda";
-    clickedBtn.style.borderColor = "#28a745";
-    clickedBtn.style.color = "#155724";
-    userScore++;
+    clickedBtn.style.background = "#d4edda"; clickedBtn.style.borderColor = "#28a745"; userScore++;
   } else {
-    clickedBtn.style.background = "#f8d7da";
-    clickedBtn.style.borderColor = "#dc3545";
-    clickedBtn.style.color = "#721c24";
-    optionsButtons[currentQ.correct].style.background = "#d4edda";
-    optionsButtons[currentQ.correct].style.borderColor = "#28a745";
-    optionsButtons[currentQ.correct].style.color = "#155724";
+    clickedBtn.style.background = "#f8d7da"; clickedBtn.style.borderColor = "#dc3545";
+    optionsButtons[currentQ.correct].style.background = "#d4edda"; optionsButtons[currentQ.correct].style.borderColor = "#28a745";
   }
 
   const explainBox = document.getElementById('explainBox');
   explainBox.innerHTML = `<strong>Explanation:</strong> ${currentQ.explain}`;
   explainBox.style.display = 'block';
-  
   document.getElementById('nextQuestionBtn').style.display = 'block';
 }
 
@@ -2354,25 +2493,43 @@ function goToNextQuestion() {
 }
 
 function showFinalResults() {
-  document.getElementById('quizProgress').style.width = "100%";
-  document.getElementById('questionWrapper').innerText = "";
-  document.getElementById('optionsWrapper').innerHTML = "";
-  document.getElementById('explainBox').style.display = 'none';
-  document.getElementById('nextQuestionBtn').style.display = 'none';
-  document.getElementById('questionCounter').innerText = "Completed 🎉";
-
+  document.getElementById('quizPlayground').style.display = 'none';
   const feedback = document.getElementById('quizFeedback');
   const total = activeQuiz.questions.length;
-  const percentage = Math.round((userScore / total) * 100);
+  const pct = Math.round((userScore / total) * 100);
+
+  let reviewHTML = "";
+  examHistoryLog.forEach((item, index) => {
+    reviewHTML += `
+      <div style="text-align:left; background:#f8f9fa; padding:12px; margin-top:10px; border-radius:6px; border-left:4px solid ${item.status==='CORRECT'?'#28a745':'#dc3545'}">
+        <strong>Q${index+1}: ${item.question}</strong><br>
+        <span style="font-size:0.9rem; color:#555;">Your Answer: ${item.userAns} (${item.status})</span><br>
+        <span style="font-size:0.9rem; color:#28a745;">Correct Answer: ${item.correctAns}</span>
+      </div>`;
+  });
 
   feedback.innerHTML = `
-    <h3 style="font-size:2rem; margin-bottom:10px; color:#2c3e50;">Your Score: ${userScore} / ${total}</h3>
-    <p style="font-size:1.2rem; color:#666; margin-bottom:20px;">You scored ${percentage}% accuracy!</p>
-    <button onclick="startQuizEngine()" style="padding:10px 25px; background:#0056b3; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer;">🔄 Restart Quiz</button>
+    <div id="printableReportCard">
+      <h2 style="color:#0056b3; margin:0;">PMMATH.IN OFFICIAL REPORT CARD</h2>
+      <p style="color:#666; font-size:0.9rem; margin-bottom:20px;">Premium Digital Assessment Evaluation System</p>
+      <hr style="border:1px solid #eee;">
+      <div style="display:flex; justify-content:space-between; text-align:left; margin:15px 0; font-size:1rem;">
+        <div><strong>Student Name:</strong> ${studentName}</div>
+        <div><strong>Date:</strong> ${new Date().toLocaleDateString()}</div>
+      </div>
+      <div style="background:#e1f5fe; padding:15px; border-radius:8px; font-size:1.2rem; font-weight:700; color:#0288d1; margin-bottom:20px;">
+        Topic: ${activeQuiz.title} <br>
+        Final Score: ${userScore} / ${total} (${pct}%)
+      </div>
+      <h3 style="text-align:left; color:#333;">Detailed Review Sheet:</h3>
+      ${reviewHTML}
+    </div>
+    <button onclick="window.print()" style="margin-top:25px; padding:12px 25px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:600; margin-right:10px;">💾 Download / Print Certificate</button>
+    <button onclick="location.reload()" style="margin-top:25px; padding:12px 25px; background:#0056b3; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:600;">🔄 Take Another Test</button>
   `;
   feedback.style.display = 'block';
 }
-    </script>
+</script>
 
   </div>
 </section>
