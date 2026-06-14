@@ -2975,123 +2975,231 @@ function showFinalResults() {
   }
 </style>
 
-<section id="nep">
-  <div class="container">
-    <div class="section-label">Education Policy</div>
-    <h2 class="section-title">NEP 2020</h2>
-    <p class="section-desc">National Education Policy 2020 — India's landmark education reform explained in English and Hindi.</p>
-    <div class="nep-lang-tabs">
-      <div class="nep-lang-tab active" onclick="switchNep('en',this)">🇬🇧 English</div>
-      <div class="nep-lang-tab" onclick="switchNep('hi',this)">🇮🇳 हिंदी</div>
+<section id="nep" style="background-color: #ffffff; padding: 60px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+    
+    <div style="text-align: center; margin-bottom: 35px;">
+      <span style="background: rgba(26,102,57,0.08); color: #1a6639; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;">Education Framework</span>
+      <h2 style="font-size: 2.2rem; color: #0a2e1a; margin: 12px 0 8px 0; font-weight: 800; letter-spacing: -0.5px;">National Education Policy (NEP 2020)</h2>
+      <p style="color: #555555; font-size: 1rem; max-width: 650px; margin: 0 auto; line-height: 1.5;">India's structural academic upgrade mapping explained in dual language interface wrappers.</p>
     </div>
-    <div class="nep-content active" id="nep-en">
-      <div class="nep-summary">
-        <h3>What is NEP 2020?</h3>
-        <p>The National Education Policy 2020 is India's most comprehensive education reform since 1986. Approved by the Union Cabinet on July 29, 2020, it replaces the previous National Policy on Education and lays out a vision for transforming India's education system by 2040.</p>
-        <p><strong>Key Highlights:</strong></p>
-        <ul class="nep-points">
-          <li>New 5+3+3+4 school structure replacing the old 10+2 system — covering ages 3 to 18.</li>
-          <li>Mother tongue / regional language as medium of instruction up to Grade 5 (preferably till Grade 8).</li>
-          <li>No rigid separation of Arts, Science and Commerce streams from Class 11 onwards.</li>
-          <li>Focus on conceptual understanding, critical thinking and creativity over rote learning.</li>
-          <li>Coding introduced from Class 6; vocational education from Class 6 onwards.</li>
-          <li>Board exams redesigned — students can appear twice per year; focus on application-based questions.</li>
-          <li>Higher Education: multidisciplinary approach, 4-year UG programmes with multiple entry/exit options.</li>
-          <li>Target: 100% Gross Enrolment Ratio in school education by 2030.</li>
-          <li>Public investment in education to be raised to 6% of GDP.</li>
-        </ul>
-        <p><strong>Conclusion:</strong> NEP 2020 is a student-centered, holistic and flexible policy that shifts focus from marks to learning outcomes. It emphasizes skill development, digital literacy and India's knowledge tradition, preparing students to be global citizens rooted in local values. As teachers, understanding NEP 2020 helps us align our teaching with the future of Indian education.</p>
-      </div>
-      <div class="nep-pdfs">
-        <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf" target="_blank" class="nep-pdf-card"><div class="nep-pdf-icon">📄</div><div><div class="nep-pdf-title">NEP 2020 — Full Document</div><div class="nep-pdf-sub">English · Official PDF · Ministry of Education</div></div></a>
-        <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf" target="_blank" class="nep-pdf-card" style="background:linear-gradient(135deg,#1a3a6e,#2d6abf);"><div class="nep-pdf-icon">📋</div><div><div class="nep-pdf-title">NEP 2020 — Summary</div><div class="nep-pdf-sub">English · Key points · Quick overview</div></div></a>
-      </div>
-    </div>
-    <div class="nep-content" id="nep-hi">
-      <div class="nep-summary">
-        <h3>NEP 2020 क्या है?</h3>
-        <p>राष्ट्रीय शिक्षा नीति 2020 भारत में 1986 के बाद की सबसे व्यापक शिक्षा सुधार नीति है। इसे 29 जुलाई 2020 को केंद्रीय मंत्रिमंडल द्वारा अनुमोदित किया गया। यह नीति 2040 तक भारत की शिक्षा प्रणाली को पूरी तरह बदलने का लक्ष्य रखती है।</p>
-        <p><strong>मुख्य विशेषताएँ:</strong></p>
-        <ul class="nep-points">
-          <li>पुरानी 10+2 संरचना की जगह नई 5+3+3+4 संरचना — यह 3 से 18 वर्ष के बच्चों को कवर करेगी।</li>
-          <li>कक्षा 5 तक मातृभाषा / क्षेत्रीय भाषा में शिक्षा (अधिमानतः कक्षा 8 तक)।</li>
-          <li>कक्षा 11 से कला, विज्ञान और वाणिज्य की कठोर अलगता समाप्त।</li>
-          <li>रटने की बजाय वैचारिक समझ, आलोचनात्मक सोच और रचनात्मकता पर जोर।</li>
-          <li>कक्षा 6 से कोडिंग और व्यावसायिक शिक्षा की शुरुआत।</li>
-          <li>बोर्ड परीक्षाओं में सुधार — साल में दो बार परीक्षा; अनुप्रयोग-आधारित प्रश्न।</li>
-          <li>उच्च शिक्षा: 4 वर्षीय स्नातक कार्यक्रम जिसमें कई प्रवेश/निकास विकल्प।</li>
-          <li>2030 तक स्कूली शिक्षा में 100% सकल नामांकन अनुपात का लक्ष्य।</li>
-          <li>शिक्षा में सार्वजनिक निवेश GDP का 6% तक बढ़ाया जाएगा।</li>
-        </ul>
-        <p><strong>निष्कर्ष:</strong> NEP 2020 एक छात्र-केंद्रित, समग्र और लचीली नीति है जो अंकों से हटकर सीखने के परिणामों पर ध्यान केंद्रित करती है। यह कौशल विकास, डिजिटल साक्षरता और भारतीय ज्ञान परंपरा पर जोर देती है। शिक्षकों के लिए NEP 2020 को समझना बेहद जरूरी है ताकि हम अपनी शिक्षण पद्धतियों को भारत के शिक्षा के भविष्य के अनुरूप बना सकें।</p>
-      </div>
-      <div class="nep-pdfs">
-        <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/Hindi_NEP_2020.pdf" target="_blank" class="nep-pdf-card"><div class="nep-pdf-icon">📄</div><div><div class="nep-pdf-title">NEP 2020 — पूर्ण दस्तावेज़</div><div class="nep-pdf-sub">हिंदी · आधिकारिक PDF · शिक्षा मंत्रालय</div></div></a>
-        <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/Hindi_NEP_2020.pdf" target="_blank" class="nep-pdf-card" style="background:linear-gradient(135deg,#1a3a6e,#2d6abf);"><div class="nep-pdf-icon">📋</div><div><div class="nep-pdf-title">NEP 2020 — सारांश</div><div class="nep-pdf-sub">हिंदी · मुख्य बिंदु · त्वरित अवलोकन</div></div></a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="feedback">
-  <div class="container">
-    <div class="section-label">Your Opinion Matters</div>
-    <h2 class="section-title">Feedback</h2>
-    <p class="section-desc">Help us improve! Share your thoughts about the classes, notes and overall experience.</p>
-    <div class="feedback-inner">
+    <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 30px;">
+      <button onclick="switchNep('en', this)" class="nep-lang-tab active" style="padding: 10px 24px; font-size: 0.9rem; font-weight: 700; border-radius: 8px; cursor: pointer; border: 2px solid #1a6639; background: #1a6639; color: #ffffff; transition: all 0.2s ease;">🇬🇧 English Version</button>
+      <button onclick="switchNep('hi', this)" class="nep-lang-tab" style="padding: 10px 24px; font-size: 0.9rem; font-weight: 700; border-radius: 8px; cursor: pointer; border: 2px solid #eaeaea; background: #ffffff; color: #333333; transition: all 0.2s ease;">🇮🇳 हिंदी संस्करण</button>
+    </div>
+
+    <div style="background: #fafafa; border: 1px solid #eaeaea; border-radius: 16px; padding: 30px; min-height: 380px; box-sizing: border-box;">
       
-      <form id="feedback-form" class="feedback-form">
-        <input type="hidden" name="access_key" value="99a5cd0b-9379-467c-9e07-639fe44bddca">
-        <input type="hidden" name="subject" value="New Student Feedback - pmmath.in">
+      <div id="nep-en" class="nep-content active" style="display: block;">
+        <h3 style="color: #0a2e1a; font-size: 1.4rem; margin-top: 0; margin-bottom: 12px; font-weight: 800;">What is NEP 2020?</h3>
+        <p style="color: #444444; font-size: 0.98rem; line-height: 1.6; margin-bottom: 20px;">The National Education Policy 2020 is India's most comprehensive education reform since 1986. Approved by the Union Cabinet on July 29, 2020, it replaces the previous National Policy on Education and lays out a vision for transforming India's education system by 2040.</p>
         
-        <h3>✍️ Leave Your Feedback</h3>
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" name="Student Name" id="fb-name" placeholder="e.g. Rahul Sharma" required />
-        </div>
-        <div class="form-group">
-          <label>Class</label>
-          <select name="Class Group" id="fb-class" required>
-            <option value="">Select your class</option>
-            <option>Class 6</option>
-            <option>Class 7</option>
-            <option>Class 8</option>
-            <option>Class 9</option>
-            <option>Class 10</option>
-            <option>Class 11</option>
-            <option>Class 12</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Rating</label>
-          <div class="stars" id="star-rating">
-            <span class="star" onclick="setRating(1)">★</span>
-            <span class="star" onclick="setRating(2)">★</span>
-            <span class="star" onclick="setRating(3)">★</span>
-            <span class="star" onclick="setRating(4)">★</span>
-            <span class="star" onclick="setRating(5)">★</span>
-          </div>
-          <input type="hidden" name="Star Rating" id="hidden-rating-value" value="5">
-        </div>
-        <div class="form-group">
-          <label>Your Feedback</label>
-          <textarea name="Message Text" id="fb-text" placeholder="What did you find helpful? What can be improved?" required></textarea>
-        </div>
+        <strong style="color: #1a6639; display: block; font-size: 1rem; margin-bottom: 12px;">🎯 Key Structural Highlights:</strong>
+        <ul style="padding-left: 20px; margin: 0 0 25px 0; color: #444444; font-size: 0.92rem; line-height: 1.8;">
+          <li><strong>5+3+3+4 Curriculum Matrix:</strong> Replacing legacy 10+2 system to capture age groups 3 to 18 seamlessly.</li>
+          <li><strong>Vernacular Mediums:</strong> Mother tongue or regional linguistic streams up to Grade 5 focus.</li>
+          <li><strong>Fluid Academic Tracks:</strong> No rigid segregation models between Arts, Science, or Commerce fields in Senior Secondary.</li>
+          <li><strong>Logic Mastery:</strong> Re-orienting classes for core conceptual analytics instead of simple memory cramming.</li>
+          <li><strong>Modern Skillsets:</strong> Practical coding deployment modules and vocational training channels from Class 6 onwards.</li>
+          <li><strong>Board Exam Resets:</strong> Two test windows per cycle focusing primarily on application questions.</li>
+        </ul>
         
-        <button type="submit" class="submit-btn" id="fb-submit-btn">Submit Feedback ✓</button>
-        <div class="success-msg" id="fb-success">🎉 Thank you for your feedback! It means a lot.</div>
-      </form>
-
-      <div class="feedback-reviews">
-        <h3>💬 What Students Say</h3>
-        <div class="review-card"><div class="review-top"><div class="review-avatar">RK</div><div><div class="review-name">Himanshu kumar</div><div class="review-grade">Class 10</div></div><div class="review-stars">★★★★★</div></div><div class="review-text">The notes are very clear and easy to understand. Chapter-wise organization makes revision much easier before exams!</div></div>
-        <div class="review-card"><div class="review-top"><div class="review-avatar">PS</div><div><div class="review-name">Aditi Mishra</div><div class="review-grade">Class 9</div></div><div class="review-stars">★★★★★</div></div><div class="review-text">The online quiz feature is amazing! I can practice anytime and get instant results. Really helps with self-study.</div></div>
-        <div class="review-card"><div class="review-top"><div class="review-avatar">AM</div><div><div class="review-name">Satyam Bihari Nirala</div><div class="review-grade">Class 8</div></div><div class="review-stars">★★★★☆</div></div><div class="review-text">Great resources and links. The NCERT links are very useful. Would love more video lessons!</div></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+          <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf" target="_blank" style="flex: 1; min-width: 250px; display: flex; align-items: center; gap: 15px; background: #ffffff; border: 1px solid #eaeaea; padding: 15px; border-radius: 10px; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            <span style="font-size: 2rem;">📄</span>
+            <div>
+              <div style="font-weight: 700; color: #0a2e1a; font-size: 0.95rem;">NEP 2020 — Full Policy</div>
+              <div style="font-size: 0.8rem; color: #666666;">Official English PDF · Ministry of Education</div>
+            </div>
+          </a>
+          <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf" target="_blank" style="flex: 1; min-width: 250px; display: flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #1a6639 0%, #0a2e1a 100%); border: none; padding: 15px; border-radius: 10px; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            <span style="font-size: 2rem;">📋</span>
+            <div>
+              <div style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">NEP 2020 — Core Summary</div>
+              <div style="font-size: 0.8rem; color: rgba(255,255,255,0.8);">Quick Action Insights Framework</div>
+            </div>
+          </a>
+        </div>
       </div>
+
+      <div id="nep-hi" class="nep-content" style="display: none;">
+        <h3 style="color: #0a2e1a; font-size: 1.4rem; margin-top: 0; margin-bottom: 12px; font-weight: 800;">NEP 2020 क्या है?</h3>
+        <p style="color: #444444; font-size: 0.98rem; line-height: 1.6; margin-bottom: 20px;">राष्ट्रीय शिक्षा नीति 2020 भारत में 1986 के बाद की सबसे व्यापक शिक्षा सुधार नीति है। इसे 29 जुलाई 2020 को केंद्रीय मंत्रिमंडल द्वारा अनुमोदित किया गया। यह नीति 2040 तक भारत की शिक्षा प्रणाली को पूरी तरह बदलने का लक्ष्य रखती है।</p>
+        
+        <strong style="color: #1a6639; display: block; font-size: 1rem; margin-bottom: 12px;">🎯 मुख्य विशेषताएँ:</strong>
+        <ul style="padding-left: 20px; margin: 0 0 25px 0; color: #444444; font-size: 0.92rem; line-height: 1.8;">
+          <li><strong>5+3+3+4 शैक्षणिक संरचना:</strong> पुरानी 10+2 प्रणाली की जगह अब 3 से 18 वर्ष के छात्रों के लिए नया प्रारूप।</li>
+          <li><strong>मातृभाषा संवर्धन:</strong> प्राथमिक स्तर (कक्षा 5) तक क्षेत्रीय भाषाओं और मातृभाषा में बुनियादी समझ विकसित करना।</li>
+          <li><strong>लचीला संकाय चयन:</strong> उच्च माध्यमिक स्तर पर कला, विज्ञान और वाणिज्य के बीच कोई कठिन सीमा नहीं होगी।</li>
+          <li><strong>रटंत प्रणाली का अंत:</strong> परीक्षा प्रारूप और दैनिक कक्षाओं को रटने के बजाय व्यावहारिक अनुप्रयोग पर फोकस करना।</li>
+          <li><strong>कौशल विकास ट्रैक:</strong> कक्षा 6 से ही आधुनिक कोडिंग कोर्सेज और व्यावसायिक इंटर्नशिप की शुरुआत।</li>
+          <li><strong>बोर्ड परीक्षा सुधार:</strong> साल में दो बार अवसर, जो छात्रों के मानसिक तनाव को कम कर वास्तविक प्रगति मापेगा।</li>
+        </ul>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+          <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/Hindi_NEP_2020.pdf" target="_blank" style="flex: 1; min-width: 250px; display: flex; align-items: center; gap: 15px; background: #ffffff; border: 1px solid #eaeaea; padding: 15px; border-radius: 10px; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            <span style="font-size: 2rem;">📄</span>
+            <div>
+              <div style="font-weight: 700; color: #0a2e1a; font-size: 0.95rem;">NEP 2020 — पूर्ण दस्तावेज़</div>
+              <div style="font-size: 0.8rem; color: #666666;">आधिकारिक हिंदी PDF · शिक्षा मंत्रालय</div>
+            </div>
+          </a>
+          <a href="https://www.education.gov.in/sites/upload_files/mhrd/files/Hindi_NEP_2020.pdf" target="_blank" style="flex: 1; min-width: 250px; display: flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #1a6639 0%, #0a2e1a 100%); border: none; padding: 15px; border-radius: 10px; text-decoration: none; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            <span style="font-size: 2rem;">📋</span>
+            <div>
+              <div style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">NEP 2020 — मुख्य सारांश</div>
+              <div style="font-size: 0.8rem; color: rgba(255,255,255,0.8);">त्वरित अवलोकन एवं मुख्य बिंदु</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
+<section id="feedback" style="background-color: #fafafa; padding: 60px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border-top: 1px solid #eaeaea;">
+  <div class="container" style="max-width: 1140px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+    
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span style="background: rgba(26,102,57,0.08); color: #1a6639; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;">Student Voice</span>
+      <h2 style="font-size: 2.2rem; color: #0a2e1a; margin: 12px 0 8px 0; font-weight: 800; letter-spacing: -0.5px;">Feedback & Reviews</h2>
+      <p style="color: #555555; font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.5;">Read what our current batch experiences or fill the data log to record your entry.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: start;">
+      
+      <div style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.015); box-sizing: border-box;">
+        <h3 style="color: #0a2e1a; font-size: 1.25rem; margin-top: 0; margin-bottom: 20px; font-weight: 800; display: flex; align-items: center; gap: 8px;">✍️ Leave Your Feedback</h3>
+        
+        <form id="feedback-form" method="POST" autocomplete="on">
+          <input type="hidden" name="access_key" value="99a5cd0b-9379-467c-9e07-639fe44bddca">
+          <input type="hidden" name="subject" value="New Student Feedback - pmmath.in">
+          <input type="hidden" id="hidden-rating-value" name="star_rating" value="5">
+
+          <div style="margin-bottom: 16px;">
+            <label for="fb-name" style="display: block; font-size: 0.88rem; font-weight: 700; color: #0a2e1a; margin-bottom: 6px;">Your Name</label>
+            <input type="text" id="fb-name" name="student_name" placeholder="e.g. Rahul Sharma" required autocomplete="name" style="width: 100%; padding: 11px; border: 1px solid #cccccc; border-radius: 6px; font-size: 0.92rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#1a6639'" onblur="this.style.borderColor='#cccccc'">
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label for="fb-class" style="display: block; font-size: 0.88rem; font-weight: 700; color: #0a2e1a; margin-bottom: 6px;">Class Group</label>
+            <select id="fb-class" name="class_group" required style="width: 100%; padding: 11px; border: 1px solid #cccccc; border-radius: 6px; font-size: 0.92rem; background-color: #ffffff; box-sizing: border-box; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#1a6639'" onblur="this.style.borderColor='#cccccc'">
+              <option value="">Select your class</option>
+              <option value="Class 6">Class 6</option>
+              <option value="Class 7">Class 7</option>
+              <option value="Class 8">Class 8</option>
+              <option value="Class 9">Class 9</option>
+              <option value="Class 10">Class 10</option>
+              <option value="Class 11">Class 11</option>
+              <option value="Class 12">Class 12</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #0a2e1a; margin-bottom: 4px;">Rating Matrix</label>
+            <div style="display: flex; gap: 6px; font-size: 1.8rem; cursor: pointer; color: #cccccc; user-select: none;">
+              <span class="star selected" onclick="setRating(1)" style="color: #f1c40f;">★</span>
+              <span class="star selected" onclick="setRating(2)" style="color: #f1c40f;">★</span>
+              <span class="star selected" onclick="setRating(3)" style="color: #f1c40f;">★</span>
+              <span class="star selected" onclick="setRating(4)" style="color: #f1c40f;">★</span>
+              <span class="star selected" onclick="setRating(5)" style="color: #f1c40f;">★</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label for="fb-text" style="display: block; font-size: 0.88rem; font-weight: 700; color: #0a2e1a; margin-bottom: 6px;">Your Feedback</label>
+            <textarea id="fb-text" name="message_text" placeholder="What did you find helpful? What can be improved?" required style="width: 100%; padding: 11px; border: 1px solid #cccccc; border-radius: 6px; font-size: 0.92rem; height: 100px; box-sizing: border-box; outline: none; resize: vertical; font-family: inherit; transition: border-color 0.2s;" onfocus="this.style.borderColor='#1a6639'" onblur="this.style.borderColor='#cccccc'"></textarea>
+          </div>
+
+          <div id="fb-success" style="display: none; background: #e6f4ea; border: 1px solid #1a6639; color: #0a2e1a; padding: 12px; border-radius: 6px; font-size: 0.9rem; text-align: center; margin-bottom: 15px; font-weight: 600;">
+            🎉 Thank you for your feedback! It means a lot.
+          </div>
+
+          <button type="submit" id="fb-submit-btn" style="width: 100%; background: #1a6639; color: #ffffff; border: none; padding: 12px; font-size: 0.95rem; font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#0a2e1a'" onmouseout="this.style.background='#1a6639'">Submit Feedback ✓</button>
+        </form>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <h3 style="color: #0a2e1a; font-size: 1.25rem; margin: 0; font-weight: 800; display: flex; align-items: center; gap: 8px;">💬 What Students Say</h3>
+        
+        <div style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.01);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; background: #1a6639; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">HK</div>
+              <div>
+                <div style="font-weight: 700; color: #0a2e1a; font-size: 0.95rem;">Himanshu Kumar</div>
+                <div style="font-size: 0.78rem; color: #666666;">Class 10 Student</div>
+              </div>
+            </div>
+            <div style="color: #f1c40f; font-size: 0.9rem; letter-spacing: 1px;">★★★★★</div>
+          </div>
+          <p style="margin: 0; color: #444444; font-size: 0.88rem; line-height: 1.5; font-style: italic;">"The notes are very clear and easy to understand. Chapter-wise organization makes revision much easier before exams!"</p>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.01);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; background: #b28900; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">AM</div>
+              <div>
+                <div style="font-weight: 700; color: #0a2e1a; font-size: 0.95rem;">Aditi Mishra</div>
+                <div style="font-size: 0.78rem; color: #666666;">Class 9 Student</div>
+              </div>
+            </div>
+            <div style="color: #f1c40f; font-size: 0.9rem; letter-spacing: 1px;">★★★★★</div>
+          </div>
+          <p style="margin: 0; color: #444444; font-size: 0.88rem; line-height: 1.5; font-style: italic;">"The online quiz feature is amazing! I can practice anytime and get instant results. Really helps with self-study."</p>
+        </div>
+
+        <div style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.01);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; background: #2e8b57; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">SN</div>
+              <div>
+                <div style="font-weight: 700; color: #0a2e1a; font-size: 0.95rem;">Satyam Bihari Nirala</div>
+                <div style="font-size: 0.78rem; color: #666666;">Class 8 Student</div>
+              </div>
+            </div>
+            <div style="color: #f1c40f; font-size: 0.9rem; letter-spacing: 1px;">★★★★☆</div>
+          </div>
+          <p style="margin: 0; color: #444444; font-size: 0.88rem; line-height: 1.5; font-style: italic;">"Great resources and links. The NCERT links are very useful. Would love more video lessons!"</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationEvent",
+  "name": "PM Maths Academy - Learning Matrix",
+  "description": "Comprehensive CBSE Mathematics and Science curriculum alignment portal managed by Saurav Mishra.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "3"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Himanshu Kumar" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "The notes are very clear and easy to understand. Chapter-wise organization makes revision much easier before exams!"
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Aditi Mishra" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "The online quiz feature is amazing! I can practice anytime and get instant results. Really helps with self-study."
+    }
+  ]
+}
+</script>
 <!-- =========================================================
      OPTIMIZED HIGH-SPEED CONTACT & LOCAL SEO MATRIX SECTION
      ========================================================= -->
