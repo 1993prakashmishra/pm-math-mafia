@@ -2233,31 +2233,58 @@
   </div>
 </section>
 
-<section id="quizzes" style="background-color: #fafafa; padding: 70px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;" aria-labelledby="quiz-main-heading">
+<section id="quizzes" style="background-color: #fafafa; padding: 60px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;" aria-labelledby="quiz-main-heading">
   <div class="container" style="max-width: 850px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
     
-    <div style="text-align: center; margin-bottom: 45px;">
+    <div style="text-align: center; margin-bottom: 35px;" class="no-print-layer">
       <span style="background: rgba(26,102,57,0.08); color: #1a6639; padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;">Assessment Dashboard</span>
       <h2 id="quiz-main-heading" style="font-size: 2.4rem; color: #0a2e1a; margin: 12px 0 8px 0; font-weight: 800; letter-spacing: -0.5px;">Interactive Practice Quizzes</h2>
-      <p style="color: #555555; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.5;">Test your conceptual skills down to a chapter level. Acquire your certified performance scorecard instantly upon completion.</p>
+      <p style="color: #555555; font-size: 1rem; max-width: 550px; margin: 0 auto; line-height: 1.5;">Select your specific class and chapter module to test your skills live.</p>
     </div>
 
-    <div id="studentRegistrationCard" style="background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(10,46,26,0.05); border: 1px solid rgba(26,102,57,0.12); margin-bottom: 30px; box-sizing: border-box;">
+    <div class="no-print-layer" style="background: #fffdf5; border-left: 5px solid #d4af37; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 35px; border-top: 1px solid #f1e4b3; border-right: 1px solid #f1e4b3; border-bottom: 1px solid #f1e4b3;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+        <span style="font-size: 1.3rem;">📢</span>
+        <h3 style="margin: 0; color: #0a2e1a; font-size: 1.15rem; font-weight: 700; uppercase; letter-spacing: 0.3px;">Live Examination Schedule & Announcements</h3>
+      </div>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 500px;">
+          <thead>
+            <tr style="border-bottom: 2px solid #f1e4b3; color: #1a6639; font-weight: 700;">
+              <th style="padding: 8px 4px;">Class</th>
+              <th style="padding: 8px 4px;">Subject</th>
+              <th style="padding: 8px 4px;">Target Chapter Scheduled</th>
+              <th style="padding: 8px 4px; text-align: right;">Exam Window Time</th>
+            </tr>
+          </thead>
+          <tbody style="color: #444444; font-weight: 500;">
+            <tr style="border-bottom: 1px solid #f9f5e3;">
+              <td style="padding: 10px 4px; font-weight: 700; color: #0a2e1a;">Class 10</td>
+              <td style="padding: 10px 4px;">Maths</td>
+              <td style="padding: 10px 4px;">Ch 1 & Ch 2 Live Test Track</td>
+              <td style="padding: 10px 4px; text-align: right; color: #b28900; font-weight: 700;">06:00 PM Daily</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="studentRegistrationCard" class="no-print-layer" style="background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(10,46,26,0.05); border: 1px solid rgba(26,102,57,0.12); margin-bottom: 30px; box-sizing: border-box;">
       <h3 style="margin-top: 0; margin-bottom: 20px; color: #0a2e1a; font-size: 1.3rem; font-weight: 700;">Enter Candidate Details to Begin</h3>
       <div style="margin-bottom: 20px;">
         <label for="studentNameInput" style="display: block; font-weight: 700; margin-bottom: 8px; color: #222222; font-size: 0.95rem;">Student's Full Name</label>
-        <input type="text" id="studentNameInput" placeholder="Enter your official name for the scorecard" style="width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#1a6639'" onblur="this.style.borderColor='#e2e8f0'">
+        <input type="text" id="studentNameInput" placeholder="Enter your name for the report card" style="width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; outline: none;">
       </div>
-      <button onclick="saveStudentName()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #1a6639 0%, #0a2e1a 100%); color: #ffffff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(26,102,57,0.25);">Proceed to Test Matrix ➡️</button>
+      <button onclick="saveStudentName()" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #1a6639 0%, #0a2e1a 100%); color: #ffffff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer;">Proceed to Test Matrix ➡️</button>
     </div>
 
-    <div id="quizSelectorCard" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(10,46,26,0.05); border: 1px solid rgba(26,102,57,0.12); margin-bottom: 30px; box-sizing: border-box;">
+    <div id="quizSelectorCard" class="no-print-layer" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(10,46,26,0.05); border: 1px solid rgba(26,102,57,0.12); margin-bottom: 30px; box-sizing: border-box;">
       <p style="margin-top:0; font-weight:700; color:#1a6639; font-size: 1.1rem; margin-bottom: 20px;">Welcome, <span id="welcomeStudentName" style="text-decoration: underline;"></span>! 👋</p>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 25px;">
         <div>
           <label for="quizClass" style="display: block; font-weight: 700; margin-bottom: 8px; color: #333333; font-size: 0.9rem;">1. Choose Class</label>
-          <select id="quizClass" onchange="updateSubjectsDropdown()" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; background: #ffffff; color: #222; font-weight: 600; outline: none;">
+          <select id="quizClass" onchange="updateSubjectsDropdown()" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; background: #ffffff; font-weight: 600; outline: none;">
             <option value="">-- Select Class --</option>
             <option value="6">Class 6</option>
             <option value="7">Class 7</option>
@@ -2271,25 +2298,25 @@
 
         <div>
           <label for="quizSubject" style="display: block; font-weight: 700; margin-bottom: 8px; color: #333333; font-size: 0.9rem;">2. Choose Subject</label>
-          <select id="quizSubject" onchange="updateChaptersDropdown()" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; background: #ffffff; color: #222; font-weight: 600; outline: none;">
+          <select id="quizSubject" onchange="updateChaptersDropdown()" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; background: #ffffff; font-weight: 600; outline: none;">
             <option value="">-- Choose Subject --</option>
           </select>
         </div>
 
         <div>
           <label for="quizChapter" style="display: block; font-weight: 700; margin-bottom: 8px; color: #333333; font-size: 0.9rem;">3. Choose Chapter</label>
-          <select id="quizChapter" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; background: #ffffff; color: #222; font-weight: 600; outline: none;">
+          <select id="quizChapter" style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 0.95rem; background: #ffffff; font-weight: 600; outline: none;">
             <option value="">-- Choose Chapter --</option>
           </select>
         </div>
       </div>
 
-      <button onclick="startQuizEngine()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #1a6639 0%, #0a2e1a 100%); color: #ffffff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(10,46,26,0.2); text-transform: uppercase; letter-spacing: 0.5px;">
+      <button onclick="startQuizEngine()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #1a6639 0%, #0a2e1a 100%); color: #ffffff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; text-transform: uppercase;">
         🚀 Launch Practice Test Module
       </button>
     </div>
 
-    <div id="quizPlayground" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom:30px; box-sizing: border-box;">
+    <div id="quizPlayground" class="no-print-layer" style="display: none; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eaeaea; margin-bottom:30px; box-sizing: border-box;">
       <div style="width: 100%; background: #e2e8f0; height: 6px; border-radius: 3px; margin-bottom: 25px; overflow: hidden;">
         <div id="quizProgress" style="width: 0%; background: #1a6639; height: 100%; transition: width 0.3s ease;"></div>
       </div>
@@ -2302,7 +2329,7 @@
       <div id="questionWrapper" style="font-size: 1.25rem; font-weight: 700; color: #111111; margin-bottom: 25px; line-height: 1.5;"></div>
       <div id="optionsWrapper" style="display: flex; flex-direction: column; gap: 14px;"></div>
       
-      <div id="explainBox" style="display: none; margin-top: 25px; padding: 18px; background: rgba(26,102,57,0.05); border-left: 4px solid #1a6639; border-radius: 4px; color: #0a2e1a; font-size: 0.95rem; line-height: 1.6; box-sizing: border-box;"></div>
+      <div id="explainBox" style="display: none; margin-top: 25px; padding: 18px; background: rgba(26,102,57,0.05); border-left: 4px solid #1a6639; border-radius: 4px; color: #0a2e1a; font-size: 0.95rem; line-height: 1.6;"></div>
 
       <button id="nextQuestionBtn" onclick="goToNextQuestion()" style="display: none; margin-top: 25px; width: 100%; padding: 14px; background: #1a6639; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; text-transform: uppercase;">
         Next Question ➡️
@@ -2316,26 +2343,26 @@
 
 <style>
   @media print {
-    body * {
-      visibility: hidden;
-      height: 0;
-      margin: 0 !important;
+    /* Hide layout site graphics entirely to avoid print lagging */
+    body, html, header, footer, nav, .no-print-layer, #studentRegistrationCard, #quizSelectorCard, #quizPlayground {
+      display: none !important;
+      visibility: hidden !important;
+    }
+    #quizzes {
+      background: none !important;
       padding: 0 !important;
     }
-    #quizzes, #quizFeedback, #quizFeedback * {
-      visibility: visible;
-      height: auto !important;
-    }
     #quizFeedback {
+      display: block !important;
       position: absolute;
       left: 0;
       top: 0;
       width: 100% !important;
-      border: 2px solid #1a6639 !important;
+      border: 1px solid #1a6639 !important;
       box-shadow: none !important;
-      padding: 40px !important;
+      padding: 20px !important;
     }
-    .no-print-layer {
+    .no-print-btn-group {
       display: none !important;
     }
   }
@@ -2347,24 +2374,24 @@ const quizDatabase = {
   "10-maths-ch1": {
     title: "Class 10 Maths: Ch 1 - Real Numbers",
     questions: [
-      { q: "If two positive integers a and b are written as a = x³y² and b = xy³, where x, y are prime numbers, then HCF(a, b) is:", options: ["xy", "xy²", "x³y³", "x²y²"], correct: 1, explain: "HCF is calculated by extracting the lowest common exponential powers of the common prime factors, evaluating strictly to xy²." }
+      { q: "If two positive integers a and b are written as a = x³y² and b = xy³, where x, y are prime numbers, then HCF(a, b) is:", options: ["xy", "xy²", "x³y³", "x²y²"], correct: 1, explain: "HCF is calculated by extracting the lowest common powers of shared factors, yielding xy²." }
     ]
   },
   "10-maths-ch2": {
     title: "Class 10 Maths: Ch 2 - Polynomials",
     questions: [
-      { q: "Which of the following expressions qualifies correctly as a polynomial architecture?", options: ["x² + 2x + 1/x", "x² + 3x + 2", "√x + 1", "x⁻¹ + 5"], correct: 1, explain: "A structural polynomial variable expression cannot include negative or fractional exponents within any single component parameter term." }
+      { q: "Which of the following expressions qualifies correctly as a polynomial?", options: ["x² + 2x + 1/x", "x² + 3x + 2", "√x + 1", "x⁻¹ + 5"], correct: 1, explain: "A structural polynomial variable expression cannot include negative or fractional exponents." }
     ]
   },
   "10-science-ch1": {
     title: "Class 10 Science: Ch 1 - Chemical Reactions and Equations",
     questions: [
-      { q: "What occurs dynamically when dilute Hydrochloric Acid is combined directly with iron filings?", options: ["Hydrogen gas and iron chloride are produced.", "Chlorine gas and iron hydroxide are produced.", "No displacement reaction takes place.", "Iron salt and water form smoothly."], correct: 0, explain: "Iron holds higher oxidation status properties, displacing hydrogen from dilute HCl acids to form iron(II) chloride and volatile Hydrogen gas." }
+      { q: "What occurs dynamically when dilute Hydrochloric Acid is combined directly with iron filings?", options: ["Hydrogen gas and iron chloride are produced.", "Chlorine gas and iron hydroxide are produced.", "No displacement reaction takes place.", "Iron salt and water form smoothly."], correct: 0, explain: "Iron reacts with dilute HCl to displace hydrogen, forming iron(II) chloride and volatile Hydrogen gas." }
     ]
   }
 };
 
-// PRESERVED MASTER ARCHIVE SYLLABUS DIRECTORY MAP
+// ALL PRESERVED MASTER CHAPTER MAPS RESTORED CORRECTLY
 const chaptersMap = {
   "6-maths": [
     ["6-m-1","Ch 1: Pattern in Mathematics"],["6-m-2","Ch 2: Lines and Angles"],["6-m-3","Ch 3: Number Play"],
@@ -2447,16 +2474,11 @@ const chaptersMap = {
   ]
 };
 
-let activeQuiz = null;
-let currentQuestionIdx = 0;
-let userScore = 0;
-let hasAnswered = false;
-let studentName = "";
-let examHistoryLog = [];
+let activeQuiz = null, currentQuestionIdx = 0, userScore = 0, hasAnswered = false, studentName = "", examHistoryLog = [];
 
 function saveStudentName() {
   const input = document.getElementById('studentNameInput').value.trim();
-  if(!input) return alert("Please specify candidate name to build official assessment scores!");
+  if(!input) return alert("Please specify candidate name!");
   studentName = input;
   document.getElementById('welcomeStudentName').innerText = studentName;
   document.getElementById('studentRegistrationCard').style.display = 'none';
@@ -2466,55 +2488,37 @@ function saveStudentName() {
 function updateSubjectsDropdown() {
   const cls = document.getElementById('quizClass').value;
   const subSelect = document.getElementById('quizSubject');
-  const chSelect = document.getElementById('quizChapter');
-  
   subSelect.innerHTML = '<option value="">-- Select Subject --</option>';
-  chSelect.innerHTML = '<option value="">-- Choose Chapter --</option>';
-  
   if(!cls) return;
-  
-  // Custom execution instruction logic to lock class 11 & 12 down strictly to math
-  if(cls === "11" || cls === "12") {
-    subSelect.innerHTML += '<option value="maths">Mathematics</option>';
-  } else {
-    subSelect.innerHTML += '<option value="maths">Mathematics</option>';
-    subSelect.innerHTML += '<option value="science">Science</option>';
-  }
+  subSelect.innerHTML += '<option value="maths">Mathematics</option>';
+  if(cls !== "11" && cls !== "12") subSelect.innerHTML += '<option value="science">Science</option>';
 }
 
 function updateChaptersDropdown() {
   const cls = document.getElementById('quizClass').value;
   const sub = document.getElementById('quizSubject').value;
   const chSelect = document.getElementById('quizChapter');
-  
   chSelect.innerHTML = '<option value="">-- Choose Chapter --</option>';
   if(!cls || !sub) return;
-  
   const targetKey = `${cls}-${sub}`;
   if(chaptersMap[targetKey]) {
-    chaptersMap[targetKey].forEach(ch => {
-      chSelect.innerHTML += `<option value="${ch[0]}">${ch[1]}</option>`;
-    });
+    chaptersMap[targetKey].forEach(ch => { chSelect.innerHTML += `<option value="${ch[0]}">${ch[1]}</option>`; });
   }
 }
 
 function startQuizEngine() {
   const key = document.getElementById('quizChapter').value;
-  if(!key) return alert("Please specify target chapter execution set!");
-
+  if(!key) return alert("Please specify target chapter!");
   activeQuiz = quizDatabase[key];
-  if(!activeQuiz || !activeQuiz.questions.length) {
-    return alert("Practice evaluation content sets are being compiled for this syllabus chapter module right now. To test the app, please check Class 10 -> Mathematics -> Chapter 1 or 2, or Class 10 -> Science -> Chapter 1!");
-  }
-
-  currentQuestionIdx = 0;
-  userScore = 0;
-  examHistoryLog = [];
+  if(!activeQuiz) return alert("Test items are currently being updated by the administrator for this chapter block.");
   
+  // SEO URL Address Masking Layer
+  window.history.pushState(null, null, `#quiz-${key}`);
+
+  currentQuestionIdx = 0; userScore = 0; examHistoryLog = [];
   document.getElementById('quizPlayground').style.display = 'block';
   document.getElementById('quizFeedback').style.display = 'none';
   document.getElementById('playgroundTitle').innerText = activeQuiz.title;
-  
   renderQuestion();
 }
 
@@ -2522,7 +2526,6 @@ function renderQuestion() {
   hasAnswered = false;
   document.getElementById('explainBox').style.display = 'none';
   document.getElementById('nextQuestionBtn').style.display = 'none';
-  
   const currentQ = activeQuiz.questions[currentQuestionIdx];
   const totalQ = activeQuiz.questions.length;
   
@@ -2532,29 +2535,21 @@ function renderQuestion() {
   
   const optionsDiv = document.getElementById('optionsWrapper');
   optionsDiv.innerHTML = '';
-  
   currentQ.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.innerText = opt;
-    btn.style = "width:100%; text-align:left; padding:14px; background:#ffffff; border:2px solid #e2e8f0; border-radius:8px; cursor:pointer; font-weight:600; color:#333; transition:0.2s; outline:none;";
+    btn.style = "width:100%; text-align:left; padding:14px; background:#ffffff; border:2px solid #e2e8f0; border-radius:8px; cursor:pointer; font-weight:600; color:#333; outline:none;";
     btn.onclick = () => checkAnswer(idx, btn);
     optionsDiv.appendChild(btn);
   });
 }
 
 function checkAnswer(selectedIdx, clickedBtn) {
-  if (hasAnswered) return;
-  hasAnswered = true;
-
+  if (hasAnswered) return; hasAnswered = true;
   const currentQ = activeQuiz.questions[currentQuestionIdx];
   const optionsButtons = document.getElementById('optionsWrapper').children;
   
-  examHistoryLog.push({
-    question: currentQ.q,
-    userAns: currentQ.options[selectedIdx],
-    correctAns: currentQ.options[currentQ.correct],
-    status: selectedIdx === currentQ.correct ? "CORRECT" : "WRONG"
-  });
+  examHistoryLog.push({ question: currentQ.q, userAns: currentQ.options[selectedIdx], correctAns: currentQ.options[currentQ.correct], status: selectedIdx === currentQ.correct ? "CORRECT" : "WRONG" });
 
   if (selectedIdx === currentQ.correct) {
     clickedBtn.style.background = "#e6f4ea"; clickedBtn.style.borderColor = "#1a6639"; clickedBtn.style.color = "#1a6639"; userScore++;
@@ -2562,20 +2557,14 @@ function checkAnswer(selectedIdx, clickedBtn) {
     clickedBtn.style.background = "#fce8e6"; clickedBtn.style.borderColor = "#ea4335"; clickedBtn.style.color = "#ea4335";
     optionsButtons[currentQ.correct].style.background = "#e6f4ea"; optionsButtons[currentQ.correct].style.borderColor = "#1a6639"; optionsButtons[currentQ.correct].style.color = "#1a6639";
   }
-
-  const explainBox = document.getElementById('explainBox');
-  explainBox.innerHTML = `<strong>💡 Step-by-Step Explanation:</strong> ${currentQ.explain}`;
-  explainBox.style.display = 'block';
+  document.getElementById('explainBox').innerHTML = `<strong>💡 Explanation:</strong> ${currentQ.explain}`;
+  document.getElementById('explainBox').style.display = 'block';
   document.getElementById('nextQuestionBtn').style.display = 'block';
 }
 
 function goToNextQuestion() {
   currentQuestionIdx++;
-  if (currentQuestionIdx < activeQuiz.questions.length) {
-    renderQuestion();
-  } else {
-    showFinalResults();
-  }
+  if (currentQuestionIdx < activeQuiz.questions.length) { renderQuestion(); } else { showFinalResults(); }
 }
 
 function showFinalResults() {
@@ -2586,44 +2575,29 @@ function showFinalResults() {
 
   let reviewHTML = "";
   examHistoryLog.forEach((item, idx) => {
-    reviewHTML += `
-      <div style="text-align:left; background:#fafafa; padding:15px; margin-top:12px; border-radius:8px; border-left:4px solid ${item.status==='CORRECT'?'#1a6639':'#ea4335'}; border-top:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee;">
-        <strong style="color:#0a2e1a;">Q${idx+1}: ${item.question}</strong><br>
-        <span style="font-size:0.9rem; color:#555;">Your Answer: <span style="font-weight:600; color:${item.status==='CORRECT'?'#1a6639':'#ea4335'}">${item.userAns} (${item.status})</span></span><br>
-        <span style="font-size:0.9rem; color:#1a6639; font-weight:600;">Correct Reference: ${item.correctAns}</span>
-      </div>`;
+    reviewHTML += `<div style="text-align:left; background:#fafafa; padding:12px; margin-top:10px; border-radius:6px; border-left:4px solid ${item.status==='CORRECT'?'#1a6639':'#ea4335'};"><strong>Q${idx+1}: ${item.question}</strong><br><small>Your Answer: ${item.userAns} (${item.status})</small><br><small style="color:#1a6639">Correct: ${item.correctAns}</small></div>`;
   });
 
   feedback.innerHTML = `
     <div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 10px;">
-        <img src="logo.jpeg" alt="PM Maths Academy Logo" style="height: 60px; object-fit: contain; max-width: 140px;" width="140" height="60" loading="lazy">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <img src="logo.jpeg" alt="Logo" style="height: 50px; object-fit: contain;" width="120" height="50">
         <div style="text-align: center;">
-          <h2 style="color:#0a2e1a; margin:0; font-size: 1.5rem; font-weight: 800; letter-spacing:-0.5px;">PM MATHS ACADEMY</h2>
-          <p style="color:#1a6639; font-size:0.8rem; font-weight:700; margin:2px 0 0 0; text-transform:uppercase; letter-spacing:0.5px;">Official Student Assessment Report</p>
+          <h2 style="color:#0a2e1a; margin:0; font-size:1.4rem; font-weight:800;">PM MATHS ACADEMY</h2>
+          <p style="color:#1a6639; font-size:0.75rem; font-weight:700; margin:0; text-transform:uppercase;">Student Assessment Report</p>
         </div>
-        <img src="Saurav Mishra.jpeg" alt="Founder Saurav Mishra" style="height: 65px; width: 65px; border-radius: 50%; object-fit: cover; border: 2px solid #1a6639;" width="65" height="65" loading="lazy">
+        <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="height:55px; width:55px; border-radius:50%; object-fit:cover; border:2px solid #1a6639;" width="55" height="55">
       </div>
-      
-      <hr style="border:0; border-top:2px dashed rgba(26,102,57,0.2); margin-bottom: 20px;">
-      
-      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; text-align:left; margin-bottom:25px; font-size:0.95rem; color: #222222;">
-        <div><strong>Candidate Name:</strong> <span style="color:#1a6639; font-weight:700;">${studentName}</span></div>
-        <div><strong>Evaluation Date:</strong> ${new Date().toLocaleDateString()}</div>
+      <hr style="border:0; border-top:2px dashed rgba(26,102,57,0.2); margin-bottom:15px;">
+      <p style="font-size:0.9rem; margin:5px 0;"><strong>Student Name:</strong> ${studentName} <span style="float:right;"><strong>Date:</strong> ${new Date().toLocaleDateString()}</span></p>
+      <div style="background:#e6f4ea; padding:15px; border-radius:8px; text-align:center; margin:15px 0; font-weight:700; border:1px solid #1a6639;">
+        Module: ${activeQuiz.title}<br><span style="font-size:1.2rem; color:#0a2e1a;">Score Obtained: ${userScore} / ${total} (${pct}%)</span>
       </div>
-      
-      <div style="background: linear-gradient(135deg, rgba(26,102,57,0.08) 0%, rgba(10,46,26,0.04) 100%); padding:20px; border-radius:12px; font-size:1.1rem; font-weight:700; color:#0a2e1a; margin-bottom:25px; text-align:center; line-height:1.5; border:1px solid rgba(26,102,57,0.12);">
-        Module Evaluated: <span style="color:#1a6639;">${activeQuiz.title}</span> <br>
-        <span style="font-size:1.35rem; color:#0a2e1a; font-weight:800;">Final Verified Score: ${userScore} / ${total} (${pct}%)</span>
-      </div>
-      
-      <h3 style="text-align:left; color:#0a2e1a; font-size:1.1rem; margin-bottom:12px; font-weight:700; border-bottom:1px solid #eee; padding-bottom:5px;">Detailed Answer Review Sheet:</h3>
       ${reviewHTML}
     </div>
-    
-    <div style="text-align: center; margin-top: 35px; display:flex; justify-content:center; gap:12px;" class="no-print-layer">
-      <button onclick="setTimeout(() => { window.print(); }, 250);" style="padding:12px 25px; background:#1a6639; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:700; font-size:1rem; box-shadow:0 4px 12px rgba(26,102,57,0.2);">💾 Download Scorecard PDF</button>
-      <button onclick="location.reload()" style="padding:12px 25px; background:#0a2e1a; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:700; font-size:1rem;">🔄 Return to Dashboard</button>
+    <div style="text-align:center; margin-top:25px; display:flex; justify-content:center; gap:10px;" class="no-print-btn-group">
+      <button onclick="window.print()" style="padding:12px 20px; background:#1a6639; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:700;">💾 Download Report Card PDF</button>
+      <button onclick="window.history.pushState(null,null,'#'); location.reload();" style="padding:12px 20px; background:#0a2e1a; color:white; border:none; border-radius:6px; cursor:pointer; font-weight:700;">🔄 Back to Home</button>
     </div>
   `;
   feedback.style.display = 'block';
