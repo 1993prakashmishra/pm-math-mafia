@@ -2339,32 +2339,44 @@
 
 <style>
   @media print {
-    /* Hide layout site graphics entirely to avoid print lagging */
-    body *, html * {
+    /* Hide everything by default */
+    body * {
       visibility: hidden !important;
     }
+    /* Show only the result card and its children */
     #quizFeedback, #quizFeedback * {
       visibility: visible !important;
     }
+    /* Pull the result card to the top-left and let it take the page */
     #quizFeedback {
       display: block !important;
-      position: absolute !important;
+      position: fixed !important;
       left: 0 !important;
       top: 0 !important;
+      right: 0 !important;
       width: 100% !important;
       max-width: 100% !important;
+      max-height: none !important;
+      overflow: visible !important;
       border: 1px solid #1a6639 !important;
       box-shadow: none !important;
       padding: 20px !important;
       margin: 0 !important;
     }
+    /* Hide the action buttons inside the card during print */
     .no-print-btn-group, .no-print-btn-group * {
       display: none !important;
       visibility: hidden !important;
     }
-    .container {
-      max-width: 100% !important;
-      padding: 0 !important;
+    /* Collapse all sections so they don't reserve blank page space */
+    section, nav, footer, .hero {
+      display: none !important;
+    }
+    #quizzes {
+      display: block !important;
+      position: static !important;
+      height: auto !important;
+      min-height: 0 !important;
     }
   }
 </style>
@@ -2649,7 +2661,7 @@ function showFinalResults() {
         <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="height:55px; width:55px; border-radius:50%; object-fit:cover; border:2px solid #1a6639;" width="55" height="55">
       </div>
       <hr style="border:0; border-top:2px dashed rgba(26,102,57,0.2); margin-bottom:15px;">
-      <p style="font-size:0.9rem; margin:5px 0;"><strong>Student Name:</strong> ${studentName} <span style="float:right;"><strong>Date:</strong> ${new Date().toLocaleDateString()}</span></p>
+      <p style="font-size:0.9rem; margin:5px 0;"><strong>Student Name:</strong> ${studentName} <span style="float:right;"><strong>Date:</strong> ${new Date().toLocaleDateString('en-GB')}</span></p>
       <div style="background:#e6f4ea; padding:15px; border-radius:8px; text-align:center; margin:15px 0; font-weight:700; border:1px solid #1a6639;">
         Module: ${activeQuiz.title}<br><span style="font-size:1.2rem; color:#0a2e1a;">Score Obtained: ${userScore} / ${total} (${pct}%)</span>
       </div>
