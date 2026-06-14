@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PM Math — Saurav Mishra</title>
+  <meta name="description" content="Free CBSE Maths & Science notes, video lessons, quizzes and assignments for Class 6 to 12 by Saurav Mishra. PM Maths Academy, Ara, Bihar.">
+  <meta property="og:title" content="PM Math - Free CBSE Notes, Videos & Quizzes (Class 6-12)">
+  <meta property="og:description" content="Free CBSE study material for Mathematics and Science, Class 6 to 12 — notes, videos, quizzes and assignments by Saurav Mishra.">
+  <meta property="og:type" content="website">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -3607,6 +3611,21 @@ function showFinalResults() {
 <div style="text-align: center; padding: 15px 0; background-color: #0a2e1a;">
   <img src="https://visitor-badge.laobi.icu/badge?page_id=pmmath.in" alt="PM Maths Academy Visitor Analytics Counter" style="border-radius: 4px; display: inline-block; vertical-align: middle;" loading="lazy" />
 </div>
-
+<script>
+// Lazy-load YouTube videos - click karne par hi video load hoga
+document.querySelectorAll('.video-thumb iframe').forEach(function(iframe) {
+  const src = iframe.getAttribute('src');
+  const match = src.match(/embed\/([a-zA-Z0-9_-]+)/);
+  if (!match) return;
+  const videoId = match[1];
+  const thumb = iframe.parentElement;
+  thumb.innerHTML = '<img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" style="width:100%;height:160px;object-fit:cover;display:block;" loading="lazy" alt="Video thumbnail"><div class="play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,0.5);border:2px solid rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;">▶</div>';
+  thumb.style.position = 'relative';
+  thumb.style.cursor = 'pointer';
+  thumb.addEventListener('click', function() {
+    thumb.innerHTML = '<iframe width="100%" height="160" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>';
+  });
+});
+</script>
 </body>
 </html>
