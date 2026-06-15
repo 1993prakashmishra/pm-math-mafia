@@ -2388,9 +2388,186 @@ const quizDatabase = {
 // CLASS 6 MATHEMATICS
 // ==========================
 
-"6-maths-ch1": { title: "Class 6 Maths: Ch 1 - Pattern in Mathematics", questions: [] },
-"6-maths-ch2": { title: "Class 6 Maths: Ch 2 - Lines and Angles", questions: [] },
-"6-maths-ch3": { title: "Class 6 Maths: Ch 3 - Number Play", questions: [] },
+"6-maths-ch1": {
+    "title": "Class 6 Maths: Ch 1 - Patterns in Mathematics",
+    "questions": [
+      {
+        "q": "What is fundamentally considered a major part of the study of Mathematics according to the core theme of this chapter?",
+        "options": [
+          "Only memorizing multiplication tables up to 100.",
+          "The systematic search for patterns and explanations for why they exist.",
+          "Using heavy calculating machines for fast accounting.",
+          "Strictly drawing geometric figures with a wooden ruler."
+        ],
+        "correct": 1,
+        "explain": "Mathematics is largely described as the creative search for patterns all around us in nature, art, and technology, along with finding explanations for why those patterns exist."
+      },
+      {
+        "q": "If you count the number of lines in a growing sequence of Complete Graphs, you get the sequence: 1, 3, 6, 10, 15... What unique name is given to this specific sequence?",
+        "options": [
+          "Square number sequence",
+          "Fibonacci progression sequence",
+          "Triangle number sequence",
+          "Prime number distribution sequence"
+        ],
+        "correct": 2,
+        "explain": "The sequence 1, 3, 6, 10, 15... represents numbers that can be visually arranged to form clean equilateral triangle shapes, hence they are called Triangle numbers."
+      },
+      {
+        "q": "When looking at the sequence of Stacked Squares, the total number of little squares grows as: 1, 4, 9, 16, 25... What type of number sequence does this represent?",
+        "options": [
+          "Square number sequence",
+          "Even number sequence",
+          "Cube number sequence",
+          "Fractional pattern sequence"
+        ],
+        "correct": 0,
+        "explain": "The pattern 1, 4, 9, 16, 25... is formed by multiplying an integer by itself (1*1, 2*2, 3*3, etc.), which represents a Square number sequence."
+      },
+      {
+        "q": "What interesting mathematical phenomenon happens when you build up and down rows of consecutive integers, such as adding 1 + 2 + 3 + 2 + 1?",
+        "options": [
+          "It always results in a negative value.",
+          "It always sums up to a perfect square number (like 9).",
+          "It forms an infinite fractional series.",
+          "The total sum always results in an odd prime number."
+        ],
+        "correct": 1,
+        "explain": "Adding consecutive numbers up and back down always results in a square number. For example, 1 + 2 + 1 = 4 (which is 2 squared) and 1 + 2 + 3 + 2 + 1 = 9 (which is 3 squared)."
+      },
+      {
+        "q": "In the famous Koch Snowflake sequence, what geometric operation is repeated more and more times to generate the tinier branches of the snowflake pattern?",
+        "options": [
+          "Replacing each straight line segment with a small 'speed bump' shape.",
+          "Erasing half of the diagram at every alternative turn.",
+          "Converting the entire shape into a perfect smooth circle.",
+          "Multiplying the length of the lines by zero."
+        ],
+        "correct": 0,
+        "explain": "To get from one shape to the next in a Koch Snowflake sequence, every single straight line segment is systematically replaced by a triangular 'speed bump' or wedge, creating a fractal pattern."
+      }
+    ]
+  },
+"6-maths-ch2": {
+    "title": "Class 6 Maths: Ch 2 - Lines and Angles",
+    "questions": [
+      {
+        "q": "What is the defining characteristic of a geometric 'Point' as described at the beginning of this chapter?",
+        "options": [
+          "It has a fixed length of 1 mm and no height.",
+          "It determines a precise location but has no length, breadth, or height.",
+          "It is a long straight path extending infinitely in two directions.",
+          "It is formed by folding a piece of paper exactly into four quadrants."
+        ],
+        "correct": 1,
+        "explain": "A point determines a precise location in space. Visually represented by a tiny dot, it has no dimensions (no length, breadth, or height)."
+      },
+      {
+        "q": "If you fold a piece of paper and unfold it, the crease formed between two fixed endpoints gives the fundamental concept of which geometric element?",
+        "options": [
+          "An infinite Ray",
+          "A continuous Line",
+          "A Line Segment",
+          "A Reflex Angle"
+        ],
+        "correct": 2,
+        "explain": "A crease on a paper connecting two specific endpoints represents a line segment, which has a definite length that can be measured."
+      },
+      {
+        "q": "An angle whose measure is strictly greater than 180 degrees but less than 360 degrees is classified under which category?",
+        "options": [
+          "Acute angle",
+          "Obtuse angle",
+          "Right angle",
+          "Reflex angle"
+        ],
+        "correct": 3,
+        "explain": "Angles are classified based on their degrees. An angle greater than 180 degrees but less than 360 degrees is called a reflex angle."
+      },
+      {
+        "q": "The Ashoka Chakra features exactly 24 evenly spaced spokes. What is the precise degree measure of the angle between any two spokes right next to each other?",
+        "options": [
+          "15 degrees",
+          "30 degrees",
+          "45 degrees",
+          "60 degrees"
+        ],
+        "correct": 0,
+        "explain": "A complete turn around a point is 360 degrees. Since the Ashoka Chakra is divided into 24 equal parts by the spokes, the angle between two adjacent spokes is 360 / 24 = 15 degrees."
+      },
+      {
+        "q": "What is the maximum possible 'acute angle' that can be formed between any two spokes of the Ashoka Chakra?",
+        "options": [
+          "60 degrees",
+          "75 degrees",
+          "85 degrees",
+          "90 degrees"
+        ],
+        "correct": 1,
+        "explain": "An acute angle must be strictly less than 90 degrees. Since each sector between spokes is 15 degrees, the multiples are 15, 30, 45, 60, 75, and 90. The largest multiple that remains strictly less than 90 degrees is 75 degrees."
+      }
+    ]
+  },
+"6-maths-ch3": {
+    "title": "Class 6 Maths: Ch 3 - Number Play",
+    "questions": [
+      {
+        "q": "In the park arrangement game described at the beginning of the chapter, a child says a number based on their neighbors' heights. When does a child say the number '2'?",
+        "options": [
+          "When they are the tallest child in the entire line.",
+          "When both of the children standing right next to them are taller than them.",
+          "When they have exactly two children standing in front of them.",
+          "When their height is exactly twice that of their neighbors."
+        ],
+        "correct": 1,
+        "explain": "According to the game rules, each person says the number of taller neighbors they have. A child says '2' if both children standing directly next to them are taller."
+      },
+      {
+        "q": "What is the total number of digits present in the smallest whole number that can be called a 'Lakh' in the Indian numbering system?",
+        "options": [
+          "4 digits",
+          "5 digits",
+          "6 digits",
+          "7 digits"
+        ],
+        "correct": 2,
+        "explain": "One Lakh is written numerically as 1,00,000. Counting the number of individual digits (one 1 and five zeroes) gives a total of 6 digits."
+      },
+      {
+        "q": "If you are asked to form the largest possible 5-digit number using the digits 7, 3, 9, 5, and 1 without repeating any digit, which number will you create?",
+        "options": [
+          "97,531",
+          "73,951",
+          "99,999",
+          "13,579"
+        ],
+        "correct": 0,
+        "explain": "To make the largest number without repetition, arrange the given digits in strictly descending order from left to right: 9, 7, 5, 3, and 1, which gives 97,531."
+      },
+      {
+        "q": "Which mathematical operation is being explored when students create nested pyramid blocks or grid patterns that build up to sum exactly to a target number like 250?",
+        "options": [
+          "Long division method",
+          "Number patterns and partitions of a sum",
+          "Finding the square root of a prime number",
+          "Calculating the precise area of a circle"
+        ],
+        "correct": 1,
+        "explain": "Creating structural grids of numbers (like rows of 25s or 10s) that add up to a chosen value helps students understand number play, composition, and visual partitions of a sum."
+      },
+      {
+        "q": "What is the main objective of engaging in 'Number Play' exercises as highlighted throughout this chapter?",
+        "options": [
+          "To learn how to use a mechanical calculator quickly.",
+          "To notice hidden numerical patterns and learn to use operations in new, creative ways.",
+          "To memorize fixed answers for standard examination questions.",
+          "To learn how to draw perfect geometric diagrams of circles."
+        ],
+        "correct": 1,
+        "explain": "The core objective of playing with numbers is to help children notice interesting patterns, build number sense, and apply basic math operations creatively in daily life situations."
+      }
+    ]
+  },
 "6-maths-ch4": { title: "Class 6 Maths: Ch 4 - Data Handling", questions: [] },
 "6-maths-ch5": { title: "Class 6 Maths: Ch 5 - Prime Time", questions: [] },
 "6-maths-ch6": { title: "Class 6 Maths: Ch 6 - Perimeter and Area", questions: [] },
@@ -2420,9 +2597,186 @@ const quizDatabase = {
 // CLASS 7 MATHEMATICS
 // ==========================
 
-"7-maths-ch1": { title: "Class 7 Maths: Ch 1 - Large Number Around Us", questions: [] },
-"7-maths-ch2": { title: "Class 7 Maths: Ch 2 - Arithmetic Expressions", questions: [] },
-"7-maths-ch3": { title: "Class 7 Maths: Ch 3 - A Peek Beyond The Point", questions: [] },
+"7-maths-ch1": {
+    "title": "Class 7 Maths: Ch 1 - Large Numbers Around Us",
+    "questions": [
+      {
+        "q": "According to the story of the farmer Eshwarappa at the beginning of the chapter, how many historical indigenous varieties of rice did India roughly have in the past?",
+        "options": [
+          "About one hundred varieties",
+          "About one thousand varieties",
+          "About one lakh (1,000,000) varieties",
+          "Exactly ten varieties"
+        ],
+        "correct": 2,
+        "explain": "The chapter highlights that India historically possessed about one lakh (1,00,000) diverse varieties of indigenous rice preserved naturally by farmers."
+      },
+      {
+        "q": "If Estu attempts to eat a completely different historical variety of Indian rice every single day, how many total varieties could he test in a full lifetime of 100 years?",
+        "options": [
+          "Exactly 3,650 varieties",
+          "Exactly 36,525 varieties (including leap years)",
+          "Exactly 100,000 varieties",
+          "Exactly 12,000 varieties"
+        ],
+        "correct": 1,
+        "explain": "Multiplying 365.25 days per year by 100 years gives 36,525 days. Therefore, even in a long lifetime of 100 years, one cannot taste all one lakh varieties of rice."
+      },
+      {
+        "q": "A grey-headed albatross bird completed an ocean-crossing trip of 12,000 km. If it flies at an average speed of 1,000 km per day, approximately how many days will it take to finish the journey?",
+        "options": [
+          "About 5 days",
+          "About 12 days",
+          "About 24 days",
+          "About 50 days"
+        ],
+        "correct": 1,
+        "explain": "To calculate the time taken, divide the total distance by the daily flight distance: 12,000 km / 1,000 km per day = 12 days."
+      },
+      {
+        "q": "A bar-tailed godwit bird holds a world record for flying a non-stop distance of 13,560 km from Alaska to Australia in roughly 11 days. What is the approximate distance it covers each day?",
+        "options": [
+          "About 500 km per day",
+          "About 1,233 km per day",
+          "About 2,500 km per day",
+          "About 5,000 km per day"
+        ],
+        "correct": 1,
+        "explain": "Dividing the total non-stop flight distance by the number of active travel days gives: 13,560 km / 11 days = approximately 1,232.73 km (or 1,233 km) per day."
+      },
+      {
+        "q": "If Somu's residential building has a height of exactly 40 meters, and a commercial aeroplane flies at a maximum altitude of 12,800 meters, how many times taller is the plane's flight height compared to the building?",
+        "options": [
+          "Exactly 100 times bigger",
+          "Exactly 200 times bigger",
+          "Exactly 320 times bigger",
+          "Exactly 500 times bigger"
+        ],
+        "correct": 2,
+        "explain": "By comparing the scale of large numbers through division, we find the height ratio: 12,800 meters / 40 meters = 320 times bigger."
+      }
+    ]
+  },
+"7-maths-ch2": {
+    "title": "Class 7 Maths: Ch 2 - Arithmetic Expressions",
+    "questions": [
+      {
+        "q": "What do we call a mathematical phrase like '13 + 2' or '20 - 4' that evaluates to a specific numerical value?",
+        "options": [
+          "Geometric pattern",
+          "Arithmetic expression",
+          "Statistical tally mark",
+          "Linear variable structure"
+        ],
+        "correct": 1,
+        "explain": "A mathematical phrase consisting of numbers combined with operation signs (like +, -, *, /) that evaluates to a single value is called an arithmetic expression."
+      },
+      {
+        "q": "Mallika spends 25 rupees every day for lunch at school from Monday to Friday. Which arithmetic expression correctly shows the total amount she spends in a week?",
+        "options": [
+          "25 + 5",
+          "25 - 5",
+          "5 * 25",
+          "25 / 5"
+        ],
+        "correct": 2,
+        "explain": "Since she spends 25 rupees each day for 5 school days (Monday to Friday), the total product amount is represented as 5 * 25."
+      },
+      {
+        "q": "According to the rules of operational precedence discussed in this chapter, which operations are completed first when a simple expression contains multiple types of signs without brackets?",
+        "options": [
+          "Addition and subtraction must always be done first.",
+          "Multiplication and division must be evaluated before addition and subtraction.",
+          "Operations are always done from right to left.",
+          "The smallest numbers are always processed first."
+        ],
+        "correct": 1,
+        "explain": "In an expression containing mixed operations without brackets, multiplication and division hold higher precedence and must be solved before performing addition and subtraction."
+      },
+      {
+        "q": "What is the standard convention followed to evaluate an expression when it contains operations of the exact same level of precedence, such as consecutive additions and subtractions?",
+        "options": [
+          "Evaluate from right to left.",
+          "Evaluate from left to right sequentially.",
+          "Always solve the additions first regardless of position.",
+          "Solve the operations in any random order."
+        ],
+        "correct": 1,
+        "explain": "When operations have the same priority level (like consecutive addition/subtraction or multiplication/division), we strictly follow the left-to-right rule to evaluate them sequentially."
+      },
+      {
+        "q": "Evaluate the arithmetic expression: 24 - 6 * 2 + 3. What is its correct numerical value based on the mathematical rules of operation order?",
+        "options": [
+          "39",
+          "15",
+          "36",
+          "5"
+        ],
+        "correct": 1,
+        "explain": "First, perform multiplication: 6 * 2 = 12. The expression becomes 24 - 12 + 3. Now, following the left-to-right rule, subtract first: 24 - 12 = 12. Finally, add: 12 + 3 = 15."
+      }
+    ]
+  },
+"7-maths-ch3": {
+    "title": "Class 7 Maths: Ch 3 - A Peek Beyond the Point",
+    "questions": [
+      {
+        "q": "What sub-unit of measurement is primarily introduced on a standard ruler to measure tiny differences in lengths, such as the size of different hardware screws?",
+        "options": [
+          "Kilometer (km)",
+          "Millimeter (mm)",
+          "Meter (m)",
+          "Hectometer (hm)"
+        ],
+        "correct": 1,
+        "explain": "To look beyond the main centimeter points on a ruler, each centimeter is divided into ten equal smaller parts. Each of these tiny parts represents one millimeter (1 mm)."
+      },
+      {
+        "q": "Tinku weighed 35.75 kg in the month of January and his weight changed to 34.50 kg in February. Did he gain or lose weight, and by how much?",
+        "options": [
+          "He gained 1.25 kg.",
+          "He lost 1.25 kg.",
+          "He lost 1.50 kg.",
+          "His weight remained exactly the same."
+        ],
+        "correct": 1,
+        "explain": "Subtracting February's weight from January's weight: 35.75 - 34.50 = 1.25 kg. Since his total numerical weight decreased, he lost 1.25 kg."
+      },
+      {
+        "q": "Indian Railways offers travel insurance for e-ticket passengers costing 45 paise per person. If exactly 1 lakh (100,000) people opt for this insurance in a single day, what is the total fee paid in rupees?",
+        "options": [
+          "4,500 rupees",
+          "45,000 rupees",
+          "450,000 rupees",
+          "450 rupees"
+        ],
+        "correct": 1,
+        "explain": "Total fee in paise = 100,000 * 45 = 4,500,000 paise. To convert paise to rupees, divide by 100: 4,500,000 / 100 = 45,000 rupees."
+      },
+      {
+        "q": "When tracking base units, how many total millimeters (mm) must accumulate together to successfully form exactly 1 kilometer (km)?",
+        "options": [
+          "1,000 mm",
+          "10,000 mm",
+          "100,000 mm",
+          "1,000,000 mm"
+        ],
+        "correct": 3,
+        "explain": "Since 1 meter = 1,000 mm, and 1 kilometer = 1,000 meters, we multiply the factors together: 1,000 * 1,000 = 1,000,000 (ten lakh) millimeters make up one kilometer."
+      },
+      {
+        "q": "Observe the structural decimal pattern sequence carefully: 5.5, 6.4, 6.39, 7.29, 7.28. Following the same logic, what will be the next two upcoming values?",
+        "options": [
+          "8.18 and 8.17",
+          "8.28 and 8.27",
+          "8.08 and 8.07",
+          "9.00 and 8.99"
+        ],
+        "correct": 0,
+        "explain": "The hidden pattern alternates steps: First it adds 0.9 (5.5 + 0.9 = 6.4), then it subtracts 0.01 (6.4 - 0.01 = 6.39), then adds 0.9 (6.39 + 0.9 = 7.29), then subtracts 0.01 (7.29 - 0.01 = 7.28). Continuing this, add 0.9 to 7.28 to get 8.18, and then subtract 0.01 to get 8.17."
+      }
+    ]
+  },
 "7-maths-ch4": { title: "Class 7 Maths: Ch 4 - Expressions Using Letter-Numbers", questions: [] },
 "7-maths-ch5": { title: "Class 7 Maths: Ch 5 - Parallel and Intersecting Lines", questions: [] },
 "7-maths-ch6": { title: "Class 7 Maths: Ch 6 - Number Play", questions: [] },
@@ -2457,13 +2811,249 @@ const quizDatabase = {
 // CLASS 8 MATHEMATICS
 // ==========================
 
-"8-maths-ch1": { title: "Class 8 Maths: Ch 1 - A Square and A Cube", questions: [] },
-"8-maths-ch2": { title: "Class 8 Maths: Ch 2 - Power Play", questions: [] },
-"8-maths-ch3": { title: "Class 8 Maths: Ch 3 - A Story of Numbers", questions: [] },
+"8-maths-ch1": {
+    "title": "Class 8 Maths: Ch 1 - A Square and A Cube",
+    "questions": [
+      {
+        "q": "In Queen Ratnamanjuri's 100-locker puzzle, why do only the perfect square numbered lockers (1, 4, 9, ..., 100) remain open at the very end?",
+        "options": [
+          "Because they are only toggled by prime-numbered people.",
+          "Because perfect squares have an odd number of factors, meaning they get toggled an odd number of times.",
+          "Because they are only touched by Person 1 and Person 2.",
+          "Because they represent even numbers that cannot be closed."
+        ],
+        "correct": 1,
+        "explain": "A locker remains open if it is toggled an odd number of times. The number of times a locker is toggled equals its number of factors. Since only perfect squares have an odd number of factors (as one factor multiplies by itself), only square-numbered lockers stay open."
+      },
+      {
+        "q": "If a number ends with 3 zeros at its tail, how many total zeros will its perfect square have at the end?",
+        "options": [
+          "3 zeros",
+          "5 zeros",
+          "6 zeros",
+          "9 zeros"
+        ],
+        "correct": 2,
+        "explain": "The number of zeros at the end of a perfect square is always double the number of zeros at the end of the original base number. Doubling 3 zeros gives exactly 6 zeros."
+      },
+      {
+        "q": "Using the consecutive odd numbers property, if you know that $35^2 = 1225$, how can you find the value of $36^2$ without direct multiplication?",
+        "options": [
+          "Add 36 to 1225",
+          "Add the 36th odd number (71) to 1225",
+          "Subtract 35 from 1225",
+          "Multiply 1225 by 2"
+        ],
+        "correct": 1,
+        "explain": "Every square number is the sum of consecutive odd numbers starting from 1. To move from $35^2$ to $36^2$, you must add the 36th odd number. The $n$-th odd number is given by $2n - 1$. For $n = 36$, $2(36) - 1 = 71$. Thus, $1225 + 71 = 1296$."
+      },
+      {
+        "q": "What is the historical significance of the famous 'Hardy-Ramanujan Number' (1729) introduced in the context of perfect cubes?",
+        "options": [
+          "It is the largest prime number known to ancient Indian mathematicians.",
+          "It is the only number that has the same square root and cube root.",
+          "It is the smallest number that can be expressed as the sum of two cubes in two different ways.",
+          "It represents the total number of square patterns found on ancient Babylonian clay tablets."
+        ],
+        "correct": 2,
+        "explain": "Srinivasa Ramanujan pointed out that 1729 is highly interesting because it is the smallest taxicab number—meaning it can be written as the sum of two positive cubes in two distinct ways: $1^3 + 12^3$ and $9^3 + 10^3$."
+      },
+      {
+        "q": "In ancient Indian mathematics, from at least the third century BCE, which specific Sanskrit terms were used to denote a 'square power' and a 'solid cube power' respectively?",
+        "options": [
+          "Mula and Pada",
+          "Varga and Ghana",
+          "Krti and Radix",
+          "Varga-mula and Ghana-mula"
+        ],
+        "correct": 1,
+        "explain": "In ancient Sanskrit mathematical works, the term 'Varga' was utilized for a square figure or a square power, while the term 'Ghana' was strictly used for a solid cube or a cube power."
+      }
+    ]
+  },
+"8-maths-ch2": {
+    "title": "Class 8 Maths: Ch 2 - Power Play",
+    "questions": [
+      {
+        "q": "If a thin sheet of paper with a thickness of 0.001 cm could theoretically be folded exactly 46 times, what extraordinary distance would its total accumulated thickness roughly reach?",
+        "options": [
+          "It would barely reach the height of a two-story building.",
+          "It would be thick enough to reach all the way to the Moon.",
+          "It would match the precise length of a standard running track.",
+          "It would be equal to the depth of the deepest ocean."
+        ],
+        "correct": 1,
+        "explain": "Due to exponential growth, the thickness doubles with every single fold. By the 46th fold, the continuous multiplication results in a thickness of over 700,000 km, which easily exceeds the distance from the Earth to the Moon (approx 384,400 km)."
+      },
+      {
+        "q": "What unique mathematical behavior occurs when a base number is raised to a negative exponent power, such as 2 raised to the power of -3?",
+        "options": [
+          "The entire final value automatically becomes a negative number.",
+          "It evaluates to the reciprocal of the base raised to that positive power (1 / 2^3).",
+          "The base number is multiplied directly by zero.",
+          "The expression cannot be solved and remains completely invalid."
+        ],
+        "correct": 1,
+        "explain": "A negative exponent represents a reciprocal division pattern. Therefore, 2 raised to the power of -3 is mathematically calculated as 1 divided by (2 * 2 * 2), which equals 1/8."
+      },
+      {
+        "q": "The total human population on Earth is estimated to be around 8,200,000,000 people. How is this gigantic figure correctly expressed using standard scientific notation?",
+        "options": [
+          "82 * 10^8",
+          "8.2 * 10^9",
+          "0.82 * 10^10",
+          "8.2 * 10^-9"
+        ],
+        "correct": 1,
+        "explain": "In standard scientific notation, a number is written as a coefficient between 1 and 10 multiplied by a power of 10. Moving the decimal point 9 places to the left gives 8.2 * 10^9."
+      },
+      {
+        "q": "There are about 100 million active bee colonies globally, and each colony contains roughly 50,000 bees. What is the total global honeybee population expressed in scientific notation?",
+        "options": [
+          "5.0 * 10^12 honeybees",
+          "5.0 * 10^10 honeybees",
+          "1.5 * 10^12 honeybees",
+          "50 * 10^11 honeybees"
+        ],
+        "correct": 0,
+        "explain": "First convert to powers: 100 million = 10^8, and 50,000 = 5 * 10^4. Multiplying them together: (5 * 10^4) * 10^8 = 5 * 10^(4+8) = 5.0 * 10^12 honeybees."
+      },
+      {
+        "q": "When multiplying two mathematical expressions with the exact same base number but different exponent powers, what fundamental law of exponents must be applied?",
+        "options": [
+          "Keep the base the same and multiply the two exponent values.",
+          "Keep the base the same and add the two exponent values together.",
+          "Divide the first exponent power by the second exponent power.",
+          "Square the base number and subtract the exponent powers."
+        ],
+        "correct": 1,
+        "explain": "According to the laws of exponents, when multiplying terms with identical bases, you must keep the common base intact and add their exponent powers together."
+      }
+    ]
+  },
+"8-maths-ch3": {
+    "title": "Class 8 Maths: Ch 3 - A Story of Numbers",
+    "questions": [
+      {
+        "q": "Around 4,000 years ago, which ancient civilization flourished in Western Asia (present-day Iraq) and used unique wedge-shaped clay symbols to record their numbers?",
+        "options": [
+          "The Roman Civilization",
+          "The Mesopotamian Civilization",
+          "The Mayan Civilization",
+          "The Egyptian Civilization"
+        ],
+        "correct": 1,
+        "explain": "The chapter introduces Reema exploring the historical number systems of the Mesopotamian civilization, which wrote numbers on soft clay tablets using wedge-shaped marks."
+      },
+      {
+        "q": "Why do modern humans universally use the Base-10 (decimal) number system for counting and regular mathematical operations?",
+        "options": [
+          "Because 10 is the only perfect square number under 20.",
+          "Because humans naturally evolved with 10 fingers, making it easy to count in blocks of ten.",
+          "Because the ancient calculators could only handle numbers up to 10.",
+          "Because there are exactly 10 alphabets in the primary number language."
+        ],
+        "correct": 1,
+        "explain": "Historically, humans began using the Base-10 number system primarily because we have 10 fingers on our hands, which served as the first natural tool for counting groups."
+      },
+      {
+        "q": "What is the primary role of Hindu-Arabic numerals and the symbol '0' (zero) in modern global professions like commerce, science, and computer technology?",
+        "options": [
+          "They are only used to count the number of pages in a printed book.",
+          "They form the mathematical foundation for advanced calculations, values, and digital communications.",
+          "They prevent computers from overheating during large processes.",
+          "They are used to draw complex geometric circular shapes on paper."
+        ],
+        "correct": 1,
+        "explain": "The invention of Hindu numerals and the conceptual zero revolutionized mathematics, enabling efficient arithmetic algorithms, trade accounting, and the binary foundations of modern technology."
+      },
+      {
+        "q": "If an imaginary alien civilization had only 8 fingers instead of 10, which number system would they most likely develop to write and organize their mathematics?",
+        "options": [
+          "A Base-5 number system",
+          "A Base-8 (octal) number system",
+          "A Base-2 (binary) number system",
+          "A Base-60 (sexagesimal) number system"
+        ],
+        "correct": 1,
+        "explain": "The base of a natural number system depends on counting tools. If creatures had only 8 fingers, they would count in cycles of eight, creating a Base-8 system where numbers are expressed using powers of 8."
+      },
+      {
+        "q": "In a positional notation system like our modern number system, what determines the actual total value of a single digit inside a large number?",
+        "options": [
+          "Only the physical size of the handwritten digit.",
+          "Both its face value and its specific place value position within the number.",
+          "The total number of odd factors it holds.",
+          "The time of day the number is being calculated."
+        ],
+        "correct": 1,
+        "explain": "In a place-value system, the value of a digit changes depending on where it sits (e.g., units, tens, hundreds). Its value is a combination of its absolute digit value and its structural position."
+      }
+    ]
+  },
 "8-maths-ch4": { title: "Class 8 Maths: Ch 4 - Quadrilaterals", questions: [] },
 "8-maths-ch5": { title: "Class 8 Maths: Ch 5 - Number Play", questions: [] },
 "8-maths-ch6": { title: "Class 8 Maths: Ch 6 - We Distribute, Yet Things Multiply", questions: [] },
-"8-maths-ch7": { title: "Class 8 Maths: Ch 7 - Proportional Reasoning-1", questions: [] },
+"8-maths-ch7": {
+    "title": "Class 8 Maths: Ch 7 - Proportional Reasoning-1",
+    "questions": [
+      {
+        "q": "What is the primary condition for two ratios, such as width and height of different digital images, to be called proportional to each other?",
+        "options": [
+          "The difference between the width and height must be identical in both images.",
+          "The terms of the ratios must change by the exact same multiplying factor.",
+          "Both images must have identical numerical values for their widths.",
+          "The sum of the width and height must equal 100 in both cases."
+        ],
+        "correct": 1,
+        "explain": "Two ratios are in proportion if their terms change by the same multiplying or dividing factor, meaning they reduce to the exact same simplest form."
+      },
+      {
+        "q": "If Kesang uses 10 spoons of sugar to make 6 glasses of lemonade, how many spoons of sugar should she add to make 18 more glasses of lemonade with the same sweetness?",
+        "options": [
+          "20 spoons",
+          "28 spoons",
+          "30 spoons",
+          "18 spoons"
+        ],
+        "correct": 2,
+        "explain": "The ratio is 6 glasses : 10 spoons. To make 18 glasses, the number of glasses increased by a factor of 3 (18 / 6 = 3). Thus, sugar must also increase by a factor of 3: 10 * 3 = 30 spoons."
+      },
+      {
+        "q": "In ancient Indian mathematics, Aryabhata used a method called 'Trairasika' (The Rule of Three) to find a fourth unknown quantity. What algebraic process is modernly used to solve this?",
+        "options": [
+          "Successive subtraction of numbers",
+          "Cross-multiplication where the product of extremes equals the product of means (ad = bc)",
+          "Squaring both ratios on both sides",
+          "Taking the Highest Common Factor of all four terms"
+        ],
+        "correct": 1,
+        "explain": "For a proportion a:b :: c:d, Aryabhata's rule converts to modern cross-multiplication where a * d = b * c, allowing us to compute the unknown term directly."
+      },
+      {
+        "q": "A profit of 4,000 rupees is to be shared between Prashanti and Bhuvan in the ratio of their investments, which is 3:1. What will be Prashanti's total share of the profit?",
+        "options": [
+          "1,000 rupees",
+          "2,000 rupees",
+          "3,000 rupees",
+          "3,500 rupees"
+        ],
+        "correct": 2,
+        "explain": "Total parts = 3 + 1 = 4. The value of one part is 4,000 / 4 = 1,000 rupees. Prashanti's share is 3 parts, which equals 3 * 1,000 = 3,000 rupees."
+      },
+      {
+        "q": "If a water tap takes 15 seconds to fill a small mug of 500 mL capacity, how much total time will the same tap take to fill a bucket with a 10-litre capacity?",
+        "options": [
+          "150 seconds",
+          "300 seconds (5 minutes)",
+          "450 seconds",
+          "600 seconds (10 minutes)"
+        ],
+        "correct": 1,
+        "explain": "First convert units: 10 litres = 10,000 mL. The capacity increases from 500 mL to 10,000 mL, which is a factor of 20 (10,000 / 500 = 20). Multiplying the time by the same factor: 15 seconds * 20 = 300 seconds (or 5 minutes)."
+      }
+    ]
+  },
 "8-maths-ch8": { title: "Class 8 Maths: Ch 8 - Fractions in Disguise", questions: [] },
 "8-maths-ch9": { title: "Class 8 Maths: Ch 9 - The Baudhayana-Pythagoras Theorem", questions: [] },
 "8-maths-ch10": { title: "Class 8 Maths: Ch 10 - Proportional Reasoning-2", questions: [] },
@@ -2494,9 +3084,186 @@ const quizDatabase = {
 // CLASS 9 MATHEMATICS
 // ==========================
 
-"9-maths-ch1": { title: "Class 9 Maths: Ch 1 - Orienting Yourself: Coordinates", questions: [] },
-"9-maths-ch2": { title: "Class 9 Maths: Ch 2 - Introduction To Linear Polynomials", questions: [] },
-"9-maths-ch3": { title: "Class 9 Maths: Ch 3 - The World of Numbers", questions: [] },
+"9-maths-ch1": {
+    "title": "Class 9 Maths: Ch 1 - Orienting Yourself: The Use of Coordinates",
+    "questions": [
+      {
+        "q": "Which historical Indian city was designated in ancient astronomical texts as the prime meridian (0 degree longitude) from which all other global locations and times were measured?",
+        "options": [
+          "Pataliputra",
+          "Ujjayini",
+          "Varanasi",
+          "Takshashila"
+        ],
+        "correct": 1,
+        "explain": "The chapter highlights that Ujjayini was described in the ancient world (at least as early as the 4th century BCE) as the central longitude meridian marking the reference point for geographic coordinates."
+      },
+      {
+        "q": "What specific terms are used to denote the horizontal axis and the vertical axis respectively in a standard Cartesian coordinate system?",
+        "options": [
+          "The Origin and the Quadrant",
+          "The x-axis and the y-axis",
+          "The Latitude and the Altitude",
+          "The Abscissa and the Ordinate values"
+        ],
+        "correct": 1,
+        "explain": "In a coordinate plane (or xy-plane), the flat grid line that runs horizontally is called the x-axis, and the straight line running vertically is called the y-axis."
+      },
+      {
+        "q": "The intersection of the horizontal x-axis and vertical y-axis divides the Cartesian plane into four equal quadrants. What is the correct sign convention for the Third Quadrant?",
+        "options": [
+          "Both coordinates are positive (+, +)",
+          "X is negative and Y is positive (-, +)",
+          "Both coordinates are negative (-, -)",
+          "X is positive and Y is negative (+, -)"
+        ],
+        "correct": 2,
+        "explain": "In the third quadrant (bottom-left region), points lie to the left of the vertical axis and below the horizontal axis, making both the x-coordinate and y-coordinate negative (-, -)."
+      },
+      {
+        "q": "If a point is located at a perpendicular distance of 5 units from the y-axis and 0 units from the x-axis, where exactly does this point lie on the plane?",
+        "options": [
+          "Directly on the horizontal x-axis",
+          "Directly on the vertical y-axis",
+          "Inside the Second Quadrant",
+          "Exactly at the center Origin (0, 0)"
+        ],
+        "correct": 0,
+        "explain": "The distance of a point from the y-axis is its x-coordinate (5), and its distance from the x-axis is its y-coordinate (0). Any point with a coordinates form of (x, 0) lies directly on the x-axis."
+      },
+      {
+        "q": "What are the precise mathematical coordinates of the Origin, where the two main reference lines cross each other?",
+        "options": [
+          "Coordinates are (1, 1)",
+          "Coordinates are (0, 1)",
+          "Coordinates are (1, 0)",
+          "Coordinates are (0, 0)"
+        ],
+        "correct": 3,
+        "explain": "The point of intersection where the x-axis and y-axis meet is called the origin. Because it serves as the absolute starting reference point of the grid, its coordinates are always (0, 0)."
+      }
+    ]
+  },
+"9-maths-ch2": {
+    "title": "Class 9 Maths: Ch 2 - Introduction to Linear Polynomials",
+    "questions": [
+      {
+        "q": "In an algebraic expression such as 4x + 5y + 3, what are the letter-numbers 'x' and 'y' formally called, and what does the number '3' represent?",
+        "options": [
+          "They are called constants, and 3 is a coefficient.",
+          "They are called variables, and 3 is a constant.",
+          "They are called univariate terms, and 3 is a slope.",
+          "They are called linear powers, and 3 is an intercept."
+        ],
+        "correct": 1,
+        "explain": "The letter-numbers whose values can vary are called variables (like x and y). A term that contains no variables and has a fixed numerical value is called a constant (like 3)."
+      },
+      {
+        "q": "What determines the 'Degree' of a univariate polynomial expression such as 3y^3 - 4y^2 + 5?",
+        "options": [
+          "The total number of terms present in the expression.",
+          "The value of the highest numerical coefficient.",
+          "The highest power of the variable present in the polynomial.",
+          "The value of the constant term at the end."
+        ],
+        "correct": 2,
+        "explain": "The highest exponent power of the variable in a univariate polynomial (a polynomial with a single variable) is defined as its degree. In this expression, the highest power is 3, so its degree is 3."
+      },
+      {
+        "q": "A polynomial whose highest power of the variable is exactly one (Degree = 1) is classified under which name?",
+        "options": [
+          "Quadratic polynomial",
+          "Linear polynomial",
+          "Cubic polynomial",
+          "Constant polynomial"
+        ],
+        "correct": 1,
+        "explain": "A polynomial of degree one is known as a linear polynomial. Examples include expressions like 2x + 3 or 5 - 4y, where the variable power is implicitly 1."
+      },
+      {
+        "q": "What specific term describes a pattern or sequence where a physical quantity decreases by a fixed, constant amount over equal intervals of time?",
+        "options": [
+          "Linear growth",
+          "Linear decay",
+          "Exponential expansion",
+          "Univariate multiplication"
+        ],
+        "correct": 1,
+        "explain": "While linear growth refers to a pattern where a quantity increases by a fixed amount over equal intervals, linear decay describes a pattern where a quantity decreases by a fixed amount over equal intervals."
+      },
+      {
+        "q": "When a linear relationship between two variables is plotted on a graph as a straight line y = ax + b, what do the constants 'a' and 'b' signify?",
+        "options": [
+          " 'a' is the area of the graph, and 'b' is the perimeter.",
+          " 'a' is the slope of the line, and 'b' is the y-intercept.",
+          " 'a' is the degree of the line, and 'b' is the variable.",
+          " 'a' is the x-intercept, and 'b' is the slope of the line."
+        ],
+        "correct": 1,
+        "explain": "In the standard straight-line equation y = ax + b, the constant 'a' represents the slope (steepness) of the line, and 'b' is the y-intercept, which is the exact distance from the origin where the line cuts across the vertical y-axis."
+      }
+    ]
+  },
+"9-maths-ch3": {
+    "title": "Class 9 Maths: Ch 3 - The World of Numbers",
+    "questions": [
+      {
+        "q": "In ancient times along the banks of rivers like the Saraswati, how did early herders track if any livestock went missing without using written symbols or spoken number words?",
+        "options": [
+          "By measuring the total shadow length of the herd at sunset.",
+          "Through a matching process called one-to-one correspondence using pebbles in a clay pot.",
+          "By drawing complex geometric star networks on tree bark.",
+          "By calculating the average weight of the entire herd together."
+        ],
+        "correct": 1,
+        "explain": "Before written numbers existed, herders used one-to-one correspondence. For each animal that left, a pebble was put in a pot, and for each one that returned, a pebble was removed. An empty pot meant the entire herd was safe."
+      },
+      {
+        "q": "What unique characteristic distinguishes Irrational Numbers (such as the square root of 2 or Pi) from regular Rational Numbers?",
+        "options": [
+          "They cannot be written as a simple fraction of two integers, and their decimal expansions are non-repeating and infinite.",
+          "They always evaluate to a negative whole number on the grid.",
+          "They only exist as whole numbers on ancient African tally bones.",
+          "They terminate perfectly after exactly two decimal places."
+        ],
+        "correct": 0,
+        "explain": "Irrational numbers cannot be expressed as a ratio of two integers (fractions). Their decimal representations do not terminate and do not form a repeating sequence, filling the gaps left on the number line by rational numbers."
+      },
+      {
+        "q": "What does the mathematical 'Density Property' tell us about the distribution of rational numbers on a standard number line?",
+        "options": [
+          "Rational numbers can only exist at fixed intervals of exactly 1 unit.",
+          "An infinite number of rational numbers always exists between any two distinct rational numbers.",
+          "The density decreases to absolute zero as numbers grow past 1,000.",
+          "Rational numbers automatically turn into imaginary integers at high values."
+        ],
+        "correct": 1,
+        "explain": "The density property of numbers states that between any two rational numbers, no matter how close they are, you can always find infinitely many other rational numbers."
+      },
+      {
+        "q": "What is the collective name given to the complete, unbroken continuous line formed by the total union of all rational and irrational numbers together?",
+        "options": [
+          "The Natural number matrix",
+          "The Real Number Line (R)",
+          "The Cartesian quadrant system",
+          "The Cyclic decimal progression"
+        ],
+        "correct": 1,
+        "explain": "The combination of all rational numbers and all irrational numbers forms the set of Real Numbers. Together, they map perfectly onto a continuous line where every physical measurement matches a point."
+      },
+      {
+        "q": "What interesting property is hidden within the decimal expansion of the rational number 1/7, which creates a repeating block of digits (142857) known as a Cyclic Number?",
+        "options": [
+          "Multiplying the block by any integer from 1 to 6 shifts or cycles the exact same digits in order without introducing new numbers.",
+          "The digits always add up to zero when multiplied by any prime number.",
+          "The pattern changes completely into an imaginary number if it is squared.",
+          "It represents the exact number of days it takes for a rocket to reach Mars."
+        ],
+        "correct": 0,
+        "explain": "The fraction 1/7 produces the repeating decimal block 142857. This is a cyclic number because when you multiply 142857 by 2, 3, 4, 5, or 6, the resulting numbers contain the exact same digits shifted in a circular sequence (e.g., 142857 * 2 = 285714)."
+      }
+    ]
+  },
 "9-maths-ch4": { title: "Class 9 Maths: Ch 4 - Exploring Algebraic Identities", questions: [] },
 "9-maths-ch5": { title: "Class 9 Maths: Ch 5 - I'm Up and Down, and Round", questions: [] },
 "9-maths-ch6": { title: "Class 9 Maths: Ch 6 - Measuring Spaces: Perimeter & Area", questions: [] },
@@ -2592,71 +3359,66 @@ const quizDatabase = {
   }
 ]
   },
-  "10-maths-ch2": {
-    title: "Class 10 Maths: Ch 2 - Polynomials",
-    questions: [
-{
-"q": "If one zero of the quadratic polynomial $x^2 + 3x + k$ is 2, then the value of k is:",
-"options": ["10", "-10", "-7", "-2"],
-"correct": 1,
-"explain": "Since 2 is a zero, substituting $x = 2$ into the polynomial must give 0. Thus, $(2)^2 + 3(2) + k = 0 \implies 4 + 6 + k = 0 \implies 10 + k = 0 \implies k = -10$."
-},
-{
-"q": "A quadratic polynomial whose zeroes are $-3$ and $4$ is given by:",
-"options": ["x² - x + 12", "x² + x + 12", "x²/2 - x/2 - 6", "2x² + 2x - 24"],
-"correct": 2,
-"explain": "Sum of zeroes $(\alpha + \beta) = -3 + 4 = 1$. Product of zeroes $(\alpha\beta) = -3 \times 4 = -12$. The general form is $k(x^2 - (\alpha+\beta)x + \alpha\beta) = k(x^2 - x - 12)$. Taking $k = 1/2$, we get $x^2/2 - x/2 - 6$."
-},
-{
-"q": "If the zeroes of the quadratic polynomial $x^2 + (a + 1)x + b$ are 2 and $-3$, then the values of a and b are:",
-"options": ["a = -7, b = -1", "a = 5, b = -1", "a = 2, b = -6", "a = 0, b = -6"],
-"correct": 3,
-"explain": "Sum of zeroes: $2 + (-3) = -(a + 1) \implies -1 = -a - 1 \implies a = 0$. Product of zeroes: $2 \times (-3) = b \implies b = -6$."
-},
-{
-"q": "The total number of polynomials having zeroes as $-2$ and $5$ is:",
-"options": ["Exactly 1", "Exactly 2", "Exactly 3", "More than 3"],
-"correct": 3,
-"explain": "A polynomial with given zeroes can be expressed as $k(x + 2)(x - 5)$ where $k$ is any non-zero real constant. Since $k$ can take infinite values, there are infinitely many (more than 3) polynomials."
-},
-{
-"q": "Given a cubic polynomial $p(x) = ax^3 + bx^2 + cx + d$, the product of its zeroes is equal to:",
-"options": ["-b/a", "c/a", "-d/a", "b/a"],
-"correct": 2,
-"explain": "For a standard cubic polynomial, the product of the zeroes $(\alpha\beta\gamma)$ is given by the formula $-\text{(constant term)} / \text{(coefficient of } x^3) = -d/a$."
-},
-{
-"q": "If the zeroes of the quadratic polynomial $ax^2 + bx + c$ (where $c \neq 0$) are equal, then:",
-"options": ["c and a have opposite signs", "c and b have opposite signs", "c and a have the same sign", "c and b have the same sign"],
-"correct": 2,
-"explain": "For equal zeroes, the discriminant $D = b^2 - 4ac$ must be 0, so $b^2 = 4ac$. Since $b^2$ is always positive for non-zero real numbers, the product $4ac$ must be positive. This implies $a$ and $c$ must have the same sign."
-},
-{
-"q": "If one of the zeroes of the cubic polynomial $x^3 + ax^2 + bx + c$ is $-1$, then the product of the other two zeroes is:",
-"options": ["b - a + 1", "b - a - 1", "a - b + 1", "a - b - 1"],
-"correct": 0,
-"explain": "Since $-1$ is a zero, $(-1)^3 + a(-1)^2 + b(-1) + c = 0 \implies -1 + a - b + c = 0 \implies c = 1 - a + b$. The product of all three zeroes is $-c$. Given one zero is $-1$, $(-1) \times \text{product of other two} = -c \implies \text{product of other two} = c = b - a + 1$."
-},
-{
-"q": "If the graph of a quadratic polynomial $y = ax^2 + bx + c$ opens downwards like an inverted bowl, then the coefficient 'a' must be:",
-"options": ["Positive (a > 0)", "Negative (a < 0)", "Zero (a = 0)", "Any real number"],
-"correct": 1,
-"explain": "The direction of a parabola is determined entirely by the coefficient of $x^2$. If $a > 0$, the parabola opens upwards. If $a < 0$, the parabola opens downwards."
-},
-{
-"q": "If one zero of the quadratic polynomial $3x^2 + 8x + k$ is the reciprocal of the other, then the value of k is:",
-"options": ["3", "-3", "1/3", "8"],
-"correct": 0,
-"explain": "Let the zeroes be $\alpha$ and $1/\alpha$. The product of zeroes is $\alpha \times (1/\alpha) = 1$. From the coefficients, product of zeroes = $c/a = k/3$. Therefore, $k/3 = 1 \implies k = 3$."
-},
-{
-"q": "The graph of a polynomial $y = p(x)$ cuts the x-axis at 3 distinct points and touches it at 2 other distinct points. The total number of zeroes of $p(x)$ is:",
-"options": ["3", "2", "5", "1"],
-"correct": 2,
-"explain": "The number of zeroes of a polynomial is equal to the total number of points where its graph either intersects (cuts) or touches the x-axis. Total points = $3 + 2 = 5$ zeroes."
-}
-]
-  }, 
+ "10-maths-ch2": {
+    "title": "Class 10 Maths: Ch 2 - Polynomials",
+    "questions": [
+      {
+        "q": "If the graph of a polynomial y = p(x) intersects the x-axis at exactly three distinct points, how many zeroes does the polynomial have?",
+        "options": [
+          "Exactly 1 zero",
+          "Exactly 2 zeroes",
+          "Exactly 3 zeroes",
+          "Infinitely many zeroes"
+        ],
+        "correct": 2,
+        "explain": "The number of zeroes of a polynomial y = p(x) is equal to the total number of points where its graph cuts or touches the x-axis. Here, it intersects 3 times, so it has 3 zeroes."
+      },
+      {
+        "q": "What is the graphical shape of a quadratic polynomial expression of the form ax^2 + bx + c (where 'a' is not equal to 0)?",
+        "options": [
+          "A straight line",
+          "A perfect circle",
+          "A parabola opening upward or downward",
+          "A classic hyperbola loop"
+        ],
+        "correct": 2,
+        "explain": "The graph of any quadratic polynomial is always a U-shaped curve called a parabola. It opens upwards if a > 0 and downwards if a < 0."
+      },
+      {
+        "q": "If alpha and beta are the two zeroes of the quadratic polynomial p(x) = kx^2 + 4x + 4, and if (alpha^2 + beta^2) is not needed but their sum (alpha + beta) is required, what is its value?",
+        "options": [
+          "4 / k",
+          "-4 / k",
+          "k / 4",
+          "-k / 4"
+        ],
+        "correct": 1,
+        "explain": "According to the relation between zeroes and coefficients, the sum of zeroes (alpha + beta) is equal to -b/a. In this equation, b = 4 and a = k, which gives -4/k."
+      },
+      {
+        "q": "A quadratic polynomial has zeroes -3 and 4. Which of the following equations correctly represents this polynomial?",
+        "options": [
+          "x^2 - x - 12",
+          "x^2 + x - 12",
+          "x^2 - x + 12",
+          "x^2 + 2x + 12"
+        ],
+        "correct": 0,
+        "explain": "Sum of zeroes = -3 + 4 = 1. Product of zeroes = -3 * 4 = -12. The standard formula is x^2 - (Sum of zeroes)*x + (Product of zeroes). Substituting the values gives x^2 - (1)x + (-12) = x^2 - x - 12."
+      },
+      {
+        "q": "If one zero of the quadratic polynomial x^2 + 3x + k is 2, what is the calculated value of the constant 'k'?",
+        "options": [
+          "k = 10",
+          "k = -10",
+          "k = 5",
+          "k = -5"
+        ],
+        "correct": 1,
+        "explain": "Since 2 is a zero of the polynomial, substituting x = 2 will make the expression equal to 0. So, (2)^2 + 3(2) + k = 0 implies 4 + 6 + k = 0, which means 10 + k = 0, so k = -10."
+      }
+    ]
+  },
 "10-maths-ch3": {
     "title": "Class 10 Maths: Ch 3 - Pair of Linear Equations in Two Variables",
     "questions": [
@@ -2971,7 +3733,66 @@ const quizDatabase = {
       }
     ]
   },
-"10-science-ch3": { title: "Class 10 Science: Ch 3 - Metals and Non-metals", questions: [] },
+"10-science-ch3": {
+    "title": "Class 10 Science: Ch 3 - Metals and Non-metals",
+    "questions": [
+      {
+        "q": "Which of the following pairs of metal oxides are classified as amphoteric oxides because they react with both acids and bases?",
+        "options": [
+          "CuO and Fe2O3",
+          "Al2O3 and ZnO",
+          "Na2O and K2O",
+          "MgO and CaO"
+        ],
+        "correct": 1,
+        "explain": "Amphoteric oxides are metal oxides that show both acidic and basic behavior. Aluminum oxide (Al2O3) and Zinc oxide (ZnO) react with both acids and bases to produce salt and water."
+      },
+      {
+        "q": "When a metal 'X' is treated with cold water, it reacts violently and the evolved gas catches fire immediately. Identify metal 'X'.",
+        "options": [
+          "Copper (Cu)",
+          "Iron (Fe)",
+          "Sodium (Na)",
+          "Magnesium (Mg)"
+        ],
+        "correct": 2,
+        "explain": "Sodium and Potassium react highly exothermically with cold water. The reaction is so violent that the hydrogen gas evolved catches fire instantly."
+      },
+      {
+        "q": "Which of the following properties is NOT generally shown by ionic compounds like Sodium Chloride (NaCl)?",
+        "options": [
+          "High melting and boiling points.",
+          "Solubility in organic solvents like kerosene and petrol.",
+          "Conduction of electricity in the molten or aqueous state.",
+          "Solid and brittle physical nature."
+        ],
+        "correct": 1,
+        "explain": "Ionic compounds are soluble in water (polar solvents) but are completely insoluble in organic solvents like kerosene, petrol, or ether."
+      },
+      {
+        "q": "What unique composition makes up 'Aqua Regia', a highly corrosive fuming liquid capable of dissolving even gold and platinum?",
+        "options": [
+          "Concentrated HCl and concentrated HNO3 in a 3:1 ratio by volume.",
+          "Concentrated HCl and concentrated H2SO4 in a 1:3 ratio by volume.",
+          "Concentrated HNO3 and concentrated H2SO4 in a 3:1 ratio by volume.",
+          "Dilute HCl and dilute HNO3 in a 3:1 ratio by volume."
+        ],
+        "correct": 0,
+        "explain": "Aqua Regia (royal water) is a freshly prepared mixture of concentrated Hydrochloric acid (HCl) and concentrated Nitric acid (HNO3) in a strict 3:1 ratio."
+      },
+      {
+        "q": "During the extraction of metals, carbonate ores are converted into metal oxides by heating strongly in the limited supply of air. What is this chemical process called?",
+        "options": [
+          "Roasting",
+          "Calcination",
+          "Smelting",
+          "Electrolytic Refining"
+        ],
+        "correct": 1,
+        "explain": "Calcination is the process of heating carbonate ores strongly in the absence or limited supply of air to convert them into metal oxides. (Roasting is used for sulfide ores in excess air)."
+      }
+    ]
+  },
 "10-science-ch4": { title: "Class 10 Science: Ch 4 - Carbon and its Compounds", questions: [] },
 "10-science-ch5": { title: "Class 10 Science: Ch 5 - Life Processes", questions: [] },
 "10-science-ch6": { title: "Class 10 Science: Ch 6 - Control and Coordination", questions: [] },
