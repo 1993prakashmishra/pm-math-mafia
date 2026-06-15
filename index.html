@@ -2453,114 +2453,64 @@ const quizDatabase = {
     title: "Class 10 Maths: Ch 2 - Polynomials",
     questions: [
 {
-"question": "If one zero of the quadratic polynomial $x^2 + 3x + k$ is 2, then what is the value of k?",
-"options": [
-"10",
-"-10",
-"-7",
-"-2"
-],
-"answer": "-10",
-"explanation": "Since 2 is a zero of the polynomial, substituting $x = 2$ must make the polynomial equal to 0. Thus, $(2)^2 + 3(2) + k = 0 \implies 4 + 6 + k = 0 \implies 10 + k = 0 \implies k = -10$."
+"q": "If one zero of the quadratic polynomial $x^2 + 3x + k$ is 2, then the value of k is:",
+"options": ["10", "-10", "-7", "-2"],
+"correct": 1,
+"explain": "Since 2 is a zero, substituting $x = 2$ into the polynomial must give 0. Thus, $(2)^2 + 3(2) + k = 0 \implies 4 + 6 + k = 0 \implies 10 + k = 0 \implies k = -10$."
 },
 {
-"question": "A quadratic polynomial, whose zeroes are -3 and 4, is given by which of the following expressions?",
-"options": [
-"x^2 - x + 12",
-"x^2 + x + 12",
-"x^2/2 - x/2 - 6",
-"2x^2 + 2x - 24"
-],
-"answer": "x^2/2 - x/2 - 6",
-"explanation": "Let $\alpha = -3$ and $\beta = 4$. The sum of zeroes is $\alpha + \beta = 1$ and the product of zeroes is $\alpha \cdot \beta = -12$. The standard polynomial form is $k(x^2 - (\text{sum})x + \text{product}) = k(x^2 - x - 12)$. Taking $k = 1/2$, it reduces to $x^2/2 - x/2 - 6$."
+"q": "A quadratic polynomial whose zeroes are $-3$ and $4$ is given by:",
+"options": ["x² - x + 12", "x² + x + 12", "x²/2 - x/2 - 6", "2x² + 2x - 24"],
+"correct": 2,
+"explain": "Sum of zeroes $(\alpha + \beta) = -3 + 4 = 1$. Product of zeroes $(\alpha\beta) = -3 \times 4 = -12$. The general form is $k(x^2 - (\alpha+\beta)x + \alpha\beta) = k(x^2 - x - 12)$. Taking $k = 1/2$, we get $x^2/2 - x/2 - 6$."
 },
 {
-"question": "If the zeroes of the quadratic polynomial $x^2 + (a + 1)x + b$ are 2 and -3, then what are the values of a and b?",
-"options": [
-"a = -7, b = -1",
-"a = 5, b = -1",
-"a = 2, b = -6",
-"a = 0, b = -6"
-],
-"answer": "a = 0, b = -6",
-"explanation": "Sum of zeroes: $2 + (-3) = -(a + 1) \implies -1 = -a - 1 \implies a = 0$. Product of zeroes: $2 \cdot (-3) = b \implies b = -6$. Therefore, $a = 0$ and $b = -6$."
+"q": "If the zeroes of the quadratic polynomial $x^2 + (a + 1)x + b$ are 2 and $-3$, then the values of a and b are:",
+"options": ["a = -7, b = -1", "a = 5, b = -1", "a = 2, b = -6", "a = 0, b = -6"],
+"correct": 3,
+"explain": "Sum of zeroes: $2 + (-3) = -(a + 1) \implies -1 = -a - 1 \implies a = 0$. Product of zeroes: $2 \times (-3) = b \implies b = -6$."
 },
 {
-"question": "What is the total number of polynomials having zeroes as -2 and 5?",
-"options": [
-"Exactly 1",
-"Exactly 2",
-"Exactly 3",
-"More than 3"
-],
-"answer": "More than 3",
-"explanation": "A polynomial with given zeroes $\alpha$ and \beta is represented as $k(x - \alpha)(x - \beta)$, where $k$ can be any real number except 0. Since there are infinitely many distinct real values for $k$, there are infinitely many (more than 3) polynomials."
+"q": "The total number of polynomials having zeroes as $-2$ and $5$ is:",
+"options": ["Exactly 1", "Exactly 2", "Exactly 3", "More than 3"],
+"correct": 3,
+"explain": "A polynomial with given zeroes can be expressed as $k(x + 2)(x - 5)$ where $k$ is any non-zero real constant. Since $k$ can take infinite values, there are infinitely many (more than 3) polynomials."
 },
 {
-"question": "Given a cubic polynomial $p(x) = ax^3 + bx^2 + cx + d$, what is the product of its zeroes?",
-"options": [
-"-b/a",
-"c/a",
-"-d/a",
-"b/a"
-],
-"answer": "-d/a",
-"explanation": "For any standard cubic polynomial with zeroes $\alpha, \beta, \gamma$, the relationship between the product of its zeroes and its coefficients dictates that $\alpha \cdot \beta \cdot \gamma = -(\text{constant term}) / (\text{coefficient of } x^3) = -d/a$."
+"q": "Given a cubic polynomial $p(x) = ax^3 + bx^2 + cx + d$, the product of its zeroes is equal to:",
+"options": ["-b/a", "c/a", "-d/a", "b/a"],
+"correct": 2,
+"explain": "For a standard cubic polynomial, the product of the zeroes $(\alpha\beta\gamma)$ is given by the formula $-\text{(constant term)} / \text{(coefficient of } x^3) = -d/a$."
 },
 {
-"question": "If the zeroes of the quadratic polynomial $ax^2 + bx + c$ (where $c \neq 0$) are equal, then which statement must be true?",
-"options": [
-"c and a have opposite signs",
-"c and b have opposite signs",
-"c and a have the same sign",
-"c and b have the same sign"
-],
-"answer": "c and a have the same sign",
-"explanation": "Equal zeroes mean the discriminant $D = b^2 - 4ac$ equals 0, so $b^2 = 4ac$. Since the square of any real number ($b^2$) is always positive, the product $4ac$ must be positive. This forces $a$ and $c$ to have identical signs."
+"q": "If the zeroes of the quadratic polynomial $ax^2 + bx + c$ (where $c \neq 0$) are equal, then:",
+"options": ["c and a have opposite signs", "c and b have opposite signs", "c and a have the same sign", "c and b have the same sign"],
+"correct": 2,
+"explain": "For equal zeroes, the discriminant $D = b^2 - 4ac$ must be 0, so $b^2 = 4ac$. Since $b^2$ is always positive for non-zero real numbers, the product $4ac$ must be positive. This implies $a$ and $c$ must have the same sign."
 },
 {
-"question": "If one of the zeroes of a cubic polynomial $x^3 + ax^2 + bx + c$ is -1, then the product of the other two zeroes is equal to which value?",
-"options": [
-"b - a + 1",
-"b - a - 1",
-"a - b + 1",
-"a - b - 1"
-],
-"answer": "b - a + 1",
-"explanation": "Since -1 is a zero, $(-1)^3 + a(-1)^2 + b(-1) + c = 0 \implies -1 + a - b + c = 0 \implies c = 1 - a + b$. The total product of all three zeroes is given by $\alpha \cdot \beta \cdot \gamma = -c / 1$. Given $\alpha = -1$, we get $(-1) \cdot \beta \cdot \gamma = -c \implies \beta \cdot \gamma = c$. Substituting $c$ yields $b - a + 1$."
+"q": "If one of the zeroes of the cubic polynomial $x^3 + ax^2 + bx + c$ is $-1$, then the product of the other two zeroes is:",
+"options": ["b - a + 1", "b - a - 1", "a - b + 1", "a - b - 1"],
+"correct": 0,
+"explain": "Since $-1$ is a zero, $(-1)^3 + a(-1)^2 + b(-1) + c = 0 \implies -1 + a - b + c = 0 \implies c = 1 - a + b$. The product of all three zeroes is $-c$. Given one zero is $-1$, $(-1) \times \text{product of other two} = -c \implies \text{product of other two} = c = b - a + 1$."
 },
 {
-"question": "The graph of a quadratic polynomial $y = ax^2 + bx + c$ is a parabola. If this parabola opens downwards, what does it signify about the coefficient 'a'?",
-"options": [
-"a > 0",
-"a < 0",
-"a = 0",
-"a can be any real number"
-],
-"answer": "a < 0",
-"explanation": "The orientation of a parabola is determined exclusively by the coefficient of $x^2$. When $a > 0$, the parabola opens upwards. When $a < 0$, the parabola opens downwards."
+"q": "If the graph of a quadratic polynomial $y = ax^2 + bx + c$ opens downwards like an inverted bowl, then the coefficient 'a' must be:",
+"options": ["Positive (a > 0)", "Negative (a < 0)", "Zero (a = 0)", "Any real number"],
+"correct": 1,
+"explain": "The direction of a parabola is determined entirely by the coefficient of $x^2$. If $a > 0$, the parabola opens upwards. If $a < 0$, the parabola opens downwards."
 },
 {
-"question": "If one zero of the quadratic polynomial $3x^2 + 8x + k$ is the reciprocal of the other, what is the value of k?",
-"options": [
-"3",
-"-3",
-"1/3",
-"8"
-],
-"answer": "3",
-"explanation": "Let the zeroes be $\alpha$ and $1/\alpha$. The product of these zeroes is $\alpha \cdot (1/\alpha) = 1$. According to coefficient relationships, the product of zeroes equals $c/a = k/3$. Equating the two gives $k/3 = 1 \implies k = 3$."
+"q": "If one zero of the quadratic polynomial $3x^2 + 8x + k$ is the reciprocal of the other, then the value of k is:",
+"options": ["3", "-3", "1/3", "8"],
+"correct": 0,
+"explain": "Let the zeroes be $\alpha$ and $1/\alpha$. The product of zeroes is $\alpha \times (1/\alpha) = 1$. From the coefficients, product of zeroes = $c/a = k/3$. Therefore, $k/3 = 1 \implies k = 3$."
 },
 {
-"question": "The graph of $y = p(x)$ intersects the x-axis at exactly 3 points and touches it at 2 other distinct points. What is the total number of zeroes of the polynomial $p(x)$?",
-"options": [
-"3",
-"2",
-"5",
-"1"
-],
-"answer": "5",
-"explanation": "The zeroes of a polynomial $p(x)$ correspond to the x-coordinates of all the locations where its graph intersects or touches the x-axis. Intersecting 3 times and touching 2 times yields a total sum of $3 + 2 = 5$ zeroes."
+"q": "The graph of a polynomial $y = p(x)$ cuts the x-axis at 3 distinct points and touches it at 2 other distinct points. The total number of zeroes of $p(x)$ is:",
+"options": ["3", "2", "5", "1"],
+"correct": 2,
+"explain": "The number of zeroes of a polynomial is equal to the total number of points where its graph either intersects (cuts) or touches the x-axis. Total points = $3 + 2 = 5$ zeroes."
 }
 ]
   },
