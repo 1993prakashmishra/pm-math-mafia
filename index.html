@@ -2657,9 +2657,186 @@ const quizDatabase = {
 }
 ]
   }, 
-"10-maths-ch3": { title: "Class 10 Maths: Ch 3 - Pair of Linear Equations", questions: [] },
-"10-maths-ch4": { title: "Class 10 Maths: Ch 4 - Quadratic Equations", questions: [] },
-"10-maths-ch5": { title: "Class 10 Maths: Ch 5 - Arithmetic Progressions", questions: [] },
+"10-maths-ch3": {
+    "title": "Class 10 Maths: Ch 3 - Pair of Linear Equations in Two Variables",
+    "questions": [
+      {
+        "q": "If a pair of linear equations is graphically represented by two intersecting lines, what can be concluded about their system of equations?",
+        "options": [
+          "The system is inconsistent with no solution.",
+          "The system is consistent with a unique solution.",
+          "The system is dependent with infinitely many solutions.",
+          "The system is inconsistent with exactly two solutions."
+        ],
+        "correct": 1,
+        "explain": "On a graph, the point of intersection is the only common point between the two lines, meaning the system has exactly one unique solution and is consistent."
+      },
+      {
+        "q": "On a Cartesian plane, the lines representing the equations $2x + 3y - 9 = 0$ and $4x + 6y - 18 = 0$ will exhibit which graphical behavior?",
+        "options": [
+          "They will intersect at a single point (1, 2).",
+          "They will be strictly parallel to each other.",
+          "They will be coincident (overlapping lines).",
+          "They will be perpendicular, intersecting at the origin."
+        ],
+        "correct": 2,
+        "explain": "Comparing coefficients: $a_1/a_2 = 2/4 = 1/2$, $b_1/b_2 = 3/6 = 1/2$, and $c_1/c_2 = -9/-18 = 1/2$. Since $a_1/a_2 = b_1/b_2 = c_1/c_2$, the lines are coincident."
+      },
+      {
+        "q": "For what value of 'k' will the graph of the linear equations $x + 2y = 3$ and $5x + ky + 7 = 0$ show a pair of parallel lines?",
+        "options": [
+          "k = 10",
+          "k = 5",
+          "k = -10",
+          "k = 2/5"
+        ],
+        "correct": 0,
+        "explain": "For parallel lines, $a_1/a_2 = b_1/b_2 \\neq c_1/c_2$. Here, $1/5 = 2/k$, which gives $k = 10$. Checking the constant ratio: $3/-7 \\neq 1/5$, which confirms it is valid."
+      },
+      {
+        "q": "If the graph of a pair of linear equations inside a coordinate grid forms a triangle with the x-axis, how can you find the area of this bounded region?",
+        "options": [
+          "Area = Length $\\times$ Width",
+          "Area = $\\frac{1}{2} \\times \\text{Base (distance between x-intercepts)} \\times \\text{Height (y-coordinate of intersection point)} $",
+          "Area = Base $\\times$ Height",
+          "Area = $\\frac{1}{2} \\times \\text{Base (distance between y-intercepts)} \\times \\text{Height (x-coordinate of intersection point)} $"
+        ],
+        "correct": 1,
+        "explain": "The base is the distance between the two points where the lines cross the x-axis, and the perpendicular height is the absolute y-value of their intersection vertex."
+      },
+      {
+        "q": "A fraction becomes $\\frac{9}{11}$ if 2 is added to both the numerator and the denominator. If 3 is added to both, it becomes $\\frac{5}{6}$. Which pair of linear equations correctly models this condition?",
+        "options": [
+          "$11x - 9y = -4$ and $6x - 5y = -3$",
+          "$9x - 11y = 4$ and $5x - 6y = 3$",
+          "$11x + 9y = 4$ and $6x + 5y = 3$",
+          "$11x - 9y = 4$ and $6x - 5y = 3$"
+        ],
+        "correct": 0,
+        "explain": "Let fraction be $x/y$. Equation 1: $\\frac{x+2}{y+2} = \\frac{9}{11} \\implies 11x - 9y = -4$. Equation 2: $\\frac{x+3}{y+3} = \\frac{5}{6} \\implies 6x - 5y = -3$."
+      }
+    ]
+  },
+  "10-maths-ch4": {
+    "title": "Class 10 Maths: Ch 4 - Quadratic Equations",
+    "questions": [
+      {
+        "q": "What is the nature of the roots of the quadratic equation $2x^2 - 4x + 3 = 0$ based on its discriminant value?",
+        "options": [
+          "Two distinct real roots.",
+          "Two equal real roots.",
+          "No real roots (imaginary roots).",
+          "More than two real roots."
+        ],
+        "correct": 2,
+        "explain": "The discriminant $D = b^2 - 4ac$. Substituting the values: $D = (-4)^2 - 4(2)(3) = 16 - 24 = -8$. Since $D < 0$, the equation has no real roots."
+      },
+      {
+        "q": "Graphically, if the parabola representing a quadratic equation $y = ax^2 + bx + c$ touches the x-axis at exactly one single point, what does it signify?",
+        "options": [
+          "The equation has two distinct real roots.",
+          "The equation has two equal real roots ($D = 0$).",
+          "The equation has no real roots ($D < 0$).",
+          "The value of coefficient 'a' must be zero."
+        ],
+        "correct": 1,
+        "explain": "When a parabola touches the x-axis at a single point, it means both roots coincide at that point, which mathematically corresponds to $D = 0$."
+      },
+      {
+        "q": "If $x = 2$ is a valid root of the quadratic equation $kx^2 + 2x - 3 = 0$, what is the calculated value of 'k'?",
+        "options": [
+          "k = $\\frac{1}{4}$",
+          "k = $-\\frac{1}{4}$",
+          "k = $\\frac{3}{4}$",
+          "k = $-\\frac{3}{4}$"
+        ],
+        "correct": 1,
+        "explain": "Substitute $x = 2$ into the equation: $k(2)^2 + 2(2) - 3 = 0 \\implies 4k + 4 - 3 = 0 \\implies 4k = -1 \\implies k = -\\frac{1}{4}$."
+      },
+      {
+        "q": "The sum of the squares of two consecutive positive integers is 365. Which of the following forms represents the correct quadratic equation for this scenario?",
+        "options": [
+          "$x^2 + x - 182 = 0$",
+          "$x^2 + 2x - 365 = 0$",
+          "$2x^2 + 2x - 364 = 0$",
+          "$x^2 + x - 365 = 0$"
+        ],
+        "correct": 2,
+        "explain": "Let integers be $x$ and $x+1$. Their squares sum up to: $x^2 + (x+1)^2 = 365 \\implies x^2 + x^2 + 2x + 1 = 365 \\implies 2x^2 + 2x - 364 = 0$ (which simplifies to $x^2 + x - 182 = 0$)."
+      },
+      {
+        "q": "If a quadratic equation $ax^2 + bx + c = 0$ has real and equal roots, what is the formula to directly compute the value of those roots?",
+        "options": [
+          "$x = \\frac{b}{2a}$",
+          "$x = -\\frac{b}{2a}$",
+          "$x = -\\frac{c}{a}$",
+          "$x = \\frac{\\sqrt{b}}{2a}$"
+        ],
+        "correct": 1,
+        "explain": "From the quadratic formula $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$, when $b^2 - 4ac = 0$, the radical part vanishes completely, leaving behind $x = -\\frac{b}{2a}$."
+      }
+    ]
+  },
+  "10-maths-ch5": {
+    "title": "Class 10 Maths: Ch 5 - Arithmetic Progressions",
+    "questions": [
+      {
+        "q": "What is the common difference 'd' of an Arithmetic Progression whose $n$-th term is explicitly defined by $a_n = 3n + 7$?",
+        "options": [
+          "d = 7",
+          "d = 3",
+          "d = 10",
+          "d = 1"
+        ],
+        "correct": 1,
+        "explain": "Find the first two terms: $a_1 = 3(1) + 7 = 10$, and $a_2 = 3(2) + 7 = 13$. The common difference is $d = a_2 - a_1 = 13 - 10 = 3$."
+      },
+      {
+        "q": "In an Arithmetic Progression, if the first term $a = -7.2$ and the common difference $d = 3.6$, what will be the value of the 4th term ($a_4$)?",
+        "options": [
+          "3.6",
+          "0",
+          "7.2",
+          "-3.6"
+        ],
+        "correct": 0,
+        "explain": "Using the formula $a_n = a + (n-1)d$: $a_4 = -7.2 + (4-1)(3.6) = -7.2 + 3(3.6) = -7.2 + 10.8 = 3.6$."
+      },
+      {
+        "q": "Which term of the operational Arithmetic Progression sequence: 21, 18, 15, ... evaluates to exactly 0?",
+        "options": [
+          "7th term",
+          "8th term",
+          "9th term",
+          "6th term"
+        ],
+        "correct": 1,
+        "explain": "Here $a = 21$ and $d = 18 - 21 = -3$. Set $a_n = 0 \\implies 21 + (n-1)(-3) = 0 \\implies -3(n-1) = -21 \\implies n-1 = 7 \\implies n = 8$."
+      },
+      {
+        "q": "What is the formula to compute the sum of the first 'n' terms ($S_n$) of an Arithmetic Progression when only the first term 'a' and the absolute last term 'l' are known?",
+        "options": [
+          "$S_n = \\frac{n}{2}[2a + l]$",
+          "$S_n = n[a + l]$",
+          "$S_n = \\frac{n}{2}[a + l]$",
+          "$S_n = \\frac{n}{2}[a - l]$"
+        ],
+        "correct": 2,
+        "explain": "The alternative formula for the sum of an AP sequence with a finite number of terms is $S_n = \\frac{n}{2}[a + l]$, where $l$ acts as the final term $a_n$."
+      },
+      {
+        "q": "If the sum of the first 'n' terms of an AP is given by $S_n = 2n^2 + 5n$, what is the value of its first term ($a_1$)?",
+        "options": [
+          "2",
+          "5",
+          "7",
+          "9"
+        ],
+        "correct": 2,
+        "explain": "The sum of the first 1 term ($S_1$) is equal to the first term ($a_1$) itself. Substituting $n = 1$: $S_1 = 2(1)^2 + 5(1) = 2 + 5 = 7$."
+      }
+    ]
+  },
 "10-maths-ch6": { title: "Class 10 Maths: Ch 6 - Triangles", questions: [] },
 "10-maths-ch7": { title: "Class 10 Maths: Ch 7 - Coordinate Geometry", questions: [] },
 "10-maths-ch8": { title: "Class 10 Maths: Ch 8 - Introduction to Trigonometry", questions: [] },
