@@ -8,7 +8,7 @@
   <meta property="og:title" content="PM Math - Free CBSE Notes, Videos & Quizzes (Class 6-12)">
   <meta property="og:description" content="Free CBSE study material for Mathematics and Science, Class 6 to 12 — notes, videos, quizzes and assignments by Saurav Mishra.">
   <meta property="og:type" content="website">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -19,6 +19,25 @@
       --white: #ffffff; --off-white: #f7faf8; --text-dark: #0f1f15;
       --text-mid: #2e5040; --text-muted: #5a7a68; --border: rgba(26,102,57,0.15);
     }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher { display:flex; align-items:center; gap:6px; }
+    .lang-btn { padding:4px 10px; border-radius:14px; font-size:0.72rem; font-weight:700; cursor:pointer; border:1.5px solid rgba(255,255,255,0.3); background:transparent; color:rgba(255,255,255,0.7); transition:all 0.2s; letter-spacing:0.03em; }
+    .lang-btn.active { background:var(--gold); color:var(--green-900); border-color:var(--gold); }
+    .lang-btn:hover:not(.active) { background:rgba(255,255,255,0.12); color:#fff; }
+    /* Hindi font body override */
+    html[lang="hi"] body { font-family:'Hind', sans-serif; }
+    html[lang="hi"] .section-title,
+    html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3 { font-family:'Hind', sans-serif; font-weight:700; }
+    /* Show/hide language content */
+    .en-text { display:inline; }
+    .hi-text { display:none; }
+    html[lang="hi"] .en-text { display:none; }
+    html[lang="hi"] .hi-text { display:inline; }
+    .en-block { display:block; }
+    .hi-block { display:none; }
+    html[lang="hi"] .en-block { display:none; }
+    html[lang="hi"] .hi-block { display:block; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,46,26,0.97); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 60px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -129,7 +148,7 @@
     .footer-bottom { font-size: 0.75rem; color: rgba(255,255,255,0.3); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(240,200,74,0.5); } 50% { box-shadow: 0 0 0 14px rgba(240,200,74,0); } }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(200,100,255,0.7); } 50% { box-shadow: 0 0 0 18px rgba(200,100,255,0); } }
     @media (max-width: 768px) { nav { padding: 0 1rem; } .nav-links { display: none; } .hero-stats { gap: 1.5rem; } }
 
     /* ── FIX: NEP Language Tab ── */
@@ -164,58 +183,74 @@
 <nav>
   <div class="nav-logo">PM <span>Math</span></div>
   <div class="nav-links">
-    <a href="#subjects" class="active">Subjects</a>
-    <a href="#notes">Notes</a>
-    <a href="#campus">Campus</a>
-    <a href="#videos">Videos</a>
-    <a href="#quizzes">Quizzes</a>
-    <a href="#assignments">Assignments</a>
-    <a href="#ncert">NCERT Solutions</a>
-    <a href="#resources">Resources</a>
+    <a href="#subjects" class="active"><span class="en-text">Subjects</span><span class="hi-text">विषय</span></a>
+    <a href="#notes"><span class="en-text">Notes</span><span class="hi-text">नोट्स</span></a>
+    <a href="#campus"><span class="en-text">Campus</span><span class="hi-text">परिसर</span></a>
+    <a href="#videos"><span class="en-text">Videos</span><span class="hi-text">वीडियो</span></a>
+    <a href="#quizzes"><span class="en-text">Quizzes</span><span class="hi-text">प्रश्नोत्तरी</span></a>
+    <a href="#assignments"><span class="en-text">Assignments</span><span class="hi-text">असाइनमेंट</span></a>
+    <a href="#ncert"><span class="en-text">NCERT Solutions</span><span class="hi-text">NCERT हल</span></a>
+    <a href="#resources"><span class="en-text">Resources</span><span class="hi-text">संसाधन</span></a>
     <a href="#nep">NEP 2020</a>
-    <a href="#feedback">Feedback</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href="#feedback"><span class="en-text">Feedback</span><span class="hi-text">प्रतिक्रिया</span></a>
+    <a href="#contact"><span class="en-text">Contact</span><span class="hi-text">संपर्क</span></a>
+    <a href="#about"><span class="en-text">About</span><span class="hi-text">परिचय</span></a>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" id="btn-hi" onclick="switchLang('hi')">हि</button>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-badge">📐 Mathematics &amp; Science · Grade 6–12 · CBSE</div>
+  <div class="hero-badge">
+    <span class="en-text">📐 Mathematics &amp; Science · Grade 6–12 · CBSE</span>
+    <span class="hi-text">📐 गणित एवं विज्ञान · कक्षा 6–12 · CBSE</span>
+  </div>
   <h1>PM <span>Math</span></h1>
-  <p class="hero-sub">Your one-stop study portal by <strong>Saurav Mishra</strong><br>Notes · Videos · Assignments · Resources</p>
+  <p class="hero-sub">
+    <span class="en-text">Your one-stop study portal by <strong>Saurav Mishra</strong><br>Notes · Videos · Assignments · Resources</span>
+    <span class="hi-text"><strong>सौरव मिश्रा</strong> द्वारा आपका सम्पूर्ण अध्ययन पोर्टल<br>नोट्स · वीडियो · असाइनमेंट · संसाधन</span>
+  </p>
   <div class="hero-cta">
-    <a href="#notes" class="btn-primary">📄 Get Notes</a>
-    <a href="#videos" class="btn-outline">▶ Watch Videos</a>
+    <a href="#notes" class="btn-primary">
+      <span class="en-text">📄 Get Notes</span>
+      <span class="hi-text">📄 नोट्स पाएं</span>
+    </a>
+    <a href="#videos" class="btn-outline">
+      <span class="en-text">▶ Watch Videos</span>
+      <span class="hi-text">▶ वीडियो देखें</span>
+    </a>
   </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Subjects</div></div>
-    <div class="stat"><div class="stat-num">6–12</div><div class="stat-label">Grade</div></div>
-    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Resources</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label"><span class="en-text">Subjects</span><span class="hi-text">विषय</span></div></div>
+    <div class="stat"><div class="stat-num">6–12</div><div class="stat-label"><span class="en-text">Grade</span><span class="hi-text">कक्षा</span></div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-label"><span class="en-text">Resources</span><span class="hi-text">संसाधन</span></div></div>
   </div>
-  <div class="scroll-hint">SCROLL</div>
+  <div class="scroll-hint"><span class="en-text">SCROLL</span><span class="hi-text">स्क्रॉल करें</span></div>
 </section>
 
 <div class="announcement-bar">
-  <p>📢 <strong>Announcement:</strong> KVIANS AND DEAR STUDENTS REQUEST ACCEPTED.</p>
+  <p>📢 <strong><span class="en-text">Announcement:</span><span class="hi-text">सूचना:</span></strong> <span class="en-text">KVIANS AND DEAR STUDENTS REQUEST ACCEPTED.</span><span class="hi-text">KVIANs और प्रिय छात्रों का अनुरोध स्वीकार किया गया।</span></p>
 </div>
 
 <!-- ═══════════ SUBJECTS ═══════════ -->
 <section id="subjects">
   <div class="container">
-    <div class="section-label">What We Cover</div>
-    <h2 class="section-title">Subjects</h2>
-    <p class="section-desc">Comprehensive CBSE study material for Mathematics and Science from Grade 6 to Grade 12.</p>
+    <div class="section-label"><span class="en-text">What We Cover</span><span class="hi-text">हम क्या पढ़ाते हैं</span></div>
+    <h2 class="section-title"><span class="en-text">Subjects</span><span class="hi-text">विषय</span></h2>
+    <p class="section-desc"><span class="en-text">Comprehensive CBSE study material for Mathematics and Science from Grade 6 to Grade 12.</span><span class="hi-text">कक्षा 6 से 12 तक गणित और विज्ञान के लिए संपूर्ण CBSE अध्ययन सामग्री।</span></p>
     <div class="subjects-grid">
       <div class="subject-card">
         <div class="subject-icon">📐</div>
-        <h3>Mathematics</h3>
-        <p>Number Systems, Algebra, Geometry, Trigonometry, Calculus, Statistics and more — with solved examples and practice problems as per CBSE syllabus.</p>
+        <h3><span class="en-text">Mathematics</span><span class="hi-text">गणित</span></h3>
+        <p><span class="en-text">Number Systems, Algebra, Geometry, Trigonometry, Calculus, Statistics and more — with solved examples and practice problems as per CBSE syllabus.</span><span class="hi-text">संख्या प्रणाली, बीजगणित, ज्यामिति, त्रिकोणमिति, कलन, सांख्यिकी और अधिक — CBSE पाठ्यक्रम के अनुसार हल किए गए उदाहरणों के साथ।</span></p>
         <div class="subject-tags"><span class="tag">Algebra</span><span class="tag">Geometry</span><span class="tag">Trigonometry</span><span class="tag">Calculus</span><span class="tag">Statistics</span></div>
       </div>
       <div class="subject-card">
         <div class="subject-icon">🔬</div>
-        <h3>Science</h3>
-        <p>Physics, Chemistry and Biology — theory, diagrams, formulas and experiment summaries as per CBSE curriculum from Class 6 to 12.</p>
+        <h3><span class="en-text">Science</span><span class="hi-text">विज्ञान</span></h3>
+        <p><span class="en-text">Physics, Chemistry and Biology — theory, diagrams, formulas and experiment summaries as per CBSE curriculum from Class 6 to 12.</span><span class="hi-text">भौतिकी, रसायन विज्ञान और जीव विज्ञान — कक्षा 6 से 12 तक CBSE पाठ्यक्रम के अनुसार सिद्धांत, आरेख, सूत्र और प्रयोग सारांश।</span></p>
         <div class="subject-tags"><span class="tag">Physics</span><span class="tag">Chemistry</span><span class="tag">Biology</span><span class="tag">Diagrams</span><span class="tag">Formulas</span></div>
       </div>
     </div>
@@ -224,9 +259,9 @@
 <!-- ═══════════ NOTES ═══════════ -->
 <section id="notes">
   <div class="container">
-    <div class="section-label">CBSE Study Material</div>
-    <h2 class="section-title">Notes &amp; PDFs</h2>
-    <p class="section-desc">Chapter-wise notes for all classes as per CBSE syllabus. Select your class and subject below.</p>
+    <div class="section-label"><span class="en-text">CBSE Study Material</span><span class="hi-text">CBSE अध्ययन सामग्री</span></div>
+    <h2 class="section-title"><span class="en-text">Notes &amp; PDFs</span><span class="hi-text">नोट्स एवं PDFs</span></h2>
+    <p class="section-desc"><span class="en-text">Chapter-wise notes for all classes as per CBSE syllabus. Select your class and subject below.</span><span class="hi-text">CBSE पाठ्यक्रम के अनुसार सभी कक्षाओं के लिए अध्याय-वार नोट्स। नीचे अपनी कक्षा और विषय चुनें।</span></p>
     <div class="notes-tabs">
       <div class="notes-tab active" onclick="switchClass('6')">Class 6</div>
       <div class="notes-tab" onclick="switchClass('7')">Class 7</div>
@@ -448,9 +483,9 @@
 <!-- ═══════════ CAMPUS ═══════════ -->
 <section id="campus" style="padding:60px 0;background:#ffffff;">
   <div class="container" style="max-width:1200px;margin:0 auto;padding:0 20px;">
-    <div class="section-label" style="text-align:center;">Our Space</div>
-    <h2 class="section-title" style="text-align:center;">Classroom &amp; Campus Life</h2>
-    <p class="section-desc" style="text-align:center;margin:0 auto 35px;">Explore the vibrant math learning environment at PM Maths Academy.</p>
+    <div class="section-label" style="text-align:center;"><span class="en-text">Our Space</span><span class="hi-text">हमारा परिसर</span></div>
+    <h2 class="section-title" style="text-align:center;"><span class="en-text">Classroom &amp; Campus Life</span><span class="hi-text">कक्षा एवं परिसर जीवन</span></h2>
+    <p class="section-desc" style="text-align:center;margin:0 auto 35px;"><span class="en-text">Explore the vibrant math learning environment at PM Maths Academy.</span><span class="hi-text">PM Maths Academy के जीवंत गणित शिक्षण वातावरण को जानें।</span></p>
     <div style="background:linear-gradient(135deg,#1a6639 0%,#0a2e1a 100%);border-radius:14px;padding:30px 25px;text-align:center;margin-bottom:40px;">
       <h3 style="color:#fff;font-size:1.4rem;margin-bottom:10px;font-weight:700;">📸 Gallery &amp; Active Media Updates</h3>
       <p style="color:#eaf4ed;font-size:0.95rem;margin:0 auto 20px;max-width:700px;line-height:1.6;">Take a live glimpse into our academy layout! We update these photos regularly with live milestones from our coaching hub.</p>
@@ -488,9 +523,9 @@
 <!-- ═══════════ VIDEOS ═══════════ -->
 <section id="videos">
   <div class="container">
-    <div class="section-label">Video Lessons</div>
-    <h2 class="section-title">Watch &amp; Learn</h2>
-    <p class="section-desc">Videos organized by class and topic to help you visualize complex problems.</p>
+    <div class="section-label"><span class="en-text">Video Lessons</span><span class="hi-text">वीडियो पाठ</span></div>
+    <h2 class="section-title"><span class="en-text">Watch &amp; Learn</span><span class="hi-text">देखें और सीखें</span></h2>
+    <p class="section-desc"><span class="en-text">Videos organized by class and topic to help you visualize complex problems.</span><span class="hi-text">कठिन समस्याओं को समझने में मदद के लिए कक्षा और विषय के अनुसार व्यवस्थित वीडियो।</span></p>
     <div class="notes-tabs" style="margin-top:2rem;">
       <div class="notes-tab active" onclick="switchVideoClass('6')">Class 6</div>
       <div class="notes-tab" onclick="switchVideoClass('7')">Class 7</div>
@@ -508,13 +543,13 @@
   </div>
 </section>
 <!-- ═══════════ QUIZZES ═══════════ -->
-<section id="quizzes" style="background:linear-gradient(155deg, #0a2e1a 0%, #1a6639 45%, #2a9d5c 100%); padding:70px 0; position:relative; overflow:hidden;">
-  <div style="position:absolute; inset:0; background-image: radial-gradient(circle at 15% 20%, rgba(212,160,23,0.18) 0%, transparent 45%), radial-gradient(circle at 85% 80%, rgba(255,255,255,0.08) 0%, transparent 40%); pointer-events:none;"></div>
+<section id="quizzes" style="background:linear-gradient(135deg, #1a0533 0%, #3d0f6e 30%, #6a1aad 65%, #9b3dd6 100%); padding:70px 0; position:relative; overflow:hidden;">
+  <div style="position:absolute; inset:0; background-image: radial-gradient(circle at 15% 20%, rgba(255,215,0,0.20) 0%, transparent 45%), radial-gradient(circle at 85% 80%, rgba(255,100,200,0.12) 0%, transparent 40%), radial-gradient(circle at 50% 100%, rgba(150,50,255,0.15) 0%, transparent 50%); pointer-events:none;"></div>
   <div class="container" style="max-width:850px;margin:0 auto;padding:0 20px;position:relative;">
     <div style="text-align:center;margin-bottom:35px;">
-      <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#f0c84a; padding:8px 22px; border-radius:24px; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; display:inline-block; animation:pulseGlow 2s infinite;">🎯 Assessment Dashboard</span>
-      <h2 style="font-size:2.6rem;color:#ffffff;margin:14px 0 10px;font-weight:800; font-family:'Playfair Display', serif; text-shadow:0 2px 12px rgba(0,0,0,0.2);">Online Practice Quizzes</h2>
-      <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6;">Select your class and chapter to test your skills live — instant scoring &amp; explanations!</p>
+      <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#ffe066; padding:8px 22px; border-radius:24px; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; display:inline-block; animation:pulseGlow 2s infinite; text-shadow:0 0 12px rgba(255,224,102,0.6);">🎯 Assessment Dashboard</span>
+      <h2 style="font-size:2.6rem;color:#ffffff;margin:14px 0 10px;font-weight:800; font-family:'Playfair Display', serif; text-shadow:0 2px 12px rgba(0,0,0,0.2);"><span class="en-text">Online Practice Quizzes</span><span class="hi-text">ऑनलाइन अभ्यास प्रश्नोत्तरी</span></h2>
+      <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:550px;margin:0 auto;line-height:1.6;"><span class="en-text">Select your class and chapter to test your skills live — instant scoring &amp; explanations!</span><span class="hi-text">अपनी कक्षा और अध्याय चुनें — तुरंत स्कोर और व्याख्या के साथ अपने कौशल का परीक्षण करें!</span></p>
     </div>
 
     <!-- Exam Schedule Banner -->
@@ -531,9 +566,9 @@
 
     <!-- Step 1: Student Name -->
     <div id="studentRegistrationCard" style="background:#fff;padding:35px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.2);margin-bottom:30px;">
-      <h3 style="margin-top:0;margin-bottom:20px;color:#0a2e1a;font-size:1.3rem;font-weight:700;">Enter Candidate Details to Begin</h3>
+      <h3 style="margin-top:0;margin-bottom:20px;color:#0a2e1a;font-size:1.3rem;font-weight:700;"><span class="en-text">Enter Candidate Details to Begin</span><span class="hi-text">शुरू करने के लिए छात्र विवरण दर्ज करें</span></h3>
       <div style="margin-bottom:20px;">
-        <label for="studentNameInput" style="display:block;font-weight:700;margin-bottom:8px;color:#222;font-size:0.95rem;">Student's Full Name</label>
+        <label for="studentNameInput" style="display:block;font-weight:700;margin-bottom:8px;color:#222;font-size:0.95rem;"><span class="en-text">Student's Full Name</span><span class="hi-text">छात्र का पूरा नाम</span></label>
         <input type="text" id="studentNameInput" placeholder="Enter your name for the report card" style="width:100%;padding:14px;border:2px solid #e2e8f0;border-radius:8px;font-size:1rem;box-sizing:border-box;outline:none;"/>
       </div>
       <button onclick="saveStudentName()" style="width:100%;padding:14px;background:linear-gradient(135deg,#1a6639 0%,#0a2e1a 100%);color:#fff;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;">Proceed to Test Matrix ➡️</button>
@@ -589,9 +624,9 @@
 <!-- ═══════════ ASSIGNMENTS ═══════════ -->
 <section id="assignments">
   <div class="container">
-    <div class="section-label">Practice &amp; Homework</div>
-    <h2 class="section-title">Assignments</h2>
-    <p class="section-desc">Select your class, subject, then choose from Worksheets, Practice Tests or MCQ Quizzes.</p>
+    <div class="section-label"><span class="en-text">Practice &amp; Homework</span><span class="hi-text">अभ्यास एवं गृहकार्य</span></div>
+    <h2 class="section-title"><span class="en-text">Assignments</span><span class="hi-text">असाइनमेंट</span></h2>
+    <p class="section-desc"><span class="en-text">Select your class, subject, then choose from Worksheets, Practice Tests or MCQ Quizzes.</span><span class="hi-text">अपनी कक्षा और विषय चुनें, फिर वर्कशीट, प्रैक्टिस टेस्ट या MCQ क्विज़ में से चुनें।</span></p>
 
     <div class="assign-class-tabs">
       <div class="assign-class-tab active" onclick="switchAssignClass('6',this)">Class 6</div>
@@ -670,9 +705,9 @@
 <!-- ═══════════ NCERT SOLUTIONS ═══════════ -->
 <section id="ncert" style="background:#ffffff; padding:60px 0;">
   <div class="container">
-    <div class="section-label">Step-by-Step Answers</div>
-    <h2 class="section-title">NCERT Solutions</h2>
-    <p class="section-desc">Chapter-wise solved NCERT solutions for Mathematics and Science, Class 6 to 12. Select your class and subject below.</p>
+    <div class="section-label"><span class="en-text">Step-by-Step Answers</span><span class="hi-text">चरण-दर-चरण उत्तर</span></div>
+    <h2 class="section-title"><span class="en-text">NCERT Solutions</span><span class="hi-text">NCERT हल</span></h2>
+    <p class="section-desc"><span class="en-text">Chapter-wise solved NCERT solutions for Mathematics and Science, Class 6 to 12. Select your class and subject below.</span><span class="hi-text">कक्षा 6 से 12 तक गणित और विज्ञान के लिए अध्याय-वार हल किए गए NCERT समाधान। नीचे अपनी कक्षा और विषय चुनें।</span></p>
 
     <div class="notes-tabs" style="margin-top:2rem;">
       <div class="notes-tab active" onclick="switchNcertClass('6')">Class 6</div>
@@ -698,9 +733,9 @@
 <!-- ═══════════ RESOURCES ═══════════ -->
 <section id="resources" style="background:#fff;padding:60px 0;">
   <div class="container">
-    <div class="section-label" style="text-align:center;">Useful Links</div>
-    <h2 class="section-title" style="text-align:center;">Academic Resources</h2>
-    <p class="section-desc" style="text-align:center;margin:0 auto 40px;">Handpicked educational platforms to help you excel in board exams.</p>
+    <div class="section-label" style="text-align:center;"><span class="en-text">Useful Links</span><span class="hi-text">उपयोगी लिंक</span></div>
+    <h2 class="section-title" style="text-align:center;"><span class="en-text">Academic Resources</span><span class="hi-text">शैक्षणिक संसाधन</span></h2>
+    <p class="section-desc" style="text-align:center;margin:0 auto 40px;"><span class="en-text">Handpicked educational platforms to help you excel in board exams.</span><span class="hi-text">बोर्ड परीक्षाओं में उत्कृष्ट प्रदर्शन के लिए चुने हुए शैक्षिक प्लेटफॉर्म।</span></p>
     <div class="resources-grid">
       <a href="https://www.ncert.nic.in" target="_blank" class="resource-card"><div style="font-size:2rem;margin-bottom:12px;">📚</div><div style="font-size:1.1rem;font-weight:700;color:#0a2e1a;margin-bottom:8px;">NCERT Official Portal</div><div style="font-size:0.88rem;color:#555;line-height:1.5;margin-bottom:12px;">Download verified NCERT textbooks, solutions and exemplars for free.</div><div style="font-size:0.85rem;font-weight:700;color:#1a6639;">Access Portal →</div></a>
       <a href="https://www.cbse.gov.in/cbsenew/question-paper.html" target="_blank" class="resource-card"><div style="font-size:2rem;margin-bottom:12px;">📝</div><div style="font-size:1.1rem;font-weight:700;color:#0a2e1a;margin-bottom:8px;">CBSE Board PYQs</div><div style="font-size:0.88rem;color:#555;line-height:1.5;margin-bottom:12px;">Official repository of previous years' Board question papers and marking schemes.</div><div style="font-size:0.85rem;font-weight:700;color:#1a6639;">Download Papers →</div></a>
@@ -760,13 +795,13 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:40px;">
       <span style="background:rgba(26,102,57,0.08);color:#1a6639;padding:6px 18px;border-radius:20px;font-size:0.85rem;font-weight:700;text-transform:uppercase;">Student Voice</span>
-      <h2 class="section-title" style="text-align:center;">Feedback &amp; Reviews</h2>
+      <h2 class="section-title" style="text-align:center;"><span class="en-text">Feedback &amp; Reviews</span><span class="hi-text">प्रतिक्रिया एवं समीक्षा</span></h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;align-items:start;">
 
       <!-- Feedback Form -->
       <div style="background:#fafafa;border:1px solid #eaeaea;border-radius:16px;padding:30px;">
-        <h3 style="color:#0a2e1a;font-size:1.25rem;margin-top:0;margin-bottom:20px;font-weight:800;">✍️ Leave Your Feedback</h3>
+        <h3 style="color:#0a2e1a;font-size:1.25rem;margin-top:0;margin-bottom:20px;font-weight:800;">✍️ <span class="en-text">Leave Your Feedback</span><span class="hi-text">अपनी प्रतिक्रिया दें</span></h3>
         <form id="feedback-form" method="POST">
           <input type="hidden" name="access_key" value="99a5cd0b-9379-467c-9e07-639fe44bddca">
           <input type="hidden" name="subject" value="New Student Feedback - pmmath.in">
@@ -799,7 +834,7 @@
             <textarea id="fb-text" name="message_text" placeholder="What did you find helpful? What can be improved?" required style="width:100%;padding:11px;border:1px solid #ccc;border-radius:6px;font-size:0.92rem;height:100px;box-sizing:border-box;resize:vertical;font-family:inherit;outline:none;"></textarea>
           </div>
           <div id="fb-success" style="display:none;background:#e6f4ea;border:1px solid #1a6639;color:#0a2e1a;padding:12px;border-radius:6px;font-size:0.9rem;text-align:center;margin-bottom:15px;font-weight:600;">🎉 Thank you for your feedback!</div>
-          <button type="submit" id="fb-submit-btn" style="width:100%;background:#1a6639;color:#fff;border:none;padding:12px;font-size:0.95rem;font-weight:700;border-radius:6px;cursor:pointer;">Submit Feedback ✓</button>
+          <button type="submit" id="fb-submit-btn" style="width:100%;background:#1a6639;color:#fff;border:none;padding:12px;font-size:0.95rem;font-weight:700;border-radius:6px;cursor:pointer;"><span class="en-text">Submit Feedback ✓</span><span class="hi-text">प्रतिक्रिया भेजें ✓</span></button>
         </form>
       </div>
 
@@ -837,7 +872,7 @@
   <div class="container" style="max-width:1000px;margin:0 auto;padding:0 20px;">
     <div style="text-align:center;margin-bottom:40px;">
       <span style="background:rgba(26,102,57,0.08);color:#1a6639;padding:6px 18px;border-radius:20px;font-size:0.85rem;font-weight:700;text-transform:uppercase;">Get in Touch</span>
-      <h2 class="section-title" style="text-align:center;">Contact Dashboard</h2>
+      <h2 class="section-title" style="text-align:center;"><span class="en-text">Contact Dashboard</span><span class="hi-text">संपर्क करें</span></h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:35px;">
       <div style="background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:24px;text-align:center;"><div style="font-size:1.8rem;margin-bottom:10px;">📞</div><div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;color:#555;font-weight:700;margin-bottom:5px;">Phone</div><div style="font-size:1.1rem;font-weight:700;"><a href="tel:+919507020419" style="color:#1a6639;text-decoration:none;">+91 95070 20419</a></div><div style="font-size:0.8rem;color:#777;margin-top:8px;">Mon–Sat, 9 AM – 7 PM IST</div></div>
@@ -857,7 +892,7 @@
   <div class="container" style="max-width:1000px;margin:0 auto;padding:0 20px;">
     <div style="text-align:center;margin-bottom:40px;">
       <span style="background:rgba(26,102,57,0.08);color:#1a6639;padding:6px 18px;border-radius:20px;font-size:0.85rem;font-weight:700;text-transform:uppercase;">Meet Your Teacher</span>
-      <h2 class="section-title" style="text-align:center;">About Saurav Mishra</h2>
+      <h2 class="section-title" style="text-align:center;"><span class="en-text">About Saurav Mishra</span><span class="hi-text">सौरव मिश्रा के बारे में</span></h2>
     </div>
     <div style="display:flex;flex-direction:column;align-items:center;gap:30px;background:#fafafa;border-radius:16px;padding:35px;border:1px solid #eaeaea;margin-bottom:40px;">
       <div style="width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid #1a6639;box-shadow:0 8px 25px rgba(26,102,57,0.15);">
@@ -866,7 +901,7 @@
       <div style="width:100%;text-align:center;">
         <h3 style="font-size:1.6rem;margin:0 0 6px;color:#0a2e1a;font-weight:800;">Saurav Mishra</h3>
         <p style="color:#1a6639;font-weight:700;font-size:1rem;margin:0 0 15px;">M.Sc · B.Ed · Mathematics &amp; Science Educator</p>
-        <p style="color:#444;font-size:0.95rem;line-height:1.6;margin:0 0 25px;max-width:750px;margin-inline:auto;">A dedicated teacher with 7 years of experience teaching Mathematics and Science to students from Grade 6 to 12. My goal is to make every concept simple, clear, and enjoyable.</p>
+        <p style="color:#444;font-size:0.95rem;line-height:1.6;margin:0 0 25px;max-width:750px;margin-inline:auto;"><span class="en-text">A dedicated teacher with 7 years of experience teaching Mathematics and Science to students from Grade 6 to 12. My goal is to make every concept simple, clear, and enjoyable.</span><span class="hi-text">7 वर्षों के अनुभव के साथ एक समर्पित शिक्षक जो कक्षा 6 से 12 तक के छात्रों को गणित और विज्ञान पढ़ाते हैं। मेरा लक्ष्य हर अवधारणा को सरल, स्पष्ट और आनंददायक बनाना है।</span></p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;text-align:left;background:#fff;padding:20px;border-radius:8px;border:1px solid #eaeaea;">
           <div style="font-size:0.9rem;color:#333;"><strong style="color:#1a6639;">Qualification:</strong> M.Sc + B.Ed</div>
           <div style="font-size:0.9rem;color:#333;"><strong style="color:#1a6639;">Experience:</strong> 7 Years</div>
@@ -890,7 +925,7 @@
 <footer style="background:#0a2e1a;color:rgba(255,255,255,0.7);padding:40px 20px;text-align:center;border-top:4px solid #1a6639;">
   <div style="max-width:1100px;margin:0 auto;">
     <div style="font-size:1.6rem;font-weight:800;margin-bottom:8px;color:#fff;">PM <span style="color:#4cd137;">Maths Academy</span></div>
-    <p style="color:#a4b0be;font-size:0.9rem;margin:0 0 25px;">Empowering Minds by Saurav Mishra · Mathematics &amp; Science Hub · Grades 6–12 · CBSE Expert</p>
+    <p style="color:#a4b0be;font-size:0.9rem;margin:0 0 25px;"><span class="en-text">Empowering Minds by Saurav Mishra · Mathematics &amp; Science Hub · Grades 6–12 · CBSE Expert</span><span class="hi-text">सौरव मिश्रा द्वारा ज्ञान का प्रसार · गणित एवं विज्ञान केंद्र · कक्षा 6–12 · CBSE विशेषज्ञ</span></p>
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:15px 22px;margin-bottom:30px;font-size:0.88rem;">
       <a href="#subjects" style="color:#fff;text-decoration:none;font-weight:600;">Subjects</a>
       <a href="#notes" style="color:#fff;text-decoration:none;font-weight:600;">Notes</a>
@@ -905,7 +940,7 @@
       <a href="#contact" style="color:#fff;text-decoration:none;font-weight:600;">Contact</a>
       <a href="#about" style="color:#fff;text-decoration:none;font-weight:600;">About</a>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:0.8rem;color:#a4b0be;">© 2026 PM Maths Academy · Created by Saurav Mishra · All rights reserved.</div>
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;font-size:0.8rem;color:#a4b0be;"><span class="en-text">© 2026 PM Maths Academy · Created by Saurav Mishra · All rights reserved.</span><span class="hi-text">© 2026 PM Maths Academy · सौरव मिश्रा द्वारा निर्मित · सर्वाधिकार सुरक्षित।</span></div>
   </div>
 </footer>
 
@@ -1737,5 +1772,98 @@ function renderNcertGrid() {
 }
 
 </script>
+
+<script>
+/* ── LANGUAGE SWITCHER ── */
+function switchLang(lang) {
+  document.documentElement.lang = lang;
+
+  var btnEn = document.getElementById('btn-en');
+  var btnHi = document.getElementById('btn-hi');
+  if (btnEn) { btnEn.classList.toggle('active', lang === 'en'); }
+  if (btnHi) { btnHi.classList.toggle('active', lang === 'hi'); }
+
+  /* Update page title */
+  document.title = lang === 'hi'
+    ? 'PM Math — सौरव मिश्रा'
+    : 'PM Math — Saurav Mishra';
+
+  /* Update student name input placeholder */
+  var inp = document.getElementById('studentNameInput');
+  if (inp) {
+    inp.placeholder = lang === 'hi'
+      ? 'रिपोर्ट कार्ड के लिए अपना नाम दर्ज करें'
+      : 'Enter your name for the report card';
+  }
+
+  /* Update subject tabs in Notes */
+  var mathTab = document.getElementById('subj-math');
+  var sciTab  = document.getElementById('subj-sci');
+  if (mathTab) mathTab.innerHTML = lang === 'hi' ? '📐 गणित' : '📐 Mathematics';
+  if (sciTab)  sciTab.innerHTML  = lang === 'hi' ? '🔬 विज्ञान' : '🔬 Science';
+
+  /* Update subject tabs in Videos */
+  var vMath = document.getElementById('subj-vid-math');
+  var vSci  = document.getElementById('subj-vid-sci');
+  if (vMath) vMath.innerHTML = lang === 'hi' ? '📐 गणित' : '📐 Mathematics';
+  if (vSci)  vSci.innerHTML  = lang === 'hi' ? '🔬 विज्ञान' : '🔬 Science';
+
+  /* Update subject tabs in NCERT */
+  var nMath = document.getElementById('ncert-subj-math');
+  var nSci  = document.getElementById('ncert-subj-sci');
+  if (nMath) nMath.innerHTML = lang === 'hi' ? '📐 गणित' : '📐 Mathematics';
+  if (nSci)  nSci.innerHTML  = lang === 'hi' ? '🔬 विज्ञान' : '🔬 Science';
+
+  /* Update assign subj tabs */
+  var asMathTabs = document.querySelectorAll('.assign-subj-tab');
+  if (asMathTabs.length >= 2) {
+    asMathTabs[0].innerHTML = lang === 'hi' ? '📐 गणित' : '📐 Mathematics';
+    asMathTabs[1].innerHTML = lang === 'hi' ? '🔬 विज्ञान' : '🔬 Science';
+  }
+
+  /* Update class tab labels */
+  var classlabels = {
+    'en': ['Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'],
+    'hi': ['कक्षा 6','कक्षा 7','कक्षा 8','कक्षा 9','कक्षा 10','कक्षा 11','कक्षा 12']
+  };
+
+  /* Notes class tabs */
+  document.querySelectorAll('#notes .notes-tab').forEach(function(t, i) {
+    if (classlabels[lang][i]) t.textContent = classlabels[lang][i];
+  });
+  /* Video class tabs */
+  document.querySelectorAll('#videos .notes-tab').forEach(function(t, i) {
+    if (classlabels[lang][i]) t.textContent = classlabels[lang][i];
+  });
+  /* NCERT class tabs */
+  document.querySelectorAll('#ncert .notes-tab').forEach(function(t, i) {
+    if (classlabels[lang][i]) t.textContent = classlabels[lang][i];
+  });
+  /* Assign class tabs */
+  document.querySelectorAll('.assign-class-tab').forEach(function(t, i) {
+    if (classlabels[lang][i]) t.textContent = classlabels[lang][i];
+  });
+
+  /* Update assign type tabs */
+  var typeTabs = document.querySelectorAll('.assign-type-tab');
+  if (typeTabs.length >= 3) {
+    typeTabs[0].innerHTML = lang === 'hi' ? '📄 वर्कशीट' : '📄 Worksheets';
+    typeTabs[1].innerHTML = lang === 'hi' ? '📝 प्रैक्टिस टेस्ट' : '📝 Practice Tests';
+    typeTabs[2].innerHTML = lang === 'hi' ? '✅ MCQ क्विज़' : '✅ MCQ Quizzes';
+  }
+
+  /* Save preference */
+  try { localStorage.setItem('pmmath-lang', lang); } catch(e) {}
+}
+
+/* Restore saved preference on page load */
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    var saved = localStorage.getItem('pmmath-lang');
+    if (saved && saved !== 'en') switchLang(saved);
+  } catch(e) {}
+});
+</script>
+
 </body>
 </html>
