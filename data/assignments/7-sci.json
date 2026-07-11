@@ -1,0 +1,260 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 The Ever-Evolving World of Science",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Exploring Substances",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 Electricity: Circuits",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 The World of Metals & Non-metals",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Physical & Chemical Changes",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Adolescence",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Heat Transfer in Nature",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Measurement of Time and Motion",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Life Processes in Animals",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 Life Processes in Plants",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Light: Shadows and Reflections",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Earth, Moon, and the Sun",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 The Ever-Evolving World of Science",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Exploring Substances",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 Electricity: Circuits",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 The World of Metals & Non-metals",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Physical & Chemical Changes",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Adolescence",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Heat Transfer in Nature",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Measurement of Time and Motion",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Life Processes in Animals",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 Life Processes in Plants",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Light: Shadows and Reflections",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Earth, Moon, and the Sun",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ],
+  "mcq": [
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz \u2013 The Ever-Evolving World of Science",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q2",
+      "title": "MCQ Quiz \u2013 Exploring Substances",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q3",
+      "title": "MCQ Quiz \u2013 Electricity: Circuits",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q4",
+      "title": "MCQ Quiz \u2013 The World of Metals & Non-metals",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q5",
+      "title": "MCQ Quiz \u2013 Physical & Chemical Changes",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q6",
+      "title": "MCQ Quiz \u2013 Adolescence",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q7",
+      "title": "MCQ Quiz \u2013 Heat Transfer in Nature",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q8",
+      "title": "MCQ Quiz \u2013 Measurement of Time and Motion",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q9",
+      "title": "MCQ Quiz \u2013 Life Processes in Animals",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q10",
+      "title": "MCQ Quiz \u2013 Life Processes in Plants",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q11",
+      "title": "MCQ Quiz \u2013 Light: Shadows and Reflections",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q12",
+      "title": "MCQ Quiz \u2013 Earth, Moon, and the Sun",
+      "sub": "Science \u00b7 Class 7 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ]
+}

@@ -2,35 +2,280 @@
   "ws": [
     {
       "num": "W1",
-      "title": "Worksheet – Chemical Reactions and Equations",
-      "sub": "Science · Class 10 · Chapter 1",
+      "title": "Worksheet \u2013 Chemical Reactions and Equations",
+      "sub": "Science \u00b7 Class 10 \u00b7 Chapter 1",
       "dueClass": "due-open",
       "dueLabel": "Open"
     },
     {
       "num": "W2",
-      "title": "Worksheet – Acids, Bases and Salts",
-      "sub": "Science · Class 10 · Chapter 2",
+      "title": "Worksheet \u2013 Acids, Bases and Salts",
+      "sub": "Science \u00b7 Class 10 \u00b7 Chapter 2",
       "dueClass": "due-upcoming",
       "dueLabel": "This Week"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 Metals and Non-metals",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Carbon and its Compounds",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Life Processes",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Control and Coordination",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 How do Organisms Reproduce?",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Heredity",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Light - Reflection and Refraction",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 The Human Eye and the Colourful World",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Electricity",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Magnetic Effects of Electric Current",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W13",
+      "title": "Worksheet \u2013 Our Environment",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
     }
   ],
   "pt": [
     {
       "num": "P1",
-      "title": "Practice Test – Light: Reflection &amp;Refraction",
-      "sub": "Science · Class 10 · Chapter 9 · 25 marks",
-      "dueClass": "due-soon",
-      "dueLabel": "Due Soon"
+      "title": "Practice Test \u2013 Chemical Reactions and Equations",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Acids, Bases and Salts",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 Metals and Non-metals",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Carbon and its Compounds",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Life Processes",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Control and Coordination",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 How do Organisms Reproduce?",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Heredity",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Light - Reflection and Refraction",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 The Human Eye and the Colourful World",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Electricity",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Magnetic Effects of Electric Current",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P13",
+      "title": "Practice Test \u2013 Our Environment",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
     }
   ],
   "mcq": [
     {
       "num": "Q1",
-      "title": "MCQ Quiz – Life Processes",
-      "sub": "Science · Class 10 · Chapter 5 · 15 questions",
+      "title": "MCQ Quiz \u2013 Chemical Reactions and Equations",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q2",
+      "title": "MCQ Quiz \u2013 Acids, Bases and Salts",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q3",
+      "title": "MCQ Quiz \u2013 Metals and Non-metals",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q4",
+      "title": "MCQ Quiz \u2013 Carbon and its Compounds",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz \u2013 Life Processes",
+      "sub": "Science \u00b7 Class 10 \u00b7 Chapter 5 \u00b7 15 questions",
       "dueClass": "due-open",
       "dueLabel": "Open"
+    },
+    {
+      "num": "Q6",
+      "title": "MCQ Quiz \u2013 Control and Coordination",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q7",
+      "title": "MCQ Quiz \u2013 How do Organisms Reproduce?",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q8",
+      "title": "MCQ Quiz \u2013 Heredity",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q9",
+      "title": "MCQ Quiz \u2013 Light - Reflection and Refraction",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q10",
+      "title": "MCQ Quiz \u2013 The Human Eye and the Colourful World",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q11",
+      "title": "MCQ Quiz \u2013 Electricity",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q12",
+      "title": "MCQ Quiz \u2013 Magnetic Effects of Electric Current",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q13",
+      "title": "MCQ Quiz \u2013 Our Environment",
+      "sub": "Science \u00b7 Class 10 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
     }
   ]
 }

@@ -2,35 +2,259 @@
   "ws": [
     {
       "num": "W1",
-      "title": "Worksheet – Diversity in the Living World",
-      "sub": "Science · Class 6 · Chapter 2",
+      "title": "Worksheet \u2013 The Wonderful World of Science",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 Diversity in the Living World",
+      "sub": "Science \u00b7 Class 6 \u00b7 Chapter 2",
       "dueClass": "due-open",
       "dueLabel": "Open"
     },
     {
+      "num": "W3",
+      "title": "Worksheet \u2013 Mindful Eating",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Exploring Magnets",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Measurement of Length and Motion",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
       "num": "W2",
-      "title": "Worksheet – Materials Around Us",
-      "sub": "Science · Class 6 · Chapter 6",
+      "title": "Worksheet \u2013 Materials Around Us",
+      "sub": "Science \u00b7 Class 6 \u00b7 Chapter 6",
       "dueClass": "due-upcoming",
       "dueLabel": "This Week"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Temperature and its Measurement",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 A Journey through States of Water",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Methods of Separation",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 Living Creatures: Characteristics",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Nature's Treasures",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Beyond Earth",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
     }
   ],
   "pt": [
     {
       "num": "P1",
-      "title": "Practice Test – A Journey Through States of Water",
-      "sub": "Science · Class 6 · Chapter 8 · 20 marks",
+      "title": "Practice Test \u2013 The Wonderful World of Science",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Diversity in the Living World",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 Mindful Eating",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Exploring Magnets",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Measurement of Length and Motion",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Materials Around Us",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Temperature and its Measurement",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 A Journey Through States of Water",
+      "sub": "Science \u00b7 Class 6 \u00b7 Chapter 8 \u00b7 20 marks",
       "dueClass": "due-open",
       "dueLabel": "Open"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Methods of Separation",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 Living Creatures: Characteristics",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Nature's Treasures",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Beyond Earth",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
     }
   ],
   "mcq": [
     {
       "num": "Q1",
-      "title": "MCQ Quiz – Exploring Magnets",
-      "sub": "Science · Class 6 · Chapter 4 · 10 questions",
+      "title": "MCQ Quiz \u2013 The Wonderful World of Science",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q2",
+      "title": "MCQ Quiz \u2013 Diversity in the Living World",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q3",
+      "title": "MCQ Quiz \u2013 Mindful Eating",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz \u2013 Exploring Magnets",
+      "sub": "Science \u00b7 Class 6 \u00b7 Chapter 4 \u00b7 10 questions",
       "dueClass": "due-open",
       "dueLabel": "Open"
+    },
+    {
+      "num": "Q5",
+      "title": "MCQ Quiz \u2013 Measurement of Length and Motion",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q6",
+      "title": "MCQ Quiz \u2013 Materials Around Us",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q7",
+      "title": "MCQ Quiz \u2013 Temperature and its Measurement",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q8",
+      "title": "MCQ Quiz \u2013 A Journey through States of Water",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q9",
+      "title": "MCQ Quiz \u2013 Methods of Separation",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q10",
+      "title": "MCQ Quiz \u2013 Living Creatures: Characteristics",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q11",
+      "title": "MCQ Quiz \u2013 Nature's Treasures",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "Q12",
+      "title": "MCQ Quiz \u2013 Beyond Earth",
+      "sub": "Science \u00b7 Class 6 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
     }
   ]
 }
