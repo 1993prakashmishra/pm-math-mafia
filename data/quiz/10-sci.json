@@ -1,0 +1,123 @@
+{
+  "10-science-ch1": {
+    "label": "Ch 1: Chemical Reactions and Equations",
+    "title": "Class 10 Science: Ch 1 - Chemical Reactions and Equations",
+    "questions": [
+      {
+        "q": "What occurs dynamically when dilute Hydrochloric Acid is combined directly with iron filings?",
+        "options": [
+          "Hydrogen gas and iron chloride are produced.",
+          "Chlorine gas and iron hydroxide are produced.",
+          "No displacement reaction takes place.",
+          "Iron salt and water form smoothly."
+        ],
+        "correct": 0,
+        "explain": "Iron reacts with dilute HCl to displace hydrogen, forming iron(II) chloride and Hydrogen gas."
+      },
+      {
+        "q": "What happens when lead nitrate powder is heated strongly in a dry test tube?",
+        "options": [
+          "A colorless gas with a pungent smell is evolved.",
+          "Brown fumes of nitrogen dioxide gas are evolved.",
+          "The crystals turn into a bright blue solution.",
+          "A white precipitate of lead chloride is formed."
+        ],
+        "correct": 1,
+        "explain": "Thermal decomposition of lead nitrate produces lead oxide, oxygen gas, and brown NO2 fumes."
+      },
+      {
+        "q": "Which of the following processes represents a classic endothermic reaction?",
+        "options": [
+          "Decomposition of vegetable matter into compost.",
+          "Combustion of liquefied petroleum gas (LPG).",
+          "Dilution of concentrated sulfuric acid with water.",
+          "Decomposition of calcium carbonate to form quicklime."
+        ],
+        "correct": 3,
+        "explain": "Breakdown of calcium carbonate requires heat absorption, making it endothermic."
+      },
+      {
+        "q": "Fatty or oily food items are often flushed with nitrogen gas before packaging. What is the primary purpose?",
+        "options": [
+          "To act as a natural coloring agent.",
+          "To prevent oxidation and stop the food from turning rancid.",
+          "To catalyze fermentation.",
+          "To kill viruses using nitrogen's acidic properties."
+        ],
+        "correct": 1,
+        "explain": "Nitrogen creates an oxygen-free environment, preventing oxidation that causes rancidity."
+      },
+      {
+        "q": "When a shiny brown element 'X' is heated in air, it turns completely black. Identify element 'X' and the black compound formed.",
+        "options": [
+          "Iron; black compound is Fe3O4.",
+          "Copper; black compound is CuO.",
+          "Aluminum; black compound is Al2O3.",
+          "Magnesium; black compound is MgO."
+        ],
+        "correct": 1,
+        "explain": "Copper reacts with oxygen when heated to form black copper(II) oxide (CuO)."
+      }
+    ]
+  },
+  "10-science-ch2": {
+    "label": "Ch 2: Acids, Bases and Salts",
+    "title": "Class 10 Science: Ch 2 - Acids, Bases and Salts",
+    "questions": []
+  },
+  "10-science-ch3": {
+    "label": "Ch 3: Metals and Non-metals",
+    "title": "Class 10 Science: Ch 3 - Metals and Non-metals",
+    "questions": []
+  },
+  "10-science-ch4": {
+    "label": "Ch 4: Carbon and its Compounds",
+    "title": "Class 10 Science: Ch 4 - Carbon and its Compounds",
+    "questions": []
+  },
+  "10-science-ch5": {
+    "label": "Ch 5: Life Processes",
+    "title": "Class 10 Science: Ch 5 - Life Processes",
+    "questions": []
+  },
+  "10-science-ch6": {
+    "label": "Ch 6: Control and Coordination",
+    "title": "Class 10 Science: Ch 6 - Control and Coordination",
+    "questions": []
+  },
+  "10-science-ch7": {
+    "label": "Ch 7: How do Organisms Reproduce?",
+    "title": "Class 10 Science: Ch 7 - How do Organisms Reproduce?",
+    "questions": []
+  },
+  "10-science-ch8": {
+    "label": "Ch 8: Heredity",
+    "title": "Class 10 Science: Ch 8 - Heredity",
+    "questions": []
+  },
+  "10-science-ch9": {
+    "label": "Ch 9: Light - Reflection and Refraction",
+    "title": "Class 10 Science: Ch 9 - Light - Reflection and Refraction",
+    "questions": []
+  },
+  "10-science-ch10": {
+    "label": "Ch 10: The Human Eye and the Colourful World",
+    "title": "Class 10 Science: Ch 10 - The Human Eye and the Colourful World",
+    "questions": []
+  },
+  "10-science-ch11": {
+    "label": "Ch 11: Electricity",
+    "title": "Class 10 Science: Ch 11 - Electricity",
+    "questions": []
+  },
+  "10-science-ch12": {
+    "label": "Ch 12: Magnetic Effects of Electric Current",
+    "title": "Class 10 Science: Ch 12 - Magnetic Effects of Electric Current",
+    "questions": []
+  },
+  "10-science-ch13": {
+    "label": "Ch 13: Our Environment",
+    "title": "Class 10 Science: Ch 13 - Our Environment",
+    "questions": []
+  }
+}

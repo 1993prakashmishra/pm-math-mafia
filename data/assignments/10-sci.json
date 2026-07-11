@@ -1,0 +1,36 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet – Chemical Reactions and Equations",
+      "sub": "Science · Class 10 · Chapter 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet – Acids, Bases and Salts",
+      "sub": "Science · Class 10 · Chapter 2",
+      "dueClass": "due-upcoming",
+      "dueLabel": "This Week"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test – Light: Reflection &amp;Refraction",
+      "sub": "Science · Class 10 · Chapter 9 · 25 marks",
+      "dueClass": "due-soon",
+      "dueLabel": "Due Soon"
+    }
+  ],
+  "mcq": [
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz – Life Processes",
+      "sub": "Science · Class 10 · Chapter 5 · 15 questions",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ]
+}

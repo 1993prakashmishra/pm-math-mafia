@@ -1,0 +1,64 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet – Pattern in Mathematics",
+      "sub": "Maths · Class 6 · Chapter 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet – Lines and Angles",
+      "sub": "Maths · Class 6 · Chapter 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet – Fractions",
+      "sub": "Maths · Class 6 · Chapter 7",
+      "dueClass": "due-upcoming",
+      "dueLabel": "This Week"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet – Perimeter and Area",
+      "sub": "Maths · Class 6 · Chapter 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test – Number Play",
+      "sub": "Maths · Class 6 · Chapter 3 · 20 marks",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test – Symmetry",
+      "sub": "Maths · Class 6 · Chapter 9 · 15 marks",
+      "dueClass": "due-upcoming",
+      "dueLabel": "This Week"
+    }
+  ],
+  "mcq": [
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz – Prime Time",
+      "sub": "Maths · Class 6 · Chapter 5 · 10 questions",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "Q2",
+      "title": "MCQ Quiz – Data Handling and Presentation",
+      "sub": "Maths · Class 6 · Chapter 4 · 10 questions",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ]
+}

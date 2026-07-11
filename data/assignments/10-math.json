@@ -1,0 +1,57 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet – Real Numbers",
+      "sub": "Maths · Class 10 · Chapter 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet – Polynomials",
+      "sub": "Maths · Class 10 · Chapter 2",
+      "dueClass": "due-soon",
+      "dueLabel": "Due Soon"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet – Quadratic Equations",
+      "sub": "Maths · Class 10 · Chapter 4",
+      "dueClass": "due-upcoming",
+      "dueLabel": "This Week"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test – Trigonometry (Ch 8 &amp;9)",
+      "sub": "Maths · Class 10 · 30 marks",
+      "dueClass": "due-soon",
+      "dueLabel": "Due Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test – Statistics &amp;Probability",
+      "sub": "Maths · Class 10 · Ch 13 &amp;14 · 30 marks",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ],
+  "mcq": [
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz – Polynomials",
+      "sub": "Maths · Class 10 · Chapter 2 · 10 questions",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "Q2",
+      "title": "MCQ Quiz – Circles",
+      "sub": "Maths · Class 10 · Chapter 10 · 15 questions",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ]
+}

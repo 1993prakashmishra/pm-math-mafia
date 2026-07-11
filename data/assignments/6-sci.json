@@ -1,0 +1,36 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet – Diversity in the Living World",
+      "sub": "Science · Class 6 · Chapter 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet – Materials Around Us",
+      "sub": "Science · Class 6 · Chapter 6",
+      "dueClass": "due-upcoming",
+      "dueLabel": "This Week"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test – A Journey Through States of Water",
+      "sub": "Science · Class 6 · Chapter 8 · 20 marks",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ],
+  "mcq": [
+    {
+      "num": "Q1",
+      "title": "MCQ Quiz – Exploring Magnets",
+      "sub": "Science · Class 6 · Chapter 4 · 10 questions",
+      "dueClass": "due-open",
+      "dueLabel": "Open"
+    }
+  ]
+}
