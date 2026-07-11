@@ -2787,10 +2787,10 @@
                     <h3 style="color:#fff;font-size:1.4rem;margin-bottom:10px;font-weight:700;">📸 Gallery &amp;Active Media Updates</h3>
                     <p style="color:#eaf4ed;font-size:0.95rem;margin:0 auto 20px;max-width:700px;line-height:1.6;">Take a live glimpse into our academy layout! We update these photos regularly with live milestones from our coaching hub.</p>
                     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
-                        <div style="background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;">📷 Classroom Photos</div>
-                        <div style="background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;">🏫 Campus Tour</div>
-                        <div style="background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;">🔥 Motivational Videos</div>
-                        <div style="background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;">🎉 Student Milestones</div>
+                        <div onclick="scrollToCampusCat('classroom')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">📷 Classroom Photos</div>
+                        <div onclick="scrollToCampusCat('tour')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">🏫 Campus Tour</div>
+                        <div onclick="scrollToCampusCat('motivational')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">🔥 Motivational Videos</div>
+                        <div onclick="scrollToCampusCat('achievements')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">🎉 Student Milestones</div>
                     </div>
                 </div>
                 <div id="campus-gallery-root"></div>
@@ -4169,9 +4169,9 @@
             function renderCampusGallery() {
                 var root = document.getElementById('campus-gallery-root');
                 if (!root) return;
-                var html = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">';
+                var html = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">';
                 campusData.forEach(function(cat) {
-                    html += '<div class="campus-cat-card">';
+                    html += '<div class="campus-cat-card" id="campus-cat-' + cat.key + '">';
                     html += '<div class="campus-cat-title">' + cat.title + '</div>';
                     html += '<div class="campus-cat-count">' + cat.photos.length + ' photo' + (cat.photos.length > 1 ? 's' : '') + '</div>';
                     html += '<div class="campus-gallery-grid">';
@@ -4182,6 +4182,13 @@
                 });
                 html += '</div>';
                 root.innerHTML = html;
+            }
+            function scrollToCampusCat(key) {
+                var el = document.getElementById('campus-cat-' + key);
+                if (!el) return;
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.style.boxShadow = '0 0 0 3px #d4a017';
+                setTimeout(function() { el.style.boxShadow = '0 5px 18px rgba(10,46,26,0.06)'; }, 1200);
             }
             function openLightbox(key, idx) {
                 var cat = campusData.find(function(c) { return c.key === key; });
@@ -4455,16 +4462,16 @@
 
             var ncertData = {
                 '6-math': [
-                    { ch: 'Ch 1 – Pattern in Mathematics', link: 'https://ncert.nic.in/textbook/pdf/gemh101.pdf' },
-                    { ch: 'Ch 2 – Lines and Angles', link: 'https://ncert.nic.in/textbook/pdf/gemh102.pdf' },
-                    { ch: 'Ch 3 – Number Play', link: 'https://ncert.nic.in/textbook/pdf/gemh103.pdf' },
-                    { ch: 'Ch 4 – Data Handling and Presentation', link: 'https://ncert.nic.in/textbook/pdf/gemh104.pdf' },
-                    { ch: 'Ch 5 – Prime Time', link: 'https://ncert.nic.in/textbook/pdf/gemh105.pdf' },
-                    { ch: 'Ch 6 – Perimeter and Area', link: 'https://ncert.nic.in/textbook/pdf/gemh106.pdf' },
-                    { ch: 'Ch 7 – Fractions', link: 'https://ncert.nic.in/textbook/pdf/gemh107.pdf' },
-                    { ch: 'Ch 8 – Playing With Constructions', link: 'https://ncert.nic.in/textbook/pdf/gemh108.pdf' },
-                    { ch: 'Ch 9 – Symmetry', link: 'https://ncert.nic.in/textbook/pdf/gemh109.pdf' },
-                    { ch: 'Ch 10 – The Other Side of Zero', link: 'https://ncert.nic.in/textbook/pdf/gemh110.pdf' }
+                    { ch: 'Ch 1 – Pattern in Mathematics', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 2 – Lines and Angles', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 3 – Number Play', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 4 – Data Handling and Presentation', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 5 – Prime Time', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 6 – Perimeter and Area', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 7 – Fractions', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 8 – Playing With Constructions', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 9 – Symmetry', link: 'https://ncert.nic.in/textbook.php' },
+                    { ch: 'Ch 10 – The Other Side of Zero', link: 'https://ncert.nic.in/textbook.php' }
                 ],
                 '6-sci': [
                     { ch: 'Ch 1 – The Wonderful World of Science', link: 'https://ncert.nic.in/textbook/pdf/gecu101.pdf' },
@@ -4673,7 +4680,9 @@
                 var classLabel = (isMath ? 'Maths' : 'Science') + ' · Class ' + currentNcertClass;
                 var html = '<div class="notes-grid active" style="margin-top:0;">';
                 chapters.forEach(function(item) {
-                    html += '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block;">' + '<div class="note-card" style="border-left:4px solid ' + borderColor + ';">' + '<div class="note-icon">' + icon + '</div>' + '<div>' + '<div class="note-title">' + item.ch + '</div>' + '<div class="note-meta">' + classLabel + '</div>' + '<span class="note-badge" style="' + badgeStyle + '">📖 View Textbook PDF</span>' + '</div>' + '</div>' + '</a>';
+                    var isPortal = item.link.indexOf('textbook.php') !== -1;
+                    var badgeText = isPortal ? '🔗 Find on NCERT Site' : '📖 View Textbook PDF';
+                    html += '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block;">' + '<div class="note-card" style="border-left:4px solid ' + borderColor + ';">' + '<div class="note-icon">' + icon + '</div>' + '<div>' + '<div class="note-title">' + item.ch + '</div>' + '<div class="note-meta">' + classLabel + '</div>' + '<span class="note-badge" style="' + badgeStyle + '">' + badgeText + '</span>' + '</div>' + '</div>' + '</a>';
                 });
                 html += '</div>';
                 container.innerHTML = html;
