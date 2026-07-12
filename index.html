@@ -1081,17 +1081,23 @@
                     visibility: visible !important;
                 }
 
+                html, body {
+                    height: auto !important;
+                    overflow: visible !important;
+                }
+
                 #quizFeedback {
                     display: block !important;
-                    position: fixed !important;
-                    left: 0 !important;
-                    top: 0 !important;
-                    right: 0 !important;
+                    position: static !important;
                     width: 100% !important;
                     border: 1px solid #1a6639 !important;
                     box-shadow: none !important;
                     padding: 20px !important;
                     margin: 0 !important;
+                }
+
+                #quizFeedback * {
+                    position: static !important;
                 }
 
                 .no-print-btn-group, .no-print-btn-group * {
@@ -1100,10 +1106,24 @@
 
                 section, nav, footer, .hero {
                     display: none !important;
+                    height: auto !important;
                 }
 
                 #quizzes {
                     display: block !important;
+                    height: auto !important;
+                    padding: 0 !important;
+                    overflow: visible !important;
+                }
+
+                #quizzes > div[style*="position:absolute"] {
+                    display: none !important;
+                }
+
+                .container {
+                    max-width: 100% !important;
+                    height: auto !important;
+                    overflow: visible !important;
                 }
             }
         </style>
@@ -2384,7 +2404,7 @@
                 if (pg) pg.style.display = 'none';
                 var total = activeQuiz.questions.length, pct = Math.round((userScore / total) * 100);
                 var review = examHistoryLog.map(function(item, i) {
-                    return '<div style="text-align:left;background:#fafafa;padding:12px;margin-top:10px;border-radius:6px;border-left:4px solid ' + (item.status === 'CORRECT' ? '#1a6639' : '#ea4335') + ';"><strong>Q' + (i + 1) + ': ' + item.question + '</strong><br><small>Your Answer: ' + item.userAns + ' (' + item.status + ')</small><br><small style="color:#1a6639">Correct: ' + item.correctAns + '</small></div>';
+                    return '<div style="text-align:left;background:#fafafa;padding:12px;margin-top:10px;border-radius:6px;border-left:4px solid ' + (item.status === 'CORRECT' ? '#1a6639' : '#ea4335') + ';page-break-inside:avoid;break-inside:avoid;"><strong>Q' + (i + 1) + ': ' + item.question + '</strong><br><small>Your Answer: ' + item.userAns + ' (' + item.status + ')</small><br><small style="color:#1a6639">Correct: ' + item.correctAns + '</small></div>';
                 }).join('');
                 var fb = document.getElementById('quizFeedback');
                 if (!fb) return;
