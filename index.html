@@ -1383,8 +1383,8 @@
                     <div class="assign-class-tab" onclick="switchAssignClass('12',this)">Class 12</div>
                 </div>
                 <div class="assign-subj-tabs">
-                    <div class="assign-subj-tab active" onclick="switchAssignSubj('math',this)">📐 Mathematics</div>
-                    <div class="assign-subj-tab" onclick="switchAssignSubj('sci',this)">🔬 Science</div>
+                    <div class="assign-subj-tab active" id="assign-subj-math" onclick="switchAssignSubj('math',this)">📐 Mathematics</div>
+                    <div class="assign-subj-tab" id="assign-subj-sci" onclick="switchAssignSubj('sci',this)">🔬 Science</div>
                 </div>
                 <div class="assign-type-tabs">
                     <div class="assign-type-tab active" onclick="switchAssignType('ws',this)">📄 Worksheets</div>
@@ -2154,6 +2154,17 @@
                 acls = cls;
                 document.querySelectorAll('.assign-class-tab').forEach(function(t) { t.classList.remove('active'); });
                 el.classList.add('active');
+                var sciTab = document.getElementById('assign-subj-sci');
+                if (sciTab) {
+                    var noSci = cls === '11' || cls === '12';
+                    sciTab.style.display = noSci ? 'none' : '';
+                    if (noSci && asubj === 'sci') {
+                        asubj = 'math';
+                        var mathTab = document.getElementById('assign-subj-math');
+                        if (mathTab) mathTab.classList.add('active');
+                        sciTab.classList.remove('active');
+                    }
+                }
                 updateAssignPanel();
             }
             function switchAssignSubj(subj, el) {
