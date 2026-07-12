@@ -1,0 +1,202 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 A Square and A Cube",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Power Play",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 A Story of Numbers",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Quadrilaterals",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Number Play",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 We Distribute, Yet Things Multiply",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Proportional Reasoning-1",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Fractions in Disguise",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 The Baudhayana-Pythagoras Theorem",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 Proportional Reasoning-2",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Exploring Some Geometric Themes",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Tales By Dots and Lines",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W13",
+      "title": "Worksheet \u2013 Algebra Play",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W14",
+      "title": "Worksheet \u2013 Area",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 14",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 A Square and A Cube",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Power Play",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 A Story of Numbers",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Quadrilaterals",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Number Play",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 We Distribute, Yet Things Multiply",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Proportional Reasoning-1",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Fractions in Disguise",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 The Baudhayana-Pythagoras Theorem",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 Proportional Reasoning-2",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Exploring Some Geometric Themes",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Tales By Dots and Lines",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P13",
+      "title": "Practice Test \u2013 Algebra Play",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P14",
+      "title": "Practice Test \u2013 Area",
+      "sub": "Maths \u00b7 Class 8 \u00b7 Ch 14",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ]
+}

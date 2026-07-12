@@ -1,0 +1,132 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 Orienting Yourself: Coordinates",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Introduction To Linear Polynomials",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 The World of Numbers",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Exploring Algebraic Identities",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 I'm Up and Down, and Round",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Measuring Spaces: Perimeter & Area",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Mathematics of Maybe: Probability",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Predicting What Comes Next",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Ganita Manjari Part 2",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 Orienting Yourself: Coordinates",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Introduction To Linear Polynomials",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 The World of Numbers",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Exploring Algebraic Identities",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 I'm Up and Down, and Round",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Measuring Spaces: Perimeter & Area",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Mathematics of Maybe: Probability",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Predicting What Comes Next",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Ganita Manjari Part 2",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ]
+}

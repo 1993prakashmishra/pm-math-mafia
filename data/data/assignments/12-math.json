@@ -1,0 +1,188 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 Relations and Functions",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Inverse Trigonometric Functions",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 Matrices",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Determinants",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Continuity and Differentiability",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Application of Derivatives",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Integrals",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Application of Integrals",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Differential Equations",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 Vector Algebra",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Three Dimensional Geometry",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Linear Programming",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "W13",
+      "title": "Worksheet \u2013 Probability",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 Relations and Functions",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 1",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Inverse Trigonometric Functions",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 2",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 Matrices",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 3",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Determinants",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 4",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Continuity and Differentiability",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 5",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Application of Derivatives",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 6",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Integrals",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 7",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Application of Integrals",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 8",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Differential Equations",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 9",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 Vector Algebra",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 10",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Three Dimensional Geometry",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 11",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Linear Programming",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 12",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    },
+    {
+      "num": "P13",
+      "title": "Practice Test \u2013 Probability",
+      "sub": "Maths \u00b7 Class 12 \u00b7 Ch 13",
+      "dueClass": "due-pending",
+      "dueLabel": "\u23f3 Coming Soon"
+    }
+  ]
+}
