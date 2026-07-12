@@ -5,33 +5,10 @@
     "questions": []
   },
   "7-maths-ch2": {
-    "label": "Ch 2: Arithmetic Expressions",
-    "title": "Class 7 Maths: Ch 2 - Arithmetic Expressions",
+    "title": "Class 7 Maths - Ch 2: Arithmetic Expressions",
     "questions": [
       {
-        "q": "In the expression 83 - 14 + 6, what are the correct terms (after converting subtraction to addition of the inverse)?",
-        "options": [
-          "83, 14, 6",
-          "83, -14, 6",
-          "83, 14, -6",
-          "-83, 14, 6"
-        ],
-        "correct": 1,
-        "explain": "Subtracting 14 is the same as adding its inverse -14. So 83 - 14 + 6 = 83 + (-14) + 6, giving terms 83, -14, and 6."
-      },
-      {
-        "q": "Terms in an expression are the parts separated by which sign, once all subtractions are rewritten as additions?",
-        "options": [
-          "Multiplication sign",
-          "Addition sign",
-          "Division sign",
-          "Equals sign"
-        ],
-        "correct": 1,
-        "explain": "Terms are the parts of an expression separated by a plus sign, after converting every subtraction into addition of the inverse."
-      },
-      {
-        "q": "What is the value of 30 + 5 x 4, evaluated using the correct order (evaluate each term first, then add)?",
+        "q": "Find the value of the expression: 30 + 5 × 4",
         "options": [
           "140",
           "50",
@@ -39,84 +16,106 @@
           "20"
         ],
         "correct": 1,
-        "explain": "The term 5 x 4 is evaluated first to get 20, and then added to 30, giving 30 + 20 = 50."
+        "explain": "Multiplication is done first: 5 × 4 = 20, then 30 + 20 = 50. Without brackets, we evaluate the term 5 × 4 first before adding."
       },
       {
-        "q": "Which property is illustrated by the equality 6 + (-4) = (-4) + 6?",
+        "q": "What are the terms of the expression 83 – 14?",
         "options": [
-          "Distributive property",
-          "Associative property",
-          "Commutative property",
-          "None of these"
-        ],
-        "correct": 2,
-        "explain": "Swapping the terms of an expression without changing its value is called the commutative property of addition."
-      },
-      {
-        "q": "When brackets preceded by a negative sign are removed from an expression, what happens to the signs of the terms inside the bracket?",
-        "options": [
-          "They stay the same",
-          "They change (flip)",
-          "Only the first term changes",
-          "Only the last term changes"
+          "83 and 14",
+          "83 and −14",
+          "−83 and 14",
+          "−83 and −14"
         ],
         "correct": 1,
-        "explain": "For example, 100 - (15 + 56) = 100 - 15 - 56. Both 15 and 56 flip sign to -15 and -56 once the bracket is removed."
+        "explain": "Subtracting a number is the same as adding its inverse: 83 – 14 = 83 + (−14). So the terms are 83 and −14."
       },
       {
-        "q": "Simplify: 500 - (250 - 100)",
+        "q": "\"Swapping the terms of an expression does not change its value\" is called the:",
+        "options": [
+          "Associative property",
+          "Commutative property",
+          "Distributive property",
+          "Identity property"
+        ],
+        "correct": 1,
+        "explain": "This is the commutative property of addition, e.g., 6 + (−4) = (−4) + 6."
+      },
+      {
+        "q": "Irfan paid ₹100 for a biscuit packet (₹15) and toor dal (₹56). What is the change he gets?\nExpression: 100 – (15 + 56)",
+        "options": [
+          "₹141",
+          "₹29",
+          "₹71",
+          "₹39"
+        ],
+        "correct": 1,
+        "explain": "First evaluate the bracket: 15 + 56 = 71. Then 100 – 71 = 29. Irfan gets ₹29 as change."
+      },
+      {
+        "q": "Find the value of: 5 × (3 + 2) + 7 × 8 + 3",
+        "options": [
+          "84",
+          "74",
+          "91",
+          "65"
+        ],
+        "correct": 0,
+        "explain": "5 × (3+2) = 5 × 5 = 25, and 7 × 8 = 56. So the expression = 25 + 56 + 3 = 84."
+      },
+      {
+        "q": "When brackets preceded by a negative sign are removed, the signs of the terms inside the brackets:",
+        "options": [
+          "Remain the same",
+          "Change to their opposite sign",
+          "Always become zero",
+          "Depend on the numbers used"
+        ],
+        "correct": 1,
+        "explain": "For example, 100 – (15 + 56) = 100 – 15 – 56. Both +15 and +56 change sign to −15 and −56 once the bracket is removed."
+      },
+      {
+        "q": "Find the value of: 500 – (250 – 100)",
         "options": [
           "150",
           "350",
-          "450",
-          "250"
+          "250",
+          "450"
         ],
         "correct": 1,
-        "explain": "First evaluate inside the bracket: 250 - 100 = 150. Then 500 - 150 = 350."
+        "explain": "First subtract inside the bracket: 250 – 100 = 150. Then 500 – 150 = 350. Note: this is NOT the same as 500 – 250 – 100."
       },
       {
-        "q": "Which expression is equal in value to 28 + (35 - 10)?",
+        "q": "Using the distributive property, 14 × 10 – 6 × 10 can be written as:",
         "options": [
-          "28 + 35 - 10",
-          "28 - 35 - 10",
-          "28 - 35 + 10",
-          "28 + 35 + 10"
+          "(14 – 6) × 10",
+          "(14 + 6) × 10",
+          "14 × (10 – 6)",
+          "8 × 20"
         ],
         "correct": 0,
-        "explain": "Since the bracket here is NOT preceded by a negative sign, the terms inside keep their signs: 28 + (35 - 10) = 28 + 35 - 10 = 53."
+        "explain": "The multiple of a difference is the same as the difference of the multiples: 14 × 10 – 6 × 10 = (14 – 6) × 10 = 8 × 10 = 80."
       },
       {
-        "q": "Using the distributive property, 5 x (8 - 3) is equal to:",
+        "q": "Hira has 28 coins in one bag and 35 in another. She gifts 10 coins from the second bag. Find the coins left:\n28 + (35 – 10)",
         "options": [
-          "5x8 - 5x3",
-          "5x8 + 5x3",
-          "5x8 - 3",
-          "8 - 3x5"
+          "3",
+          "73",
+          "53",
+          "13"
+        ],
+        "correct": 2,
+        "explain": "Since the bracket is not preceded by a negative sign, signs don't change: 28 + 35 – 10 = 63 – 10 = 53."
+      },
+      {
+        "q": "Using 97 × 25 = (100 – 3) × 25, find the value of 97 × 25.",
+        "options": [
+          "2425",
+          "2500",
+          "2300",
+          "2225"
         ],
         "correct": 0,
-        "explain": "The multiple of a difference equals the difference of the multiples: 5x(8-3) = 5x8 - 5x3 = 40 - 15 = 25."
-      },
-      {
-        "q": "Fill in the blank sign: 24 - (6 + 4) = 24 ___ 6 - 4",
-        "options": [
-          "+",
-          "-",
-          "x",
-          "divide"
-        ],
-        "correct": 1,
-        "explain": "Removing a bracket preceded by a negative sign flips the sign of both terms inside: 24 - (6+4) = 24 - 6 - 4."
-      },
-      {
-        "q": "Irfan bought a biscuit packet for Rs 18 and a toor dal packet for Rs 47. He paid Rs 100 to the shopkeeper. Which expression correctly calculates his change, and what is its value?",
-        "options": [
-          "100 - 18 + 47 = 129",
-          "100 - (18 + 47) = 35",
-          "100 + 18 - 47 = 71",
-          "100 - 18 - 47 = -35"
-        ],
-        "correct": 1,
-        "explain": "Total cost = 18 + 47 = 65. Using brackets correctly: 100 - (18 + 47) = 100 - 65 = Rs 35 change."
+        "explain": "97 × 25 = 100 × 25 – 3 × 25 = 2500 – 75 = 2425. This distributive trick makes mental multiplication faster."
       }
     ]
   },
