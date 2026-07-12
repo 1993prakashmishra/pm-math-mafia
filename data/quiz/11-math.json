@@ -1,0 +1,72 @@
+{
+  "11-maths-ch1": {
+    "label": "Ch 1: Sets",
+    "title": "Class 11 Maths: Ch 1 - Sets",
+    "questions": []
+  },
+  "11-maths-ch2": {
+    "label": "Ch 2: Relations and Functions",
+    "title": "Class 11 Maths: Ch 2 - Relations and Functions",
+    "questions": []
+  },
+  "11-maths-ch3": {
+    "label": "Ch 3: Trigonometric Functions",
+    "title": "Class 11 Maths: Ch 3 - Trigonometric Functions",
+    "questions": []
+  },
+  "11-maths-ch4": {
+    "label": "Ch 4: Complex Numbers and Quadratic Equations",
+    "title": "Class 11 Maths: Ch 4 - Complex Numbers and Quadratic Equations",
+    "questions": []
+  },
+  "11-maths-ch5": {
+    "label": "Ch 5: Linear Inequalities",
+    "title": "Class 11 Maths: Ch 5 - Linear Inequalities",
+    "questions": []
+  },
+  "11-maths-ch6": {
+    "label": "Ch 6: Permutations and Combinations",
+    "title": "Class 11 Maths: Ch 6 - Permutations and Combinations",
+    "questions": []
+  },
+  "11-maths-ch7": {
+    "label": "Ch 7: Binomial Theorem",
+    "title": "Class 11 Maths: Ch 7 - Binomial Theorem",
+    "questions": []
+  },
+  "11-maths-ch8": {
+    "label": "Ch 8: Sequences and Series",
+    "title": "Class 11 Maths: Ch 8 - Sequences and Series",
+    "questions": []
+  },
+  "11-maths-ch9": {
+    "label": "Ch 9: Straight Lines",
+    "title": "Class 11 Maths: Ch 9 - Straight Lines",
+    "questions": []
+  },
+  "11-maths-ch10": {
+    "label": "Ch 10: Conic Sections",
+    "title": "Class 11 Maths: Ch 10 - Conic Sections",
+    "questions": []
+  },
+  "11-maths-ch11": {
+    "label": "Ch 11: Introduction to Three Dimensional Geometry",
+    "title": "Class 11 Maths: Ch 11 - Introduction to Three Dimensional Geometry",
+    "questions": []
+  },
+  "11-maths-ch12": {
+    "label": "Ch 12: Limits and Derivatives",
+    "title": "Class 11 Maths: Ch 12 - Limits and Derivatives",
+    "questions": []
+  },
+  "11-maths-ch13": {
+    "label": "Ch 13: Statistics",
+    "title": "Class 11 Maths: Ch 13 - Statistics",
+    "questions": []
+  },
+  "11-maths-ch14": {
+    "label": "Ch 14: Probability",
+    "title": "Class 11 Maths: Ch 14 - Probability",
+    "questions": []
+  }
+}

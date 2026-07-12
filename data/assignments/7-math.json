@@ -1,0 +1,246 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 Large Number Around Us",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Arithmetic Expressions",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 A Peek Beyond The Point",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 3",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Expressions Using Letter-Numbers",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 4",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Parallel and Intersecting Lines",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 5",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Number Play",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 A Tale of Three Intersecting Lines",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 7",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Working With Fractions",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 8",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Geometric Twins",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 9",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 Operations With Integers",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 10",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Finding Common Ground",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 11",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Another Peek Beyond The Point",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 12",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W13",
+      "title": "Worksheet \u2013 Connecting The Dots",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 13",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W14",
+      "title": "Worksheet \u2013 Constructions and Tilings",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 14",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W15",
+      "title": "Worksheet \u2013 Finding The Unknown",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 15",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 Large Number Around Us",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Arithmetic Expressions",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 A Peek Beyond The Point",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 3",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Expressions Using Letter-Numbers",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 4",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Parallel and Intersecting Lines",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 5",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Number Play",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 A Tale of Three Intersecting Lines",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 7",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Working With Fractions",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 8",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Geometric Twins",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 9",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 Operations With Integers",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 10",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Finding Common Ground",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 11",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Another Peek Beyond The Point",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 12",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P13",
+      "title": "Practice Test \u2013 Connecting The Dots",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 13",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P14",
+      "title": "Practice Test \u2013 Constructions and Tilings",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 14",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P15",
+      "title": "Practice Test \u2013 Finding The Unknown",
+      "sub": "Maths \u00b7 Class 7 \u00b7 Ch 15",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    }
+  ]
+}

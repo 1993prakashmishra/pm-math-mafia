@@ -1,0 +1,230 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 Real Numbers",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Chapter 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Polynomials",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Chapter 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 Pair of Linear Equations",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 3",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 Quadratic Equations",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Chapter 4",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 Arithmetic Progressions",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 5",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Triangles",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Coordinate Geometry",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 7",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Introduction to Trigonometry",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 8",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Some Applications of Trigonometry",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 9",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W10",
+      "title": "Worksheet \u2013 Circles",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 10",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W11",
+      "title": "Worksheet \u2013 Areas Related to Circles",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 11",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W12",
+      "title": "Worksheet \u2013 Surface Areas and Volumes",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 12",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W13",
+      "title": "Worksheet \u2013 Statistics",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 13",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W14",
+      "title": "Worksheet \u2013 Probability",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 14",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 Real Numbers",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Polynomials",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 Pair of Linear Equations",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 3",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Quadratic Equations",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 4",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 Arithmetic Progressions",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 5",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Triangles",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Coordinate Geometry",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 7",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Introduction to Trigonometry",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 8",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Some Applications of Trigonometry",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 9",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P10",
+      "title": "Practice Test \u2013 Circles",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 10",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P11",
+      "title": "Practice Test \u2013 Areas Related to Circles",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 11",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P12",
+      "title": "Practice Test \u2013 Surface Areas and Volumes",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 12",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Statistics &amp;Probability",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 13 &amp;14 \u00b7 30 marks",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Statistics &amp;Probability",
+      "sub": "Maths \u00b7 Class 10 \u00b7 Ch 13 &amp;14 \u00b7 30 marks",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    }
+  ]
+}

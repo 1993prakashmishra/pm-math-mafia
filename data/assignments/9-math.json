@@ -1,0 +1,150 @@
+{
+  "ws": [
+    {
+      "num": "W1",
+      "title": "Worksheet \u2013 Orienting Yourself: Coordinates",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W2",
+      "title": "Worksheet \u2013 Introduction To Linear Polynomials",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W3",
+      "title": "Worksheet \u2013 The World of Numbers",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 3",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W4",
+      "title": "Worksheet \u2013 Exploring Algebraic Identities",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 4",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W5",
+      "title": "Worksheet \u2013 I'm Up and Down, and Round",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 5",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W6",
+      "title": "Worksheet \u2013 Measuring Spaces: Perimeter & Area",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W7",
+      "title": "Worksheet \u2013 Mathematics of Maybe: Probability",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 7",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W8",
+      "title": "Worksheet \u2013 Predicting What Comes Next",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 8",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    },
+    {
+      "num": "W9",
+      "title": "Worksheet \u2013 Ganita Manjari Part 2",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 9",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_WORKSHEET"
+    }
+  ],
+  "pt": [
+    {
+      "num": "P1",
+      "title": "Practice Test \u2013 Orienting Yourself: Coordinates",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 1",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P2",
+      "title": "Practice Test \u2013 Introduction To Linear Polynomials",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 2",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P3",
+      "title": "Practice Test \u2013 The World of Numbers",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 3",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P4",
+      "title": "Practice Test \u2013 Exploring Algebraic Identities",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 4",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P5",
+      "title": "Practice Test \u2013 I'm Up and Down, and Round",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 5",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P6",
+      "title": "Practice Test \u2013 Measuring Spaces: Perimeter & Area",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 6",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P7",
+      "title": "Practice Test \u2013 Mathematics of Maybe: Probability",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 7",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P8",
+      "title": "Practice Test \u2013 Predicting What Comes Next",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 8",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    },
+    {
+      "num": "P9",
+      "title": "Practice Test \u2013 Ganita Manjari Part 2",
+      "sub": "Maths \u00b7 Class 9 \u00b7 Ch 9",
+      "dueClass": "due-open",
+      "dueLabel": "Open",
+      "link": "PASTE_YOUR_GOOGLE_DRIVE_LINK_HERE_FOR_PRACTICE_TEST"
+    }
+  ]
+}
