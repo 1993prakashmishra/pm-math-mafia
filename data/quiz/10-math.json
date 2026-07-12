@@ -3,16 +3,49 @@
     "label": "Ch 1: Real Numbers",
     "title": "Class 10 Maths: Ch 1 - Real Numbers",
     "questions": [
-      {
-        "q": "If two positive integers a and b are written as a = x³y² and b = xy³, where x, y are prime numbers, then HCF(a, b) is:",
+        {
+        "q": "The HCF of 96 and 404 using Euclid's Division Algorithm is:",
         "options": [
-          "xy",
-          "xy²",
-          "x³y³",
-          "x²y²"
+          "2",
+          "4",
+          "8",
+          "12"
         ],
         "correct": 1,
-        "explain": "We take the lowest power of each common prime factor: x¹ and y², giving HCF = xy²."
+        "explain": "404 = 96×4 + 20; 96 = 20×4 + 16; 20 = 16×1 + 4; 16 = 4×4 + 0. So HCF = 4."
+      },
+      {
+        "q": "According to the Fundamental Theorem of Arithmetic, every composite number can be expressed as a product of primes in:",
+        "options": [
+          "Exactly two ways",
+          "A unique way, apart from the order of factors",
+          "Infinitely many ways",
+          "No fixed way"
+        ],
+        "correct": 1,
+        "explain": "The Fundamental Theorem of Arithmetic guarantees that the prime factorization of any composite number is unique, except for the order in which the prime factors occur."
+      },
+      {
+        "q": "If HCF(26, 91) = 13, what is LCM(26, 91)?",
+        "options": [
+          "91",
+          "182",
+          "169",
+          "26"
+        ],
+        "correct": 1,
+        "explain": "Using HCF × LCM = Product of the numbers: 13 × LCM = 26 × 91 = 2366, so LCM = 2366 ÷ 13 = 182."
+      },
+      {
+        "q": "Which of the following is an irrational number?",
+        "options": [
+          "√16",
+          "3/7",
+          "√5",
+          "0.333..."
+        ],
+        "correct": 2,
+        "explain": "√5 cannot be expressed as p/q where p, q are integers and q ≠ 0, so it is irrational. √16 = 4 (rational), 3/7 and 0.333... are both rational."
       },
       {
         "q": "The LCM of two numbers is 1200. Which of the following cannot be their HCF?",
