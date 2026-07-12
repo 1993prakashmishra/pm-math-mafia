@@ -482,9 +482,6 @@
                 background: var(--white);
                 color: var(--text-muted);
                 transition: all 0.2s;
-                font-family: inherit;
-                -webkit-appearance: none;
-                appearance: none;
             }
 
             .notes-tab.active, .notes-tab:hover {
@@ -509,9 +506,6 @@
                 background: var(--white);
                 color: var(--text-muted);
                 transition: all 0.2s;
-                font-family: inherit;
-                -webkit-appearance: none;
-                appearance: none;
             }
 
             .notes-subject-tab.active {
@@ -657,9 +651,6 @@
                 background: var(--white);
                 color: var(--text-muted);
                 transition: all 0.2s;
-                font-family: inherit;
-                -webkit-appearance: none;
-                appearance: none;
             }
 
             .assign-class-tab.active {
@@ -685,9 +676,6 @@
                 background: var(--white);
                 color: var(--text-muted);
                 transition: all 0.2s;
-                font-family: inherit;
-                -webkit-appearance: none;
-                appearance: none;
             }
 
             .assign-subj-tab.active {
@@ -713,9 +701,6 @@
                 background: var(--white);
                 color: var(--text-muted);
                 transition: all 0.2s;
-                font-family: inherit;
-                -webkit-appearance: none;
-                appearance: none;
             }
 
             .assign-type-tab.active {
@@ -921,35 +906,13 @@
                 }
             }
 
-            /* ── FIX: pulseGlow now animates a pseudo-element's opacity/transform
-               instead of the badge's own box-shadow, so it is GPU-composited
-               and no longer triggers "Avoid non-composited animations". ── */
-            .pulse-badge {
-                position: relative;
-            }
-
-            .pulse-badge::after {
-                content: '';
-                position: absolute;
-                inset: 0;
-                border-radius: 24px;
-                box-shadow: 0 0 0 6px rgba(255,145,60,0.55);
-                opacity: 1;
-                transform: scale(1);
-                animation: pulseGlow 2s infinite;
-                pointer-events: none;
-                will-change: transform, opacity;
-            }
-
             @keyframes pulseGlow {
-                0% {
-                    opacity: 0.55;
-                    transform: scale(1);
+                0%, 100% {
+                    box-shadow: 0 0 0 0 rgba(255,145,60,0.55);
                 }
 
-                100% {
-                    opacity: 0;
-                    transform: scale(1.35);
+                50% {
+                    box-shadow: 0 0 0 18px rgba(255,145,60,0);
                 }
             }
 
@@ -993,11 +956,6 @@
                 color: #cccccc;
                 transition: color 0.15s;
                 user-select: none;
-                border: none;
-                background: none;
-                padding: 0;
-                font-family: inherit;
-                line-height: 1;
             }
 
             .fb-star.lit {
@@ -1055,7 +1013,7 @@
 
             /* ── CAMPUS GALLERY (multi-photo) ── */
             .campus-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:14px;}
-            .campus-thumb{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;border:1px solid rgba(26,102,57,0.15);padding:0;background:none;display:block;width:100%;}
+            .campus-thumb{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;border:1px solid rgba(26,102,57,0.15);}
             .campus-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .2s;}
             .campus-thumb:hover img{transform:scale(1.06);}
             .campus-cat-card{background:#fff;border:1px solid rgba(26,102,57,0.15);border-radius:14px;padding:18px;box-shadow:0 5px 18px rgba(10,46,26,0.06);}
@@ -1081,23 +1039,17 @@
                     visibility: visible !important;
                 }
 
-                html, body {
-                    height: auto !important;
-                    overflow: visible !important;
-                }
-
                 #quizFeedback {
                     display: block !important;
-                    position: static !important;
+                    position: fixed !important;
+                    left: 0 !important;
+                    top: 0 !important;
+                    right: 0 !important;
                     width: 100% !important;
                     border: 1px solid #1a6639 !important;
                     box-shadow: none !important;
                     padding: 20px !important;
                     margin: 0 !important;
-                }
-
-                #quizFeedback * {
-                    position: static !important;
                 }
 
                 .no-print-btn-group, .no-print-btn-group * {
@@ -1106,24 +1058,10 @@
 
                 section, nav, footer, .hero {
                     display: none !important;
-                    height: auto !important;
                 }
 
                 #quizzes {
                     display: block !important;
-                    height: auto !important;
-                    padding: 0 !important;
-                    overflow: visible !important;
-                }
-
-                #quizzes > div[style*="position:absolute"] {
-                    display: none !important;
-                }
-
-                .container {
-                    max-width: 100% !important;
-                    height: auto !important;
-                    overflow: visible !important;
                 }
             }
         </style>
@@ -1264,17 +1202,17 @@
                     <span class="hi-text">CBSE पाठ्यक्रम के अनुसार सभी कक्षाओं के लिए अध्याय-वार नोट्स। नीचे अपनी कक्षा और विषय चुनें।</span>
                 </p>
                 <div class="notes-tabs">
-                    <button type="button" class="notes-tab active" onclick="switchClass('6')">Class 6</button>
-                    <button type="button" class="notes-tab" onclick="switchClass('7')">Class 7</button>
-                    <button type="button" class="notes-tab" onclick="switchClass('8')">Class 8</button>
-                    <button type="button" class="notes-tab" onclick="switchClass('9')">Class 9</button>
-                    <button type="button" class="notes-tab" onclick="switchClass('10')">Class 10</button>
-                    <button type="button" class="notes-tab" onclick="switchClass('11')">Class 11</button>
-                    <button type="button" class="notes-tab" onclick="switchClass('12')">Class 12</button>
+                    <div class="notes-tab active" onclick="switchClass('6')">Class 6</div>
+                    <div class="notes-tab" onclick="switchClass('7')">Class 7</div>
+                    <div class="notes-tab" onclick="switchClass('8')">Class 8</div>
+                    <div class="notes-tab" onclick="switchClass('9')">Class 9</div>
+                    <div class="notes-tab" onclick="switchClass('10')">Class 10</div>
+                    <div class="notes-tab" onclick="switchClass('11')">Class 11</div>
+                    <div class="notes-tab" onclick="switchClass('12')">Class 12</div>
                 </div>
                 <div class="notes-subject-tabs">
-                    <button type="button" class="notes-subject-tab active" id="subj-math" onclick="switchSubject('math')">📐 Mathematics</button>
-                    <button type="button" class="notes-subject-tab" id="subj-sci" onclick="switchSubject('sci')">🔬 Science</button>
+                    <div class="notes-subject-tab active" id="subj-math" onclick="switchSubject('math')">📐 Mathematics</div>
+                    <div class="notes-subject-tab" id="subj-sci" onclick="switchSubject('sci')">🔬 Science</div>
                 </div>
                 <div id="notes-grid-container"></div>
         </section>
@@ -1297,10 +1235,10 @@
                     <h3 style="color:#fff;font-size:1.4rem;margin-bottom:10px;font-weight:700;">📸 Gallery &amp;Active Media Updates</h3>
                     <p style="color:#eaf4ed;font-size:0.95rem;margin:0 auto 20px;max-width:700px;line-height:1.6;">Take a live glimpse into our academy layout! We update these photos regularly with live milestones from our coaching hub.</p>
                     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
-                        <button type="button" onclick="scrollToCampusCat('classroom')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;border:none;font-family:inherit;">📷 Classroom Photos</button>
-                        <button type="button" onclick="scrollToCampusCat('tour')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;border:none;font-family:inherit;">🏫 Campus Tour</button>
-                        <button type="button" onclick="scrollToCampusCat('motivational')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;border:none;font-family:inherit;">🔥 Motivational Videos</button>
-                        <button type="button" onclick="scrollToCampusCat('achievements')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;border:none;font-family:inherit;">🎉 Student Milestones</button>
+                        <div onclick="scrollToCampusCat('classroom')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">📷 Classroom Photos</div>
+                        <div onclick="scrollToCampusCat('tour')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">🏫 Campus Tour</div>
+                        <div onclick="scrollToCampusCat('motivational')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">🔥 Motivational Videos</div>
+                        <div onclick="scrollToCampusCat('achievements')" style="cursor:pointer;background:#fff;padding:8px 18px;border-radius:25px;font-size:0.9rem;font-weight:700;color:#0a2e1a;transition:transform .15s;">🎉 Student Milestones</div>
                     </div>
                 </div>
                 <div id="campus-gallery-root"></div>
@@ -1322,17 +1260,17 @@
                     <span class="hi-text">कठिन समस्याओं को समझने में मदद के लिए कक्षा और विषय के अनुसार व्यवस्थित वीडियो।</span>
                 </p>
                 <div class="notes-tabs" style="margin-top:2rem;">
-                    <button type="button" class="notes-tab active" onclick="switchVideoClass('6')">Class 6</button>
-                    <button type="button" class="notes-tab" onclick="switchVideoClass('7')">Class 7</button>
-                    <button type="button" class="notes-tab" onclick="switchVideoClass('8')">Class 8</button>
-                    <button type="button" class="notes-tab" onclick="switchVideoClass('9')">Class 9</button>
-                    <button type="button" class="notes-tab" onclick="switchVideoClass('10')">Class 10</button>
-                    <button type="button" class="notes-tab" onclick="switchVideoClass('11')">Class 11</button>
-                    <button type="button" class="notes-tab" onclick="switchVideoClass('12')">Class 12</button>
+                    <div class="notes-tab active" onclick="switchVideoClass('6')">Class 6</div>
+                    <div class="notes-tab" onclick="switchVideoClass('7')">Class 7</div>
+                    <div class="notes-tab" onclick="switchVideoClass('8')">Class 8</div>
+                    <div class="notes-tab" onclick="switchVideoClass('9')">Class 9</div>
+                    <div class="notes-tab" onclick="switchVideoClass('10')">Class 10</div>
+                    <div class="notes-tab" onclick="switchVideoClass('11')">Class 11</div>
+                    <div class="notes-tab" onclick="switchVideoClass('12')">Class 12</div>
                 </div>
                 <div class="notes-subject-tabs">
-                    <button type="button" class="notes-subject-tab active" id="subj-vid-math" onclick="switchVideoSubject('math')">📐 Mathematics</button>
-                    <button type="button" class="notes-subject-tab" id="subj-vid-sci" onclick="switchVideoSubject('sci')">🔬 Science</button>
+                    <div class="notes-subject-tab active" id="subj-vid-math" onclick="switchVideoSubject('math')">📐 Mathematics</div>
+                    <div class="notes-subject-tab" id="subj-vid-sci" onclick="switchVideoSubject('sci')">🔬 Science</div>
                 </div>
                 <!-- Video grids are built on demand by JS — no placeholder iframes here -->
             </div>
@@ -1342,7 +1280,7 @@
             <div style="position:absolute; inset:0; background-image: radial-gradient(circle at 15% 20%, rgba(255,224,102,0.25) 0%, transparent 45%), radial-gradient(circle at 85% 80%, rgba(255,90,120,0.18) 0%, transparent 40%), radial-gradient(circle at 50% 100%, rgba(255,150,60,0.2) 0%, transparent 50%); pointer-events:none;"></div>
             <div class="container" style="max-width:850px;margin:0 auto;padding:0 20px;position:relative;">
                 <div style="text-align:center;margin-bottom:35px;">
-                    <span class="pulse-badge" style="background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); color:#fff4d6; padding:8px 22px; border-radius:24px; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; display:inline-block; text-shadow:0 0 12px rgba(255,200,100,0.6);">🎯 Assessment Dashboard</span>
+                    <span style="background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); color:#fff4d6; padding:8px 22px; border-radius:24px; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; display:inline-block; animation:pulseGlow 2s infinite; text-shadow:0 0 12px rgba(255,200,100,0.6);">🎯 Assessment Dashboard</span>
                     <h2 style="font-size:2.6rem;color:#ffffff;margin:14px 0 10px;font-weight:800; font-family:'Playfair Display', serif; text-shadow:0 2px 12px rgba(0,0,0,0.25);">
                         <span class="en-text">Online Practice Quizzes</span>
                         <span class="hi-text">ऑनलाइन अभ्यास प्रश्नोत्तरी</span>
@@ -1457,26 +1395,25 @@
                     <span class="hi-text">असाइनमेंट</span>
                 </h2>
                 <p class="section-desc" style="color:rgba(255,255,255,0.92);">
-                    <span class="en-text">Select your class, subject, then choose from Worksheets, Practice Tests or MCQ Quizzes.</span>
-                    <span class="hi-text">अपनी कक्षा और विषय चुनें, फिर वर्कशीट, प्रैक्टिस टेस्ट या MCQ क्विज़ में से चुनें।</span>
+                    <span class="en-text">Select your class and subject to find Worksheets or Practice Tests.</span>
+                    <span class="hi-text">वर्कशीट या प्रैक्टिस टेस्ट के लिए अपनी कक्षा और विषय चुनें।</span>
                 </p>
                 <div class="assign-class-tabs">
-                    <button type="button" class="assign-class-tab active" onclick="switchAssignClass('6',this)">Class 6</button>
-                    <button type="button" class="assign-class-tab" onclick="switchAssignClass('7',this)">Class 7</button>
-                    <button type="button" class="assign-class-tab" onclick="switchAssignClass('8',this)">Class 8</button>
-                    <button type="button" class="assign-class-tab" onclick="switchAssignClass('9',this)">Class 9</button>
-                    <button type="button" class="assign-class-tab" onclick="switchAssignClass('10',this)">Class 10</button>
-                    <button type="button" class="assign-class-tab" onclick="switchAssignClass('11',this)">Class 11</button>
-                    <button type="button" class="assign-class-tab" onclick="switchAssignClass('12',this)">Class 12</button>
+                    <div class="assign-class-tab active" onclick="switchAssignClass('6',this)">Class 6</div>
+                    <div class="assign-class-tab" onclick="switchAssignClass('7',this)">Class 7</div>
+                    <div class="assign-class-tab" onclick="switchAssignClass('8',this)">Class 8</div>
+                    <div class="assign-class-tab" onclick="switchAssignClass('9',this)">Class 9</div>
+                    <div class="assign-class-tab" onclick="switchAssignClass('10',this)">Class 10</div>
+                    <div class="assign-class-tab" onclick="switchAssignClass('11',this)">Class 11</div>
+                    <div class="assign-class-tab" onclick="switchAssignClass('12',this)">Class 12</div>
                 </div>
                 <div class="assign-subj-tabs">
-                    <button type="button" class="assign-subj-tab active" onclick="switchAssignSubj('math',this)">📐 Mathematics</button>
-                    <button type="button" class="assign-subj-tab" onclick="switchAssignSubj('sci',this)">🔬 Science</button>
+                    <div class="assign-subj-tab active" onclick="switchAssignSubj('math',this)">📐 Mathematics</div>
+                    <div class="assign-subj-tab" onclick="switchAssignSubj('sci',this)">🔬 Science</div>
                 </div>
                 <div class="assign-type-tabs">
-                    <button type="button" class="assign-type-tab active" onclick="switchAssignType('ws',this)">📄 Worksheets</button>
-                    <button type="button" class="assign-type-tab" onclick="switchAssignType('pt',this)">📝 Practice Tests</button>
-                    <button type="button" class="assign-type-tab" onclick="switchAssignType('mcq',this)">✅ MCQ Quizzes</button>
+                    <div class="assign-type-tab active" onclick="switchAssignType('ws',this)">📄 Worksheets</div>
+                    <div class="assign-type-tab" onclick="switchAssignType('pt',this)">📝 Practice Tests</div>
                 </div>
                 <div id="assignments-panel-container"></div>
             </div>
@@ -1497,17 +1434,17 @@
                     <span class="hi-text">कक्षा 6 से 12 तक गणित और विज्ञान के लिए अध्याय-वार हल किए गए NCERT समाधान। नीचे अपनी कक्षा और विषय चुनें।</span>
                 </p>
                 <div class="notes-tabs" style="margin-top:2rem;">
-                    <button type="button" class="notes-tab active" onclick="switchNcertClass('6')">Class 6</button>
-                    <button type="button" class="notes-tab" onclick="switchNcertClass('7')">Class 7</button>
-                    <button type="button" class="notes-tab" onclick="switchNcertClass('8')">Class 8</button>
-                    <button type="button" class="notes-tab" onclick="switchNcertClass('9')">Class 9</button>
-                    <button type="button" class="notes-tab" onclick="switchNcertClass('10')">Class 10</button>
-                    <button type="button" class="notes-tab" onclick="switchNcertClass('11')">Class 11</button>
-                    <button type="button" class="notes-tab" onclick="switchNcertClass('12')">Class 12</button>
+                    <div class="notes-tab active" onclick="switchNcertClass('6')">Class 6</div>
+                    <div class="notes-tab" onclick="switchNcertClass('7')">Class 7</div>
+                    <div class="notes-tab" onclick="switchNcertClass('8')">Class 8</div>
+                    <div class="notes-tab" onclick="switchNcertClass('9')">Class 9</div>
+                    <div class="notes-tab" onclick="switchNcertClass('10')">Class 10</div>
+                    <div class="notes-tab" onclick="switchNcertClass('11')">Class 11</div>
+                    <div class="notes-tab" onclick="switchNcertClass('12')">Class 12</div>
                 </div>
                 <div class="notes-subject-tabs">
-                    <button type="button" class="notes-subject-tab active" id="ncert-subj-math" onclick="switchNcertSubj('math')">📐 Mathematics</button>
-                    <button type="button" class="notes-subject-tab" id="ncert-subj-sci" onclick="switchNcertSubj('sci')">🔬 Science</button>
+                    <div class="notes-subject-tab active" id="ncert-subj-math" onclick="switchNcertSubj('math')">📐 Mathematics</div>
+                    <div class="notes-subject-tab" id="ncert-subj-sci" onclick="switchNcertSubj('sci')">🔬 Science</div>
                 </div>
                 <!-- All grids are built by JS on demand -->
                 <div id="ncert-grid-container"></div>
@@ -1682,13 +1619,13 @@
                             </div>
                             <div style="margin-bottom:16px;">
                                 <label style="display:block;font-size:0.88rem;font-weight:700;color:#0a2e1a;margin-bottom:6px;">Rating</label>
-                                <!-- FIX: Uses data-val + .fb-star class — now real buttons, keyboard-accessible -->
+                                <!-- FIX: Uses data-val + .fb-star class — no inline style conflict -->
                                 <div id="star-row" style="display:flex;gap:6px;">
-                                    <button type="button" class="fb-star lit" data-val="1" aria-label="1 star">★</button>
-                                    <button type="button" class="fb-star lit" data-val="2" aria-label="2 stars">★</button>
-                                    <button type="button" class="fb-star lit" data-val="3" aria-label="3 stars">★</button>
-                                    <button type="button" class="fb-star lit" data-val="4" aria-label="4 stars">★</button>
-                                    <button type="button" class="fb-star lit" data-val="5" aria-label="5 stars">★</button>
+                                    <span class="fb-star lit" data-val="1">★</span>
+                                    <span class="fb-star lit" data-val="2">★</span>
+                                    <span class="fb-star lit" data-val="3">★</span>
+                                    <span class="fb-star lit" data-val="4">★</span>
+                                    <span class="fb-star lit" data-val="5">★</span>
                                 </div>
                             </div>
                             <div style="margin-bottom:20px;">
@@ -2121,7 +2058,7 @@
                     html += '<div class="campus-cat-count">' + cat.photos.length + ' photo' + (cat.photos.length > 1 ? 's' : '') + '</div>';
                     html += '<div class="campus-gallery-grid">';
                     cat.photos.forEach(function(photo, i) {
-                        html += '<button type="button" class="campus-thumb" onclick="openLightbox(\'' + cat.key + '\',' + i + ')" aria-label="' + cat.title + ' photo ' + (i + 1) + '"><img src="' + photo + '" alt="' + cat.title + '" loading="lazy"></button>';
+                        html += '<div class="campus-thumb" onclick="openLightbox(\'' + cat.key + '\',' + i + ')"><img src="' + photo + '" alt="' + cat.title + '" loading="lazy"></div>';
                     });
                     html += '</div></div>';
                 });
@@ -2284,7 +2221,12 @@
                 }
                 var html = '';
                 rows.forEach(function(row) {
-                    html += '<div class="assignment-row"><div class="assign-num">' + row.num + '</div><div class="assign-info"><div class="assign-title">' + row.title + '</div><div class="assign-sub">' + row.sub + '</div></div><span class="assign-due ' + row.dueClass + '">' + row.dueLabel + '</span></div>';
+                    var inner = '<div class="assign-num">' + row.num + '</div><div class="assign-info"><div class="assign-title">' + row.title + '</div><div class="assign-sub">' + row.sub + '</div></div><span class="assign-due ' + row.dueClass + '">' + row.dueLabel + '</span>';
+                    if (row.link) {
+                        html += '<a href="' + row.link + '" target="_blank" style="text-decoration:none;color:inherit;display:block;"><div class="assignment-row">' + inner + '</div></a>';
+                    } else {
+                        html += '<div class="assignment-row">' + inner + '</div>';
+                    }
                 });
                 container.innerHTML = html;
             }
@@ -2404,7 +2346,7 @@
                 if (pg) pg.style.display = 'none';
                 var total = activeQuiz.questions.length, pct = Math.round((userScore / total) * 100);
                 var review = examHistoryLog.map(function(item, i) {
-                    return '<div style="text-align:left;background:#fafafa;padding:12px;margin-top:10px;border-radius:6px;border-left:4px solid ' + (item.status === 'CORRECT' ? '#1a6639' : '#ea4335') + ';page-break-inside:avoid;break-inside:avoid;"><strong>Q' + (i + 1) + ': ' + item.question + '</strong><br><small>Your Answer: ' + item.userAns + ' (' + item.status + ')</small><br><small style="color:#1a6639">Correct: ' + item.correctAns + '</small></div>';
+                    return '<div style="text-align:left;background:#fafafa;padding:12px;margin-top:10px;border-radius:6px;border-left:4px solid ' + (item.status === 'CORRECT' ? '#1a6639' : '#ea4335') + ';"><strong>Q' + (i + 1) + ': ' + item.question + '</strong><br><small>Your Answer: ' + item.userAns + ' (' + item.status + ')</small><br><small style="color:#1a6639">Correct: ' + item.correctAns + '</small></div>';
                 }).join('');
                 var fb = document.getElementById('quizFeedback');
                 if (!fb) return;
@@ -2543,10 +2485,9 @@
                 document.querySelectorAll('#ncert .notes-tab').forEach(function(t, i) { if (classlabels[lang][i]) t.textContent = classlabels[lang][i]; });
                 document.querySelectorAll('.assign-class-tab').forEach(function(t, i) { if (classlabels[lang][i]) t.textContent = classlabels[lang][i]; });
                 var typeTabs = document.querySelectorAll('.assign-type-tab');
-                if (typeTabs.length >= 3) {
+                if (typeTabs.length >= 2) {
                     typeTabs[0].innerHTML = lang === 'hi' ? '📄 वर्कशीट' : '📄 Worksheets';
                     typeTabs[1].innerHTML = lang === 'hi' ? '📝 प्रैक्टिस टेस्ट' : '📝 Practice Tests';
-                    typeTabs[2].innerHTML = lang === 'hi' ? '✅ MCQ क्विज़' : '✅ MCQ Quizzes';
                 }
                 try { localStorage.setItem('pmmath-lang', lang); } catch (e) {}
             }
