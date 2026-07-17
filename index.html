@@ -1413,8 +1413,8 @@
                     <span class="hi-text">NCERT हल</span>
                 </h2>
                 <p class="section-desc" style="color:rgba(255,255,255,0.92);">
-                    <span class="en-text">Chapter-wise solved NCERT solutions for Mathematics and Science, Class 6 to 12. Select your class and subject below.</span>
-                    <span class="hi-text">कक्षा 6 से 12 तक गणित और विज्ञान के लिए अध्याय-वार हल किए गए NCERT समाधान। नीचे अपनी कक्षा और विषय चुनें।</span>
+                    <span class="en-text">Chapter-wise NCERT textbooks and solved solutions for Mathematics and Science, Class 6 to 12. Select your class and subject below.</span>
+                    <span class="hi-text">कक्षा 6 से 12 तक गणित और विज्ञान के लिए अध्याय-वार NCERT पाठ्यपुस्तक एवं हल किए गए समाधान। नीचे अपनी कक्षा और विषय चुनें।</span>
                 </p>
                 <div class="notes-tabs" style="margin-top:2rem;">
                     <div class="notes-tab active" onclick="switchNcertClass('6')">Class 6</div>
@@ -2385,7 +2385,7 @@
             });
         </script>
         <script>
-            /* ── NCERT SOLUTIONS ENGINE (path fixed: /textbook/pdf/ not /ncerts/l/) ── */
+            /* ── NCERT SOLUTIONS ENGINE ── */
             var currentNcertClass = '6', currentNcertSubj = 'math';
 
             var ncertDataCache = {};
@@ -2426,26 +2426,51 @@
                     .then(function(r) { if (!r.ok) throw new Error('not found'); return r.json(); })
                     .then(function(data) { ncertDataCache[key] = data; renderNcertGridHTML(data); })
                     .catch(function() {
-                        container.innerHTML = '<p class="empty-panel-msg">📭 NCERT Solutions for this section are being prepared. Check back soon!</p>';
+                        container.innerHTML = '<p class="empty-panel-msg">📭 NCERT content for this section is being prepared. Check back soon!</p>';
                     });
             }
+
+            /* Renders one card per chapter with TWO independent badges:
+               1) 📖 View Textbook  -> item.book_link (works immediately, official NCERT PDF)
+               2) ✍️ View Solution  -> item.solution_link (clickable once you add your own solution;
+                                       shows a grey "Coming Soon" badge until then)
+               Backward compatible: if a chapter object still only has the old "link" field
+               (no book_link), it is treated as the book_link automatically. */
             function renderNcertGridHTML(chapters) {
                 var container = document.getElementById('ncert-grid-container');
                 if (!container) return;
                 if (!chapters || chapters.length === 0) {
-                    container.innerHTML = '<p class="empty-panel-msg">📭 NCERT Solutions for this section are being prepared. Check back soon!</p>';
+                    container.innerHTML = '<p class="empty-panel-msg">📭 NCERT content for this section is being prepared. Check back soon!</p>';
                     return;
                 }
                 var isMath = currentNcertSubj === 'math';
                 var borderColor = isMath ? '#0056b3' : '#8a5a00';
                 var icon = isMath ? '📐' : '🔬';
-                var badgeStyle = isMath ? 'background:#e6f0ff;color:#0056b3;border:1px solid #4a90e2;' : 'background:#fff8e6;color:#8a5a00;border:1px solid #f0c84a;';
                 var classLabel = (isMath ? 'Maths' : 'Science') + ' · Class ' + currentNcertClass;
                 var html = '<div class="notes-grid active" style="margin-top:0;">';
                 chapters.forEach(function(item) {
-                    var isPortal = item.link.indexOf('textbook.php') !== -1;
-                    var badgeText = isPortal ? '🔗 Find on NCERT Site' : '📖 View Textbook PDF';
-                    html += '<a href="' + item.link + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block;">' + '<div class="note-card" style="border-left:4px solid ' + borderColor + ';">' + '<div class="note-icon">' + icon + '</div>' + '<div>' + '<div class="note-title">' + item.ch + '</div>' + '<div class="note-meta">' + classLabel + '</div>' + '<span class="note-badge" style="' + badgeStyle + '">' + badgeText + '</span>' + '</div>' + '</div>' + '</a>';
+                    var bookLink = item.book_link || item.link || '';
+                    var hasSolution = item.solution_link && item.solution_link.trim() !== '';
+
+                    var bookBadge = bookLink
+                        ? '<a href="' + bookLink + '" target="_blank" rel="noopener noreferrer" class="note-badge" style="background:#e6f0ff;color:#0056b3;border:1px solid #4a90e2;text-decoration:none;display:inline-block;">📖 View Textbook</a>'
+                        : '<span class="note-badge" style="background:#eee;color:#777;border:1px solid #ccc;">⏳ Textbook Coming Soon</span>';
+
+                    var solutionBadge = hasSolution
+                        ? '<a href="' + item.solution_link + '" target="_blank" rel="noopener noreferrer" class="note-badge" style="background:#e6f4ea;color:#1a6639;border:1px solid #4cba78;text-decoration:none;display:inline-block;">✍️ View Solution</a>'
+                        : '<span class="note-badge" style="background:#eee;color:#777;border:1px solid #ccc;">⏳ Solution Coming Soon</span>';
+
+                    html += '<div class="note-card" style="border-left:4px solid ' + borderColor + ';">' +
+                        '<div class="note-icon">' + icon + '</div>' +
+                        '<div>' +
+                        '<div class="note-title">' + item.ch + '</div>' +
+                        '<div class="note-meta">' + classLabel + '</div>' +
+                        '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:5px;">' +
+                        bookBadge +
+                        solutionBadge +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
                 });
                 html += '</div>';
                 container.innerHTML = html;
