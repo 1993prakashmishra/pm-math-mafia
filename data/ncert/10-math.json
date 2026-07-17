@@ -1,58 +1,16 @@
 [
-  {
-    "ch": "Ch 1 – Real Numbers",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh101.pdf"
-  },
-  {
-    "ch": "Ch 2 – Polynomials",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh102.pdf"
-  },
-  {
-    "ch": "Ch 3 – Pair of Linear Equations in Two Variables",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh103.pdf"
-  },
-  {
-    "ch": "Ch 4 – Quadratic Equations",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh104.pdf"
-  },
-  {
-    "ch": "Ch 5 – Arithmetic Progressions",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh105.pdf"
-  },
-  {
-    "ch": "Ch 6 – Triangles",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh106.pdf"
-  },
-  {
-    "ch": "Ch 7 – Coordinate Geometry",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh107.pdf"
-  },
-  {
-    "ch": "Ch 8 – Introduction to Trigonometry",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh108.pdf"
-  },
-  {
-    "ch": "Ch 9 – Some Applications of Trigonometry",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh109.pdf"
-  },
-  {
-    "ch": "Ch 10 – Circles",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh110.pdf"
-  },
-  {
-    "ch": "Ch 11 – Areas Related to Circles",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh111.pdf"
-  },
-  {
-    "ch": "Ch 12 – Surface Areas and Volumes",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh112.pdf"
-  },
-  {
-    "ch": "Ch 13 – Statistics",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh113.pdf"
-  },
-  {
-    "ch": "Ch 14 – Probability",
-    "link": "https://ncert.nic.in/textbook/pdf/jemh114.pdf"
-  }
+  { "ch": "Ch 1 – Real Numbers", "book_link": "https://ncert.nic.in/textbook/pdf/jemh101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – Polynomials", "book_link": "https://ncert.nic.in/textbook/pdf/jemh102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – Pair of Linear Equations in Two Variables", "book_link": "https://ncert.nic.in/textbook/pdf/jemh103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – Quadratic Equations", "book_link": "https://ncert.nic.in/textbook/pdf/jemh104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Arithmetic Progressions", "book_link": "https://ncert.nic.in/textbook/pdf/jemh105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Triangles", "book_link": "https://ncert.nic.in/textbook/pdf/jemh106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – Coordinate Geometry", "book_link": "https://ncert.nic.in/textbook/pdf/jemh107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – Introduction to Trigonometry", "book_link": "https://ncert.nic.in/textbook/pdf/jemh108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – Some Applications of Trigonometry", "book_link": "https://ncert.nic.in/textbook/pdf/jemh109.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – Circles", "book_link": "https://ncert.nic.in/textbook/pdf/jemh110.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Areas Related to Circles", "book_link": "https://ncert.nic.in/textbook/pdf/jemh111.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – Surface Areas and Volumes", "book_link": "https://ncert.nic.in/textbook/pdf/jemh112.pdf", "solution_link": "" },
+  { "ch": "Ch 13 – Statistics", "book_link": "https://ncert.nic.in/textbook/pdf/jemh113.pdf", "solution_link": "" },
+  { "ch": "Ch 14 – Probability", "book_link": "https://ncert.nic.in/textbook/pdf/jemh114.pdf", "solution_link": "" }
 ]
