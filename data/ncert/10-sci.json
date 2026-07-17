@@ -1,54 +1,15 @@
 [
-  {
-    "ch": "Ch 1 – Chemical Reactions and Equations",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc101.pdf"
-  },
-  {
-    "ch": "Ch 2 – Acids, Bases and Salts",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc102.pdf"
-  },
-  {
-    "ch": "Ch 3 – Metals and Non-Metals",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc103.pdf"
-  },
-  {
-    "ch": "Ch 4 – Carbon and Its Compounds",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc104.pdf"
-  },
-  {
-    "ch": "Ch 5 – Life Processes",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc105.pdf"
-  },
-  {
-    "ch": "Ch 6 – Control and Coordination",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc106.pdf"
-  },
-  {
-    "ch": "Ch 7 – How do Organisms Reproduce?",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc107.pdf"
-  },
-  {
-    "ch": "Ch 8 – Heredity",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc108.pdf"
-  },
-  {
-    "ch": "Ch 9 – Light – Reflection and Refraction",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc109.pdf"
-  },
-  {
-    "ch": "Ch 10 – The Human Eye and the Colourful World",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc110.pdf"
-  },
-  {
-    "ch": "Ch 11 – Electricity",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc111.pdf"
-  },
-  {
-    "ch": "Ch 12 – Magnetic Effects of Electric Current",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc112.pdf"
-  },
-  {
-    "ch": "Ch 13 – Our Environment",
-    "link": "https://ncert.nic.in/textbook/pdf/jesc113.pdf"
-  }
+  { "ch": "Ch 1 – Chemical Reactions and Equations", "book_link": "https://ncert.nic.in/textbook/pdf/jesc101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – Acids, Bases and Salts", "book_link": "https://ncert.nic.in/textbook/pdf/jesc102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – Metals and Non-Metals", "book_link": "https://ncert.nic.in/textbook/pdf/jesc103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – Carbon and Its Compounds", "book_link": "https://ncert.nic.in/textbook/pdf/jesc104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Life Processes", "book_link": "https://ncert.nic.in/textbook/pdf/jesc105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Control and Coordination", "book_link": "https://ncert.nic.in/textbook/pdf/jesc106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – How do Organisms Reproduce?", "book_link": "https://ncert.nic.in/textbook/pdf/jesc107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – Heredity", "book_link": "https://ncert.nic.in/textbook/pdf/jesc108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – Light – Reflection and Refraction", "book_link": "https://ncert.nic.in/textbook/pdf/jesc109.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – The Human Eye and the Colourful World", "book_link": "https://ncert.nic.in/textbook/pdf/jesc110.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Electricity", "book_link": "https://ncert.nic.in/textbook/pdf/jesc111.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – Magnetic Effects of Electric Current", "book_link": "https://ncert.nic.in/textbook/pdf/jesc112.pdf", "solution_link": "" },
+  { "ch": "Ch 13 – Our Environment", "book_link": "https://ncert.nic.in/textbook/pdf/jesc113.pdf", "solution_link": "" }
 ]
