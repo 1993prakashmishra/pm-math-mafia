@@ -1,50 +1,14 @@
 [
-  {
-    "ch": "Ch 1 – The Ever-Evolving World of Science",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 2 – Exploring Substances: Acidic, Basic, Neutral",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 3 – Electricity: Circuits and Their Components",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 4 – The World of Metals and Non-metals",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 5 – Changes Around Us: Physical and Chemical",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 6 – Adolescence: A Stage of Growth and Change",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 7 – Heat Transfer in Nature",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 8 – Measurement of Time and Motion",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 9 – Life Processes in Animals",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 10 – Life Processes in Plants",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 11 – Light: Shadows and Reflections",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 12 – Earth, Moon, and the Sun",
-    "link": "https://ncert.nic.in/textbook.php"
-  }
+  { "ch": "Ch 1 – The Ever-Evolving World of Science", "book_link": "https://ncert.nic.in/textbook/pdf/gecu101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – Exploring Substances: Acidic, Basic, Neutral", "book_link": "https://ncert.nic.in/textbook/pdf/gecu102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – Electricity: Circuits and Their Components", "book_link": "https://ncert.nic.in/textbook/pdf/gecu103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – The World of Metals and Non-metals", "book_link": "https://ncert.nic.in/textbook/pdf/gecu104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Changes Around Us: Physical and Chemical", "book_link": "https://ncert.nic.in/textbook/pdf/gecu105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Adolescence: A Stage of Growth and Change", "book_link": "https://ncert.nic.in/textbook/pdf/gecu106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – Heat Transfer in Nature", "book_link": "https://ncert.nic.in/textbook/pdf/gecu107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – Measurement of Time and Motion", "book_link": "https://ncert.nic.in/textbook/pdf/gecu108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – Life Processes in Animals", "book_link": "https://ncert.nic.in/textbook/pdf/gecu109.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – Life Processes in Plants", "book_link": "https://ncert.nic.in/textbook/pdf/gecu110.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Light: Shadows and Reflections", "book_link": "https://ncert.nic.in/textbook/pdf/gecu111.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – Earth, Moon, and the Sun", "book_link": "https://ncert.nic.in/textbook/pdf/gecu112.pdf", "solution_link": "" }
 ]
