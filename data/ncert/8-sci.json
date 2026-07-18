@@ -1,54 +1,15 @@
 [
-  {
-    "ch": "Ch 1 – Exploring the Investigative World of Science",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 2 – The Invisible Living World: Beyond Our Naked Eye",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 3 – Health: The Ultimate Treasure",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 4 – Electricity: Magnetic and Heating Effects",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 5 – Exploring Forces",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 6 – Pressure, Winds, Storms, and Cyclones",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 7 – Particulate Nature of Matter",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 8 – Nature of Matter: Elements, Compounds, and Mixtures",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 9 – The Amazing World Of Solutes, Solvents, and Solutions",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 10 – Light: Mirrors and Lenses",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 11 – Keeping Time With the Skies",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 12 – How Nature Works in Harmony",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 13 – Our Home: Earth, a Unique Life Sustaining Planet",
-    "link": "https://ncert.nic.in/textbook.php"
-  }
+  { "ch": "Ch 1 – Exploring the Investigative World of Science", "book_link": "https://ncert.nic.in/textbook/pdf/hecu101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – The Invisible Living World: Beyond Our Naked Eye", "book_link": "https://ncert.nic.in/textbook/pdf/hecu102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – Health: The Ultimate Treasure", "book_link": "https://ncert.nic.in/textbook/pdf/hecu103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – Electricity: Magnetic and Heating Effects", "book_link": "https://ncert.nic.in/textbook/pdf/hecu104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Exploring Forces", "book_link": "https://ncert.nic.in/textbook/pdf/hecu105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Pressure, Winds, Storms, and Cyclones", "book_link": "https://ncert.nic.in/textbook/pdf/hecu106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – Particulate Nature of Matter", "book_link": "https://ncert.nic.in/textbook/pdf/hecu107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – Nature of Matter: Elements, Compounds, and Mixtures", "book_link": "https://ncert.nic.in/textbook/pdf/hecu108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – The Amazing World Of Solutes, Solvents, and Solutions", "book_link": "https://ncert.nic.in/textbook/pdf/hecu109.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – Light: Mirrors and Lenses", "book_link": "https://ncert.nic.in/textbook/pdf/hecu110.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Keeping Time With the Skies", "book_link": "https://ncert.nic.in/textbook/pdf/hecu111.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – How Nature Works in Harmony", "book_link": "https://ncert.nic.in/textbook/pdf/hecu112.pdf", "solution_link": "" },
+  { "ch": "Ch 13 – Our Home: Earth, a Unique Life Sustaining Planet", "book_link": "https://ncert.nic.in/textbook/pdf/hecu113.pdf", "solution_link": "" }
 ]
