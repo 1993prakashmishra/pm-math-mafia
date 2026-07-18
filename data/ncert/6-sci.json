@@ -1,50 +1,14 @@
 [
-  {
-    "ch": "Ch 1 – The Wonderful World of Science",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 2 – Diversity in the Living World",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 3 – Mindful Eating: A Path to Healthy Body",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 4 – Exploring Magnets",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 5 – Measurement of Length and Motion",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 6 – Materials Around Us",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 7 – Temperature and its Measurement",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 8 – A Journey through States of Water",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 9 – Methods of Separation in Everyday Life",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 10 – Living Creatures: Exploring their Characteristics",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 11 – Nature's Treasures",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 12 – Beyond Earth",
-    "link": "https://ncert.nic.in/textbook.php"
-  }
+  { "ch": "Ch 1 – The Wonderful World of Science", "book_link": "https://ncert.nic.in/textbook/pdf/fecu101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – Diversity in the Living World", "book_link": "https://ncert.nic.in/textbook/pdf/fecu102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – Mindful Eating: A Path to Healthy Body", "book_link": "https://ncert.nic.in/textbook/pdf/fecu103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – Exploring Magnets", "book_link": "https://ncert.nic.in/textbook/pdf/fecu104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Measurement of Length and Motion", "book_link": "https://ncert.nic.in/textbook/pdf/fecu105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Materials Around Us", "book_link": "https://ncert.nic.in/textbook/pdf/fecu106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – Temperature and its Measurement", "book_link": "https://ncert.nic.in/textbook/pdf/fecu107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – A Journey through States of Water", "book_link": "https://ncert.nic.in/textbook/pdf/fecu108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – Methods of Separation in Everyday Life", "book_link": "https://ncert.nic.in/textbook/pdf/fecu109.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – Living Creatures: Exploring their Characteristics", "book_link": "https://ncert.nic.in/textbook/pdf/fecu110.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Nature's Treasures", "book_link": "https://ncert.nic.in/textbook/pdf/fecu111.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – Beyond Earth", "book_link": "https://ncert.nic.in/textbook/pdf/fecu112.pdf", "solution_link": "" }
 ]
