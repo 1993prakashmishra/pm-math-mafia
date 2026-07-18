@@ -1,58 +1,16 @@
 [
-  {
-    "ch": "Ch 1 – Sets",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh101.pdf"
-  },
-  {
-    "ch": "Ch 2 – Relations and Functions",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh102.pdf"
-  },
-  {
-    "ch": "Ch 3 – Trigonometric Functions",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh103.pdf"
-  },
-  {
-    "ch": "Ch 4 – Complex Numbers and Quadratic Equations",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh104.pdf"
-  },
-  {
-    "ch": "Ch 5 – Linear Inequalities",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh105.pdf"
-  },
-  {
-    "ch": "Ch 6 – Permutations and Combinations",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh106.pdf"
-  },
-  {
-    "ch": "Ch 7 – Binomial Theorem",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh107.pdf"
-  },
-  {
-    "ch": "Ch 8 – Sequences and Series",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh108.pdf"
-  },
-  {
-    "ch": "Ch 9 – Straight Lines",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh109.pdf"
-  },
-  {
-    "ch": "Ch 10 – Conic Sections",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh110.pdf"
-  },
-  {
-    "ch": "Ch 11 – Introduction to Three Dimensional Geometry",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh111.pdf"
-  },
-  {
-    "ch": "Ch 12 – Limits and Derivatives",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh112.pdf"
-  },
-  {
-    "ch": "Ch 13 – Statistics",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh113.pdf"
-  },
-  {
-    "ch": "Ch 14 – Probability",
-    "link": "https://ncert.nic.in/textbook/pdf/kemh114.pdf"
-  }
+  { "ch": "Ch 1 – Sets", "book_link": "https://ncert.nic.in/textbook/pdf/kemh101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – Relations and Functions", "book_link": "https://ncert.nic.in/textbook/pdf/kemh102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – Trigonometric Functions", "book_link": "https://ncert.nic.in/textbook/pdf/kemh103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – Complex Numbers and Quadratic Equations", "book_link": "https://ncert.nic.in/textbook/pdf/kemh104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Linear Inequalities", "book_link": "https://ncert.nic.in/textbook/pdf/kemh105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Permutations and Combinations", "book_link": "https://ncert.nic.in/textbook/pdf/kemh106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – Binomial Theorem", "book_link": "https://ncert.nic.in/textbook/pdf/kemh107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – Sequences and Series", "book_link": "https://ncert.nic.in/textbook/pdf/kemh108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – Straight Lines", "book_link": "https://ncert.nic.in/textbook/pdf/kemh109.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – Conic Sections", "book_link": "https://ncert.nic.in/textbook/pdf/kemh110.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Introduction to Three Dimensional Geometry", "book_link": "https://ncert.nic.in/textbook/pdf/kemh111.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – Limits and Derivatives", "book_link": "https://ncert.nic.in/textbook/pdf/kemh112.pdf", "solution_link": "" },
+  { "ch": "Ch 13 – Statistics", "book_link": "https://ncert.nic.in/textbook/pdf/kemh113.pdf", "solution_link": "" },
+  { "ch": "Ch 14 – Probability", "book_link": "https://ncert.nic.in/textbook/pdf/kemh114.pdf", "solution_link": "" }
 ]
