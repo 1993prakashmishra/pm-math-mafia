@@ -1,62 +1,17 @@
 [
-  {
-    "ch": "Ch 1 – Large Number Around Us",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 2 – Arithmetic Expressions",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 3 – A Peek Beyond The Point",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 4 – Expressions Using Letter-Numbers",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 5 – Parallel and Intersecting Lines",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 6 – Number Play",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 7 – A Tale of Three Intersecting Lines",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 8 – Working With Fractions",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 9 – Geometric Twins",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 10 – Operations With Integers",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 11 – Finding Common Ground",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 12 – Another Peek Beyond The Point",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 13 – Connecting The Dots",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 14 – Constructions and Tilings",
-    "link": "https://ncert.nic.in/textbook.php"
-  },
-  {
-    "ch": "Ch 15 – Finding The Unknown",
-    "link": "https://ncert.nic.in/textbook.php"
-  }
+  { "ch": "Ch 1 – Large Number Around Us", "book_link": "https://ncert.nic.in/textbook/pdf/gegp101.pdf", "solution_link": "" },
+  { "ch": "Ch 2 – Arithmetic Expressions", "book_link": "https://ncert.nic.in/textbook/pdf/gegp102.pdf", "solution_link": "" },
+  { "ch": "Ch 3 – A Peek Beyond The Point", "book_link": "https://ncert.nic.in/textbook/pdf/gegp103.pdf", "solution_link": "" },
+  { "ch": "Ch 4 – Expressions Using Letter-Numbers", "book_link": "https://ncert.nic.in/textbook/pdf/gegp104.pdf", "solution_link": "" },
+  { "ch": "Ch 5 – Parallel and Intersecting Lines", "book_link": "https://ncert.nic.in/textbook/pdf/gegp105.pdf", "solution_link": "" },
+  { "ch": "Ch 6 – Number Play", "book_link": "https://ncert.nic.in/textbook/pdf/gegp106.pdf", "solution_link": "" },
+  { "ch": "Ch 7 – A Tale of Three Intersecting Lines", "book_link": "https://ncert.nic.in/textbook/pdf/gegp107.pdf", "solution_link": "" },
+  { "ch": "Ch 8 – Working With Fractions", "book_link": "https://ncert.nic.in/textbook/pdf/gegp108.pdf", "solution_link": "" },
+  { "ch": "Ch 9 – Geometric Twins", "book_link": "https://ncert.nic.in/textbook/pdf/gegp201.pdf", "solution_link": "" },
+  { "ch": "Ch 10 – Operations With Integers", "book_link": "https://ncert.nic.in/textbook/pdf/gegp202.pdf", "solution_link": "" },
+  { "ch": "Ch 11 – Finding Common Ground", "book_link": "https://ncert.nic.in/textbook/pdf/gegp203.pdf", "solution_link": "" },
+  { "ch": "Ch 12 – Another Peek Beyond The Point", "book_link": "https://ncert.nic.in/textbook/pdf/gegp204.pdf", "solution_link": "" },
+  { "ch": "Ch 13 – Connecting The Dots", "book_link": "https://ncert.nic.in/textbook/pdf/gegp205.pdf", "solution_link": "" },
+  { "ch": "Ch 14 – Constructions and Tilings", "book_link": "https://ncert.nic.in/textbook/pdf/gegp206.pdf", "solution_link": "" },
+  { "ch": "Ch 15 – Finding The Unknown", "book_link": "https://ncert.nic.in/textbook/pdf/gegp207.pdf", "solution_link": "" }
 ]
