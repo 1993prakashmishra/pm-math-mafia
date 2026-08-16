@@ -405,6 +405,7 @@
             </table>
           </div>
           <button class="addbtn" onclick="addStudent()">+ Add student</button>
+          <button class="addbtn" style="margin-left:8px;background:#e6f0ff;border-color:#4a90e2;color:#0056b3;" onclick="loadOfficialRoster()">📋 Load Official Roster for this Class</button>
         </div>
       </section>
 
@@ -718,6 +719,20 @@ async function studentChange(i, field, val){
   const classes = await storeGet('diary-classes');
   classes[currentClass][i][field] = val;
   await storeSet('diary-classes', classes);
+}
+async function loadOfficialRoster(){
+  const roster = defaultClasses[currentClass];
+  if(!roster){ alert('No pre-loaded roster available for ' + currentClass + '.'); return; }
+  const classes = await storeGet('diary-classes') || {};
+  const existing = classes[currentClass] || [];
+  const hasNames = existing.some(s => s.name && s.name.trim() !== '');
+  if(hasNames){
+    const ok = confirm('Class ' + currentClass + ' already has ' + existing.length + ' student row(s) with names filled in. Replace them with the official roster (' + roster.length + ' students)? This cannot be undone.');
+    if(!ok) return;
+  }
+  classes[currentClass] = roster.map(s => ({...s}));
+  await storeSet('diary-classes', classes);
+  renderStudents(classes);
 }
 async function addStudent(){
   const classes = await storeGet('diary-classes');
