@@ -252,6 +252,10 @@
   .ttgrid th, .ttgrid td{border:1px solid var(--line); padding:8px; text-align:center;}
   .ttgrid th{background:var(--paper-dark);}
   .ttgrid td input{text-align:center;}
+  .mm-num{position:sticky; left:0; width:34px; background:#fff; z-index:2;}
+  .mm-name{position:sticky; left:34px; width:210px; background:#fff; z-index:2; text-align:left; border-right:2px solid var(--line);}
+  .ttgrid th.mm-num, .ttgrid th.mm-name{background:var(--paper-dark); z-index:3;}
+  #monthlyTable td.mm-name input{font-size:13px;}
   .twocol{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   select{
     padding:9px 10px; border:1px solid var(--line); border-radius:3px; font-size:14px;
@@ -324,6 +328,7 @@
       <button class="navitem" data-tab="syllabus" onclick="showTab('syllabus')">Split-up Syllabus</button>
       <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
       <button class="navitem" data-tab="remedial" onclick="showTab('remedial')">Remedial Notes</button>
+      <button class="navitem" data-tab="exampapers" onclick="showTab('exampapers')">Exam Papers</button>
       <button class="lockbtn" onclick="logOut()">🔒 Log out</button>
     </nav>
 
@@ -537,6 +542,49 @@
         </div>
       </section>
 
+      <!-- Exam Papers -->
+      <section id="tab-exampapers" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Records</div>
+          <h1 class="display">Exam Papers</h1>
+          <p>Keep every question paper (PDF/Word) in one place — paste a Drive link or upload the file directly</p>
+        </header>
+        <div class="card">
+          <h3>Add exam paper</h3>
+          <div class="twocol" style="margin-bottom:12px;">
+            <div>
+              <label>Class</label>
+              <select id="epClass">
+                <option>VII A</option><option>VII B</option><option>VIII A</option>
+                <option>IX B</option><option>X B</option>
+              </select>
+            </div>
+            <div>
+              <label>Exam Name</label>
+              <input type="text" id="epExam" placeholder="e.g. PT-1, HY, SEE, PB-2">
+            </div>
+          </div>
+          <div class="twocol" style="margin-bottom:12px;">
+            <div>
+              <label>Subject</label>
+              <input type="text" id="epSubject" value="Mathematics">
+            </div>
+            <div>
+              <label>Drive / Cloud Link (optional)</label>
+              <input type="text" id="epLink" placeholder="Paste your Google Drive / OneDrive link here">
+            </div>
+          </div>
+          <label>Upload File (optional — PDF or Word, from your computer)</label>
+          <input type="file" id="epFile" accept=".pdf,.doc,.docx" style="margin-bottom:10px;">
+          <div id="epStatus" style="font-size:12px; color:var(--ink-soft); min-height:16px; margin-bottom:10px;"></div>
+          <button class="addbtn" onclick="addExamPaper()">+ Save entry</button>
+        </div>
+        <div class="card">
+          <h3>Saved Papers</h3>
+          <div id="examPaperList"></div>
+        </div>
+      </section>
+
     </main>
   </div>
 </div>
@@ -547,6 +595,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 
 <script>
 /* =====================================================================
@@ -568,6 +617,15 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
+/* File uploads for the Exam Papers section need Firebase Storage turned on
+   in your Firebase Console (Build → Storage → Get Started), with rules that
+   let a signed-in user read/write only their own folder, e.g.:
+     match /exam-papers/{uid}/{allPaths=**} {
+       allow read, write: if request.auth != null && request.auth.uid == uid;
+     }
+   If Storage isn't set up yet, pasting a Drive link still works fine. */
+let storage;
+try{ storage = firebase.storage(); } catch(e){ storage = null; }
 
 let diaryDocRef = null;
 let diaryCache = {};
@@ -662,6 +720,7 @@ async function openApp(){
   renderExitDuty();
   renderRemedialTiming();
   await loadSyllabus();
+  await loadExamPapers();
 }
 
 /* ---------------- Biodata (includes Aadhaar & PAN — keep this device/account secure) ---------------- */
@@ -1072,7 +1131,7 @@ function renderMonthlyStudents(classes){
   if(title) title.textContent = 'Class ' + currentMonthlyClass + ' — Monthly Test Record (' + count + ' tests)';
 
   const head = document.getElementById('monthlyHead');
-  let theadHtml = '<tr><th style="width:26px;">#</th><th>Student Name</th>';
+  let theadHtml = '<tr><th class="mm-num">#</th><th class="mm-name">Student Name</th>';
   for(let m=1; m<=count; m++) theadHtml += `<th style="width:56px;">MT-${m}</th>`;
   theadHtml += '<th style="width:30px;"></th></tr>';
   if(head) head.innerHTML = theadHtml;
@@ -1081,7 +1140,7 @@ function renderMonthlyStudents(classes){
   const body = document.getElementById('monthlyBody');
   if(!body) return;
   body.innerHTML = rows.map((s, i) => {
-    let tds = `<td>${i+1}</td><td><input value="${escapeHtml(s.name||'')}" onchange="monthlyChange(${i},'name',this.value)"></td>`;
+    let tds = `<td class="mm-num">${i+1}</td><td class="mm-name"><input value="${escapeHtml(s.name||'')}" onchange="monthlyChange(${i},'name',this.value)"></td>`;
     for(let m=1; m<=count; m++){
       const key = 'm'+m;
       tds += `<td><input value="${escapeHtml(s[key]||'')}" onchange="monthlyChange(${i},'${key}',this.value)"></td>`;
@@ -1201,6 +1260,88 @@ async function removeRemedial(i){
   rows.splice(i,1);
   await storeSet('diary-remedial', rows);
   renderRemedial(rows);
+}
+
+/* ---------------- Exam Papers ---------------- */
+async function loadExamPapers(){
+  let rows = await storeGet('diary-exampapers');
+  if(!rows){ rows = []; }
+  renderExamPapers(rows);
+}
+function renderExamPapers(rows){
+  const wrap = document.getElementById('examPaperList');
+  if(!wrap) return;
+  if(rows.length === 0){
+    wrap.innerHTML = `<p style="color:var(--ink-soft); font-size:14px;">No papers saved yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = rows.slice().reverse().map((r, ri) => {
+    const i = rows.length - 1 - ri;
+    let links = '';
+    if(r.link) links += `<a href="${escapeHtml(r.link)}" target="_blank" rel="noopener" style="margin-right:14px; color:var(--maroon); font-weight:600; text-decoration:none;">Open Drive Link ↗</a>`;
+    if(r.fileURL) links += `<a href="${escapeHtml(r.fileURL)}" target="_blank" rel="noopener" style="color:var(--maroon); font-weight:600; text-decoration:none;">Open Uploaded File ↗ ${r.fileName ? '('+escapeHtml(r.fileName)+')' : ''}</a>`;
+    if(!links) links = `<span style="color:var(--ink-soft);">No link or file attached yet</span>`;
+    return `
+    <div class="logentry">
+      <div class="logmeta"><strong>${escapeHtml(r.cls)}</strong> · ${escapeHtml(r.exam)} · ${escapeHtml(r.subject||'')}
+        <button class="rowbtn" style="float:right;" onclick="removeExamPaper(${i})">✕ remove</button>
+      </div>
+      <div style="font-size:13px;">${links}</div>
+    </div>`;
+  }).join('');
+}
+async function addExamPaper(){
+  const cls = document.getElementById('epClass').value;
+  const exam = document.getElementById('epExam').value.trim();
+  const subject = document.getElementById('epSubject').value.trim();
+  const link = document.getElementById('epLink').value.trim();
+  const fileInput = document.getElementById('epFile');
+  const statusEl = document.getElementById('epStatus');
+  statusEl.textContent = '';
+  if(!exam){ statusEl.textContent = 'Please enter the exam name (e.g. PT-1, SEE).'; return; }
+
+  let fileURL = '', fileName = '';
+  const file = fileInput.files[0];
+  if(file){
+    if(!storage){
+      statusEl.textContent = 'File upload isn\'t set up yet for this diary — you can still paste a Drive link above.';
+      return;
+    }
+    try{
+      statusEl.textContent = 'Uploading ' + file.name + ' …';
+      const user = auth.currentUser;
+      const path = 'exam-papers/' + user.uid + '/' + Date.now() + '_' + file.name;
+      const ref = storage.ref().child(path);
+      await ref.put(file);
+      fileURL = await ref.getDownloadURL();
+      fileName = file.name;
+    } catch(e){
+      console.error('upload failed', e);
+      statusEl.textContent = 'Upload failed — check your connection and try again.';
+      return;
+    }
+  }
+
+  const rows = (await storeGet('diary-exampapers')) || [];
+  rows.push({cls, exam, subject, link, fileURL, fileName});
+  await storeSet('diary-exampapers', rows);
+
+  document.getElementById('epExam').value = '';
+  document.getElementById('epLink').value = '';
+  fileInput.value = '';
+  statusEl.textContent = 'Saved.';
+  setTimeout(()=>{ if(statusEl.textContent==='Saved.') statusEl.textContent=''; }, 1500);
+  renderExamPapers(rows);
+}
+async function removeExamPaper(i){
+  const rows = await storeGet('diary-exampapers');
+  const entry = rows[i];
+  if(entry && entry.fileURL && storage){
+    try{ await storage.refFromURL(entry.fileURL).delete(); } catch(e){ console.warn('could not delete stored file', e); }
+  }
+  rows.splice(i,1);
+  await storeSet('diary-exampapers', rows);
+  renderExamPapers(rows);
 }
 
 /* ---------------- Utils ---------------- */
