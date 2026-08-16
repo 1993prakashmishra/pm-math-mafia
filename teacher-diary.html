@@ -320,6 +320,7 @@
       <button class="navitem" data-tab="exitduty" onclick="showTab('exitduty')">Exit Duty Chart</button>
       <button class="navitem" data-tab="remedialtiming" onclick="showTab('remedialtiming')">Remedial Timing</button>
       <button class="navitem" data-tab="classes" onclick="showTab('classes')">Classes &amp; Marks</button>
+      <button class="navitem" data-tab="monthlymarks" onclick="showTab('monthlymarks')">Classes &amp; Monthly Marks</button>
       <button class="navitem" data-tab="syllabus" onclick="showTab('syllabus')">Split-up Syllabus</button>
       <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
       <button class="navitem" data-tab="remedial" onclick="showTab('remedial')">Remedial Notes</button>
@@ -417,23 +418,33 @@
           <h3 id="classCardTitle">Class</h3>
           <div style="overflow-x:auto;">
             <table id="studentTable">
-              <thead>
-                <tr>
-                  <th style="width:26px;">#</th>
-                  <th>Student Name</th>
-                  <th style="width:70px;">PT-1</th>
-                  <th style="width:70px;">PT-2</th>
-                  <th style="width:80px;">Monthly</th>
-                  <th style="width:70px;">HY</th>
-                  <th>Remarks</th>
-                  <th style="width:30px;"></th>
-                </tr>
-              </thead>
+              <thead id="studentHead"></thead>
               <tbody id="studentBody"></tbody>
             </table>
           </div>
           <button class="addbtn" onclick="addStudent()">+ Add student</button>
           <button class="addbtn" style="margin-left:8px;background:#e6f0ff;border-color:#4a90e2;color:#0056b3;" onclick="loadOfficialRoster()">📋 Load Official Roster for this Class</button>
+        </div>
+      </section>
+
+      <!-- Classes & Monthly Marks -->
+      <section id="tab-monthlymarks" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Scholastic Records</div>
+          <h1 class="display">Classes &amp; Monthly Marks</h1>
+          <p>Monthly test record — Class X: 14 tests · Class IX: 8 tests · Class VIII: 14 tests</p>
+        </header>
+        <div class="pill-row" id="monthlyClassPills"></div>
+        <div class="card">
+          <h3 id="monthlyCardTitle">Class</h3>
+          <div style="overflow-x:auto;">
+            <table id="monthlyTable">
+              <thead id="monthlyHead"></thead>
+              <tbody id="monthlyBody"></tbody>
+            </table>
+          </div>
+          <button class="addbtn" onclick="addMonthlyStudent()">+ Add student</button>
+          <button class="addbtn" style="margin-left:8px;background:#e6f0ff;border-color:#4a90e2;color:#0056b3;" onclick="loadOfficialMonthlyRoster()">📋 Load Official Roster for this Class</button>
         </div>
       </section>
 
@@ -642,6 +653,7 @@ async function openApp(){
   document.getElementById('app').style.display = 'block';
   await loadTimetable();
   await loadClasses();
+  await loadMonthlyMarks();
   await loadLog();
   await loadRemedial();
   await loadBiodata();
@@ -925,8 +937,20 @@ let currentClass = CLASS_LIST[0];
    to retype every name. Marks/remarks start blank — fill those in as you go.
    This is only used the very first time (when no saved data exists yet). */
 function makeRoster(names){
-  return names.map(n => ({name:n, pt1:'', pt2:'', monthly:'', hy:'', remarks:''}));
+  return names.map(n => ({name:n, remarks:''}));
 }
+
+/* Exam columns per class:
+   - VII A, VII B, VIII A → PT-1, HY, PT-2, SEE
+   - IX B → PT-1, HY, PT-2, PSEE, SEE
+   - X B  → PT-1, PT-2, HY, PB-1, PB-2, PB-3, AISEE */
+const examColumns = {
+  "VII A":  [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['see','SEE']],
+  "VII B":  [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['see','SEE']],
+  "VIII A": [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['see','SEE']],
+  "IX B":   [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['psee','PSEE'],['see','SEE']],
+  "X B":    [['pt1','PT-1'],['pt2','PT-2'],['hy','HY'],['pb1','PB-1'],['pb2','PB-2'],['pb3','PB-3'],['aisee','AISEE']]
+};
 const defaultClasses = {
   "VII A": makeRoster(["ARADHYA","AASHI SHREYA","ASHI SINGH","MAHI SINGH","SANAM KUMARI","PRIYA KUMARI","KULDIP JAIN","SHRUTI KUMARI","ASHISH RAJ","AKRITI KUMARI","HRITHIK RAY","ABHINAV KUMAR","SARIKA PRIYA","SHIVAM KUMAR GUPTA","SANSKRITI PRASAD","KUMARI SHAILYA","AKSHITA UPADHYAY","SHRAMBHAV SINGH","ANKUSH KUMAR","MD. MERAJ","NITYA SINGH","UJJWAL KUMAR","NAMAN KUMAR","AMRIT RAJ","RADHA KUMARI PANDEY","AKANKSHA JEET","VIVEK GUPTA","ABDUL QUADIR","ANSH KUMAR","PREM PRAKASH","SHWETA KUMARI","SHREYANSH VISHWAKARMA","DEVANSH SINGH","SHREYA RAJ","TEJASHWI KUMAR","ABHIMANYU NARAYAN SINGH","PARI KUMARI","SHIVAM TIWARI","TRISHA KUMARI","ARPAN KUMAR","MD FAIJAL","ARYAN KUMAR","KAVYA SINGH","ANIKET KUMAR","ANAYAH FATIMA","SAHIL KUMAR SINGH","SANKALP SURI","AARAV SASVAT","MUSKAN","SHREYA RANJAN","SOHEL RAHMAN","VAIBHAVI","NAITIK","SOORYANSH","ROHIT RAJ","AASTHA","YOOLA"]),
   "VII B": makeRoster(["AMAR PRATAP SINGH","INSHU SINGH","SANJANA SINGH","HARSHIT SINGH","ASHI SINGH","KRISHNA","GAURAV SINGH","MD HUSSAIN RAZA","RAJ VAIBHAV SINGH","RITIK RAJ","ANUSHKA KUMARI","RISHIKA KUMARI","RAJ SHEKHAR","ASHUTOSH KUMAR","SARTHAK CHAURASIYA","PRINCE RAJ","MD FARHAN AKHTAR","ARNAV ARYA","JANVI KUMARI","SITU KUMAR","ADITYA SUMAN","ANKUR KUMAR","HARSH KUMAR AASNA","KISHAN VISHWAS","SANKALAP RAJ","SAUMYA RAJ","SADHYA KUMARI","ADITYA PRAKASH","AASHU KUMAR","ADARSH KUMAR","ARSH AHMAD","AKASH KUMAR","SHAYAM NARAYAN SHUKLA","AARTI KUMARI","PREETI KUMARI","SNEHA KUMARI","PINTU KUMAR SINGH","SYED MUSAWWIR ABBAS NAQVI","ANSH KUMAR","SHAYAN ALAM","MAHI KUMARI","MANVI KUMARI","AAYUSH KUMAR","ANAMIKA SHARMA","PRIYANSHU KUMAR","SAURABH KUMAR","PIYUSH RAJ","AARYAN SINGH","KIRAN","SURAJ TIWARI","ABHYA","ANSH RAJ","ANKUSH RAJ","SIKHA YADAV","ADITYA KUMAR","PRATYASH"]),
@@ -959,20 +983,24 @@ async function switchClass(c){
 }
 function renderStudents(classes){
   document.getElementById('classCardTitle').textContent = 'Class ' + currentClass + ' — Mathematics';
+  const cols = examColumns[currentClass] || examColumns["VII A"];
+  const head = document.getElementById('studentHead');
+  let theadHtml = '<tr><th style="width:26px;">#</th><th>Student Name</th>';
+  cols.forEach(([key,label]) => theadHtml += `<th style="width:64px;">${label}</th>`);
+  theadHtml += '<th>Remarks</th><th style="width:30px;"></th></tr>';
+  head.innerHTML = theadHtml;
+
   const rows = classes[currentClass] || [];
   const body = document.getElementById('studentBody');
-  body.innerHTML = rows.map((s, i) => `
-    <tr>
-      <td>${i+1}</td>
-      <td><input value="${escapeHtml(s.name||'')}" onchange="studentChange(${i},'name',this.value)"></td>
-      <td><input value="${escapeHtml(s.pt1||'')}" onchange="studentChange(${i},'pt1',this.value)"></td>
-      <td><input value="${escapeHtml(s.pt2||'')}" onchange="studentChange(${i},'pt2',this.value)"></td>
-      <td><input value="${escapeHtml(s.monthly||'')}" onchange="studentChange(${i},'monthly',this.value)"></td>
-      <td><input value="${escapeHtml(s.hy||'')}" onchange="studentChange(${i},'hy',this.value)"></td>
-      <td><input value="${escapeHtml(s.remarks||'')}" onchange="studentChange(${i},'remarks',this.value)"></td>
-      <td><button class="rowbtn" onclick="removeStudent(${i})">✕</button></td>
-    </tr>
-  `).join('') || `<tr><td colspan="8" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
+  body.innerHTML = rows.map((s, i) => {
+    let tds = `<td>${i+1}</td><td><input value="${escapeHtml(s.name||'')}" onchange="studentChange(${i},'name',this.value)"></td>`;
+    cols.forEach(([key,label]) => {
+      tds += `<td><input value="${escapeHtml(s[key]||'')}" onchange="studentChange(${i},'${key}',this.value)"></td>`;
+    });
+    tds += `<td><input value="${escapeHtml(s.remarks||'')}" onchange="studentChange(${i},'remarks',this.value)"></td>`;
+    tds += `<td><button class="rowbtn" onclick="removeStudent(${i})">✕</button></td>`;
+    return `<tr>${tds}</tr>`;
+  }).join('') || `<tr><td colspan="${cols.length+4}" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
 }
 async function studentChange(i, field, val){
   const classes = await storeGet('diary-classes');
@@ -995,7 +1023,7 @@ async function loadOfficialRoster(){
 }
 async function addStudent(){
   const classes = await storeGet('diary-classes');
-  classes[currentClass].push({name:'', pt1:'', pt2:'', monthly:'', hy:'', remarks:''});
+  classes[currentClass].push({name:'', remarks:''});
   await storeSet('diary-classes', classes);
   renderStudents(classes);
 }
@@ -1004,6 +1032,94 @@ async function removeStudent(i){
   classes[currentClass].splice(i,1);
   await storeSet('diary-classes', classes);
   renderStudents(classes);
+}
+
+/* ---------------- Classes & Monthly Marks ---------------- */
+const MONTHLY_CLASS_LIST = ["VIII A","IX B","X B"];
+const monthlyTestCounts = { "VIII A": 14, "IX B": 8, "X B": 14 };
+let currentMonthlyClass = MONTHLY_CLASS_LIST[0];
+const defaultMonthlyClasses = {};
+MONTHLY_CLASS_LIST.forEach(c => {
+  defaultMonthlyClasses[c] = (defaultClasses[c] || []).map(s => ({name: s.name}));
+});
+
+async function loadMonthlyMarks(){
+  let classes = await storeGet('diary-monthlymarks');
+  if(!classes){
+    classes = {};
+    MONTHLY_CLASS_LIST.forEach(c => classes[c] = defaultMonthlyClasses[c] ? defaultMonthlyClasses[c].map(s => ({...s})) : []);
+    await storeSet('diary-monthlymarks', classes);
+  }
+  renderMonthlyPills();
+  renderMonthlyStudents(classes);
+}
+function renderMonthlyPills(){
+  const wrap = document.getElementById('monthlyClassPills');
+  if(!wrap) return;
+  wrap.innerHTML = MONTHLY_CLASS_LIST.map(c =>
+    `<button class="pill ${c===currentMonthlyClass?'active':''}" onclick="switchMonthlyClass('${c}')">${c}</button>`
+  ).join('');
+}
+async function switchMonthlyClass(c){
+  currentMonthlyClass = c;
+  renderMonthlyPills();
+  const classes = await storeGet('diary-monthlymarks');
+  renderMonthlyStudents(classes);
+}
+function renderMonthlyStudents(classes){
+  const count = monthlyTestCounts[currentMonthlyClass] || 0;
+  const title = document.getElementById('monthlyCardTitle');
+  if(title) title.textContent = 'Class ' + currentMonthlyClass + ' — Monthly Test Record (' + count + ' tests)';
+
+  const head = document.getElementById('monthlyHead');
+  let theadHtml = '<tr><th style="width:26px;">#</th><th>Student Name</th>';
+  for(let m=1; m<=count; m++) theadHtml += `<th style="width:56px;">MT-${m}</th>`;
+  theadHtml += '<th style="width:30px;"></th></tr>';
+  if(head) head.innerHTML = theadHtml;
+
+  const rows = classes[currentMonthlyClass] || [];
+  const body = document.getElementById('monthlyBody');
+  if(!body) return;
+  body.innerHTML = rows.map((s, i) => {
+    let tds = `<td>${i+1}</td><td><input value="${escapeHtml(s.name||'')}" onchange="monthlyChange(${i},'name',this.value)"></td>`;
+    for(let m=1; m<=count; m++){
+      const key = 'm'+m;
+      tds += `<td><input value="${escapeHtml(s[key]||'')}" onchange="monthlyChange(${i},'${key}',this.value)"></td>`;
+    }
+    tds += `<td><button class="rowbtn" onclick="removeMonthlyStudent(${i})">✕</button></td>`;
+    return `<tr>${tds}</tr>`;
+  }).join('') || `<tr><td colspan="${count+3}" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
+}
+async function monthlyChange(i, field, val){
+  const classes = await storeGet('diary-monthlymarks');
+  classes[currentMonthlyClass][i][field] = val;
+  await storeSet('diary-monthlymarks', classes);
+}
+async function loadOfficialMonthlyRoster(){
+  const roster = defaultMonthlyClasses[currentMonthlyClass];
+  if(!roster){ alert('No pre-loaded roster available for ' + currentMonthlyClass + '.'); return; }
+  const classes = await storeGet('diary-monthlymarks') || {};
+  const existing = classes[currentMonthlyClass] || [];
+  const hasNames = existing.some(s => s.name && s.name.trim() !== '');
+  if(hasNames){
+    const ok = confirm('Class ' + currentMonthlyClass + ' already has ' + existing.length + ' student row(s) with names filled in. Replace them with the official roster (' + roster.length + ' students)? This cannot be undone.');
+    if(!ok) return;
+  }
+  classes[currentMonthlyClass] = roster.map(s => ({...s}));
+  await storeSet('diary-monthlymarks', classes);
+  renderMonthlyStudents(classes);
+}
+async function addMonthlyStudent(){
+  const classes = await storeGet('diary-monthlymarks');
+  classes[currentMonthlyClass].push({name:''});
+  await storeSet('diary-monthlymarks', classes);
+  renderMonthlyStudents(classes);
+}
+async function removeMonthlyStudent(i){
+  const classes = await storeGet('diary-monthlymarks');
+  classes[currentMonthlyClass].splice(i,1);
+  await storeSet('diary-monthlymarks', classes);
+  renderMonthlyStudents(classes);
 }
 
 /* ---------------- Lesson Log ---------------- */
