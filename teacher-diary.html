@@ -272,7 +272,7 @@
 <div id="lockScreen">
   <div class="book">
     <div class="ribbon"></div>
-    <div class="eyebrow">PM Shri Kendriya Vidyalaya, Ara</div>
+    <div class="eyebrow">PM SHRI KV ARA</div>
     <h1 class="display">Teacher Diary</h1>
     <p class="sub" id="lockSub">Log in to open your diary — works from any device.</p>
 
@@ -300,7 +300,7 @@
     </div>
 
     <div class="note">
-      This login is powered by a real account system, not just a screen lock. Your data is stored securely under your own account and only you can read or edit it — from your phone, laptop, or any other device you log in on. Even so, keep full Aadhaar/PAN numbers, bank details, and your address only in your signed physical file.
+      This login is powered by a real account system, not just a screen lock. Your data is stored securely under your own account and only you can read or edit it — from your phone, laptop, or any other device you log in on. Even so, keep bank details and your address only in your signed physical file.
     </div>
   </div>
 </div>
@@ -313,9 +313,12 @@
         <div class="eyebrow2">KV Ara · Mathematics</div>
         <h2 class="display">My Diary</h2>
       </div>
-      <button class="navitem active" data-tab="overview" onclick="showTab('overview')">Overview</button>
+      <button class="navitem active" data-tab="biodata" onclick="showTab('biodata')">Biodata</button>
+      <button class="navitem" data-tab="philosophy" onclick="showTab('philosophy')">Teaching Philosophy</button>
       <button class="navitem" data-tab="timetable" onclick="showTab('timetable')">Time Table</button>
-      <button class="navitem" data-tab="schoolinfo" onclick="showTab('schoolinfo')">Biodata &amp; Duty Charts</button>
+      <button class="navitem" data-tab="recessduty" onclick="showTab('recessduty')">Recess Duty Chart</button>
+      <button class="navitem" data-tab="exitduty" onclick="showTab('exitduty')">Exit Duty Chart</button>
+      <button class="navitem" data-tab="remedialtiming" onclick="showTab('remedialtiming')">Remedial Timing</button>
       <button class="navitem" data-tab="classes" onclick="showTab('classes')">Classes &amp; Marks</button>
       <button class="navitem" data-tab="syllabus" onclick="showTab('syllabus')">Split-up Syllabus</button>
       <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
@@ -325,48 +328,32 @@
 
     <main class="content">
 
-      <!-- Overview -->
-      <section id="tab-overview">
-        <header class="pagehead" style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-          <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:84px; height:84px; border-radius:50%; object-fit:cover; border:3px solid var(--maroon); flex-shrink:0;">
-          <div>
-            <div class="eyebrow">Overview</div>
-            <h1 class="display" style="margin:2px 0 4px;">Namaste, Saurav</h1>
-            <p>TGT (Mathematics) · Classes VII, VIII, IX, X</p>
-          </div>
+      <!-- Biodata -->
+      <section id="tab-biodata">
+        <header class="pagehead">
+          <div class="eyebrow">School Records</div>
+          <h1 class="display">Biodata of the Teacher</h1>
+          <p>Your official biodata — for reference</p>
         </header>
         <div class="card">
-          <h3>This diary holds</h3>
-          <ul style="margin:0; padding-left:20px; color:var(--ink-soft); line-height:1.9;">
-            <li><strong>Time Table</strong> — your weekly periods, editable if it changes.</li>
-            <li><strong>Classes &amp; Marks</strong> — student rosters per section with PT/monthly-test entry.</li>
-            <li><strong>Lesson Log</strong> — a running record of what was taught, when, and to which class.</li>
-            <li><strong>Remedial Notes</strong> — students needing extra support and the plan for each.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Personal Details (masked)</h3>
-          <p style="margin:0 0 14px; color:var(--ink-soft); font-size:13px; line-height:1.6;">
-            Only the last 4 digits are ever saved — the rest is never typed or stored anywhere, so there's nothing to leak even from this device.
-          </p>
-          <div class="twocol">
-            <div>
-              <label>Aadhaar (last 4 digits)</label>
-              <input type="text" id="aadhaarLast4" maxlength="4" placeholder="e.g. 6726" onchange="saveProfileField('aadhaarLast4', this.value)">
-              <div class="mono" id="aadhaarMasked" style="margin-top:6px; color:var(--ink-soft); font-size:13px;">•••• •••• ••••</div>
-            </div>
-            <div>
-              <label>PAN (last 4 characters)</label>
-              <input type="text" id="panLast4" maxlength="4" placeholder="e.g. 664E" onchange="saveProfileField('panLast4', this.value)">
-              <div class="mono" id="panMasked" style="margin-top:6px; color:var(--ink-soft); font-size:13px;">•••••• ••••</div>
-            </div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+            <h3 style="margin:0;">Biodata of the Teacher</h3>
+            <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid var(--maroon); flex-shrink:0;">
           </div>
+          <div class="twocol" id="biodataGrid" style="margin-top:14px;"></div>
         </div>
+      </section>
+
+      <!-- Teaching Philosophy -->
+      <section id="tab-philosophy" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Reflection</div>
+          <h1 class="display">Statement of Teaching Philosophy</h1>
+          <p>Your approach to teaching, in your own words</p>
+        </header>
         <div class="card">
-          <h3>A reminder</h3>
-          <p style="margin:0; color:var(--ink-soft); font-size:14px; line-height:1.7;">
-            Everything you type here syncs to your account and is visible only when you log in. Full Aadhaar or PAN numbers, bank details, and your address should stay only in the signed physical biodata file — never typed here, even partially beyond the last 4 digits above.
-          </p>
+          <h3>Statement of Teaching Philosophy</h3>
+          <textarea id="philosophyText" style="min-height:160px;" onchange="savePhilosophy(this.value)"></textarea>
         </div>
       </section>
 
@@ -382,34 +369,38 @@
         </div>
       </section>
 
-      <!-- Biodata & Duty Charts -->
-      <section id="tab-schoolinfo" style="display:none;">
+      <!-- Recess Duty -->
+      <section id="tab-recessduty" style="display:none;">
         <header class="pagehead">
           <div class="eyebrow">School Records</div>
-          <h1 class="display">Biodata &amp; Duty Charts</h1>
-          <p>Your official biodata, teaching philosophy, and the school's duty rosters — for reference</p>
+          <h1 class="display">Recess Time Duty Chart</h1>
+          <p>w.e.f. 27/07/2026 — for reference</p>
         </header>
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;">
-            <h3 style="margin:0;">Biodata of the Teacher</h3>
-            <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid var(--maroon); flex-shrink:0;">
-          </div>
-          <div class="twocol" id="biodataGrid" style="margin-top:14px;"></div>
-        </div>
-        <div class="card">
-          <h3>Statement of Teaching Philosophy</h3>
-          <textarea id="philosophyText" style="min-height:160px;" onchange="savePhilosophy(this.value)"></textarea>
-        </div>
         <div class="card" style="overflow-x:auto;">
-          <h3>Recess Time Duty Chart <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">(w.e.f. 27/07/2026 — for reference)</span></h3>
           <table class="ttgrid" id="recessDutyTable"></table>
         </div>
+      </section>
+
+      <!-- Exit Duty -->
+      <section id="tab-exitduty" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">School Records</div>
+          <h1 class="display">Exit Time Duty Chart</h1>
+          <p>w.e.f. 28/07/2026 — for reference</p>
+        </header>
         <div class="card" style="overflow-x:auto;">
-          <h3>Exit Time Duty Chart <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">(w.e.f. 28/07/2026 — for reference)</span></h3>
           <table class="ttgrid" id="exitDutyTable"></table>
         </div>
+      </section>
+
+      <!-- Remedial Timing -->
+      <section id="tab-remedialtiming" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">School Records</div>
+          <h1 class="display">Remedial Classes</h1>
+          <p>Students Scoring &lt;75% in Monthly Test · Timing: 6:55–7:30 AM — for reference</p>
+        </header>
         <div class="card" style="overflow-x:auto;">
-          <h3>Remedial Classes (Students Scoring &lt;75% in Monthly Test) <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">Timing: 6:55–7:30 AM — for reference</span></h3>
           <table class="ttgrid" id="remedialTimingTable"></table>
         </div>
       </section>
@@ -653,7 +644,6 @@ async function openApp(){
   await loadClasses();
   await loadLog();
   await loadRemedial();
-  await loadProfile();
   await loadBiodata();
   await loadPhilosophy();
   renderRecessDuty();
@@ -662,28 +652,7 @@ async function openApp(){
   await loadSyllabus();
 }
 
-/* ---------------- Profile (masked Aadhaar/PAN — last 4 chars only) ---------------- */
-async function loadProfile(){
-  const profile = (await storeGet('diary-profile')) || {};
-  if(profile.aadhaarLast4){
-    document.getElementById('aadhaarLast4').value = profile.aadhaarLast4;
-    document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + profile.aadhaarLast4;
-  }
-  if(profile.panLast4){
-    document.getElementById('panLast4').value = profile.panLast4;
-    document.getElementById('panMasked').textContent = '•••••• ' + profile.panLast4;
-  }
-}
-async function saveProfileField(field, value){
-  const clean = value.replace(/[^A-Za-z0-9]/g,'').slice(-4);
-  const profile = (await storeGet('diary-profile')) || {};
-  profile[field] = clean;
-  await storeSet('diary-profile', profile);
-  if(field === 'aadhaarLast4') document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + (clean || '••••');
-  if(field === 'panLast4') document.getElementById('panMasked').textContent = '•••••• ' + (clean || '••••');
-}
-
-/* ---------------- Biodata (Aadhaar/PAN/address deliberately excluded — see Overview note) ---------------- */
+/* ---------------- Biodata (includes Aadhaar & PAN — keep this device/account secure) ---------------- */
 const biodataFields = [
   ['name','Name of the Teacher','SAURAV'],
   ['father','Father\'s Name','Vijay Kumar Mishra'],
@@ -691,9 +660,11 @@ const biodataFields = [
   ['qualification','Educational Qualification','M.Sc, B.Ed'],
   ['dob','Date of Birth','21-02-1993'],
   ['bloodgroup','Blood Group','A+'],
+  ['aadhaar','Aadhaar Number',''],
+  ['pan','PAN Number',''],
   ['joinKVS','Date of Joining in KVS','24-06-2024'],
   ['joinKV','Date of Joining in Present KV','24-06-2024'],
-  ['vidyalaya','Vidyalaya','PM Shri Kendriya Vidyalaya, Ara'],
+  ['vidyalaya','Vidyalaya','PM SHRI KV ARA'],
   ['region','Region / Sambhag','Patna'],
   ['classesSubject','Classes & Subject Taught','VII, VIII, IX, X — Mathematics'],
   ['session','Session','2026 - 2027'],
