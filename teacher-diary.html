@@ -575,7 +575,8 @@
             </div>
           </div>
           <label>Upload File (optional — PDF or Word, from your computer)</label>
-          <input type="file" id="epFile" accept=".pdf,.doc,.docx" style="margin-bottom:10px;">
+          <input type="file" id="epFile" accept=".pdf,.doc,.docx" style="margin-bottom:6px;">
+          <p style="font-size:12px; color:var(--ink-soft); margin:0 0 10px; line-height:1.5;">Needs Cloud Storage enabled on the Blaze plan — if that's not set up, just use the Drive link field above instead.</p>
           <div id="epStatus" style="font-size:12px; color:var(--ink-soft); min-height:16px; margin-bottom:10px;"></div>
           <button class="addbtn" onclick="addExamPaper()">+ Save entry</button>
         </div>
@@ -617,13 +618,21 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
-/* File uploads for the Exam Papers section need Firebase Storage turned on
-   in your Firebase Console (Build → Storage → Get Started), with rules that
-   let a signed-in user read/write only their own folder, e.g.:
-     match /exam-papers/{uid}/{allPaths=**} {
-       allow read, write: if request.auth != null && request.auth.uid == uid;
-     }
-   If Storage isn't set up yet, pasting a Drive link still works fine. */
+/* File uploads for the Exam Papers section need Firebase Cloud Storage,
+   which (since Feb 2026) only works on the paid, pay-as-you-go Blaze plan —
+   the free Spark plan can no longer create or use a Storage bucket at all.
+   Small usage on Blaze still costs ₹0 (there's a generous free quota), but a
+   billing account must be linked. Steps:
+     1. Firebase Console → your project → gear icon → Usage and billing →
+        Modify plan → upgrade to Blaze (link a card; you won't be charged
+        unless you go over the free quota).
+     2. Build → Storage → Get started (this creates the bucket).
+     3. In the Rules tab, paste:
+          match /exam-papers/{uid}/{allPaths=**} {
+            allow read, write: if request.auth != null && request.auth.uid == uid;
+          }
+   If you'd rather not enable billing, skip this — pasting a Drive/Cloud link
+   in the Exam Papers section works with zero setup and needs nothing here. */
 let storage;
 try{ storage = firebase.storage(); } catch(e){ storage = null; }
 
@@ -1263,6 +1272,38 @@ async function removeRemedial(i){
 }
 
 /* ---------------- Exam Papers ---------------- */
+function uploadWithProgress(ref, file, statusEl, timeoutMs){
+  timeoutMs = timeoutMs || 20000;
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const task = ref.put(file);
+    const timer = setTimeout(() => {
+      if(settled) return;
+      settled = true;
+      try{ task.cancel(); } catch(e){}
+      reject(new Error('timeout'));
+    }, timeoutMs);
+    task.on('state_changed',
+      (snap) => {
+        if(settled) return;
+        const pct = snap.totalBytes ? Math.round((snap.bytesTransferred / snap.totalBytes) * 100) : 0;
+        statusEl.textContent = 'Uploading ' + file.name + ' — ' + pct + '%';
+      },
+      (err) => {
+        if(settled) return;
+        settled = true;
+        clearTimeout(timer);
+        reject(err);
+      },
+      () => {
+        if(settled) return;
+        settled = true;
+        clearTimeout(timer);
+        resolve();
+      }
+    );
+  });
+}
 async function loadExamPapers(){
   let rows = await storeGet('diary-exampapers');
   if(!rows){ rows = []; }
@@ -1308,16 +1349,25 @@ async function addExamPaper(){
       return;
     }
     try{
-      statusEl.textContent = 'Uploading ' + file.name + ' …';
+      statusEl.textContent = 'Uploading ' + file.name + ' — 0%';
       const user = auth.currentUser;
       const path = 'exam-papers/' + user.uid + '/' + Date.now() + '_' + file.name;
       const ref = storage.ref().child(path);
-      await ref.put(file);
+      await uploadWithProgress(ref, file, statusEl);
       fileURL = await ref.getDownloadURL();
       fileName = file.name;
     } catch(e){
       console.error('upload failed', e);
-      statusEl.textContent = 'Upload failed — check your connection and try again.';
+      const code = (e && e.code) || '';
+      if(e && e.message === 'timeout'){
+        statusEl.textContent = 'Upload timed out — this Firebase project likely doesn\'t have Cloud Storage enabled (it now needs the paid Blaze plan). Paste a Drive link instead for now, or see the setup note in the code.';
+      } else if(code.includes('unauthorized') || code.includes('unauthenticated')){
+        statusEl.textContent = 'Upload blocked by Storage rules — check the Rules tab in Firebase Console. Paste a Drive link instead for now.';
+      } else if(code.includes('unknown') || code === ''){
+        statusEl.textContent = 'Upload failed — Cloud Storage may not be enabled for this project (needs the Blaze plan). Paste a Drive link instead for now.';
+      } else {
+        statusEl.textContent = 'Upload failed — check your connection and try again, or paste a Drive link instead.';
+      }
       return;
     }
   }
