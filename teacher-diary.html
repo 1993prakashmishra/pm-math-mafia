@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Diary — Saurav</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F1E4;
+    --paper-dark:#EDE5D0;
+    --ink:#1F2A24;
+    --ink-soft:#4B5A50;
+    --maroon:#7A2E2E;
+    --maroon-deep:#5C2020;
+    --gold:#A9822F;
+    --line:#D9CDAE;
+    --ok:#3C6E47;
+    --danger:#B23A3A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    min-height:100vh;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  /* ---------- Lock screen ---------- */
+  #lockScreen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(122,46,46,0.06), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(169,130,47,0.08), transparent 45%),
+      var(--paper);
+    padding:24px;
+  }
+  .book{
+    width:100%;
+    max-width:420px;
+    background:var(--paper-dark);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow: 8px 8px 0 rgba(31,42,36,0.08), 0 1px 0 rgba(0,0,0,0.04);
+    padding:40px 36px 32px;
+    position:relative;
+  }
+  .book::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:6px;
+    background:linear-gradient(180deg, var(--maroon), var(--maroon-deep));
+    border-radius:4px 0 0 4px;
+  }
+  .ribbon{
+    position:absolute;
+    top:-4px; right:36px;
+    width:18px; height:56px;
+    background:var(--maroon);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+  }
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .book h1{
+    font-size:28px;
+    margin:0 0 4px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .book p.sub{
+    margin:0 0 28px;
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.5;
+  }
+  label{
+    display:block;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+    font-weight:500;
+  }
+  input[type=password], input[type=text]{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+    font-size:15px;
+    color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  input:focus{outline:2px solid var(--maroon); outline-offset:1px;}
+  .btn{
+    margin-top:18px;
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:3px;
+    background:var(--maroon);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  .btn:hover{background:var(--maroon-deep);}
+  .btn.ghost{
+    background:transparent;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    margin-top:10px;
+  }
+  .btn.ghost:hover{background:var(--paper);}
+  .note{
+    margin-top:20px;
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    border-top:1px dashed var(--line);
+    padding-top:14px;
+  }
+  .err{color:var(--danger); font-size:13px; margin-top:8px; min-height:16px;}
+
+  /* ---------- App shell ---------- */
+  #app{display:none; min-height:100vh;}
+  .shell{display:flex; min-height:100vh;}
+  nav.side{
+    width:220px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:28px 0;
+    flex-shrink:0;
+  }
+  nav.side .brand{
+    padding:0 24px 20px;
+    border-bottom:1px solid rgba(246,241,228,0.14);
+    margin-bottom:18px;
+  }
+  nav.side .brand .eyebrow2{
+    font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);
+  }
+  nav.side .brand h2{
+    font-family:'Fraunces', serif;
+    font-size:20px; margin:4px 0 0; font-weight:600;
+  }
+  nav.side button.navitem{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    color:rgba(246,241,228,0.75);
+    padding:11px 24px;
+    font-size:14px;
+    cursor:pointer;
+    border-left:3px solid transparent;
+    font-family:'IBM Plex Sans', sans-serif;
+  }
+  nav.side button.navitem:hover{color:#fff; background:rgba(246,241,228,0.05);}
+  nav.side button.navitem.active{
+    color:#fff;
+    border-left:3px solid var(--gold);
+    background:rgba(246,241,228,0.06);
+    font-weight:600;
+  }
+  nav.side .lockbtn{
+    margin:24px 24px 0;
+    font-size:12px;
+    color:rgba(246,241,228,0.5);
+    background:none;border:1px solid rgba(246,241,228,0.2);
+    padding:8px 10px; border-radius:3px; cursor:pointer; width:calc(100% - 48px);
+  }
+  main.content{
+    flex:1;
+    padding:36px 44px;
+    max-width:1100px;
+  }
+  header.pagehead{margin-bottom:28px;}
+  header.pagehead .eyebrow{font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); font-weight:600;}
+  header.pagehead h1{font-family:'Fraunces', serif; font-size:30px; margin:4px 0 6px; font-weight:600;}
+  header.pagehead p{color:var(--ink-soft); margin:0; font-size:14px;}
+
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:22px 24px;
+    margin-bottom:22px;
+  }
+  .card h3{margin:0 0 14px; font-family:'Fraunces', serif; font-size:18px; font-weight:600;}
+
+  table{width:100%; border-collapse:collapse; font-size:14px;}
+  th, td{padding:8px 10px; border-bottom:1px solid var(--line); text-align:left;}
+  th{font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); font-weight:600;}
+  td input{
+    width:100%; border:1px solid transparent; background:transparent; padding:5px 6px;
+    font-family:'IBM Plex Sans', sans-serif; font-size:14px; border-radius:3px;
+  }
+  td input:hover{border-color:var(--line);}
+  td input:focus{border-color:var(--maroon); background:var(--paper); outline:none;}
+  .rowbtn{background:none;border:none;color:var(--danger);cursor:pointer;font-size:13px;}
+  .addbtn{
+    margin-top:10px;
+    background:var(--paper-dark);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    border-radius:3px;
+    cursor:pointer;
+    font-size:13px;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .addbtn:hover{background:var(--line);}
+  .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+  .pill{
+    padding:7px 16px; border-radius:20px; border:1px solid var(--line);
+    background:#fff; cursor:pointer; font-size:13px; font-weight:500; color:var(--ink-soft);
+  }
+  .pill.active{background:var(--maroon); color:#fff; border-color:var(--maroon);}
+  textarea{
+    width:100%; min-height:80px; border:1px solid var(--line); border-radius:4px;
+    padding:10px 12px; font-family:'IBM Plex Sans', sans-serif; font-size:14px; resize:vertical;
+  }
+  textarea:focus{outline:none; border-color:var(--maroon);}
+  .logentry{border-bottom:1px solid var(--line); padding:14px 0;}
+  .logentry:last-child{border-bottom:none;}
+  .logmeta{font-size:12px; color:var(--ink-soft); margin-bottom:4px;}
+  .logmeta strong{color:var(--ink);}
+  .saved-flash{
+    position:fixed; bottom:22px; right:28px;
+    background:var(--ok); color:#fff; padding:9px 16px; border-radius:4px;
+    font-size:13px; opacity:0; transition:opacity 0.3s ease; pointer-events:none;
+  }
+  .saved-flash.show{opacity:1;}
+  .ttgrid{width:100%; border-collapse:collapse; font-size:13px;}
+  .ttgrid th, .ttgrid td{border:1px solid var(--line); padding:8px; text-align:center;}
+  .ttgrid th{background:var(--paper-dark);}
+  .ttgrid td input{text-align:center;}
+  .twocol{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  select{
+    padding:9px 10px; border:1px solid var(--line); border-radius:3px; font-size:14px;
+    background:#fff; font-family:'IBM Plex Sans', sans-serif;
+  }
+  @media (max-width: 720px){
+    .shell{flex-direction:column;}
+    nav.side{width:100%; padding:16px 0;}
+    nav.side button.navitem{padding:10px 20px;}
+    main.content{padding:22px 18px;}
+    .twocol{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== LOCK SCREEN ===================== -->
+<div id="lockScreen">
+  <div class="book">
+    <div class="ribbon"></div>
+    <div class="eyebrow">PM Shri Kendriya Vidyalaya, Ara</div>
+    <h1 class="display">Teacher Diary</h1>
+    <p class="sub" id="lockSub">Log in to open your diary — works from any device.</p>
+
+    <div class="pill-row" style="margin-bottom:18px;">
+      <button class="pill active" id="tabLoginBtn" onclick="switchAuthTab('login')">Log In</button>
+      <button class="pill" id="tabSignupBtn" onclick="switchAuthTab('signup')">First time (Sign Up)</button>
+    </div>
+
+    <div id="loginBlock">
+      <label for="loginEmail">Email</label>
+      <input type="text" id="loginEmail" placeholder="you@example.com">
+      <label for="loginPass" style="margin-top:12px;">Password</label>
+      <input type="password" id="loginPass" placeholder="Password" onkeydown="if(event.key==='Enter')logIn()">
+      <button class="btn" onclick="logIn()">Log In</button>
+      <div class="err" id="loginErr"></div>
+    </div>
+
+    <div id="signupBlock" style="display:none;">
+      <label for="signupEmail">Email</label>
+      <input type="text" id="signupEmail" placeholder="you@example.com">
+      <label for="signupPass" style="margin-top:12px;">Choose a password</label>
+      <input type="password" id="signupPass" placeholder="At least 6 characters">
+      <button class="btn" onclick="signUp()">Create My Diary</button>
+      <div class="err" id="signupErr"></div>
+    </div>
+
+    <div class="note">
+      This login is powered by a real account system, not just a screen lock. Your data is stored securely under your own account and only you can read or edit it — from your phone, laptop, or any other device you log in on. Even so, keep full Aadhaar/PAN numbers, bank details, and your address only in your signed physical file.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== APP ===================== -->
+<div id="app">
+  <div class="shell">
+    <nav class="side">
+      <div class="brand">
+        <div class="eyebrow2">KV Ara · Mathematics</div>
+        <h2 class="display">My Diary</h2>
+      </div>
+      <button class="navitem active" data-tab="overview" onclick="showTab('overview')">Overview</button>
+      <button class="navitem" data-tab="timetable" onclick="showTab('timetable')">Time Table</button>
+      <button class="navitem" data-tab="classes" onclick="showTab('classes')">Classes &amp; Marks</button>
+      <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
+      <button class="navitem" data-tab="remedial" onclick="showTab('remedial')">Remedial Notes</button>
+      <button class="lockbtn" onclick="logOut()">🔒 Log out</button>
+    </nav>
+
+    <main class="content">
+
+      <!-- Overview -->
+      <section id="tab-overview">
+        <header class="pagehead">
+          <div class="eyebrow">Overview</div>
+          <h1 class="display">Namaste, Saurav</h1>
+          <p>TGT (Mathematics) · Classes VII, VIII, IX, X</p>
+        </header>
+        <div class="card">
+          <h3>This diary holds</h3>
+          <ul style="margin:0; padding-left:20px; color:var(--ink-soft); line-height:1.9;">
+            <li><strong>Time Table</strong> — your weekly periods, editable if it changes.</li>
+            <li><strong>Classes &amp; Marks</strong> — student rosters per section with PT/monthly-test entry.</li>
+            <li><strong>Lesson Log</strong> — a running record of what was taught, when, and to which class.</li>
+            <li><strong>Remedial Notes</strong> — students needing extra support and the plan for each.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Personal Details (masked)</h3>
+          <p style="margin:0 0 14px; color:var(--ink-soft); font-size:13px; line-height:1.6;">
+            Only the last 4 digits are ever saved — the rest is never typed or stored anywhere, so there's nothing to leak even from this device.
+          </p>
+          <div class="twocol">
+            <div>
+              <label>Aadhaar (last 4 digits)</label>
+              <input type="text" id="aadhaarLast4" maxlength="4" placeholder="e.g. 6726" onchange="saveProfileField('aadhaarLast4', this.value)">
+              <div class="mono" id="aadhaarMasked" style="margin-top:6px; color:var(--ink-soft); font-size:13px;">•••• •••• ••••</div>
+            </div>
+            <div>
+              <label>PAN (last 4 characters)</label>
+              <input type="text" id="panLast4" maxlength="4" placeholder="e.g. 664E" onchange="saveProfileField('panLast4', this.value)">
+              <div class="mono" id="panMasked" style="margin-top:6px; color:var(--ink-soft); font-size:13px;">•••••• ••••</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>A reminder</h3>
+          <p style="margin:0; color:var(--ink-soft); font-size:14px; line-height:1.7;">
+            Everything you type here syncs to your account and is visible only when you log in. Full Aadhaar or PAN numbers, bank details, and your address should stay only in the signed physical biodata file — never typed here, even partially beyond the last 4 digits above.
+          </p>
+        </div>
+      </section>
+
+      <!-- Time Table -->
+      <section id="tab-timetable" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Weekly Schedule</div>
+          <h1 class="display">Time Table</h1>
+          <p>34 periods / week · edit any cell if your schedule changes</p>
+        </header>
+        <div class="card" style="overflow-x:auto;">
+          <table class="ttgrid" id="ttTable"></table>
+        </div>
+      </section>
+
+      <!-- Classes & Marks -->
+      <section id="tab-classes" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Scholastic Records</div>
+          <h1 class="display">Classes &amp; Marks</h1>
+          <p>Select a class, add students, enter test scores as you go</p>
+        </header>
+        <div class="pill-row" id="classPills"></div>
+        <div class="card">
+          <h3 id="classCardTitle">Class</h3>
+          <div style="overflow-x:auto;">
+            <table id="studentTable">
+              <thead>
+                <tr>
+                  <th style="width:26px;">#</th>
+                  <th>Student Name</th>
+                  <th style="width:70px;">PT-1</th>
+                  <th style="width:70px;">PT-2</th>
+                  <th style="width:80px;">Monthly</th>
+                  <th style="width:70px;">HY</th>
+                  <th>Remarks</th>
+                  <th style="width:30px;"></th>
+                </tr>
+              </thead>
+              <tbody id="studentBody"></tbody>
+            </table>
+          </div>
+          <button class="addbtn" onclick="addStudent()">+ Add student</button>
+        </div>
+      </section>
+
+      <!-- Lesson Log -->
+      <section id="tab-lessonlog" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Teaching Record</div>
+          <h1 class="display">Lesson Log</h1>
+          <p>Log what you taught, class by class, chapter by chapter</p>
+        </header>
+        <div class="card">
+          <h3>New entry</h3>
+          <div class="twocol" style="margin-bottom:12px;">
+            <div>
+              <label>Date</label>
+              <input type="text" id="logDate" placeholder="e.g. 16 Aug 2026">
+            </div>
+            <div>
+              <label>Class &amp; Section</label>
+              <select id="logClass">
+                <option>VII A</option><option>VII B</option><option>VIII A</option>
+                <option>IX B</option><option>X B</option>
+              </select>
+            </div>
+          </div>
+          <label>Chapter / Topic</label>
+          <input type="text" id="logTopic" placeholder="e.g. Chapter 3 — A Peek Beyond the Point" style="margin-bottom:12px;">
+          <label>Notes</label>
+          <textarea id="logNotes" placeholder="What was covered, activity used, homework given…"></textarea>
+          <button class="addbtn" onclick="addLog()">+ Save entry</button>
+        </div>
+        <div class="card">
+          <h3>Entries</h3>
+          <div id="logList"></div>
+        </div>
+      </section>
+
+      <!-- Remedial -->
+      <section id="tab-remedial" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Support Plan</div>
+          <h1 class="display">Remedial Notes</h1>
+          <p>Students needing extra help and what you're doing about it</p>
+        </header>
+        <div class="card">
+          <div style="overflow-x:auto;">
+            <table id="remedialTable">
+              <thead>
+                <tr>
+                  <th style="width:26px;">#</th>
+                  <th style="width:90px;">Class</th>
+                  <th>Student Name</th>
+                  <th>Area of Weakness</th>
+                  <th>Measures Planned</th>
+                  <th style="width:30px;"></th>
+                </tr>
+              </thead>
+              <tbody id="remedialBody"></tbody>
+            </table>
+          </div>
+          <button class="addbtn" onclick="addRemedial()">+ Add student</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<div class="saved-flash" id="savedFlash">Saved</div>
+
+<!-- Firebase (free account-based sync — works across phone, laptop, any browser) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+/* =====================================================================
+   PASTE YOUR FIREBASE CONFIG HERE.
+   Get this from: Firebase Console → Project Settings (gear icon) →
+   "Your apps" → Web app → the firebaseConfig object.
+   These values are meant to be public in client code — they are not
+   secret. Real protection comes from Firebase Auth + Firestore rules,
+   set up as described in the setup guide.
+   ===================================================================== */
+const firebaseConfig = {
+  apiKey: "AIzaSyDM9fa2XoxRwuKeGHqGHcjyJVDYbIBR3pI",
+  authDomain: "teacher-dairy-317ee.firebaseapp.com",
+  projectId: "teacher-dairy-317ee",
+  storageBucket: "teacher-dairy-317ee.firebasestorage.app",
+  messagingSenderId: "487735498188",
+  appId: "1:487735498188:web:042694e3d368565d4cb969"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let diaryDocRef = null;
+let diaryCache = {};
+
+/* ---------------- Storage helpers (backed by Firestore, cached in memory) ---------------- */
+async function storeGet(key){
+  return diaryCache.hasOwnProperty(key) ? diaryCache[key] : null;
+}
+async function storeSet(key, value){
+  diaryCache[key] = value;
+  try{
+    await diaryDocRef.set({ [key]: value }, { merge: true });
+    flashSaved();
+  } catch(e){ console.error('save failed', e); }
+}
+let flashTimer;
+function flashSaved(){
+  const el = document.getElementById('savedFlash');
+  el.classList.add('show');
+  clearTimeout(flashTimer);
+  flashTimer = setTimeout(()=>el.classList.remove('show'), 1200);
+}
+
+/* ---------------- Auth tabs ---------------- */
+function switchAuthTab(which){
+  document.getElementById('loginBlock').style.display = which==='login' ? 'block' : 'none';
+  document.getElementById('signupBlock').style.display = which==='signup' ? 'block' : 'none';
+  document.getElementById('tabLoginBtn').classList.toggle('active', which==='login');
+  document.getElementById('tabSignupBtn').classList.toggle('active', which==='signup');
+}
+
+/* ---------------- Sign up / Log in / Log out ---------------- */
+async function signUp(){
+  const email = document.getElementById('signupEmail').value.trim();
+  const pass = document.getElementById('signupPass').value;
+  const err = document.getElementById('signupErr');
+  err.textContent = '';
+  if(!email || pass.length < 6){ err.textContent = "Enter a valid email and a password of at least 6 characters."; return; }
+  try{
+    await auth.createUserWithEmailAndPassword(email, pass);
+    // onAuthStateChanged below will take it from here
+  } catch(e){ err.textContent = friendlyAuthError(e); }
+}
+async function logIn(){
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const err = document.getElementById('loginErr');
+  err.textContent = '';
+  if(!email || !pass){ err.textContent = "Enter your email and password."; return; }
+  try{
+    await auth.signInWithEmailAndPassword(email, pass);
+  } catch(e){ err.textContent = friendlyAuthError(e); }
+}
+function logOut(){
+  auth.signOut();
+}
+function friendlyAuthError(e){
+  const code = e.code || '';
+  if(code.includes('email-already-in-use')) return "This email already has a diary — try Log In instead.";
+  if(code.includes('wrong-password') || code.includes('user-not-found') || code.includes('invalid-credential')) return "Email or password is incorrect.";
+  if(code.includes('weak-password')) return "Password should be at least 6 characters.";
+  if(code.includes('invalid-email')) return "Enter a valid email address.";
+  return e.message || "Something went wrong. Please try again.";
+}
+
+/* ---------------- Auth state → open/close app ---------------- */
+auth.onAuthStateChanged(async (user) => {
+  if(user){
+    diaryDocRef = db.collection('diaries').doc(user.uid);
+    const snap = await diaryDocRef.get();
+    diaryCache = snap.exists ? snap.data() : {};
+    await openApp();
+  } else {
+    diaryCache = {};
+    diaryDocRef = null;
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('lockScreen').style.display = 'flex';
+  }
+});
+
+async function openApp(){
+  document.getElementById('lockScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  await loadTimetable();
+  await loadClasses();
+  await loadLog();
+  await loadRemedial();
+  await loadProfile();
+}
+
+/* ---------------- Profile (masked Aadhaar/PAN — last 4 chars only) ---------------- */
+async function loadProfile(){
+  const profile = (await storeGet('diary-profile')) || {};
+  if(profile.aadhaarLast4){
+    document.getElementById('aadhaarLast4').value = profile.aadhaarLast4;
+    document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + profile.aadhaarLast4;
+  }
+  if(profile.panLast4){
+    document.getElementById('panLast4').value = profile.panLast4;
+    document.getElementById('panMasked').textContent = '•••••• ' + profile.panLast4;
+  }
+}
+async function saveProfileField(field, value){
+  const clean = value.replace(/[^A-Za-z0-9]/g,'').slice(-4);
+  const profile = (await storeGet('diary-profile')) || {};
+  profile[field] = clean;
+  await storeSet('diary-profile', profile);
+  if(field === 'aadhaarLast4') document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + (clean || '••••');
+  if(field === 'panLast4') document.getElementById('panMasked').textContent = '•••••• ' + (clean || '••••');
+}
+
+/* ---------------- Nav ---------------- */
+function showTab(name){
+  document.querySelectorAll('main.content > section').forEach(s => s.style.display = 'none');
+  document.getElementById('tab-'+name).style.display = 'block';
+  document.querySelectorAll('.navitem').forEach(b => b.classList.remove('active'));
+  document.querySelector('.navitem[data-tab="'+name+'"]').classList.add('active');
+}
+
+/* ---------------- Time Table ---------------- */
+const defaultTT = {
+  days: ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"],
+  periods: ["1st","2nd","3rd","4th","5th","6th","7th","8th"],
+  data: {
+    MONDAY:   ["", "VIII A", "X B", "IX B", "VII B", "VII A", "", ""],
+    TUESDAY:  ["", "VIII A", "X B", "IX B", "VII B", "VII A", "", "IX B (Remedial)"],
+    WEDNESDAY:["", "VIII A", "X B", "IX B", "VII B", "VII A", "", ""],
+    THURSDAY: ["", "VIII A", "X B", "IX B", "VII B", "VII A", "", ""],
+    FRIDAY:   ["", "VIII A", "X B", "IX B", "VII B", "VII A", "", "X B (Remedial)"],
+    SATURDAY: ["", "VIII A", "X B", "IX B", "VII B", "VII A", "CLA", ""]
+  }
+};
+async function loadTimetable(){
+  let tt = await storeGet('diary-timetable');
+  if(!tt){ tt = defaultTT; await storeSet('diary-timetable', tt); }
+  renderTimetable(tt);
+}
+function renderTimetable(tt){
+  const table = document.getElementById('ttTable');
+  let html = '<tr><th>Day</th>';
+  tt.periods.forEach(p => html += `<th>${p}</th>`);
+  html += '</tr>';
+  tt.days.forEach(day => {
+    html += `<tr><th>${day.slice(0,3)}</th>`;
+    tt.data[day].forEach((cell, i) => {
+      html += `<td><input value="${escapeHtml(cell)}" onchange="ttChange('${day}',${i},this.value)"></td>`;
+    });
+    html += '</tr>';
+  });
+  table.innerHTML = html;
+}
+async function ttChange(day, idx, val){
+  const tt = await storeGet('diary-timetable');
+  tt.data[day][idx] = val;
+  await storeSet('diary-timetable', tt);
+}
+
+/* ---------------- Classes & Marks ---------------- */
+const CLASS_LIST = ["VII A","VII B","VIII A","IX B","X B"];
+let currentClass = CLASS_LIST[0];
+
+async function loadClasses(){
+  let classes = await storeGet('diary-classes');
+  if(!classes){
+    classes = {};
+    CLASS_LIST.forEach(c => classes[c] = []);
+    await storeSet('diary-classes', classes);
+  }
+  renderClassPills();
+  renderStudents(classes);
+}
+function renderClassPills(){
+  const wrap = document.getElementById('classPills');
+  wrap.innerHTML = CLASS_LIST.map(c =>
+    `<button class="pill ${c===currentClass?'active':''}" onclick="switchClass('${c}')">${c}</button>`
+  ).join('');
+}
+async function switchClass(c){
+  currentClass = c;
+  renderClassPills();
+  const classes = await storeGet('diary-classes');
+  renderStudents(classes);
+}
+function renderStudents(classes){
+  document.getElementById('classCardTitle').textContent = 'Class ' + currentClass + ' — Mathematics';
+  const rows = classes[currentClass] || [];
+  const body = document.getElementById('studentBody');
+  body.innerHTML = rows.map((s, i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><input value="${escapeHtml(s.name||'')}" onchange="studentChange(${i},'name',this.value)"></td>
+      <td><input value="${escapeHtml(s.pt1||'')}" onchange="studentChange(${i},'pt1',this.value)"></td>
+      <td><input value="${escapeHtml(s.pt2||'')}" onchange="studentChange(${i},'pt2',this.value)"></td>
+      <td><input value="${escapeHtml(s.monthly||'')}" onchange="studentChange(${i},'monthly',this.value)"></td>
+      <td><input value="${escapeHtml(s.hy||'')}" onchange="studentChange(${i},'hy',this.value)"></td>
+      <td><input value="${escapeHtml(s.remarks||'')}" onchange="studentChange(${i},'remarks',this.value)"></td>
+      <td><button class="rowbtn" onclick="removeStudent(${i})">✕</button></td>
+    </tr>
+  `).join('') || `<tr><td colspan="8" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
+}
+async function studentChange(i, field, val){
+  const classes = await storeGet('diary-classes');
+  classes[currentClass][i][field] = val;
+  await storeSet('diary-classes', classes);
+}
+async function addStudent(){
+  const classes = await storeGet('diary-classes');
+  classes[currentClass].push({name:'', pt1:'', pt2:'', monthly:'', hy:'', remarks:''});
+  await storeSet('diary-classes', classes);
+  renderStudents(classes);
+}
+async function removeStudent(i){
+  const classes = await storeGet('diary-classes');
+  classes[currentClass].splice(i,1);
+  await storeSet('diary-classes', classes);
+  renderStudents(classes);
+}
+
+/* ---------------- Lesson Log ---------------- */
+async function loadLog(){
+  let log = await storeGet('diary-lessonlog');
+  if(!log){ log = []; }
+  renderLog(log);
+}
+function renderLog(log){
+  const wrap = document.getElementById('logList');
+  if(log.length === 0){
+    wrap.innerHTML = `<p style="color:var(--ink-soft); font-size:14px;">No entries yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = log.slice().reverse().map((entry, ri) => {
+    const i = log.length - 1 - ri;
+    return `
+    <div class="logentry">
+      <div class="logmeta"><strong>${escapeHtml(entry.date)}</strong> · ${escapeHtml(entry.cls)} · ${escapeHtml(entry.topic)}
+        <button class="rowbtn" style="float:right;" onclick="removeLog(${i})">✕ remove</button>
+      </div>
+      <div style="font-size:14px; color:var(--ink);">${escapeHtml(entry.notes)}</div>
+    </div>`;
+  }).join('');
+}
+async function addLog(){
+  const date = document.getElementById('logDate').value.trim();
+  const cls = document.getElementById('logClass').value;
+  const topic = document.getElementById('logTopic').value.trim();
+  const notes = document.getElementById('logNotes').value.trim();
+  if(!date || !topic){ return; }
+  const log = (await storeGet('diary-lessonlog')) || [];
+  log.push({date, cls, topic, notes});
+  await storeSet('diary-lessonlog', log);
+  document.getElementById('logDate').value='';
+  document.getElementById('logTopic').value='';
+  document.getElementById('logNotes').value='';
+  renderLog(log);
+}
+async function removeLog(i){
+  const log = await storeGet('diary-lessonlog');
+  log.splice(i,1);
+  await storeSet('diary-lessonlog', log);
+  renderLog(log);
+}
+
+/* ---------------- Remedial ---------------- */
+async function loadRemedial(){
+  let rows = await storeGet('diary-remedial');
+  if(!rows){ rows = []; }
+  renderRemedial(rows);
+}
+function renderRemedial(rows){
+  const body = document.getElementById('remedialBody');
+  body.innerHTML = rows.map((r,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><input value="${escapeHtml(r.cls||'')}" onchange="remedialChange(${i},'cls',this.value)"></td>
+      <td><input value="${escapeHtml(r.name||'')}" onchange="remedialChange(${i},'name',this.value)"></td>
+      <td><input value="${escapeHtml(r.weakness||'')}" onchange="remedialChange(${i},'weakness',this.value)"></td>
+      <td><input value="${escapeHtml(r.plan||'')}" onchange="remedialChange(${i},'plan',this.value)"></td>
+      <td><button class="rowbtn" onclick="removeRemedial(${i})">✕</button></td>
+    </tr>
+  `).join('') || `<tr><td colspan="6" style="color:var(--ink-soft); padding:16px 10px;">No entries yet — click "Add student" below.</td></tr>`;
+}
+async function remedialChange(i, field, val){
+  const rows = await storeGet('diary-remedial') || [];
+  rows[i][field] = val;
+  await storeSet('diary-remedial', rows);
+}
+async function addRemedial(){
+  const rows = await storeGet('diary-remedial') || [];
+  rows.push({cls:'', name:'', weakness:'', plan:''});
+  await storeSet('diary-remedial', rows);
+  renderRemedial(rows);
+}
+async function removeRemedial(i){
+  const rows = await storeGet('diary-remedial') || [];
+  rows.splice(i,1);
+  await storeSet('diary-remedial', rows);
+  renderRemedial(rows);
+}
+
+/* ---------------- Utils ---------------- */
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+</script>
+</body>
+</html>
