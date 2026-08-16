@@ -315,7 +315,9 @@
       </div>
       <button class="navitem active" data-tab="overview" onclick="showTab('overview')">Overview</button>
       <button class="navitem" data-tab="timetable" onclick="showTab('timetable')">Time Table</button>
+      <button class="navitem" data-tab="schoolinfo" onclick="showTab('schoolinfo')">Biodata &amp; Duty Charts</button>
       <button class="navitem" data-tab="classes" onclick="showTab('classes')">Classes &amp; Marks</button>
+      <button class="navitem" data-tab="syllabus" onclick="showTab('syllabus')">Split-up Syllabus</button>
       <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
       <button class="navitem" data-tab="remedial" onclick="showTab('remedial')">Remedial Notes</button>
       <button class="lockbtn" onclick="logOut()">🔒 Log out</button>
@@ -374,6 +376,35 @@
         </header>
         <div class="card" style="overflow-x:auto;">
           <table class="ttgrid" id="ttTable"></table>
+        </div>
+      </section>
+
+      <!-- Biodata & Duty Charts -->
+      <section id="tab-schoolinfo" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">School Records</div>
+          <h1 class="display">Biodata &amp; Duty Charts</h1>
+          <p>Your official biodata, teaching philosophy, and the school's duty rosters — for reference</p>
+        </header>
+        <div class="card">
+          <h3>Biodata of the Teacher</h3>
+          <div class="twocol" id="biodataGrid"></div>
+        </div>
+        <div class="card">
+          <h3>Statement of Teaching Philosophy</h3>
+          <textarea id="philosophyText" style="min-height:160px;" onchange="savePhilosophy(this.value)"></textarea>
+        </div>
+        <div class="card" style="overflow-x:auto;">
+          <h3>Recess Time Duty Chart <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">(w.e.f. 27/07/2026 — for reference)</span></h3>
+          <table class="ttgrid" id="recessDutyTable"></table>
+        </div>
+        <div class="card" style="overflow-x:auto;">
+          <h3>Exit Time Duty Chart <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">(w.e.f. 28/07/2026 — for reference)</span></h3>
+          <table class="ttgrid" id="exitDutyTable"></table>
+        </div>
+        <div class="card" style="overflow-x:auto;">
+          <h3>Remedial Classes (Students Scoring &lt;75% in Monthly Test) <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">Timing: 6:55–7:30 AM — for reference</span></h3>
+          <table class="ttgrid" id="remedialTimingTable"></table>
         </div>
       </section>
 
@@ -467,6 +498,34 @@
             </table>
           </div>
           <button class="addbtn" onclick="addRemedial()">+ Add student</button>
+        </div>
+      </section>
+
+      <!-- Split-up Syllabus -->
+      <section id="tab-syllabus" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Academic Planning</div>
+          <h1 class="display">Month-wise Split-up Syllabus</h1>
+          <p>Session 2026-27 · Mark each chapter's completion date as you finish teaching it</p>
+        </header>
+        <div class="pill-row" id="syllabusPills"></div>
+        <div class="card">
+          <h3 id="syllabusCardTitle">Class</h3>
+          <div style="overflow-x:auto;">
+            <table id="syllabusTable">
+              <thead>
+                <tr>
+                  <th style="width:26px;">#</th>
+                  <th style="width:90px;">Month</th>
+                  <th style="width:70px;">Working Days</th>
+                  <th>Chapter / Topic</th>
+                  <th>Assessment / Exam</th>
+                  <th style="width:150px;">Date of Completion</th>
+                </tr>
+              </thead>
+              <tbody id="syllabusBody"></tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -589,6 +648,12 @@ async function openApp(){
   await loadLog();
   await loadRemedial();
   await loadProfile();
+  await loadBiodata();
+  await loadPhilosophy();
+  renderRecessDuty();
+  renderExitDuty();
+  renderRemedialTiming();
+  await loadSyllabus();
 }
 
 /* ---------------- Profile (masked Aadhaar/PAN — last 4 chars only) ---------------- */
@@ -610,6 +675,223 @@ async function saveProfileField(field, value){
   await storeSet('diary-profile', profile);
   if(field === 'aadhaarLast4') document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + (clean || '••••');
   if(field === 'panLast4') document.getElementById('panMasked').textContent = '•••••• ' + (clean || '••••');
+}
+
+/* ---------------- Biodata (Aadhaar/PAN/address deliberately excluded — see Overview note) ---------------- */
+const biodataFields = [
+  ['name','Name of the Teacher','SAURAV'],
+  ['father','Father\'s Name','Vijay Kumar Mishra'],
+  ['designation','Designation','TGT (Mathematics)'],
+  ['qualification','Educational Qualification','M.Sc, B.Ed'],
+  ['dob','Date of Birth','21-02-1993'],
+  ['bloodgroup','Blood Group','A+'],
+  ['joinKVS','Date of Joining in KVS','24-06-2024'],
+  ['joinKV','Date of Joining in Present KV','24-06-2024'],
+  ['vidyalaya','Vidyalaya','PM Shri Kendriya Vidyalaya, Ara'],
+  ['region','Region / Sambhag','Patna'],
+  ['classesSubject','Classes & Subject Taught','VII, VIII, IX, X — Mathematics'],
+  ['session','Session','2026 - 2027'],
+  ['mobile','Mobile Number','+91 9507020419'],
+  ['personalEmail','Personal E-mail ID','1990sauravkumar@gmail.com'],
+  ['schoolEmail','School\'s Official E-mail ID','pmshrikvara@gmail.com']
+];
+async function loadBiodata(){
+  const saved = (await storeGet('diary-biodata')) || {};
+  const grid = document.getElementById('biodataGrid');
+  if(!grid) return;
+  grid.innerHTML = biodataFields.map(([key,label,def]) => {
+    const val = saved.hasOwnProperty(key) ? saved[key] : def;
+    return `<div><label>${label}</label><input type="text" value="${escapeHtml(val)}" onchange="saveBiodataField('${key}', this.value)"></div>`;
+  }).join('');
+}
+async function saveBiodataField(key, value){
+  const saved = (await storeGet('diary-biodata')) || {};
+  saved[key] = value;
+  await storeSet('diary-biodata', saved);
+}
+
+/* ---------------- Teaching Philosophy ---------------- */
+const defaultPhilosophy = "I believe maths is not something to be afraid of. It is just a way of thinking step by step. If a child gets the right support and a little encouragement, he or she can learn maths well — no matter where they start from.\n\nIn my class, I break big problems into small, easy steps and connect them with things students see in daily life. This way they understand why a method works, not just how to use it. I never scold a student for making a mistake — mistakes are part of learning, and I want my students to feel free to ask questions.\n\nEvery student is different. Some understand a topic quickly, some need more time and practice. So I try different ways of teaching — group work, peer help, and extra doubt classes when needed. Along with maths, I also want my students to learn discipline, honest effort, and the confidence to try hard problems without giving up.";
+async function loadPhilosophy(){
+  const saved = await storeGet('diary-philosophy');
+  const el = document.getElementById('philosophyText');
+  if(el) el.value = (saved === null || saved === undefined) ? defaultPhilosophy : saved;
+}
+async function savePhilosophy(value){
+  await storeSet('diary-philosophy', value);
+}
+
+/* ---------------- Duty Charts & Remedial Timing (whole-school rosters — reference only) ---------------- */
+const recessDutyData = {
+  days: ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"],
+  cols: ["Canteen + Basketball + Front of School", "Play Ground + Drinking Water", "Full Ground Floor", "Full 1st Floor", "Full 2nd Floor"],
+  data: {
+    MONDAY:    ["Mr.Akshay Kumar + Mrs. Mamta", "Mr. Manish Kumar Singh + Mr.NK. Mishra", "Mr. A.K. Anjana", "Dr. P.N. Mishra", "Mrs. Chinki Kumari"],
+    TUESDAY:   ["Mr.Akshay Kumar + Mr. DK Roy", "Mr. Manish Kumar Singh + Mr. VP Dwivedi", "Mr. A.K. Anjana", "Mr. R.V.Prasad", "Mrs. Chinki Kumari"],
+    WEDNESDAY: ["Mr.Akshay Kumar + Mrs. Nikhat Shakil", "Mr. Manish Kumar Singh + Mr. DK Upadhyay", "Miss.Sureeja Gupta", "Mr. P.C.Yadav", "Mrs. Chinki Kumari"],
+    THURSDAY:  ["Mr.Akshay Kumar + Mr. Abhishek Kumar", "Mr. Manish Kumar Singh + Mr. Sunil Kumar", "Miss.Sureeja Gupta", "Mr. Ravi Kumar", "Mrs Minni Kumari"],
+    FRIDAY:    ["Mr.Akshay Kumar + Miss Ashima Yadav", "Mr. Manish Kumar Singh + Mr. Praveen k. Singh", "Mr. Grijesh", "Mr. V.B Mishra", "Mrs Minni Kumari"],
+    SATURDAY:  ["Mr.Akshay Kumar + Mr. Dipu Kumar", "Mr. Manish Kumar Singh + Mr. Saurabh", "Mr. Grijesh", "Mr. Y. Bahadur", "Mrs Minni Kumari"]
+  }
+};
+function renderRecessDuty(){
+  const table = document.getElementById('recessDutyTable');
+  if(!table) return;
+  let html = '<tr><th>Day</th>' + recessDutyData.cols.map(c=>`<th>${c}</th>`).join('') + '</tr>';
+  recessDutyData.days.forEach(day => {
+    html += `<tr><th>${day.slice(0,3)}</th>` + recessDutyData.data[day].map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+  });
+  table.innerHTML = html;
+}
+
+const exitDutyData = {
+  MONDAY:    ["Mr.Akshay Kumar","Mr. Suarabh Kumar","Mr. VP Dwivedi","Mr. Sunil Kumar","Mrs. Nikhat Shakil"],
+  TUESDAY:   ["Mr.Akshay Kumar","Mr. Abhishek Kumar","Mr. P. Prasad","Mr. N.K.Mishra","Miss Sureeja Gupta"],
+  WEDNESDAY: ["Mr.Akshay Kumar","Mr. Praveen K. Singh","Mr. D.K.Roy","Mr. R.V. Prasad","Miss Ashima Yadav"],
+  THURSDAY:  ["Mr. Manish Kumar Singh","Mr. Y. Bahadur","Mr. V.B. Mishra","Dr. P.N. Mishra","Mrs. Minni Kumari"],
+  FRIDAY:    ["Mr. Manish Kumar Singh","Mrs. Mamta","Mr. Ravi Kumar","Mr. P. Prasad","Mr. P.C Yadav"],
+  SATURDAY:  ["Mr. Manish Kumar Singh","Mrs Chinkee Kumari","Mr. D.K. Upadhyay","Mr. Dipu Kumar","Mr. Grijesh Kumar"]
+};
+function renderExitDuty(){
+  const table = document.getElementById('exitDutyTable');
+  if(!table) return;
+  const days = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+  let html = '<tr><th>Day</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>';
+  days.forEach(day => {
+    html += `<tr><th>${day.slice(0,3)}</th>` + exitDutyData[day].map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+  });
+  table.innerHTML = html;
+}
+
+const remedialTimingData = {
+  days: ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+  classes: {
+    "XII A": ["Physics","Maths/Bio","Chemistry","English","Cs/Hindi"],
+    "XII B": ["Account","English","Maths/Hindi/IP","Economics","B.St"],
+    "XI A":  ["Chemistry","Physics","English","Hindi/CS","Maths/Bio"],
+    "XI B":  ["English","Accountancy","B. St.","Maths/Hindi/IP","Economics"],
+    "X A":   ["Hindi","English","Maths","S.Sc.","Science"],
+    "X B":   ["S.Sc","Maths","Science","English","Hindi"],
+    "IX A":  ["Hindi","S.Sc","English","Science","Maths"],
+    "IX B":  ["Science","Hindi","Maths","English","S.Sc"]
+  }
+};
+function renderRemedialTiming(){
+  const table = document.getElementById('remedialTimingTable');
+  if(!table) return;
+  let html = '<tr><th>Class</th>' + remedialTimingData.days.map(d=>`<th>${d}</th>`).join('') + '</tr>';
+  Object.keys(remedialTimingData.classes).forEach(cls => {
+    html += `<tr><th>${cls}</th>` + remedialTimingData.classes[cls].map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+  });
+  table.innerHTML = html;
+}
+
+/* ---------------- Split-up Syllabus ---------------- */
+const SYLLABUS_CLASSES = ["VI","VII","VIII","IX","X"];
+let currentSyllabusClass = "VI";
+const syllabusData = {
+  VI: [
+    ["April/May","24","1) Patterns in Mathematics  2) Lines and Angles","LAT after each chapter"],
+    ["June","7","3) Number Play","LAT (running total: 2)"],
+    ["July","26","Number Play (contd.)  Periodic Test – 1","PERIODIC TEST – 1"],
+    ["August","23","4) Data Handling and Presentation","LAT after each chapter/topic"],
+    ["September","24","5) Prime Time","LAT after each chapter/topic"],
+    ["October","16","6) Perimeter and Area","HALF YEARLY EXAM"],
+    ["November","23","7) Fractions","LAT after each chapter/topic"],
+    ["December","18","8) Playing with Constructions","LAT (running total: 8)"],
+    ["January","22","9) Symmetry","LAT (running total: 9)"],
+    ["February","23","10) The Other Side of Zero","LAT (running total: 10)"],
+    ["March","—","Revision","SESSION ENDING EXAMINATION"]
+  ],
+  VII: [
+    ["April/May","24","1) Large Number Around Us  2) Arithmetic Expression","LAT after each chapter"],
+    ["June","7","3) A Peek Beyond the Point","LAT (running total: 2)"],
+    ["July","26","3) A Peek Beyond the Point (contd.)  4) Expressions Using Letter-Numbers","PERIODIC TEST – 1"],
+    ["August","23","5) Parallel and Intersecting Lines  6) Number Play","LAT after each chapter/topic"],
+    ["September","24","7) Tale of Three Intersecting Lines  8) Working With Fractions","LAT (running total: 5)"],
+    ["October","16","Geometric Twins","HALF YEARLY EXAM"],
+    ["November","23","Operation With Integers  Finding Common Ground","LAT after each chapter/topic"],
+    ["December","18","Another Peek Beyond The Point","LAT (running total: 8)"],
+    ["January","22","Connecting the Dots  Constructions and Tilings","LAT after each chapter/topic"],
+    ["February","23","Constructions and Tilings (contd.)  Finding the Unknown","LAT after each chapter/topic"],
+    ["March","—","Revision","SESSION ENDING EXAMINATION"]
+  ],
+  VIII: [
+    ["April/May","24","1) A Square and a Cube  2) Power Play","LAT after each chapter"],
+    ["June","7","3) A Story of Numbers","LAT after each chapter"],
+    ["July","26","3) A Story of Numbers (contd.)  4) Quadrilaterals","PERIODIC TEST – 1"],
+    ["August","23","5) Number Play  6) We Distribute, Yet Things Multiply","LAT after each chapter"],
+    ["September","24","7) Proportional Reasoning – 1","LAT after each chapter"],
+    ["October","16","Fractions in Disguise  The Baudhayana-Pythagoras Theorem","HALF YEARLY EXAM"],
+    ["November","23","Proportional Reasoning – 2  Exploring Some Geometric Themes","LAT after each chapter"],
+    ["December","18","Tales by Dots and Lines","LAT after each chapter"],
+    ["January","22","Algebra Play  Area","LAT after each chapter"],
+    ["February","23","Area (contd.)  Revision","LAT after each chapter"],
+    ["March","—","Revision","SESSION ENDING EXAMINATION"]
+  ],
+  IX: [
+    ["April–May","24","Class Readiness Module  1) Orienting Yourself: The Use of Coordinates","Slip/Oral/Weekly Tests + Extra Qs"],
+    ["June","7","2) Introduction to Linear Polynomials","Slip/Oral/Weekly Tests + Extra Qs"],
+    ["July","26","Linear Polynomials (contd.)  3) The World of Numbers  4) Exploring Algebraic Identities","Slip/Oral/Weekly Tests + PERIODIC TEST-I"],
+    ["August","23","Algebraic Identities (contd.)  5) I'm Up and Down, Round and Round  6) Measuring Space","Slip/Oral/Weekly Tests + Extra Qs"],
+    ["September","24","7) The Mathematics of May Be: Introduction to Probability","Slip/Oral/Weekly Tests + PERIODIC TEST-2"],
+    ["October*","16*","8) Predicting What Comes Next: Sequences and Progressions","REVISION FOR PART – I"],
+    ["Nov–March","—","Term-II Split-Up (issued once Part-II textbook is available)","—"]
+  ],
+  X: [
+    ["April & May","24","1) Real Numbers  2) Polynomials  3) Pair of Linear Equations in Two Variables","Monthly Test / Class Test"],
+    ["June","7","4) Quadratic Equations  5) Arithmetic Progressions","Monthly Test / Class Test"],
+    ["July","26","6) Triangles  7) Coordinate Geometry","PT-1 / Monthly Test"],
+    ["August","23","8) Introduction to Trigonometry  9) Applications of Trigonometry  10) Circles","Monthly Test / Class Test"],
+    ["September","24","11) Areas related to Circles  12) Surface Areas and Volumes","PT-2 / Monthly Test"],
+    ["October","16","13) Statistics  14) Probability","Monthly Test / Class Test"],
+    ["November","23","Revision and Pre-board","PREBOARD – I"],
+    ["December","18","Revision and Pre-board","Monthly Test / Class Test"],
+    ["January","22","Revision and Pre-board","PREBOARD – II"],
+    ["February","23","Revision","Monthly Test / Class Test"],
+    ["March","—","Board Examination","BOARD EXAMINATION"]
+  ]
+};
+async function loadSyllabus(){
+  renderSyllabusPills();
+  await renderSyllabusTable();
+}
+function renderSyllabusPills(){
+  const wrap = document.getElementById('syllabusPills');
+  if(!wrap) return;
+  wrap.innerHTML = SYLLABUS_CLASSES.map(c =>
+    `<button class="pill ${c===currentSyllabusClass?'active':''}" onclick="switchSyllabusClass('${c}')">Class ${c}</button>`
+  ).join('');
+}
+async function switchSyllabusClass(c){
+  currentSyllabusClass = c;
+  renderSyllabusPills();
+  await renderSyllabusTable();
+}
+async function renderSyllabusTable(){
+  const title = document.getElementById('syllabusCardTitle');
+  if(title) title.textContent = 'Class ' + currentSyllabusClass + ' — Mathematics';
+  const body = document.getElementById('syllabusBody');
+  if(!body) return;
+  const rows = syllabusData[currentSyllabusClass] || [];
+  const progress = (await storeGet('diary-syllabus-progress')) || {};
+  body.innerHTML = rows.map((row, i) => {
+    const key = currentSyllabusClass + '-' + i;
+    const done = progress[key] || '';
+    return `<tr>
+      <td>${i+1}</td>
+      <td>${escapeHtml(row[0])}</td>
+      <td>${escapeHtml(row[1])}</td>
+      <td>${escapeHtml(row[2])}</td>
+      <td>${escapeHtml(row[3])}</td>
+      <td><input type="text" placeholder="e.g. 12 Aug 2026" value="${escapeHtml(done)}" onchange="syllabusCompletedChange('${key}', this.value)"></td>
+    </tr>`;
+  }).join('');
+}
+async function syllabusCompletedChange(key, value){
+  const progress = (await storeGet('diary-syllabus-progress')) || {};
+  progress[key] = value;
+  await storeSet('diary-syllabus-progress', progress);
 }
 
 /* ---------------- Nav ---------------- */
