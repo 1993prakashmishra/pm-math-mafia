@@ -527,6 +527,16 @@
             <span style="color:#8a5a00;font-weight:700;">amber = absent</span>. Blank = not marked yet.
           </p>
         </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:14px;">Download / Print</h3>
+          <div class="pill-row" id="cwDlModePills"></div>
+          <div id="cwDlControls" style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap;"></div>
+          <button class="addbtn" style="margin-top:16px;" onclick="cwDownload()">🖨️ Download / Print PDF</button>
+          <p style="margin:12px 0 0; font-size:12px; color:var(--ink-soft);">
+            Opens a print-ready page in a new tab — choose "Save as PDF" in the print dialog to download it, or print it directly to send to the students' group.
+          </p>
+        </div>
       </section>
 
       <!-- Copy Writing mark picker -->
@@ -847,7 +857,7 @@ const biodataFields = [
   ['vidyalaya','Vidyalaya','PM SHRI KV ARA'],
   ['region','Region / Sambhag','Patna'],
   ['classesSubject','Classes & Subject Taught','VII, VIII, IX, X — Mathematics'],
-  ['session','Session','2026 - 2027'],
+  ['session','Session','2025 - 2026'],
   ['mobile','Mobile Number','+91 9507020419'],
   ['personalEmail','Personal E-mail ID','1990sauravkumar@gmail.com'],
   ['schoolEmail','School\'s Official E-mail ID','pmshrikvara@gmail.com']
@@ -1344,6 +1354,8 @@ async function loadCopyWriting(){
   if(input) input.value = currentCWMonth;
   renderCWClassPills();
   await renderCWTable();
+  renderCwDlModePills();
+  await renderCwDlControls();
 }
 function renderCWClassPills(){
   const wrap = document.getElementById('cwClassPills');
@@ -1356,11 +1368,13 @@ async function switchCWClass(c){
   currentCWClass = c;
   renderCWClassPills();
   await renderCWTable();
+  await renderCwDlControls();
 }
 async function cwMonthChanged(value){
   if(!value) return;
   currentCWMonth = value;
   await renderCWTable();
+  await renderCwDlControls();
 }
 async function getCWRoster(){
   // Use the same roster as Classes & Marks so names always match; falls back to the official list if empty.
@@ -1532,6 +1546,194 @@ async function removeQP(i){
   rows.splice(i,1);
   await storeSet('diary-questionpapers', rows);
   await renderQPTable();
+}
+
+/* ---------------- Copy Writing: Download / Print ---------------- */
+let cwDlMode = 'daily'; // 'daily' | 'weekly' | 'monthly' | 'student'
+let cwDlStudentPeriod = 'daily'; // 'daily' | 'weekly' | 'monthly'
+
+function renderCwDlModePills(){
+  const wrap = document.getElementById('cwDlModePills');
+  if(!wrap) return;
+  const modes = [['daily','Class — Daily'],['weekly','Class — Weekly'],['monthly','Class — Monthly'],['student','Student-wise']];
+  wrap.innerHTML = modes.map(([val,label]) =>
+    `<button class="pill ${val===cwDlMode?'active':''}" onclick="cwDlSetMode('${val}')">${label}</button>`
+  ).join('');
+}
+async function cwDlSetMode(m){
+  cwDlMode = m;
+  renderCwDlModePills();
+  await renderCwDlControls();
+}
+async function cwDlSetStudentPeriod(p){
+  cwDlStudentPeriod = p;
+  await renderCwDlControls();
+}
+function cwDlDayFieldHtml(id, nDays){
+  const todayNum = todayDayNumIfSameMonth(currentCWMonth);
+  let opts = '';
+  for(let d=1; d<=nDays; d++){
+    const sel = (d === todayNum) ? ' selected' : '';
+    opts += `<option value="${d}"${sel}>${d} (${dayOfWeekLetter(currentCWMonth,d)})</option>`;
+  }
+  return `<div><label>Date</label><select id="${id}">${opts}</select></div>`;
+}
+function cwDlWeekFieldHtml(id, nDays){
+  let opts = '';
+  let start = 1;
+  while(start <= nDays){
+    const end = Math.min(start+6, nDays);
+    opts += `<option value="${start}-${end}">Day ${start}\u2013${end}</option>`;
+    start += 7;
+  }
+  return `<div><label>Week</label><select id="${id}">${opts}</select></div>`;
+}
+async function renderCwDlControls(){
+  const wrap = document.getElementById('cwDlControls');
+  if(!wrap || !currentCWMonth) return;
+  const nDays = daysInMonth(currentCWMonth);
+  let html = '';
+  if(cwDlMode === 'daily'){
+    html += cwDlDayFieldHtml('cwDlDay', nDays);
+  } else if(cwDlMode === 'weekly'){
+    html += cwDlWeekFieldHtml('cwDlWeek', nDays);
+  } else if(cwDlMode === 'monthly'){
+    html += `<div style="font-size:13px; color:var(--ink-soft); padding:8px 0;">Prints the full month grid for <strong>${escapeHtml(currentCWClass)}</strong> — ${escapeHtml(monthNameLabel(currentCWMonth))}.</div>`;
+  } else if(cwDlMode === 'student'){
+    const roster = await getCWRoster();
+    let studentOpts = roster.map((s,i) => `<option value="${i}">${escapeHtml(s.name || '(unnamed)')}</option>`).join('');
+    if(!studentOpts) studentOpts = `<option value="">No students in this class</option>`;
+    html += `<div><label>Student</label><select id="cwDlStudent">${studentOpts}</select></div>`;
+    html += `<div><label>Period</label><div class="pill-row" style="margin:0;">
+        <button type="button" class="pill ${cwDlStudentPeriod==='daily'?'active':''}" onclick="cwDlSetStudentPeriod('daily')">Daily</button>
+        <button type="button" class="pill ${cwDlStudentPeriod==='weekly'?'active':''}" onclick="cwDlSetStudentPeriod('weekly')">Weekly</button>
+        <button type="button" class="pill ${cwDlStudentPeriod==='monthly'?'active':''}" onclick="cwDlSetStudentPeriod('monthly')">Monthly</button>
+      </div></div>`;
+    if(cwDlStudentPeriod === 'daily') html += cwDlDayFieldHtml('cwDlStudentDay', nDays);
+    if(cwDlStudentPeriod === 'weekly') html += cwDlWeekFieldHtml('cwDlStudentWeek', nDays);
+  }
+  wrap.innerHTML = html;
+}
+function monthNameLabel(yyyyMm){
+  const [y,m] = yyyyMm.split('-').map(Number);
+  const names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  return names[m-1] + ' ' + y;
+}
+function cwDlFormatDate(yyyyMm, day){
+  const [y,m] = yyyyMm.split('-');
+  return String(day).padStart(2,'0') + '-' + m + '-' + y;
+}
+function cwStatusLabel(status){
+  if(status === 'done') return 'Done';
+  if(status === 'notdone') return 'Not Done';
+  if(status === 'bunk') return 'Bunked';
+  if(status === 'absent') return 'Absent';
+  return 'Not marked';
+}
+function cwStatusLetter(status){
+  if(status === 'done') return '\u2713';
+  if(status === 'notdone') return '\u2717';
+  if(status === 'bunk') return 'B';
+  if(status === 'absent') return 'A';
+  return '\u2014';
+}
+function cwBuildDailyTable(roster, monthData, day){
+  const rows = roster.map((s,i) => {
+    const status = cwNormalize(monthData[i] && monthData[i][day]);
+    return `<tr><td>${i+1}</td><td style="text-align:left;">${escapeHtml(s.name||'(unnamed)')}</td><td>${cwStatusLabel(status)}</td></tr>`;
+  }).join('') || `<tr><td colspan="3">No students</td></tr>`;
+  return `<table class="ptable"><thead><tr><th style="width:30px;">#</th><th style="text-align:left;">Student Name</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function cwBuildRangeTable(roster, monthData, startDay, endDay){
+  let head = '<th style="width:30px;">#</th><th style="text-align:left;">Student Name</th>';
+  for(let d=startDay; d<=endDay; d++) head += `<th>${d}<br><span style="font-weight:400;">${dayOfWeekLetter(currentCWMonth,d)}</span></th>`;
+  const rows = roster.map((s,i) => {
+    let cells = '';
+    for(let d=startDay; d<=endDay; d++){
+      const status = cwNormalize(monthData[i] && monthData[i][d]);
+      cells += `<td>${cwStatusLetter(status)}</td>`;
+    }
+    return `<tr><td>${i+1}</td><td style="text-align:left;">${escapeHtml(s.name||'(unnamed)')}</td>${cells}</tr>`;
+  }).join('') || `<tr><td colspan="99">No students</td></tr>`;
+  return `<table class="ptable"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>
+  <p style="font-size:11px;margin-top:8px;">\u2713 = Done &nbsp; \u2717 = Not Done &nbsp; B = Bunked &nbsp; A = Absent &nbsp; \u2014 = Not marked</p>`;
+}
+function cwBuildStudentTable(student, studentData, startDay, endDay){
+  let rows = '';
+  for(let d=startDay; d<=endDay; d++){
+    const status = cwNormalize(studentData[d]);
+    rows += `<tr><td>${d} (${dayOfWeekLetter(currentCWMonth,d)})</td><td>${cwStatusLabel(status)}</td></tr>`;
+  }
+  return `<h4 style="margin:0 0 8px;">${escapeHtml(student.name || '(unnamed)')}</h4>
+  <table class="ptable"><thead><tr><th>Date</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function cwOpenPrintWindow(title, bodyHtml, className, periodLabel){
+  const w = window.open('', '_blank');
+  if(!w){ alert('Please allow pop-ups for this page to download or print.'); return; }
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${escapeHtml(title)}</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif; padding:24px; color:#1F2A24;}
+    h2{margin:0 0 2px; font-size:19px;}
+    .meta{font-size:12px; color:#555; margin-bottom:10px;}
+    table.ptable{border-collapse:collapse; width:100%; margin-top:6px; font-size:12px;}
+    table.ptable th, table.ptable td{border:1px solid #999; padding:5px 7px; text-align:center;}
+    table.ptable th{background:#eee;}
+    @media print{ @page{ margin:14mm; } }
+  </style></head><body>
+  <h2>${escapeHtml(className)} \u2014 Copy Writing Register</h2>
+  <div class="meta">Mathematics &middot; Session 2025-26 &middot; ${escapeHtml(periodLabel)}</div>
+  ${bodyHtml}
+  </body></html>`);
+  w.document.close();
+  w.focus();
+  setTimeout(() => { try{ w.print(); }catch(e){} }, 350);
+}
+async function cwDownload(){
+  const roster = await getCWRoster();
+  const nDays = daysInMonth(currentCWMonth);
+  const key = currentCWClass + '|' + currentCWMonth;
+  const allData = (await storeGet('diary-copywriting')) || {};
+  const monthData = allData[key] || {};
+  const monthLabel = monthNameLabel(currentCWMonth);
+  let title = '', bodyHtml = '', periodLabel = '';
+
+  if(cwDlMode === 'daily'){
+    const day = parseInt(document.getElementById('cwDlDay').value, 10);
+    periodLabel = cwDlFormatDate(currentCWMonth, day);
+    title = currentCWClass + ' Math Copy Writing - ' + periodLabel;
+    bodyHtml = cwBuildDailyTable(roster, monthData, day);
+  } else if(cwDlMode === 'weekly'){
+    const [s,e] = document.getElementById('cwDlWeek').value.split('-').map(Number);
+    periodLabel = cwDlFormatDate(currentCWMonth,s) + ' to ' + cwDlFormatDate(currentCWMonth,e);
+    title = currentCWClass + ' Math Copy Writing - ' + periodLabel;
+    bodyHtml = cwBuildRangeTable(roster, monthData, s, e);
+  } else if(cwDlMode === 'monthly'){
+    periodLabel = monthLabel;
+    title = currentCWClass + ' Math Copy Writing - ' + monthLabel;
+    bodyHtml = cwBuildRangeTable(roster, monthData, 1, nDays);
+  } else if(cwDlMode === 'student'){
+    const siRaw = document.getElementById('cwDlStudent').value;
+    if(siRaw === ''){ alert('No students in this class to download.'); return; }
+    const si = parseInt(siRaw, 10);
+    const student = roster[si];
+    const studentData = monthData[si] || {};
+    if(cwDlStudentPeriod === 'daily'){
+      const day = parseInt(document.getElementById('cwDlStudentDay').value, 10);
+      periodLabel = cwDlFormatDate(currentCWMonth, day);
+      title = currentCWClass + ' Math Copy Writing - ' + student.name + ' - ' + periodLabel;
+      bodyHtml = cwBuildStudentTable(student, studentData, day, day);
+    } else if(cwDlStudentPeriod === 'weekly'){
+      const [s,e] = document.getElementById('cwDlStudentWeek').value.split('-').map(Number);
+      periodLabel = cwDlFormatDate(currentCWMonth,s) + ' to ' + cwDlFormatDate(currentCWMonth,e);
+      title = currentCWClass + ' Math Copy Writing - ' + student.name + ' - ' + periodLabel;
+      bodyHtml = cwBuildStudentTable(student, studentData, s, e);
+    } else {
+      periodLabel = monthLabel;
+      title = currentCWClass + ' Math Copy Writing - ' + student.name + ' - ' + monthLabel;
+      bodyHtml = cwBuildStudentTable(student, studentData, 1, nDays);
+    }
+  }
+  cwOpenPrintWindow(title, bodyHtml, currentCWClass, periodLabel);
 }
 
 /* ---------------- Lesson Log ---------------- */
