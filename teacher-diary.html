@@ -249,13 +249,26 @@
   }
   .saved-flash.show{opacity:1;}
   .ttgrid{width:100%; border-collapse:collapse; font-size:13px;}
+  .cwgrid{border-collapse:collapse; font-size:12px;}
+  .cwgrid th, .cwgrid td{border:1px solid var(--line); padding:4px 6px; text-align:center;}
+  .cwgrid th{background:var(--paper-dark); font-weight:600; position:sticky; top:0;}
+  .cwgrid td.cw-name{text-align:left; font-weight:500; white-space:nowrap; position:sticky; left:0; background:#fff; z-index:1;}
+  .cwgrid td.cw-cell{cursor:pointer; width:26px; user-select:none; color:var(--ok); font-weight:700;}
+  .cwgrid td.cw-cell:hover{background:var(--paper-dark);}
+  .cwgrid td.cw-sun{background:#fdf3f3;}
+  .cwgrid td.cw-done{background:#e6f4ea; color:#1a6639; font-weight:800;}
+  .cwgrid td.cw-notdone{background:#fce8e6; color:#b23a3a; font-weight:800;}
+  .cwgrid td.cw-bunk{background:#1f2a24; color:#ffffff; font-weight:800;}
+  .cwgrid td.cw-absent{background:#fff3cd; color:#8a5a00; font-weight:800;}
+  #cwPickerOverlay{display:none; position:fixed; inset:0; background:rgba(31,42,36,0.55); z-index:200; align-items:center; justify-content:center;}
+  #cwPickerOverlay.show{display:flex;}
+  .cw-picker-card{background:#fff; border-radius:8px; padding:22px; min-width:260px; max-width:90vw; box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+  .cw-picker-title{font-weight:700; margin-bottom:14px; color:var(--ink); font-size:15px;}
+  .cw-picker-btn{display:block; width:100%; padding:10px; margin-bottom:8px; border:none; border-radius:6px; font-weight:700; cursor:pointer; font-size:14px; font-family:'IBM Plex Sans',sans-serif;}
+  .cw-picker-cancel{background:none; border:1px solid var(--line); color:var(--ink-soft); font-weight:600;}
   .ttgrid th, .ttgrid td{border:1px solid var(--line); padding:8px; text-align:center;}
   .ttgrid th{background:var(--paper-dark);}
   .ttgrid td input{text-align:center;}
-  .mm-num{position:sticky; left:0; width:34px; background:#fff; z-index:2;}
-  .mm-name{position:sticky; left:34px; width:210px; background:#fff; z-index:2; text-align:left; border-right:2px solid var(--line);}
-  .ttgrid th.mm-num, .ttgrid th.mm-name{background:var(--paper-dark); z-index:3;}
-  #monthlyTable td.mm-name input{font-size:13px;}
   .twocol{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   select{
     padding:9px 10px; border:1px solid var(--line); border-radius:3px; font-size:14px;
@@ -276,14 +289,17 @@
 <div id="lockScreen">
   <div class="book">
     <div class="ribbon"></div>
-    <div class="eyebrow">PM SHRI KV ARA</div>
+    <div class="eyebrow">PM Shri Kendriya Vidyalaya, Ara</div>
     <h1 class="display">Teacher Diary</h1>
     <p class="sub" id="lockSub">Log in to open your diary — works from any device.</p>
 
-    <div class="pill-row" style="margin-bottom:18px;">
+    <div class="pill-row" style="margin-bottom:8px;">
       <button class="pill active" id="tabLoginBtn" onclick="switchAuthTab('login')">Log In</button>
       <button class="pill" id="tabSignupBtn" onclick="switchAuthTab('signup')">First time (Sign Up)</button>
     </div>
+    <p style="font-size:11px;color:var(--ink-soft);margin:0 0 18px;line-height:1.5;">
+      Already created your diary once? Always use <strong>Log In</strong> — "First time (Sign Up)" is only for setting up a brand-new account and you won't need it again.
+    </p>
 
     <div id="loginBlock">
       <label for="loginEmail">Email</label>
@@ -292,6 +308,10 @@
       <input type="password" id="loginPass" placeholder="Password" onkeydown="if(event.key==='Enter')logIn()">
       <button class="btn" onclick="logIn()">Log In</button>
       <div class="err" id="loginErr"></div>
+      <div id="loginMsg" style="display:none;background:#e6f4ea;border:1px solid #1a6639;color:#0a2e1a;padding:10px;border-radius:6px;font-size:13px;margin-top:10px;"></div>
+      <div style="text-align:center;margin-top:14px;">
+        <a href="javascript:void(0)" onclick="forgotPassword()" style="font-size:13px;color:var(--maroon);text-decoration:underline;">Forgot password?</a>
+      </div>
     </div>
 
     <div id="signupBlock" style="display:none;">
@@ -304,7 +324,7 @@
     </div>
 
     <div class="note">
-      This login is powered by a real account system, not just a screen lock. Your data is stored securely under your own account and only you can read or edit it — from your phone, laptop, or any other device you log in on. Even so, keep bank details and your address only in your signed physical file.
+      This login is powered by a real account system, not just a screen lock. Your data is stored securely under your own account and only you can read or edit it — from your phone, laptop, or any other device you log in on. Even so, keep full Aadhaar/PAN numbers, bank details, and your address only in your signed physical file.
     </div>
   </div>
 </div>
@@ -317,49 +337,61 @@
         <div class="eyebrow2">KV Ara · Mathematics</div>
         <h2 class="display">My Diary</h2>
       </div>
-      <button class="navitem active" data-tab="biodata" onclick="showTab('biodata')">Biodata</button>
-      <button class="navitem" data-tab="philosophy" onclick="showTab('philosophy')">Teaching Philosophy</button>
+      <button class="navitem active" data-tab="overview" onclick="showTab('overview')">Overview</button>
       <button class="navitem" data-tab="timetable" onclick="showTab('timetable')">Time Table</button>
-      <button class="navitem" data-tab="recessduty" onclick="showTab('recessduty')">Recess Duty Chart</button>
-      <button class="navitem" data-tab="exitduty" onclick="showTab('exitduty')">Exit Duty Chart</button>
-      <button class="navitem" data-tab="remedialtiming" onclick="showTab('remedialtiming')">Remedial Timing</button>
+      <button class="navitem" data-tab="schoolinfo" onclick="showTab('schoolinfo')">Biodata &amp; Duty Charts</button>
       <button class="navitem" data-tab="classes" onclick="showTab('classes')">Classes &amp; Marks</button>
-      <button class="navitem" data-tab="monthlymarks" onclick="showTab('monthlymarks')">Classes &amp; Monthly Marks</button>
+      <button class="navitem" data-tab="copywriting" onclick="showTab('copywriting')">Copy Writing Register</button>
       <button class="navitem" data-tab="syllabus" onclick="showTab('syllabus')">Split-up Syllabus</button>
       <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
       <button class="navitem" data-tab="remedial" onclick="showTab('remedial')">Remedial Notes</button>
-      <button class="navitem" data-tab="exampapers" onclick="showTab('exampapers')">Exam Papers</button>
       <button class="lockbtn" onclick="logOut()">🔒 Log out</button>
     </nav>
 
     <main class="content">
 
-      <!-- Biodata -->
-      <section id="tab-biodata">
-        <header class="pagehead">
-          <div class="eyebrow">School Records</div>
-          <h1 class="display">Biodata of the Teacher</h1>
-          <p>Your official biodata — for reference</p>
-        </header>
-        <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;">
-            <h3 style="margin:0;">Biodata of the Teacher</h3>
-            <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid var(--maroon); flex-shrink:0;">
+      <!-- Overview -->
+      <section id="tab-overview">
+        <header class="pagehead" style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:84px; height:84px; border-radius:50%; object-fit:cover; border:3px solid var(--maroon); flex-shrink:0;">
+          <div>
+            <div class="eyebrow">Overview</div>
+            <h1 class="display" style="margin:2px 0 4px;">Namaste, Saurav</h1>
+            <p>TGT (Mathematics) · Classes VII, VIII, IX, X</p>
           </div>
-          <div class="twocol" id="biodataGrid" style="margin-top:14px;"></div>
-        </div>
-      </section>
-
-      <!-- Teaching Philosophy -->
-      <section id="tab-philosophy" style="display:none;">
-        <header class="pagehead">
-          <div class="eyebrow">Reflection</div>
-          <h1 class="display">Statement of Teaching Philosophy</h1>
-          <p>Your approach to teaching, in your own words</p>
         </header>
         <div class="card">
-          <h3>Statement of Teaching Philosophy</h3>
-          <textarea id="philosophyText" style="min-height:160px;" onchange="savePhilosophy(this.value)"></textarea>
+          <h3>This diary holds</h3>
+          <ul style="margin:0; padding-left:20px; color:var(--ink-soft); line-height:1.9;">
+            <li><strong>Time Table</strong> — your weekly periods, editable if it changes.</li>
+            <li><strong>Classes &amp; Marks</strong> — student rosters per section with PT/monthly-test entry.</li>
+            <li><strong>Lesson Log</strong> — a running record of what was taught, when, and to which class.</li>
+            <li><strong>Remedial Notes</strong> — students needing extra support and the plan for each.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Personal Details (masked)</h3>
+          <p style="margin:0 0 14px; color:var(--ink-soft); font-size:13px; line-height:1.6;">
+            Only the last 4 digits are ever saved — the rest is never typed or stored anywhere, so there's nothing to leak even from this device.
+          </p>
+          <div class="twocol">
+            <div>
+              <label>Aadhaar (last 4 digits)</label>
+              <input type="text" id="aadhaarLast4" maxlength="4" placeholder="e.g. 6726" onchange="saveProfileField('aadhaarLast4', this.value)">
+              <div class="mono" id="aadhaarMasked" style="margin-top:6px; color:var(--ink-soft); font-size:13px;">•••• •••• ••••</div>
+            </div>
+            <div>
+              <label>PAN (last 4 characters)</label>
+              <input type="text" id="panLast4" maxlength="4" placeholder="e.g. 664E" onchange="saveProfileField('panLast4', this.value)">
+              <div class="mono" id="panMasked" style="margin-top:6px; color:var(--ink-soft); font-size:13px;">•••••• ••••</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>A reminder</h3>
+          <p style="margin:0; color:var(--ink-soft); font-size:14px; line-height:1.7;">
+            Everything you type here syncs to your account and is visible only when you log in. Full Aadhaar or PAN numbers, bank details, and your address should stay only in the signed physical biodata file — never typed here, even partially beyond the last 4 digits above.
+          </p>
         </div>
       </section>
 
@@ -375,38 +407,34 @@
         </div>
       </section>
 
-      <!-- Recess Duty -->
-      <section id="tab-recessduty" style="display:none;">
+      <!-- Biodata & Duty Charts -->
+      <section id="tab-schoolinfo" style="display:none;">
         <header class="pagehead">
           <div class="eyebrow">School Records</div>
-          <h1 class="display">Recess Time Duty Chart</h1>
-          <p>w.e.f. 27/07/2026 — for reference</p>
+          <h1 class="display">Biodata &amp; Duty Charts</h1>
+          <p>Your official biodata, teaching philosophy, and the school's duty rosters — for reference</p>
         </header>
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+            <h3 style="margin:0;">Biodata of the Teacher</h3>
+            <img src="Saurav Mishra.jpeg" alt="Saurav Mishra" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:3px solid var(--maroon); flex-shrink:0;">
+          </div>
+          <div class="twocol" id="biodataGrid" style="margin-top:14px;"></div>
+        </div>
+        <div class="card">
+          <h3>Statement of Teaching Philosophy</h3>
+          <textarea id="philosophyText" style="min-height:160px;" onchange="savePhilosophy(this.value)"></textarea>
+        </div>
         <div class="card" style="overflow-x:auto;">
+          <h3>Recess Time Duty Chart <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">(w.e.f. 27/07/2026 — for reference)</span></h3>
           <table class="ttgrid" id="recessDutyTable"></table>
         </div>
-      </section>
-
-      <!-- Exit Duty -->
-      <section id="tab-exitduty" style="display:none;">
-        <header class="pagehead">
-          <div class="eyebrow">School Records</div>
-          <h1 class="display">Exit Time Duty Chart</h1>
-          <p>w.e.f. 28/07/2026 — for reference</p>
-        </header>
         <div class="card" style="overflow-x:auto;">
+          <h3>Exit Time Duty Chart <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">(w.e.f. 28/07/2026 — for reference)</span></h3>
           <table class="ttgrid" id="exitDutyTable"></table>
         </div>
-      </section>
-
-      <!-- Remedial Timing -->
-      <section id="tab-remedialtiming" style="display:none;">
-        <header class="pagehead">
-          <div class="eyebrow">School Records</div>
-          <h1 class="display">Remedial Classes</h1>
-          <p>Students Scoring &lt;75% in Monthly Test · Timing: 6:55–7:30 AM — for reference</p>
-        </header>
         <div class="card" style="overflow-x:auto;">
+          <h3>Remedial Classes (Students Scoring &lt;75% in Monthly Test) <span style="font-weight:400;font-size:12px;color:var(--ink-soft);">Timing: 6:55–7:30 AM — for reference</span></h3>
           <table class="ttgrid" id="remedialTimingTable"></table>
         </div>
       </section>
@@ -423,7 +451,18 @@
           <h3 id="classCardTitle">Class</h3>
           <div style="overflow-x:auto;">
             <table id="studentTable">
-              <thead id="studentHead"></thead>
+              <thead>
+                <tr>
+                  <th style="width:26px;">#</th>
+                  <th>Student Name</th>
+                  <th style="width:70px;">PT-1</th>
+                  <th style="width:70px;">PT-2</th>
+                  <th style="width:80px;">Monthly</th>
+                  <th style="width:70px;">HY</th>
+                  <th>Remarks</th>
+                  <th style="width:30px;"></th>
+                </tr>
+              </thead>
               <tbody id="studentBody"></tbody>
             </table>
           </div>
@@ -432,26 +471,51 @@
         </div>
       </section>
 
-      <!-- Classes & Monthly Marks -->
-      <section id="tab-monthlymarks" style="display:none;">
+      <!-- Copy Writing Register -->
+      <section id="tab-copywriting" style="display:none;">
         <header class="pagehead">
-          <div class="eyebrow">Scholastic Records</div>
-          <h1 class="display">Classes &amp; Monthly Marks</h1>
-          <p>Monthly test record — Class X: 14 tests · Class IX: 8 tests · Class VIII: 14 tests</p>
+          <div class="eyebrow">Daily Record</div>
+          <h1 class="display">Copy Writing Register</h1>
+          <p>Tick each student who wrote their copy that day — one grid per class, per month</p>
         </header>
-        <div class="pill-row" id="monthlyClassPills"></div>
+        <div class="pill-row" id="cwClassPills"></div>
         <div class="card">
-          <h3 id="monthlyCardTitle">Class</h3>
-          <div style="overflow-x:auto;">
-            <table id="monthlyTable">
-              <thead id="monthlyHead"></thead>
-              <tbody id="monthlyBody"></tbody>
-            </table>
+          <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:16px;">
+            <div>
+              <label>Month</label>
+              <input type="month" id="cwMonthInput" onchange="cwMonthChanged(this.value)">
+            </div>
+            <div style="margin-left:auto; display:flex; gap:8px;">
+              <button class="addbtn" onclick="cwMarkAll('done')">✓ Mark all done (today)</button>
+              <button class="addbtn" onclick="cwMarkAll('')">✕ Clear all (today)</button>
+            </div>
           </div>
-          <button class="addbtn" onclick="addMonthlyStudent()">+ Add student</button>
-          <button class="addbtn" style="margin-left:8px;background:#e6f0ff;border-color:#4a90e2;color:#0056b3;" onclick="loadOfficialMonthlyRoster()">📋 Load Official Roster for this Class</button>
+          <h3 id="cwCardTitle" style="margin-bottom:10px;">Class</h3>
+          <div style="overflow-x:auto;">
+            <table id="cwTable" style="font-size:12px; white-space:nowrap;"></table>
+          </div>
+          <p style="margin:14px 0 0; font-size:12px; color:var(--ink-soft);">
+            Click a cell to mark it —
+            <span style="color:#1a6639;font-weight:700;">&#10003; green = copy completed</span>,
+            <span style="color:#b23a3a;font-weight:700;">&#10007; red = not completed</span>,
+            <span style="background:#1f2a24;color:#fff;font-weight:700;padding:0 5px;border-radius:3px;">black = bunked class</span>,
+            <span style="color:#8a5a00;font-weight:700;">amber = absent</span>. Blank = not marked yet.
+          </p>
         </div>
       </section>
+
+      <!-- Copy Writing mark picker -->
+      <div id="cwPickerOverlay" onclick="if(event.target===this) cwClosePicker()">
+        <div class="cw-picker-card">
+          <div class="cw-picker-title" id="cwPickerLabel"></div>
+          <button class="cw-picker-btn" style="background:#1a6639;color:#fff;" onclick="cwSetStatus('done')">&#10003; Copy Completed</button>
+          <button class="cw-picker-btn" style="background:#b23a3a;color:#fff;" onclick="cwSetStatus('notdone')">&#10007; Copy Not Completed</button>
+          <button class="cw-picker-btn" style="background:#1f2a24;color:#fff;" onclick="cwSetStatus('bunk')">Bunked Class</button>
+          <button class="cw-picker-btn" style="background:#c98a00;color:#fff;" onclick="cwSetStatus('absent')">Absent</button>
+          <button class="cw-picker-btn" style="background:#eee;color:#333;" onclick="cwSetStatus('')">Clear Mark</button>
+          <button class="cw-picker-btn cw-picker-cancel" onclick="cwClosePicker()">Cancel</button>
+        </div>
+      </div>
 
       <!-- Lesson Log -->
       <section id="tab-lessonlog" style="display:none;">
@@ -542,51 +606,6 @@
         </div>
       </section>
 
-      <!-- Exam Papers -->
-      <section id="tab-exampapers" style="display:none;">
-        <header class="pagehead">
-          <div class="eyebrow">Records</div>
-          <h1 class="display">Exam Papers</h1>
-          <p>Keep every question paper (PDF/Word) in one place — paste a Drive link or upload the file directly</p>
-        </header>
-        <div class="card">
-          <h3>Add exam paper</h3>
-          <div class="twocol" style="margin-bottom:12px;">
-            <div>
-              <label>Class</label>
-              <select id="epClass">
-                <option>VI</option>
-                <option>VII A</option><option>VII B</option><option>VIII A</option>
-                <option>IX B</option><option>X B</option>
-              </select>
-            </div>
-            <div>
-              <label>Exam Name</label>
-              <input type="text" id="epExam" placeholder="e.g. PT-1, HY, SEE, PB-2">
-            </div>
-          </div>
-          <div class="twocol" style="margin-bottom:12px;">
-            <div>
-              <label>Subject</label>
-              <input type="text" id="epSubject" value="Mathematics">
-            </div>
-            <div>
-              <label>Drive / Cloud Link (optional)</label>
-              <input type="text" id="epLink" placeholder="Paste your Google Drive / OneDrive link here">
-            </div>
-          </div>
-          <label>Upload File (optional — PDF or Word, from your computer)</label>
-          <input type="file" id="epFile" accept=".pdf,.doc,.docx" style="margin-bottom:6px;">
-          <p style="font-size:12px; color:var(--ink-soft); margin:0 0 10px; line-height:1.5;">Needs Cloud Storage enabled on the Blaze plan — if that's not set up, just use the Drive link field above instead.</p>
-          <div id="epStatus" style="font-size:12px; color:var(--ink-soft); min-height:16px; margin-bottom:10px;"></div>
-          <button class="addbtn" onclick="addExamPaper()">+ Save entry</button>
-        </div>
-        <div class="card">
-          <h3>Saved Papers</h3>
-          <div id="examPaperList"></div>
-        </div>
-      </section>
-
     </main>
   </div>
 </div>
@@ -597,7 +616,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 
 <script>
 /* =====================================================================
@@ -619,23 +637,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
-/* File uploads for the Exam Papers section need Firebase Cloud Storage,
-   which (since Feb 2026) only works on the paid, pay-as-you-go Blaze plan —
-   the free Spark plan can no longer create or use a Storage bucket at all.
-   Small usage on Blaze still costs ₹0 (there's a generous free quota), but a
-   billing account must be linked. Steps:
-     1. Firebase Console → your project → gear icon → Usage and billing →
-        Modify plan → upgrade to Blaze (link a card; you won't be charged
-        unless you go over the free quota).
-     2. Build → Storage → Get started (this creates the bucket).
-     3. In the Rules tab, paste:
-          match /exam-papers/{uid}/{allPaths=**} {
-            allow read, write: if request.auth != null && request.auth.uid == uid;
-          }
-   If you'd rather not enable billing, skip this — pasting a Drive/Cloud link
-   in the Exam Papers section works with zero setup and needs nothing here. */
-let storage;
-try{ storage = firebase.storage(); } catch(e){ storage = null; }
 
 let diaryDocRef = null;
 let diaryCache = {};
@@ -689,6 +690,19 @@ async function logIn(){
     await auth.signInWithEmailAndPassword(email, pass);
   } catch(e){ err.textContent = friendlyAuthError(e); }
 }
+async function forgotPassword(){
+  const err = document.getElementById('loginErr');
+  const msg = document.getElementById('loginMsg');
+  err.textContent = '';
+  msg.style.display = 'none';
+  const email = document.getElementById('loginEmail').value.trim();
+  if(!email){ err.textContent = "Type your email above first, then tap 'Forgot password?' again."; return; }
+  try{
+    await auth.sendPasswordResetEmail(email);
+    msg.textContent = "Password reset link sent to " + email + " — check your inbox (and spam folder) and open it to set a new password.";
+    msg.style.display = 'block';
+  } catch(e){ err.textContent = friendlyAuthError(e); }
+}
 function logOut(){
   auth.signOut();
 }
@@ -721,19 +735,40 @@ async function openApp(){
   document.getElementById('app').style.display = 'block';
   await loadTimetable();
   await loadClasses();
-  await loadMonthlyMarks();
+  await loadCopyWriting();
   await loadLog();
   await loadRemedial();
+  await loadProfile();
   await loadBiodata();
   await loadPhilosophy();
   renderRecessDuty();
   renderExitDuty();
   renderRemedialTiming();
   await loadSyllabus();
-  await loadExamPapers();
 }
 
-/* ---------------- Biodata (includes Aadhaar & PAN — keep this device/account secure) ---------------- */
+/* ---------------- Profile (masked Aadhaar/PAN — last 4 chars only) ---------------- */
+async function loadProfile(){
+  const profile = (await storeGet('diary-profile')) || {};
+  if(profile.aadhaarLast4){
+    document.getElementById('aadhaarLast4').value = profile.aadhaarLast4;
+    document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + profile.aadhaarLast4;
+  }
+  if(profile.panLast4){
+    document.getElementById('panLast4').value = profile.panLast4;
+    document.getElementById('panMasked').textContent = '•••••• ' + profile.panLast4;
+  }
+}
+async function saveProfileField(field, value){
+  const clean = value.replace(/[^A-Za-z0-9]/g,'').slice(-4);
+  const profile = (await storeGet('diary-profile')) || {};
+  profile[field] = clean;
+  await storeSet('diary-profile', profile);
+  if(field === 'aadhaarLast4') document.getElementById('aadhaarMasked').textContent = '•••• •••• ' + (clean || '••••');
+  if(field === 'panLast4') document.getElementById('panMasked').textContent = '•••••• ' + (clean || '••••');
+}
+
+/* ---------------- Biodata (Aadhaar/PAN/address deliberately excluded — see Overview note) ---------------- */
 const biodataFields = [
   ['name','Name of the Teacher','SAURAV'],
   ['father','Father\'s Name','Vijay Kumar Mishra'],
@@ -741,11 +776,9 @@ const biodataFields = [
   ['qualification','Educational Qualification','M.Sc, B.Ed'],
   ['dob','Date of Birth','21-02-1993'],
   ['bloodgroup','Blood Group','A+'],
-  ['aadhaar','Aadhaar Number',''],
-  ['pan','PAN Number',''],
   ['joinKVS','Date of Joining in KVS','24-06-2024'],
   ['joinKV','Date of Joining in Present KV','24-06-2024'],
-  ['vidyalaya','Vidyalaya','PM SHRI KV ARA'],
+  ['vidyalaya','Vidyalaya','PM Shri Kendriya Vidyalaya, Ara'],
   ['region','Region / Sambhag','Patna'],
   ['classesSubject','Classes & Subject Taught','VII, VIII, IX, X — Mathematics'],
   ['session','Session','2026 - 2027'],
@@ -1006,24 +1039,12 @@ let currentClass = CLASS_LIST[0];
    to retype every name. Marks/remarks start blank — fill those in as you go.
    This is only used the very first time (when no saved data exists yet). */
 function makeRoster(names){
-  return names.map(n => ({name:n, remarks:''}));
+  return names.map(n => ({name:n, pt1:'', pt2:'', monthly:'', hy:'', remarks:''}));
 }
-
-/* Exam columns per class:
-   - VII A, VII B, VIII A → PT-1, HY, PT-2, SEE
-   - IX B → PT-1, HY, PT-2, PSEE, SEE
-   - X B  → PT-1, PT-2, HY, PB-1, PB-2, PB-3, AISEE */
-const examColumns = {
-  "VII A":  [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['see','SEE']],
-  "VII B":  [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['see','SEE']],
-  "VIII A": [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['see','SEE']],
-  "IX B":   [['pt1','PT-1'],['hy','HY'],['pt2','PT-2'],['psee','PSEE'],['see','SEE']],
-  "X B":    [['pt1','PT-1'],['pt2','PT-2'],['hy','HY'],['pb1','PB-1'],['pb2','PB-2'],['pb3','PB-3'],['aisee','AISEE']]
-};
 const defaultClasses = {
-  "VII A": makeRoster(["ARADHYA","AASHI SHREYA","ASHI SINGH","MAHI SINGH","SANAM KUMARI","PRIYA KUMARI","KULDIP JAIN","SHRUTI KUMARI","ASHISH RAJ","AKRITI KUMARI","HRITHIK RAY","ABHINAV KUMAR","SARIKA PRIYA","SHIVAM KUMAR GUPTA","SANSKRITI PRASAD","KUMARI SHAILYA","AKSHITA UPADHYAY","SHRAMBHAV SINGH","ANKUSH KUMAR","MD. MERAJ","NITYA SINGH","UJJWAL KUMAR","NAMAN KUMAR","AMRIT RAJ","RADHA KUMARI PANDEY","AKANKSHA JEET","VIVEK GUPTA","ABDUL QUADIR","ANSH KUMAR","PREM PRAKASH","SHWETA KUMARI","SHREYANSH VISHWAKARMA","DEVANSH SINGH","SHREYA RAJ","TEJASHWI KUMAR","ABHIMANYU NARAYAN SINGH","PARI KUMARI","SHIVAM TIWARI","TRISHA KUMARI","ARPAN KUMAR","MD FAIJAL","ARYAN KUMAR","KAVYA SINGH","ANIKET KUMAR","ANAYAH FATIMA","SAHIL KUMAR SINGH","SANKALP SURI","AARAV SASVAT","MUSKAN","SHREYA RANJAN","SOHEL RAHMAN","VAIBHAVI","NAITIK","SOORYANSH","ROHIT RAJ","AASTHA","YOOLA"]),
-  "VII B": makeRoster(["AMAR PRATAP SINGH","INSHU SINGH","SANJANA SINGH","HARSHIT SINGH","ASHI SINGH","KRISHNA","GAURAV SINGH","MD HUSSAIN RAZA","RAJ VAIBHAV SINGH","RITIK RAJ","ANUSHKA KUMARI","RISHIKA KUMARI","RAJ SHEKHAR","ASHUTOSH KUMAR","SARTHAK CHAURASIYA","PRINCE RAJ","MD FARHAN AKHTAR","ARNAV ARYA","JANVI KUMARI","SITU KUMAR","ADITYA SUMAN","ANKUR KUMAR","HARSH KUMAR AASNA","KISHAN VISHWAS","SANKALAP RAJ","SAUMYA RAJ","SADHYA KUMARI","ADITYA PRAKASH","AASHU KUMAR","ADARSH KUMAR","ARSH AHMAD","AKASH KUMAR","SHAYAM NARAYAN SHUKLA","AARTI KUMARI","PREETI KUMARI","SNEHA KUMARI","PINTU KUMAR SINGH","SYED MUSAWWIR ABBAS NAQVI","ANSH KUMAR","SHAYAN ALAM","MAHI KUMARI","MANVI KUMARI","AAYUSH KUMAR","ANAMIKA SHARMA","PRIYANSHU KUMAR","SAURABH KUMAR","PIYUSH RAJ","AARYAN SINGH","KIRAN","SURAJ TIWARI","ABHYA","ANSH RAJ","ANKUSH RAJ","SIKHA YADAV","ADITYA KUMAR","PRATYASH"]),
-  "VIII A": makeRoster(["SWETA KUMARI","SNEHA KUMARI","DIVYANSHU KUMAR","KHUSHI SHARMA","SAMAR PRATAP SINGH","LAL BABU KUMAR","MD. ZUBAIR ALAM","ALFAAZ HUSSAIN","SAMARPIT SHIVAM","RAVIKA TOMAR","NAVYA BHARDWAJ","PRIYANSHU BHARDWAJ","AYUSH KUMAR","RITIKA KUMARI","ANKIT KUMAR","UJJWAL KUMAR","EESHANI PATEL","AASHI BHARTI","ANIKET KUMAR SINGH","RAVISH KUMAR","SURAJ KUMAR","AASHI GUDDAN","ANOJ ANAND","MEGHA BHARTI","GUNJAN KUMARI","PIHU SINGH","NILMANI SINGH","ANANYA KUMARI","PRANIT KUMAR","PRINCE RAJ","ARYA","OMI ANAY","VIRAT SINGH","ATHRAV PATHAK","HARSHIKA KUMARI","SIYA MISHRA","ANISH KUMAR SINGH","SHAGUN KUMARI","KHUSHI KUMARI","VIJAYA PANDEY","MITHI SINGH","ADITI KUMARI","AJAY KUMAR","NAVYA KUMARI","KHUSHI KUMARI","PAYAL KUMARI","ARSHIT KUMAR SINGH","SNEHA KUMARI","DIVYA PANDEY","ABHISHEK KUMAR","BIDHAYA MAN","ARADHY SINGH","AMAN YADAV","KHUSHI RAJ","AYUSH KUMAR","MAYANK","ANKUSH KUMAR","ANJALI KUMARI"]),
+  "VII A": makeRoster(["ARADHYA","AASHI SHREYA","ASHI SINGH","MAHI SINGH","SANAM KUMARI","PRIYA KUMARI","SHRUTI KUMARI","ASHISH RAJ","AKRITI KUMARI","HRITHIK RAY","ABHINAV KUMAR","SARIKA PRIYA","SHIVAM KUMAR GUPTA","SANSKRITI PRASAD","AKSHITA UPADHYAY","SHRAMBHAV SINGH","ANKUSH KUMAR","MD. MERAJ","NITYA SINGH","UJJWAL KUMAR","NAMAN KUMAR","AMRIT RAJ","RADHA KUMARI PANDEY","AKANKSHA JEET","VIVEK GUPTA","ABDUL QUADIR","ANSH KUMAR","PREM PRAKASH","SHWETA KUMARI","SHREYANSH VISHWAKARMA","DEVANSH SINGH","SHREYA RAJ","TEJASHWI KUMAR","ABHIMANYU NARAYAN SINGH","PARI KUMARI","SHIVAM TIWARI","TRISHA KUMARI","ARPAN KUMAR","MD FAIJAL","KAVYA SINGH","ANIKET KUMAR","ANAYAH FATIMA","SAHIL KUMAR SINGH","AARAV SASVAT","MUSKAN","SHREYA RANJAN","SOHEL RAHMAN","VAIBHAVI","NAITIK","SOORYANSH","ROHIT RAJ","AASTHA","YOOLA"]),
+  "VII B": makeRoster(["AMAR PRATAP SINGH","INSHU SINGH","SANJANA SINGH","HARSHIT SINGH","ASHI SINGH","KRISHNA","GAURAV SINGH","MD HUSSAIN RAZA","RITIK RAJ","ANUSHKA KUMARI","RISHIKA KUMARI","RAJ SHEKHAR","ASHUTOSH KUMAR","SARTHAK CHAURASIYA","PRINCE RAJ","MD FARHAN AKHTAR","JANVI KUMARI","SITU KUMAR","ADITYA SUMAN","ANKUR KUMAR","HARSH KUMAR AASNA","KISHAN VISHWAS","SANKALAP RAJ","SAUMYA RAJ","SADHYA KUMARI","ADITYA PRAKASH","AASHU KUMAR","ADARSH KUMAR","ARSH AHMAD","AKASH KUMAR","SHAYAM NARAYAN SHUKLA","AARTI KUMARI","PREETI KUMARI","SNEHA KUMARI","PINTU KUMAR SINGH","SYED MUSAWWIR ABBAS NAQVI","ANSH KUMAR","MAHI KUMARI","ANAMIKA SHARMA","PRIYANSHU KUMAR","SAURABH KUMAR","PIYUSH RAJ","AARYAN SINGH","KIRAN","SURAJ TIWARI","ABHYA","ANSH RAJ","ANKUSH RAJ","SIKHA YADAV","ADITYA KUMAR","PRATYASH"]),
+  "VIII A": makeRoster(["SWETA KUMARI","SNEHA KUMARI","DIVYANSHU KUMAR","KHUSHI SHARMA","SAMAR PRATAP SINGH","LAL BABU KUMAR","MD. ZUBAIR ALAM","ALFAAZ HUSSAIN","SAMARPIT SHIVAM","RAVIKA TOMAR","NAVYA BHARDWAJ","PRIYANSHU BHARDWAJ","AYUSH KUMAR","RITIKA KUMARI","ANKIT KUMAR","UJJWAL KUMAR","EESHANI PATEL","AASHI BHARTI","ANIKET KUMAR SINGH","RAVISH KUMAR","SURAJ KUMAR","AASHI GUDDAN","ANOJ ANAND","MEGHA BHARTI","GUNJAN KUMARI","PIHU SINGH","NILMANI SINGH","ANANYA KUMARI","PRANIT KUMAR","PRINCE RAJ","ARYA","OMI ANAY","VIRAT SINGH","ATHRAV PATHAK","HARSHIKA KUMARI","ANISH KUMAR SINGH","SHAGUN KUMARI","KHUSHI KUMARI","VIJAYA PANDEY","MITHI SINGH","ADITI KUMARI","AJAY KUMAR","NAVYA KUMARI","KHUSHI KUMARI","ARSHIT KUMAR SINGH","SNEHA KUMARI","DIVYA PANDEY","ABHISHEK KUMAR","BIDHAYA MAN","ARADHY SINGH","AMAN YADAV","KHUSHI RAJ","AYUSH KUMAR","MAYANK","ANKUSH KUMAR","ANJALI KUMARI"]),
   "IX B": makeRoster(["AARUSHI KUMARI","KUVAL ABHI","HARDIK SINGH","PRATYUSH RAJ","SONI KUMARI","VAISHNAVI KUMARI","VIVEK KUMAR","AYUSH PRASAD","ANCHIT KUMAR","YASH PAL","SHIWANS PANDEY","HARSH KUMAR","SNEHA KUMARI","GARIMA RANI","ADITYA KUMAR","ANKIT KUMAR","MOHIT KUMAR","YURAJ KUMAR YADAV","AMRIT KUMAR","YUVRAJ KUMAR","ABHAY KUMAR TIWARI","ANAMIKA KUMARI","SHIVANSH KASHYAP","ANURAG RAJ","SALONI KUMARI","VARUN KUMAR","KHUSHI KUMARI","ANKIT KUMAR","SRISTI KUMARI","ASHISH KUMAR","RANJEET KUMAR YADAV","ARRADHYA SINGH","NITESH RAJ","SURAJ KUMAR ROUSHAN","KANHAIYA KUMAR","CHHOTI KUMARI","ROUNAK SARTHAK","ARCHANA KUMARI","ANOKHI KUMARI","AYUSH RANJAN","UTKARSH SHARMA","RICHA KUMARI","ATIF RAZA","RANJAY PASWAN","SHIVAM KUMAR SINGH","NISHU KUMARI","VAIBHAW SINGH","PRIYAKANT KUMARI","ROUNAK SONAR","PIYUSH KUMAR","SAURABH KUMAR","ANSHIKA KUMARI","GOLU KUMAR","PRINCE KUMAR","PRTIGYA KUMARI","MAHI KUMARI","DIVYA KUMARI","AMRITA SINGH","ARPITA SINGH","GAURAV YADAV"]),
   "X B": makeRoster(["PRATYUSH KUMAR","RAJVEER KUMAR","ASHISH KUMAR","ANJALI KUMARI","DIKSHA SINGH","SHIKSHA SINGH","HARSHIT KUMAR AASNA","RIDHIKA RAJ","ANAMIKA KUMARI","ANIKET RAJ","DIVYA KUMARI","ANJALI KUMARI","SACHIN RAJ","RAUSHAN RAJ","ASHLOK KUMAR BHASKAR","SHIVANI KUMARI","SMRITI KUMARI","VIDYA SINGH","SARVESH KUMAR PATEL","RIDHIMA KUMARI","MAYANK VAIBHAV","AADARSH TRIPATHY","ANVESHA SINGH","SAKSHI KUMARI","ADITI KUMARI","SOURABH KUMAR","RIYA","MD. AYAN","HARDIK KUMAR","ARMAN RAJ","RAMAN TIWARI","ARJUN SINGH","SANJANA KUMARI","SUNDERAM KUMAR SINGH","ANU KUMARI","ABHAY KUMAR SINGH","SHUBHAM SHARMA","LAXMI PATEL","RITIK SINGH","ASHISH KUMAR","SHUBHAM KUMARI","AYUSHI KUMARI","NAVYA KUMARI","NISHANT CHOUDHARY","ANGEL GUPTA","SHRISHTEE RAJ","AVANTIKA KUMARI","KUMAR SUBHAM","SAWETA KUMARI","ADRASH KUMAR SINGH","SHAMMY RAJ","ANCHAL UPADHYAY","SIWAM KUMAR","PRIYA PARI","JAY SHANKAR SINGH","ROHIT KUMAR","SHIVAM SINGH","SHREYANSHI","MRITYUNJAY RANJAN","NISHA KUMARI"])
 };
@@ -1052,24 +1073,20 @@ async function switchClass(c){
 }
 function renderStudents(classes){
   document.getElementById('classCardTitle').textContent = 'Class ' + currentClass + ' — Mathematics';
-  const cols = examColumns[currentClass] || examColumns["VII A"];
-  const head = document.getElementById('studentHead');
-  let theadHtml = '<tr><th style="width:26px;">#</th><th>Student Name</th>';
-  cols.forEach(([key,label]) => theadHtml += `<th style="width:64px;">${label}</th>`);
-  theadHtml += '<th>Remarks</th><th style="width:30px;"></th></tr>';
-  head.innerHTML = theadHtml;
-
   const rows = classes[currentClass] || [];
   const body = document.getElementById('studentBody');
-  body.innerHTML = rows.map((s, i) => {
-    let tds = `<td>${i+1}</td><td><input value="${escapeHtml(s.name||'')}" onchange="studentChange(${i},'name',this.value)"></td>`;
-    cols.forEach(([key,label]) => {
-      tds += `<td><input value="${escapeHtml(s[key]||'')}" onchange="studentChange(${i},'${key}',this.value)"></td>`;
-    });
-    tds += `<td><input value="${escapeHtml(s.remarks||'')}" onchange="studentChange(${i},'remarks',this.value)"></td>`;
-    tds += `<td><button class="rowbtn" onclick="removeStudent(${i})">✕</button></td>`;
-    return `<tr>${tds}</tr>`;
-  }).join('') || `<tr><td colspan="${cols.length+4}" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
+  body.innerHTML = rows.map((s, i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><input value="${escapeHtml(s.name||'')}" onchange="studentChange(${i},'name',this.value)"></td>
+      <td><input value="${escapeHtml(s.pt1||'')}" onchange="studentChange(${i},'pt1',this.value)"></td>
+      <td><input value="${escapeHtml(s.pt2||'')}" onchange="studentChange(${i},'pt2',this.value)"></td>
+      <td><input value="${escapeHtml(s.monthly||'')}" onchange="studentChange(${i},'monthly',this.value)"></td>
+      <td><input value="${escapeHtml(s.hy||'')}" onchange="studentChange(${i},'hy',this.value)"></td>
+      <td><input value="${escapeHtml(s.remarks||'')}" onchange="studentChange(${i},'remarks',this.value)"></td>
+      <td><button class="rowbtn" onclick="removeStudent(${i})">✕</button></td>
+    </tr>
+  `).join('') || `<tr><td colspan="8" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
 }
 async function studentChange(i, field, val){
   const classes = await storeGet('diary-classes');
@@ -1092,7 +1109,7 @@ async function loadOfficialRoster(){
 }
 async function addStudent(){
   const classes = await storeGet('diary-classes');
-  classes[currentClass].push({name:'', remarks:''});
+  classes[currentClass].push({name:'', pt1:'', pt2:'', monthly:'', hy:'', remarks:''});
   await storeSet('diary-classes', classes);
   renderStudents(classes);
 }
@@ -1103,92 +1120,165 @@ async function removeStudent(i){
   renderStudents(classes);
 }
 
-/* ---------------- Classes & Monthly Marks ---------------- */
-const MONTHLY_CLASS_LIST = ["VIII A","IX B","X B"];
-const monthlyTestCounts = { "VIII A": 14, "IX B": 8, "X B": 14 };
-let currentMonthlyClass = MONTHLY_CLASS_LIST[0];
-const defaultMonthlyClasses = {};
-MONTHLY_CLASS_LIST.forEach(c => {
-  defaultMonthlyClasses[c] = (defaultClasses[c] || []).map(s => ({name: s.name}));
-});
+/* ---------------- Copy Writing Register ---------------- */
+let currentCWClass = CLASS_LIST[0];
+let currentCWMonth = ''; // 'YYYY-MM'
 
-async function loadMonthlyMarks(){
-  let classes = await storeGet('diary-monthlymarks');
-  if(!classes){
-    classes = {};
-    MONTHLY_CLASS_LIST.forEach(c => classes[c] = defaultMonthlyClasses[c] ? defaultMonthlyClasses[c].map(s => ({...s})) : []);
-    await storeSet('diary-monthlymarks', classes);
-  }
-  renderMonthlyPills();
-  renderMonthlyStudents(classes);
+function todayYYYYMM(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
 }
-function renderMonthlyPills(){
-  const wrap = document.getElementById('monthlyClassPills');
+function daysInMonth(yyyyMm){
+  const [y,m] = yyyyMm.split('-').map(Number);
+  return new Date(y, m, 0).getDate();
+}
+function dayOfWeekLetter(yyyyMm, day){
+  const [y,m] = yyyyMm.split('-').map(Number);
+  const d = new Date(y, m-1, day);
+  return ['S','M','T','W','T','F','S'][d.getDay()];
+}
+function todayDayNumIfSameMonth(yyyyMm){
+  const now = new Date();
+  const cur = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+  return cur === yyyyMm ? now.getDate() : null;
+}
+
+async function loadCopyWriting(){
+  currentCWMonth = todayYYYYMM();
+  const input = document.getElementById('cwMonthInput');
+  if(input) input.value = currentCWMonth;
+  renderCWClassPills();
+  await renderCWTable();
+}
+function renderCWClassPills(){
+  const wrap = document.getElementById('cwClassPills');
   if(!wrap) return;
-  wrap.innerHTML = MONTHLY_CLASS_LIST.map(c =>
-    `<button class="pill ${c===currentMonthlyClass?'active':''}" onclick="switchMonthlyClass('${c}')">${c}</button>`
+  wrap.innerHTML = CLASS_LIST.map(c =>
+    `<button class="pill ${c===currentCWClass?'active':''}" onclick="switchCWClass('${c}')">${c}</button>`
   ).join('');
 }
-async function switchMonthlyClass(c){
-  currentMonthlyClass = c;
-  renderMonthlyPills();
-  const classes = await storeGet('diary-monthlymarks');
-  renderMonthlyStudents(classes);
+async function switchCWClass(c){
+  currentCWClass = c;
+  renderCWClassPills();
+  await renderCWTable();
 }
-function renderMonthlyStudents(classes){
-  const count = monthlyTestCounts[currentMonthlyClass] || 0;
-  const title = document.getElementById('monthlyCardTitle');
-  if(title) title.textContent = 'Class ' + currentMonthlyClass + ' — Monthly Test Record (' + count + ' tests)';
+async function cwMonthChanged(value){
+  if(!value) return;
+  currentCWMonth = value;
+  await renderCWTable();
+}
+async function getCWRoster(){
+  // Use the same roster as Classes & Marks so names always match; falls back to the official list if empty.
+  const classes = (await storeGet('diary-classes')) || {};
+  let roster = classes[currentCWClass] || [];
+  if(roster.length === 0 && defaultClasses[currentCWClass]) roster = defaultClasses[currentCWClass];
+  return roster;
+}
+let currentCWRosterCache = [];
+function cwSymbolFor(status){
+  if(status === 'done') return '&#10003;';
+  if(status === 'notdone') return '&#10007;';
+  if(status === 'bunk') return 'B';
+  if(status === 'absent') return 'A';
+  return '';
+}
+function cwClassFor(status){
+  if(status === 'done') return 'cw-done';
+  if(status === 'notdone') return 'cw-notdone';
+  if(status === 'bunk') return 'cw-bunk';
+  if(status === 'absent') return 'cw-absent';
+  return '';
+}
+function cwNormalize(raw){
+  if(raw === true) return 'done';   // backward-compat with the old boolean tick
+  if(raw === false || raw === undefined || raw === null) return '';
+  return raw;
+}
+async function renderCWTable(){
+  const title = document.getElementById('cwCardTitle');
+  if(title) title.textContent = 'Class ' + currentCWClass + ' — Copy Writing — ' + currentCWMonth;
+  const table = document.getElementById('cwTable');
+  if(!table) return;
+  const roster = await getCWRoster();
+  currentCWRosterCache = roster;
+  const nDays = daysInMonth(currentCWMonth);
+  const key = currentCWClass + '|' + currentCWMonth;
+  const allData = (await storeGet('diary-copywriting')) || {};
+  const monthData = allData[key] || {}; // { studentIdx: { day: 'done'|'notdone'|'bunk'|'absent' } }
 
-  const head = document.getElementById('monthlyHead');
-  let theadHtml = '<tr><th class="mm-num">#</th><th class="mm-name">Student Name</th>';
-  for(let m=1; m<=count; m++) theadHtml += `<th style="width:56px;">MT-${m}</th>`;
-  theadHtml += '<th style="width:30px;"></th></tr>';
-  if(head) head.innerHTML = theadHtml;
-
-  const rows = classes[currentMonthlyClass] || [];
-  const body = document.getElementById('monthlyBody');
-  if(!body) return;
-  body.innerHTML = rows.map((s, i) => {
-    let tds = `<td class="mm-num">${i+1}</td><td class="mm-name"><input value="${escapeHtml(s.name||'')}" onchange="monthlyChange(${i},'name',this.value)"></td>`;
-    for(let m=1; m<=count; m++){
-      const key = 'm'+m;
-      tds += `<td><input value="${escapeHtml(s[key]||'')}" onchange="monthlyChange(${i},'${key}',this.value)"></td>`;
-    }
-    tds += `<td><button class="rowbtn" onclick="removeMonthlyStudent(${i})">✕</button></td>`;
-    return `<tr>${tds}</tr>`;
-  }).join('') || `<tr><td colspan="${count+3}" style="color:var(--ink-soft); padding:16px 10px;">No students added yet — click "Add student" below.</td></tr>`;
-}
-async function monthlyChange(i, field, val){
-  const classes = await storeGet('diary-monthlymarks');
-  classes[currentMonthlyClass][i][field] = val;
-  await storeSet('diary-monthlymarks', classes);
-}
-async function loadOfficialMonthlyRoster(){
-  const roster = defaultMonthlyClasses[currentMonthlyClass];
-  if(!roster){ alert('No pre-loaded roster available for ' + currentMonthlyClass + '.'); return; }
-  const classes = await storeGet('diary-monthlymarks') || {};
-  const existing = classes[currentMonthlyClass] || [];
-  const hasNames = existing.some(s => s.name && s.name.trim() !== '');
-  if(hasNames){
-    const ok = confirm('Class ' + currentMonthlyClass + ' already has ' + existing.length + ' student row(s) with names filled in. Replace them with the official roster (' + roster.length + ' students)? This cannot be undone.');
-    if(!ok) return;
+  let html = '<table id="cwTable" class="cwgrid"><thead><tr><th class="cw-name" style="min-width:170px;">Student Name</th>';
+  for(let d=1; d<=nDays; d++){
+    const letter = dayOfWeekLetter(currentCWMonth, d);
+    html += `<th title="Day ${d}">${d}<br><span style="font-weight:400;color:var(--ink-soft);">${letter}</span></th>`;
   }
-  classes[currentMonthlyClass] = roster.map(s => ({...s}));
-  await storeSet('diary-monthlymarks', classes);
-  renderMonthlyStudents(classes);
+  html += '</tr></thead><tbody>';
+
+  if(roster.length === 0){
+    html += `<tr><td colspan="${nDays+1}" style="color:var(--ink-soft); padding:16px 10px;">No students in ${currentCWClass} yet — add them in Classes &amp; Marks first.</td></tr>`;
+  } else {
+    roster.forEach((student, si) => {
+      html += `<tr><td class="cw-name">${escapeHtml(student.name || '(unnamed)')}</td>`;
+      for(let d=1; d<=nDays; d++){
+        const status = cwNormalize(monthData[si] && monthData[si][d]);
+        const sunday = dayOfWeekLetter(currentCWMonth, d) === 'S' && new Date(currentCWMonth.split('-')[0], currentCWMonth.split('-')[1]-1, d).getDay() === 0;
+        const cls = ['cw-cell', sunday ? 'cw-sun' : '', cwClassFor(status)].filter(Boolean).join(' ');
+        html += `<td class="${cls}" onclick="cwOpenPicker(${si},${d})">${cwSymbolFor(status)}</td>`;
+      }
+      html += '</tr>';
+    });
+  }
+  html += '</tbody></table>';
+  table.outerHTML = html;
 }
-async function addMonthlyStudent(){
-  const classes = await storeGet('diary-monthlymarks');
-  classes[currentMonthlyClass].push({name:''});
-  await storeSet('diary-monthlymarks', classes);
-  renderMonthlyStudents(classes);
+
+/* ---- Mark picker (choose Done / Not Done / Bunk / Absent / Clear for one cell) ---- */
+let cwPickerCtx = null; // {si, day}
+function cwOpenPicker(si, day){
+  cwPickerCtx = {si, day};
+  const student = currentCWRosterCache[si];
+  const label = document.getElementById('cwPickerLabel');
+  if(label) label.textContent = (student ? student.name : 'Student') + ' — Day ' + day;
+  const overlay = document.getElementById('cwPickerOverlay');
+  if(overlay) overlay.classList.add('show');
 }
-async function removeMonthlyStudent(i){
-  const classes = await storeGet('diary-monthlymarks');
-  classes[currentMonthlyClass].splice(i,1);
-  await storeSet('diary-monthlymarks', classes);
-  renderMonthlyStudents(classes);
+function cwClosePicker(){
+  cwPickerCtx = null;
+  const overlay = document.getElementById('cwPickerOverlay');
+  if(overlay) overlay.classList.remove('show');
+}
+async function cwSetStatus(status){
+  if(!cwPickerCtx) return;
+  const { si, day } = cwPickerCtx;
+  const key = currentCWClass + '|' + currentCWMonth;
+  const allData = (await storeGet('diary-copywriting')) || {};
+  if(!allData[key]) allData[key] = {};
+  if(!allData[key][si]) allData[key][si] = {};
+  if(status === ''){
+    delete allData[key][si][day];
+  } else {
+    allData[key][si][day] = status;
+  }
+  await storeSet('diary-copywriting', allData);
+  cwClosePicker();
+  await renderCWTable();
+}
+async function cwMarkAll(value){
+  const day = todayDayNumIfSameMonth(currentCWMonth);
+  if(!day){ alert('You can only bulk-mark for today, and today is not in the month currently shown.'); return; }
+  const roster = await getCWRoster();
+  const key = currentCWClass + '|' + currentCWMonth;
+  const allData = (await storeGet('diary-copywriting')) || {};
+  if(!allData[key]) allData[key] = {};
+  roster.forEach((s, si) => {
+    if(!allData[key][si]) allData[key][si] = {};
+    if(value === ''){
+      delete allData[key][si][day];
+    } else {
+      allData[key][si][day] = value;
+    }
+  });
+  await storeSet('diary-copywriting', allData);
+  await renderCWTable();
 }
 
 /* ---------------- Lesson Log ---------------- */
@@ -1270,129 +1360,6 @@ async function removeRemedial(i){
   rows.splice(i,1);
   await storeSet('diary-remedial', rows);
   renderRemedial(rows);
-}
-
-/* ---------------- Exam Papers ---------------- */
-function uploadWithProgress(ref, file, statusEl, timeoutMs){
-  timeoutMs = timeoutMs || 20000;
-  return new Promise((resolve, reject) => {
-    let settled = false;
-    const task = ref.put(file);
-    const timer = setTimeout(() => {
-      if(settled) return;
-      settled = true;
-      try{ task.cancel(); } catch(e){}
-      reject(new Error('timeout'));
-    }, timeoutMs);
-    task.on('state_changed',
-      (snap) => {
-        if(settled) return;
-        const pct = snap.totalBytes ? Math.round((snap.bytesTransferred / snap.totalBytes) * 100) : 0;
-        statusEl.textContent = 'Uploading ' + file.name + ' — ' + pct + '%';
-      },
-      (err) => {
-        if(settled) return;
-        settled = true;
-        clearTimeout(timer);
-        reject(err);
-      },
-      () => {
-        if(settled) return;
-        settled = true;
-        clearTimeout(timer);
-        resolve();
-      }
-    );
-  });
-}
-async function loadExamPapers(){
-  let rows = await storeGet('diary-exampapers');
-  if(!rows){ rows = []; }
-  renderExamPapers(rows);
-}
-function renderExamPapers(rows){
-  const wrap = document.getElementById('examPaperList');
-  if(!wrap) return;
-  if(rows.length === 0){
-    wrap.innerHTML = `<p style="color:var(--ink-soft); font-size:14px;">No papers saved yet.</p>`;
-    return;
-  }
-  wrap.innerHTML = rows.slice().reverse().map((r, ri) => {
-    const i = rows.length - 1 - ri;
-    let links = '';
-    if(r.link) links += `<a href="${escapeHtml(r.link)}" target="_blank" rel="noopener" style="margin-right:14px; color:var(--maroon); font-weight:600; text-decoration:none;">Open Drive Link ↗</a>`;
-    if(r.fileURL) links += `<a href="${escapeHtml(r.fileURL)}" target="_blank" rel="noopener" style="color:var(--maroon); font-weight:600; text-decoration:none;">Open Uploaded File ↗ ${r.fileName ? '('+escapeHtml(r.fileName)+')' : ''}</a>`;
-    if(!links) links = `<span style="color:var(--ink-soft);">No link or file attached yet</span>`;
-    return `
-    <div class="logentry">
-      <div class="logmeta"><strong>${escapeHtml(r.cls)}</strong> · ${escapeHtml(r.exam)} · ${escapeHtml(r.subject||'')}
-        <button class="rowbtn" style="float:right;" onclick="removeExamPaper(${i})">✕ remove</button>
-      </div>
-      <div style="font-size:13px;">${links}</div>
-    </div>`;
-  }).join('');
-}
-async function addExamPaper(){
-  const cls = document.getElementById('epClass').value;
-  const exam = document.getElementById('epExam').value.trim();
-  const subject = document.getElementById('epSubject').value.trim();
-  const link = document.getElementById('epLink').value.trim();
-  const fileInput = document.getElementById('epFile');
-  const statusEl = document.getElementById('epStatus');
-  statusEl.textContent = '';
-  if(!exam){ statusEl.textContent = 'Please enter the exam name (e.g. PT-1, SEE).'; return; }
-
-  let fileURL = '', fileName = '';
-  const file = fileInput.files[0];
-  if(file){
-    if(!storage){
-      statusEl.textContent = 'File upload isn\'t set up yet for this diary — you can still paste a Drive link above.';
-      return;
-    }
-    try{
-      statusEl.textContent = 'Uploading ' + file.name + ' — 0%';
-      const user = auth.currentUser;
-      const path = 'exam-papers/' + user.uid + '/' + Date.now() + '_' + file.name;
-      const ref = storage.ref().child(path);
-      await uploadWithProgress(ref, file, statusEl);
-      fileURL = await ref.getDownloadURL();
-      fileName = file.name;
-    } catch(e){
-      console.error('upload failed', e);
-      const code = (e && e.code) || '';
-      if(e && e.message === 'timeout'){
-        statusEl.textContent = 'Upload timed out — this Firebase project likely doesn\'t have Cloud Storage enabled (it now needs the paid Blaze plan). Paste a Drive link instead for now, or see the setup note in the code.';
-      } else if(code.includes('unauthorized') || code.includes('unauthenticated')){
-        statusEl.textContent = 'Upload blocked by Storage rules — check the Rules tab in Firebase Console. Paste a Drive link instead for now.';
-      } else if(code.includes('unknown') || code === ''){
-        statusEl.textContent = 'Upload failed — Cloud Storage may not be enabled for this project (needs the Blaze plan). Paste a Drive link instead for now.';
-      } else {
-        statusEl.textContent = 'Upload failed — check your connection and try again, or paste a Drive link instead.';
-      }
-      return;
-    }
-  }
-
-  const rows = (await storeGet('diary-exampapers')) || [];
-  rows.push({cls, exam, subject, link, fileURL, fileName});
-  await storeSet('diary-exampapers', rows);
-
-  document.getElementById('epExam').value = '';
-  document.getElementById('epLink').value = '';
-  fileInput.value = '';
-  statusEl.textContent = 'Saved.';
-  setTimeout(()=>{ if(statusEl.textContent==='Saved.') statusEl.textContent=''; }, 1500);
-  renderExamPapers(rows);
-}
-async function removeExamPaper(i){
-  const rows = await storeGet('diary-exampapers');
-  const entry = rows[i];
-  if(entry && entry.fileURL && storage){
-    try{ await storage.refFromURL(entry.fileURL).delete(); } catch(e){ console.warn('could not delete stored file', e); }
-  }
-  rows.splice(i,1);
-  await storeSet('diary-exampapers', rows);
-  renderExamPapers(rows);
 }
 
 /* ---------------- Utils ---------------- */
