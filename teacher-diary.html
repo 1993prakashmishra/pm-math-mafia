@@ -146,6 +146,7 @@
     color:var(--paper);
     padding:28px 0;
     flex-shrink:0;
+    overflow-y:auto;
   }
   nav.side .brand{
     padding:0 24px 20px;
@@ -274,6 +275,9 @@
     padding:9px 10px; border:1px solid var(--line); border-radius:3px; font-size:14px;
     background:#fff; font-family:'IBM Plex Sans', sans-serif;
   }
+  .statbar{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:16px;}
+  .statchip{background:var(--paper-dark); border:1px solid var(--line); border-radius:6px; padding:10px 16px; font-size:13px;}
+  .statchip strong{display:block; font-size:20px; font-family:'Fraunces',serif; color:var(--maroon);}
   @media (max-width: 720px){
     .shell{flex-direction:column;}
     nav.side{width:100%; padding:16px 0;}
@@ -341,9 +345,12 @@
       <button class="navitem" data-tab="timetable" onclick="showTab('timetable')">Time Table</button>
       <button class="navitem" data-tab="schoolinfo" onclick="showTab('schoolinfo')">Biodata &amp; Duty Charts</button>
       <button class="navitem" data-tab="classes" onclick="showTab('classes')">Classes &amp; Marks</button>
+      <button class="navitem" data-tab="resultanalysis" onclick="showTab('resultanalysis')">Result Analysis</button>
       <button class="navitem" data-tab="copywriting" onclick="showTab('copywriting')">Copy Writing Register</button>
+      <button class="navitem" data-tab="attendance" onclick="showTab('attendance')">Attendance Register</button>
       <button class="navitem" data-tab="syllabus" onclick="showTab('syllabus')">Split-up Syllabus</button>
       <button class="navitem" data-tab="lessonlog" onclick="showTab('lessonlog')">Lesson Log</button>
+      <button class="navitem" data-tab="ptm" onclick="showTab('ptm')">Parent-Teacher Meetings</button>
       <button class="navitem" data-tab="remedial" onclick="showTab('remedial')">Remedial Notes</button>
       <button class="lockbtn" onclick="logOut()">🔒 Log out</button>
     </nav>
@@ -365,7 +372,11 @@
           <ul style="margin:0; padding-left:20px; color:var(--ink-soft); line-height:1.9;">
             <li><strong>Time Table</strong> — your weekly periods, editable if it changes.</li>
             <li><strong>Classes &amp; Marks</strong> — student rosters per section with PT/monthly-test entry.</li>
+            <li><strong>Result Analysis</strong> — exam-wise pass % and score-band breakdown per class.</li>
+            <li><strong>Copy Writing Register</strong> — daily copy-completion tracking per student.</li>
+            <li><strong>Attendance Register</strong> — daily present/absent record per student.</li>
             <li><strong>Lesson Log</strong> — a running record of what was taught, when, and to which class.</li>
+            <li><strong>Parent-Teacher Meetings</strong> — a record of discussions and follow-ups with parents.</li>
             <li><strong>Remedial Notes</strong> — students needing extra support and the plan for each.</li>
           </ul>
         </div>
@@ -471,6 +482,40 @@
         </div>
       </section>
 
+      <!-- Result Analysis -->
+      <section id="tab-resultanalysis" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Subject Wise Result Analysis</div>
+          <h1 class="display">Result Analysis</h1>
+          <p>Score-band breakdown for each exam (UT/MT/HY/PB/SEE) — matches the school's official register format</p>
+        </header>
+        <div class="pill-row" id="raClassPills"></div>
+        <div class="card">
+          <h3 id="raCardTitle">Class</h3>
+          <div style="overflow-x:auto;">
+            <table id="raTable" style="font-size:12px;">
+              <thead>
+                <tr>
+                  <th style="width:120px;">Exam Name</th>
+                  <th style="width:60px;">On Roll</th>
+                  <th style="width:60px;">Appeared</th>
+                  <th style="width:70px;">Needs Improve. &lt;33%</th>
+                  <th style="width:60px;">33–45%</th>
+                  <th style="width:60px;">45–60%</th>
+                  <th style="width:60px;">60–75%</th>
+                  <th style="width:60px;">75–90%</th>
+                  <th style="width:60px;">90%+</th>
+                  <th style="width:60px;">Pass %</th>
+                  <th style="width:26px;"></th>
+                </tr>
+              </thead>
+              <tbody id="raBody"></tbody>
+            </table>
+          </div>
+          <button class="addbtn" onclick="addRAEntry()">+ Add exam row</button>
+        </div>
+      </section>
+
       <!-- Copy Writing Register -->
       <section id="tab-copywriting" style="display:none;">
         <header class="pagehead">
@@ -517,6 +562,51 @@
         </div>
       </div>
 
+      <!-- Attendance Register -->
+      <section id="tab-attendance" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Daily Record</div>
+          <h1 class="display">Attendance Register</h1>
+          <p>Mark Present / Absent / Holiday per student, per day — with automatic monthly attendance %</p>
+        </header>
+        <div class="pill-row" id="attClassPills"></div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:16px;">
+            <div>
+              <label>Month</label>
+              <input type="month" id="attMonthInput" onchange="attMonthChanged(this.value)">
+            </div>
+            <div style="margin-left:auto; display:flex; gap:8px;">
+              <button class="addbtn" onclick="attMarkAll('present')">✓ Mark all present (today)</button>
+              <button class="addbtn" onclick="attMarkAll('')">✕ Clear all (today)</button>
+            </div>
+          </div>
+          <h3 id="attCardTitle" style="margin-bottom:10px;">Class</h3>
+          <div style="overflow-x:auto;">
+            <table id="attTable" style="font-size:12px; white-space:nowrap;"></table>
+          </div>
+          <p style="margin:14px 0 0; font-size:12px; color:var(--ink-soft);">
+            Click a cell to mark it —
+            <span style="color:#1a6639;font-weight:700;">P green = present</span>,
+            <span style="color:#b23a3a;font-weight:700;">A red = absent</span>,
+            <span style="color:#8a5a00;font-weight:700;">H amber = holiday</span>. Blank = not marked yet.
+            The last column shows each student's attendance % for the month.
+          </p>
+        </div>
+      </section>
+
+      <!-- Attendance mark picker -->
+      <div id="attPickerOverlay" onclick="if(event.target===this) attClosePicker()">
+        <div class="cw-picker-card">
+          <div class="cw-picker-title" id="attPickerLabel"></div>
+          <button class="cw-picker-btn" style="background:#1a6639;color:#fff;" onclick="attSetStatus('present')">P — Present</button>
+          <button class="cw-picker-btn" style="background:#b23a3a;color:#fff;" onclick="attSetStatus('absent')">A — Absent</button>
+          <button class="cw-picker-btn" style="background:#c98a00;color:#fff;" onclick="attSetStatus('holiday')">H — Holiday</button>
+          <button class="cw-picker-btn" style="background:#eee;color:#333;" onclick="attSetStatus('')">Clear Mark</button>
+          <button class="cw-picker-btn cw-picker-cancel" onclick="attClosePicker()">Cancel</button>
+        </div>
+      </div>
+
       <!-- Lesson Log -->
       <section id="tab-lessonlog" style="display:none;">
         <header class="pagehead">
@@ -548,6 +638,42 @@
         <div class="card">
           <h3>Entries</h3>
           <div id="logList"></div>
+        </div>
+      </section>
+
+      <!-- Parent-Teacher Meetings -->
+      <section id="tab-ptm" style="display:none;">
+        <header class="pagehead">
+          <div class="eyebrow">Record of Parent-Teacher Meetings</div>
+          <h1 class="display">Parent-Teacher Meetings</h1>
+          <p>A running record of discussions with parents and the follow-up given</p>
+        </header>
+        <div class="card">
+          <h3>New meeting entry</h3>
+          <div class="twocol" style="margin-bottom:12px;">
+            <div>
+              <label>Date</label>
+              <input type="text" id="ptmDate" placeholder="e.g. 16 Aug 2026">
+            </div>
+            <div>
+              <label>Class &amp; Section</label>
+              <select id="ptmClass">
+                <option>VII A</option><option>VII B</option><option>VIII A</option>
+                <option>IX B</option><option>X B</option>
+              </select>
+            </div>
+          </div>
+          <label>Student Name</label>
+          <input type="text" id="ptmStudent" placeholder="Student's name" style="margin-bottom:12px;">
+          <label>Suggestions / Discussion Points</label>
+          <textarea id="ptmSuggestions" placeholder="What was discussed, concerns raised, advice given…" style="margin-bottom:12px;"></textarea>
+          <label>Parent's Name &amp; Mobile No.</label>
+          <input type="text" id="ptmParentContact" placeholder="e.g. Mr. Sharma — 9876543210">
+          <button class="addbtn" style="margin-top:12px;" onclick="addPTM()">+ Save entry</button>
+        </div>
+        <div class="card">
+          <h3>Entries</h3>
+          <div id="ptmList"></div>
         </div>
       </section>
 
@@ -735,8 +861,11 @@ async function openApp(){
   document.getElementById('app').style.display = 'block';
   await loadTimetable();
   await loadClasses();
+  await loadResultAnalysis();
   await loadCopyWriting();
+  await loadAttendance();
   await loadLog();
+  await loadPTM();
   await loadRemedial();
   await loadProfile();
   await loadBiodata();
@@ -1120,6 +1249,59 @@ async function removeStudent(i){
   renderStudents(classes);
 }
 
+/* ---------------- Result Analysis (Subject Wise, per class) ---------------- */
+let currentRAClass = CLASS_LIST[0];
+function renderRAPills(){
+  const wrap = document.getElementById('raClassPills');
+  if(!wrap) return;
+  wrap.innerHTML = CLASS_LIST.map(c =>
+    `<button class="pill ${c===currentRAClass?'active':''}" onclick="switchRAClass('${c}')">${c}</button>`
+  ).join('');
+}
+async function switchRAClass(c){
+  currentRAClass = c;
+  renderRAPills();
+  await renderRATable();
+}
+async function loadResultAnalysis(){
+  renderRAPills();
+  await renderRATable();
+}
+async function renderRATable(){
+  const title = document.getElementById('raCardTitle');
+  if(title) title.textContent = 'Class ' + currentRAClass + ' — Mathematics — Subject Wise Result Analysis';
+  const body = document.getElementById('raBody');
+  if(!body) return;
+  const all = (await storeGet('diary-resultanalysis')) || {};
+  const rows = all[currentRAClass] || [];
+  const cols = ['exam','roll','appeared','needsimp','b33','b45','b60','b75','b90','passp'];
+  body.innerHTML = rows.map((r,i) => `
+    <tr>
+      ${cols.map(c => `<td><input value="${escapeHtml(r[c]||'')}" onchange="raChange(${i},'${c}',this.value)" placeholder="${c==='exam'?'e.g. PT-1':''}"></td>`).join('')}
+      <td><button class="rowbtn" onclick="removeRAEntry(${i})">✕</button></td>
+    </tr>
+  `).join('') || `<tr><td colspan="11" style="color:var(--ink-soft); padding:16px 10px;">No exam rows yet — click "Add exam row" below.</td></tr>`;
+}
+async function raChange(i, field, val){
+  const all = (await storeGet('diary-resultanalysis')) || {};
+  if(!all[currentRAClass]) all[currentRAClass] = [];
+  all[currentRAClass][i][field] = val;
+  await storeSet('diary-resultanalysis', all);
+}
+async function addRAEntry(){
+  const all = (await storeGet('diary-resultanalysis')) || {};
+  if(!all[currentRAClass]) all[currentRAClass] = [];
+  all[currentRAClass].push({exam:'', roll:'', appeared:'', needsimp:'', b33:'', b45:'', b60:'', b75:'', b90:'', passp:''});
+  await storeSet('diary-resultanalysis', all);
+  await renderRATable();
+}
+async function removeRAEntry(i){
+  const all = (await storeGet('diary-resultanalysis')) || {};
+  all[currentRAClass].splice(i,1);
+  await storeSet('diary-resultanalysis', all);
+  await renderRATable();
+}
+
 /* ---------------- Copy Writing Register ---------------- */
 let currentCWClass = CLASS_LIST[0];
 let currentCWMonth = ''; // 'YYYY-MM'
@@ -1281,6 +1463,143 @@ async function cwMarkAll(value){
   await renderCWTable();
 }
 
+/* ---------------- Attendance Register ---------------- */
+let currentAttClass = CLASS_LIST[0];
+let currentAttMonth = '';
+let currentAttRosterCache = [];
+
+async function loadAttendance(){
+  currentAttMonth = todayYYYYMM();
+  const input = document.getElementById('attMonthInput');
+  if(input) input.value = currentAttMonth;
+  renderAttClassPills();
+  await renderAttTable();
+}
+function renderAttClassPills(){
+  const wrap = document.getElementById('attClassPills');
+  if(!wrap) return;
+  wrap.innerHTML = CLASS_LIST.map(c =>
+    `<button class="pill ${c===currentAttClass?'active':''}" onclick="switchAttClass('${c}')">${c}</button>`
+  ).join('');
+}
+async function switchAttClass(c){
+  currentAttClass = c;
+  renderAttClassPills();
+  await renderAttTable();
+}
+async function attMonthChanged(value){
+  if(!value) return;
+  currentAttMonth = value;
+  await renderAttTable();
+}
+async function getAttRoster(){
+  const classes = (await storeGet('diary-classes')) || {};
+  let roster = classes[currentAttClass] || [];
+  if(roster.length === 0 && defaultClasses[currentAttClass]) roster = defaultClasses[currentAttClass];
+  return roster;
+}
+function attSymbolFor(status){
+  if(status === 'present') return 'P';
+  if(status === 'absent') return 'A';
+  if(status === 'holiday') return 'H';
+  return '';
+}
+function attClassFor(status){
+  if(status === 'present') return 'cw-done';
+  if(status === 'absent') return 'cw-notdone';
+  if(status === 'holiday') return 'cw-absent';
+  return '';
+}
+async function renderAttTable(){
+  const title = document.getElementById('attCardTitle');
+  if(title) title.textContent = 'Class ' + currentAttClass + ' — Attendance — ' + currentAttMonth;
+  const table = document.getElementById('attTable');
+  if(!table) return;
+  const roster = await getAttRoster();
+  currentAttRosterCache = roster;
+  const nDays = daysInMonth(currentAttMonth);
+  const key = currentAttClass + '|' + currentAttMonth;
+  const allData = (await storeGet('diary-attendance')) || {};
+  const monthData = allData[key] || {};
+
+  let html = '<table id="attTable" class="cwgrid"><thead><tr><th class="cw-name" style="min-width:170px;">Student Name</th>';
+  for(let d=1; d<=nDays; d++){
+    const letter = dayOfWeekLetter(currentAttMonth, d);
+    html += `<th title="Day ${d}">${d}<br><span style="font-weight:400;color:var(--ink-soft);">${letter}</span></th>`;
+  }
+  html += '<th style="min-width:60px;">Att. %</th></tr></thead><tbody>';
+
+  if(roster.length === 0){
+    html += `<tr><td colspan="${nDays+2}" style="color:var(--ink-soft); padding:16px 10px;">No students in ${currentAttClass} yet — add them in Classes &amp; Marks first.</td></tr>`;
+  } else {
+    roster.forEach((student, si) => {
+      html += `<tr><td class="cw-name">${escapeHtml(student.name || '(unnamed)')}</td>`;
+      let present = 0, marked = 0;
+      for(let d=1; d<=nDays; d++){
+        const status = (monthData[si] && monthData[si][d]) || '';
+        if(status === 'present'){ present++; marked++; }
+        else if(status === 'absent'){ marked++; }
+        const sunday = new Date(currentAttMonth.split('-')[0], currentAttMonth.split('-')[1]-1, d).getDay() === 0;
+        const cls = ['cw-cell', sunday ? 'cw-sun' : '', attClassFor(status)].filter(Boolean).join(' ');
+        html += `<td class="${cls}" onclick="attOpenPicker(${si},${d})">${attSymbolFor(status)}</td>`;
+      }
+      const pct = marked > 0 ? Math.round((present/marked)*100) + '%' : '—';
+      html += `<td style="font-weight:700;">${pct}</td>`;
+      html += '</tr>';
+    });
+  }
+  html += '</tbody></table>';
+  table.outerHTML = html;
+}
+let attPickerCtx = null;
+function attOpenPicker(si, day){
+  attPickerCtx = {si, day};
+  const student = currentAttRosterCache[si];
+  const label = document.getElementById('attPickerLabel');
+  if(label) label.textContent = (student ? student.name : 'Student') + ' — Day ' + day;
+  const overlay = document.getElementById('attPickerOverlay');
+  if(overlay) overlay.classList.add('show');
+}
+function attClosePicker(){
+  attPickerCtx = null;
+  const overlay = document.getElementById('attPickerOverlay');
+  if(overlay) overlay.classList.remove('show');
+}
+async function attSetStatus(status){
+  if(!attPickerCtx) return;
+  const { si, day } = attPickerCtx;
+  const key = currentAttClass + '|' + currentAttMonth;
+  const allData = (await storeGet('diary-attendance')) || {};
+  if(!allData[key]) allData[key] = {};
+  if(!allData[key][si]) allData[key][si] = {};
+  if(status === ''){
+    delete allData[key][si][day];
+  } else {
+    allData[key][si][day] = status;
+  }
+  await storeSet('diary-attendance', allData);
+  attClosePicker();
+  await renderAttTable();
+}
+async function attMarkAll(value){
+  const day = todayDayNumIfSameMonth(currentAttMonth);
+  if(!day){ alert('You can only bulk-mark for today, and today is not in the month currently shown.'); return; }
+  const roster = await getAttRoster();
+  const key = currentAttClass + '|' + currentAttMonth;
+  const allData = (await storeGet('diary-attendance')) || {};
+  if(!allData[key]) allData[key] = {};
+  roster.forEach((s, si) => {
+    if(!allData[key][si]) allData[key][si] = {};
+    if(value === ''){
+      delete allData[key][si][day];
+    } else {
+      allData[key][si][day] = value;
+    }
+  });
+  await storeSet('diary-attendance', allData);
+  await renderAttTable();
+}
+
 /* ---------------- Lesson Log ---------------- */
 async function loadLog(){
   let log = await storeGet('diary-lessonlog');
@@ -1323,6 +1642,54 @@ async function removeLog(i){
   log.splice(i,1);
   await storeSet('diary-lessonlog', log);
   renderLog(log);
+}
+
+/* ---------------- Parent-Teacher Meetings ---------------- */
+async function loadPTM(){
+  let log = await storeGet('diary-ptm');
+  if(!log){ log = []; }
+  renderPTM(log);
+}
+function renderPTM(log){
+  const wrap = document.getElementById('ptmList');
+  if(!wrap) return;
+  if(log.length === 0){
+    wrap.innerHTML = `<p style="color:var(--ink-soft); font-size:14px;">No entries yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = log.slice().reverse().map((entry, ri) => {
+    const i = log.length - 1 - ri;
+    return `
+    <div class="logentry">
+      <div class="logmeta"><strong>${escapeHtml(entry.date)}</strong> · ${escapeHtml(entry.cls)} · ${escapeHtml(entry.student)}
+        <button class="rowbtn" style="float:right;" onclick="removePTM(${i})">✕ remove</button>
+      </div>
+      <div style="font-size:14px; color:var(--ink); margin-bottom:4px;">${escapeHtml(entry.suggestions)}</div>
+      <div style="font-size:12px; color:var(--ink-soft);">Parent: ${escapeHtml(entry.parentContact || '—')}</div>
+    </div>`;
+  }).join('');
+}
+async function addPTM(){
+  const date = document.getElementById('ptmDate').value.trim();
+  const cls = document.getElementById('ptmClass').value;
+  const student = document.getElementById('ptmStudent').value.trim();
+  const suggestions = document.getElementById('ptmSuggestions').value.trim();
+  const parentContact = document.getElementById('ptmParentContact').value.trim();
+  if(!date || !student){ return; }
+  const log = (await storeGet('diary-ptm')) || [];
+  log.push({date, cls, student, suggestions, parentContact});
+  await storeSet('diary-ptm', log);
+  document.getElementById('ptmDate').value='';
+  document.getElementById('ptmStudent').value='';
+  document.getElementById('ptmSuggestions').value='';
+  document.getElementById('ptmParentContact').value='';
+  renderPTM(log);
+}
+async function removePTM(i){
+  const log = await storeGet('diary-ptm');
+  log.splice(i,1);
+  await storeSet('diary-ptm', log);
+  renderPTM(log);
 }
 
 /* ---------------- Remedial ---------------- */
