@@ -269,6 +269,7 @@
   .ttgrid th, .ttgrid td{border:1px solid var(--line); padding:8px; text-align:center;}
   .ttgrid th{background:var(--paper-dark);}
   .ttgrid td input{text-align:center;}
+  .ttgrid td.duty-mine{background:#fde3c7; color:#9a4b00; font-weight:700; border:2px solid #f97316;}
   .twocol{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   select{
     padding:9px 10px; border:1px solid var(--line); border-radius:3px; font-size:14px;
@@ -428,6 +429,7 @@
         </header>
         <div class="card" style="overflow-x:auto;">
           <table class="ttgrid" id="recessDutyTable"></table>
+          <p style="margin:12px 0 0; font-size:12px; color:var(--ink-soft);"><span style="background:#fde3c7; color:#9a4b00; font-weight:700; border:2px solid #f97316; padding:1px 8px; border-radius:3px;">Orange</span> = your duty slot</p>
         </div>
       </section>
 
@@ -440,6 +442,7 @@
         </header>
         <div class="card" style="overflow-x:auto;">
           <table class="ttgrid" id="exitDutyTable"></table>
+          <p style="margin:12px 0 0; font-size:12px; color:var(--ink-soft);"><span style="background:#fde3c7; color:#9a4b00; font-weight:700; border:2px solid #f97316; padding:1px 8px; border-radius:3px;">Orange</span> = your duty slot</p>
         </div>
       </section>
 
@@ -452,6 +455,7 @@
         </header>
         <div class="card" style="overflow-x:auto;">
           <table class="ttgrid" id="remedialTimingTable"></table>
+          <p style="margin:12px 0 0; font-size:12px; color:var(--ink-soft);"><span style="background:#fde3c7; color:#9a4b00; font-weight:700; border:2px solid #f97316; padding:1px 8px; border-radius:3px;">Orange</span> = your Maths remedial slot (Class IX B / X B)</p>
         </div>
       </section>
 
@@ -901,18 +905,23 @@ const recessDutyData = {
     SATURDAY:  ["Mr.Akshay Kumar + Mr. Dipu Kumar", "Mr. Manish Kumar Singh + Mr. Saurabh", "Mr. Grijesh", "Mr. Y. Bahadur", "Mrs Minni Kumari"]
   }
 };
+function isMyDutyCell(text){
+  return /saurabh/i.test(text || '');
+}
 function renderRecessDuty(){
   const table = document.getElementById('recessDutyTable');
   if(!table) return;
   let html = '<tr><th>Day</th>' + recessDutyData.cols.map(c=>`<th>${c}</th>`).join('') + '</tr>';
   recessDutyData.days.forEach(day => {
-    html += `<tr><th>${day.slice(0,3)}</th>` + recessDutyData.data[day].map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+    html += `<tr><th>${day.slice(0,3)}</th>` + recessDutyData.data[day].map(c=>
+      `<td${isMyDutyCell(c) ? ' class="duty-mine"' : ''}>${escapeHtml(c)}</td>`
+    ).join('') + '</tr>';
   });
   table.innerHTML = html;
 }
 
 const exitDutyData = {
-  MONDAY:    ["Mr.Akshay Kumar","Mr. Suarabh Kumar","Mr. VP Dwivedi","Mr. Sunil Kumar","Mrs. Nikhat Shakil"],
+  MONDAY:    ["Mr.Akshay Kumar","Mr. Saurabh Kumar","Mr. VP Dwivedi","Mr. Sunil Kumar","Mrs. Nikhat Shakil"],
   TUESDAY:   ["Mr.Akshay Kumar","Mr. Abhishek Kumar","Mr. P. Prasad","Mr. N.K.Mishra","Miss Sureeja Gupta"],
   WEDNESDAY: ["Mr.Akshay Kumar","Mr. Praveen K. Singh","Mr. D.K.Roy","Mr. R.V. Prasad","Miss Ashima Yadav"],
   THURSDAY:  ["Mr. Manish Kumar Singh","Mr. Y. Bahadur","Mr. V.B. Mishra","Dr. P.N. Mishra","Mrs. Minni Kumari"],
@@ -925,7 +934,9 @@ function renderExitDuty(){
   const days = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
   let html = '<tr><th>Day</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>';
   days.forEach(day => {
-    html += `<tr><th>${day.slice(0,3)}</th>` + exitDutyData[day].map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+    html += `<tr><th>${day.slice(0,3)}</th>` + exitDutyData[day].map(c=>
+      `<td${isMyDutyCell(c) ? ' class="duty-mine"' : ''}>${escapeHtml(c)}</td>`
+    ).join('') + '</tr>';
   });
   table.innerHTML = html;
 }
@@ -946,9 +957,13 @@ const remedialTimingData = {
 function renderRemedialTiming(){
   const table = document.getElementById('remedialTimingTable');
   if(!table) return;
+  const myClasses = ["IX B","X B"];
   let html = '<tr><th>Class</th>' + remedialTimingData.days.map(d=>`<th>${d}</th>`).join('') + '</tr>';
   Object.keys(remedialTimingData.classes).forEach(cls => {
-    html += `<tr><th>${cls}</th>` + remedialTimingData.classes[cls].map(c=>`<td>${escapeHtml(c)}</td>`).join('') + '</tr>';
+    const isMyClass = myClasses.includes(cls);
+    html += `<tr><th>${cls}</th>` + remedialTimingData.classes[cls].map(c =>
+      `<td${(isMyClass && /maths/i.test(c)) ? ' class="duty-mine"' : ''}>${escapeHtml(c)}</td>`
+    ).join('') + '</tr>';
   });
   table.innerHTML = html;
 }
@@ -1637,12 +1652,27 @@ function cwStatusLetter(status){
   if(status === 'absent') return 'A';
   return '\u2014';
 }
+/* Print colours: green = copy written, light red = not written, yellow = absent, blue = bunked class. */
+function cwStatusColor(status){
+  if(status === 'done') return {bg:'#d7f3df', fg:'#1a6639'};
+  if(status === 'notdone') return {bg:'#fbdada', fg:'#b23a3a'};
+  if(status === 'absent') return {bg:'#fff3cd', fg:'#8a5a00'};
+  if(status === 'bunk') return {bg:'#dbeafe', fg:'#1e40af'};
+  return {bg:'#ffffff', fg:'#333'};
+}
 function cwBuildDailyTable(roster, monthData, day){
   const rows = roster.map((s,i) => {
     const status = cwNormalize(monthData[i] && monthData[i][day]);
-    return `<tr><td>${i+1}</td><td style="text-align:left;">${escapeHtml(s.name||'(unnamed)')}</td><td>${cwStatusLabel(status)}</td></tr>`;
+    const col = cwStatusColor(status);
+    return `<tr style="background:${col.bg}; color:${col.fg}; font-weight:600;"><td>${i+1}</td><td style="text-align:left;">${escapeHtml(s.name||'(unnamed)')}</td><td>${cwStatusLabel(status)}</td></tr>`;
   }).join('') || `<tr><td colspan="3">No students</td></tr>`;
-  return `<table class="ptable"><thead><tr><th style="width:30px;">#</th><th style="text-align:left;">Student Name</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`;
+  return `<table class="ptable"><thead><tr><th style="width:30px;">#</th><th style="text-align:left;">Student Name</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+  <p style="font-size:11px;margin-top:8px;">
+    <span style="background:#d7f3df;color:#1a6639;font-weight:700;padding:1px 8px;border-radius:3px;">Green = Written</span> &nbsp;
+    <span style="background:#fbdada;color:#b23a3a;font-weight:700;padding:1px 8px;border-radius:3px;">Light Red = Not Written</span> &nbsp;
+    <span style="background:#fff3cd;color:#8a5a00;font-weight:700;padding:1px 8px;border-radius:3px;">Yellow = Absent</span> &nbsp;
+    <span style="background:#dbeafe;color:#1e40af;font-weight:700;padding:1px 8px;border-radius:3px;">Blue = Bunked</span>
+  </p>`;
 }
 function cwBuildRangeTable(roster, monthData, startDay, endDay){
   let head = '<th style="width:30px;">#</th><th style="text-align:left;">Student Name</th>';
@@ -1651,34 +1681,48 @@ function cwBuildRangeTable(roster, monthData, startDay, endDay){
     let cells = '';
     for(let d=startDay; d<=endDay; d++){
       const status = cwNormalize(monthData[i] && monthData[i][d]);
-      cells += `<td>${cwStatusLetter(status)}</td>`;
+      const col = cwStatusColor(status);
+      cells += `<td style="background:${col.bg}; color:${col.fg}; font-weight:700;">${cwStatusLetter(status)}</td>`;
     }
     return `<tr><td>${i+1}</td><td style="text-align:left;">${escapeHtml(s.name||'(unnamed)')}</td>${cells}</tr>`;
   }).join('') || `<tr><td colspan="99">No students</td></tr>`;
   return `<table class="ptable"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>
-  <p style="font-size:11px;margin-top:8px;">\u2713 = Done &nbsp; \u2717 = Not Done &nbsp; B = Bunked &nbsp; A = Absent &nbsp; \u2014 = Not marked</p>`;
+  <p style="font-size:11px;margin-top:8px;">
+    <span style="background:#d7f3df;color:#1a6639;font-weight:700;padding:1px 8px;border-radius:3px;">\u2713 Green = Written</span> &nbsp;
+    <span style="background:#fbdada;color:#b23a3a;font-weight:700;padding:1px 8px;border-radius:3px;">\u2717 Light Red = Not Written</span> &nbsp;
+    <span style="background:#fff3cd;color:#8a5a00;font-weight:700;padding:1px 8px;border-radius:3px;">A Yellow = Absent</span> &nbsp;
+    <span style="background:#dbeafe;color:#1e40af;font-weight:700;padding:1px 8px;border-radius:3px;">B Blue = Bunked</span> &nbsp;
+    \u2014 = Not marked
+  </p>`;
 }
 function cwBuildStudentTable(student, studentData, startDay, endDay){
   let rows = '';
   for(let d=startDay; d<=endDay; d++){
     const status = cwNormalize(studentData[d]);
-    rows += `<tr><td>${d} (${dayOfWeekLetter(currentCWMonth,d)})</td><td>${cwStatusLabel(status)}</td></tr>`;
+    const col = cwStatusColor(status);
+    rows += `<tr style="background:${col.bg}; color:${col.fg}; font-weight:600;"><td>${d} (${dayOfWeekLetter(currentCWMonth,d)})</td><td>${cwStatusLabel(status)}</td></tr>`;
   }
   return `<h4 style="margin:0 0 8px;">${escapeHtml(student.name || '(unnamed)')}</h4>
-  <table class="ptable"><thead><tr><th>Date</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`;
+  <table class="ptable"><thead><tr><th>Date</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>
+  <p style="font-size:11px;margin-top:8px;">
+    <span style="background:#d7f3df;color:#1a6639;font-weight:700;padding:1px 8px;border-radius:3px;">Green = Written</span> &nbsp;
+    <span style="background:#fbdada;color:#b23a3a;font-weight:700;padding:1px 8px;border-radius:3px;">Light Red = Not Written</span> &nbsp;
+    <span style="background:#fff3cd;color:#8a5a00;font-weight:700;padding:1px 8px;border-radius:3px;">Yellow = Absent</span> &nbsp;
+    <span style="background:#dbeafe;color:#1e40af;font-weight:700;padding:1px 8px;border-radius:3px;">Blue = Bunked</span>
+  </p>`;
 }
 function cwOpenPrintWindow(title, bodyHtml, className, periodLabel){
   const w = window.open('', '_blank');
   if(!w){ alert('Please allow pop-ups for this page to download or print.'); return; }
   w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${escapeHtml(title)}</title>
   <style>
-    body{font-family:Arial,Helvetica,sans-serif; padding:24px; color:#1F2A24;}
+    body{font-family:Arial,Helvetica,sans-serif; padding:24px; color:#1F2A24; -webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact;}
     h2{margin:0 0 2px; font-size:19px;}
     .meta{font-size:12px; color:#555; margin-bottom:10px;}
     table.ptable{border-collapse:collapse; width:100%; margin-top:6px; font-size:12px;}
     table.ptable th, table.ptable td{border:1px solid #999; padding:5px 7px; text-align:center;}
     table.ptable th{background:#eee;}
-    @media print{ @page{ margin:14mm; } }
+    @media print{ @page{ margin:14mm; } body{-webkit-print-color-adjust:exact; print-color-adjust:exact; color-adjust:exact;} }
   </style></head><body>
   <h2>${escapeHtml(className)} \u2014 Copy Writing Register</h2>
   <div class="meta">Mathematics &middot; Session 2025-26 &middot; ${escapeHtml(periodLabel)}</div>
